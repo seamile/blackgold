@@ -151,8 +151,8 @@
 }
 
 .categorie-header image {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    /* border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px; */
     height: 400rpx;
     width: 100%;
     position: absolute;
@@ -161,13 +161,13 @@
 
 .categorie-text {
     position: absolute;
-    width: 610rpx;
+    width: auto;
     left: 30rpx;
     bottom: 20rpx;
     color: #FFF;
     z-index: 99;
     padding: 20rpx 40rpx;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
     border-radius: 20rpx;
 }
 

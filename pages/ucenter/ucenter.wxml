@@ -2,7 +2,7 @@
 <import src="../../templates/poplogin/poplogin.wxml" />
 
 <view
-	style="background: url({{setting.background}}) no-repeat; background-size: 750rpx 580rpx;background-position: 0 -120rpx;	border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+	style="background: url({{setting.background}}) no-repeat; background-size: 100%; background-position: 0 0;	border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
 	
 	<view class="jiangqie-userbox">
 		<view class="jiangqie-usersetup">
@@ -26,7 +26,8 @@
 				</view>
 			</block>
 		</view>
-		<view class="jiangqie-countinfo">
+		<!-- 
+    <view class="jiangqie-countinfo">
 			<view class="jiangqie-countblock">
 				<view class="jiangqie-countnumber">39</view>
 				<view class="jiangqie-counttype">帖子</view>
@@ -43,7 +44,8 @@
 				<view class="jiangqie-countnumber">18</view>
 				<view class="jiangqie-counttype">关注</view>
 			</view>
-		</view>
+		</view> 
+    -->
 	</view>
 
 
@@ -78,24 +80,17 @@
 
 	<view class="jiangqie-listbox jiangqie-postcount">
 		<block wx:for="{{menu}}" wx:key="index">
-
-
-
-			<view wx:if="{{item.tp=='favorites'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}" data-track="favorites" catchtap="handlerPostTrack">
+      <!-- 我的收藏 -->
+			<view wx:if="{{item.tp=='favorites'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}" 
+            data-track="favorites" 
+            catchtap="handlerPostTrack">
 				<view class="jiangqie-listtitle">
 					<image wx:if="{{item.icon}}" src="../../images/myico/star_no.svg" mode="aspectFill"></image>
 					<text>{{item.title}}</text>
 				</view>
 			</view>
 
-			<view wx:if="{{item.tp=='about'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
-				data-track="about" catchtap="handlerguanwang">
-				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/myico/sms.svg" mode="aspectFill"></image>
-					<text>{{item.title}}</text>
-				</view>
-			</view>
-
+      <!-- 浏览记录 -->
 			<view wx:if="{{item.tp=='views'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
 				data-track="views" catchtap="handlerPostTrack">
 				<view class="jiangqie-listtitle">
@@ -104,13 +99,23 @@
 				</view>
 			</view>
 
-			<view wx:if="{{item.tp=='likes'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
+      <!-- 公众号 -->
+			<!-- <view wx:if="{{item.tp=='about'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
+				data-track="about" catchtap="handlerguanwang">
+				<view class="jiangqie-listtitle">
+					<image wx:if="{{item.icon}}" src="../../images/myico/sms.svg" mode="aspectFill"></image>
+					<text>{{item.title}}222</text>
+				</view>
+			</view> -->
+
+      <!-- 点赞 -->
+			<!-- <view wx:if="{{item.tp=='likes'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
 				data-track="likes" catchtap="handlerPostTrack">
 				<view class="jiangqie-listtitle">
 					<image wx:if="{{item.icon}}" src="../../images/myico/heart_outline.svg" mode="aspectFill"></image>
 					<text>{{item.title}}</text>
 				</view>
-			</view>
+			</view> -->
 		</block>
 	</view>
 	<ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom>
