@@ -1,0 +1,12 @@
+<view class="page">
+    <view class="page-title">空白昵称生成工具</view>
+    <view class="page-title2">点击按钮一键复制，直接去粘贴即可</view>
+    <view class="layout-button">
+        <button bindtap="AndroidCopyEvent" type="primary">安卓点我</button>
+        <button bindtap="iosCopyEvent" type="primary">苹果点我</button>
+    </view>
+    <view class="bottom-change-list__ad">
+        <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
+    </view>
+</view>
+

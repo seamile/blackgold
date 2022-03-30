@@ -1,0 +1,15 @@
+<view class="main-wrap">
+    <image class="w100" mode="widthFix" src="/images/red-packet-bg@2x.png"></image>
+    <view class="money-box bold">
+        <view>
+            <text class="num">20</text>
+            <text class="unit">元</text>
+        </view>
+        <text class="tip">现金奖励</text>
+    </view>
+    <view class="share-tip">第五个拆到最多！</view>
+    <button bindtap="showToastOffline">
+        <image class="w100" mode="widthFix" src="/images/share-friends-btn@2x.png"></image>
+    </button>
+    <image class="icon" src="/images/red-packet-icon@2x.png"></image>
+</view>

@@ -1,0 +1,33 @@
+<view class="container">
+    <view class="top-banner-bg">
+        <view class="weui-text-bar">
+            <view class="weui-text-bar__form">
+                <view class="weui-text-bar__box">
+                    <input bindinput="bindKeyInput" class="weui-text-bar__input" placeholder="请输入要生成的昵称" type="search" value="{{inputVal}}"></input>
+                    <view bindtap="clearInput" class="weui-icon-clear" hidden="{{!inputShowed}}">
+                        <icon size="20" type="clear"></icon>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="" class="weui-text-bar__cancel-btn">{{textareaValue}}</view>
+            <view class="zhuyi001">
+          注意：输入完毕后，点击下面翅膀类型自动复制
+               
+            </view>
+        </view>
+    </view>
+    <scroll-view scrollY style="height: calc(100% - 300rpx);position:fixed; bottom: 0;left: 0;">
+        <view class="bottom-change-list" wx:for="{{nickdata}}" wx:for-item="i" wx:key="i">
+            <view class="bottom-change-list__ad">
+                <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
+            </view>
+            <view class="bottom-change-list__title">{{i.class}}</view>
+            <view class="bottom-change-list__box">
+                <button bindtap="changeText" id="{{i}}" wx:for="{{i.datalist}}" wx:for-item="i" wx:key="i">{{i}}</button>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<navigator appId="wx657f56c5972b8458" class="smallT" openType="navigate" path="pages/more/more" target="miniProgram" version="release">
+    <view class="shareT">更多工具</view>
+</navigator>

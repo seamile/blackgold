@@ -1,0 +1,18 @@
+	<!-- <view> -->
+		<view class = "login-box" >
+  <image src='https://api.newzhuti.com'></image>
+		<view class="container">
+  <view class="wechatapp">
+    <view class="header">
+      <open-data  type="userAvatarUrl"></open-data>
+    </view>
+  </view>
+
+  <view class="login-btn">
+		  <button catchtap="handlerLoginClick" class="jiangqie-login-btnr">立即登录</button>
+			<button catchtap="handlerCancelClick" class="jiangqie-login-btnl">随便逛逛</button>
+    </view>
+    <view class="text">{{description?description:slogan}}</view>
+  </view>
+
+</view>

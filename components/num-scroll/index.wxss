@@ -1,0 +1,30 @@
+.count-number {
+    height: 100rpx;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.count-up {
+    width: 60rpx;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s ease;
+    transition: transform 1s ease,-webkit-transform 1s ease;
+    transform: translateY(0);
+}
+
+.count-up.dot {
+    width: 30rpx;
+}
+
+.count-up.no-transition {
+    transition: none;
+}
+
+.count-up .item {
+    width: 100%;
+    font-size: 88rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+}

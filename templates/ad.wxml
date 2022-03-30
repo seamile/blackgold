@@ -1,0 +1,37 @@
+<template name="ad">
+  <view wx:if="{{setAD.posisionad[pagead]=='1'}}" style="width:95%;margin-top:25rpx;margin-bottom:25rpx;margin-left:auto;margin-right:auto;">
+    <ad unit-id="{{setAD.banner}}" wx:if="{{setAD.banner}}"></ad>
+  </view>
+  <view wx:elif="{{setAD.posisionad[pagead]=='2'}}">
+    <ad unit-id="{{setAD.videoid}}" wx:if="{{config.videoid}}" ad-type="video" ad-theme="white"></ad>
+  </view>
+  <view wx:elif="{{setAD.posisionad[pagead]=='3'}}">
+    <ad unit-id="{{setAD.gridid}}"  wx:if="{{setAD.gridid}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+  </view>
+  <view wx:elif="{{setAD.posisionad[pagead]=='4'}}"   style="width:95%;margin-top:25rpx;margin-bottom:25rpx;margin-left:auto;margin-right:auto;">
+    <ad-custom unit-id="{{setAD.customAid}}"  wx:if="{{setAD.customAid}}"></ad-custom>
+  </view>
+  <view wx:elif="{{setAD.posisionad[pagead]=='5'}}"  style="width:95%;margin-top:25rpx;margin-bottom:25rpx;margin-left:auto;margin-right:auto;">
+    <ad-custom unit-id="{{setAD.customBid}}"   wx:if="{{setAD.customBid}}"></ad-custom>
+  </view>
+
+</template>
+
+<template name="ad_2">
+  <view wx:if="{{setAD.posisionad[pageadB]=='1'}}">
+    <ad unit-id="{{setAD.banner}}" wx:if="{{setAD.banner}}"></ad>
+  </view>
+  <view wx:elif="{{setAD.posisionad[pageadB]=='2'}}">
+    <ad unit-id="{{setAD.videoid}}" wx:if="{{config.videoid}}" ad-type="video" ad-theme="white"></ad>
+  </view>
+  <view wx:elif="{{setAD.posisionad[pageadB]=='3'}}">
+    <ad unit-id="{{setAD.gridid}}"  wx:if="{{setAD.gridid}}" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+  </view>
+  <view wx:elif="{{setAD.posisionad[pageadB]=='4'}}"   style="width:95%;margin-top:25rpx;margin-bottom:25rpx;margin-left:auto;margin-right:auto;">
+    <ad-custom unit-id="{{setAD.customAid}}"  wx:if="{{setAD.customAid}}"></ad-custom>
+  </view>
+  <view wx:elif="{{setAD.posisionad[pageadB]=='5'}}"  style="width:95%;margin-top:25rpx;margin-bottom:25rpx;margin-left:auto;margin-right:auto;">
+    <ad-custom unit-id="{{setAD.customBid}}"   wx:if="{{setAD.customBid}}"></ad-custom>
+  </view>
+
+</template>

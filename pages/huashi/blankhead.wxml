@@ -1,0 +1,9 @@
+<view class="section__ctn">
+    <image bindtap="previewImageblankhead" class="zan01" src="{{src}}"></image>
+    <view class="">
+        <ad unitId="adunit-339b21c1c533fe54"></ad>
+    </view>
+</view>
+<navigator appId="wx657f56c5972b8458" class="smallT" openType="navigate" path="pages/mmore/more" target="miniProgram" version="release">
+    <view class="shareT">更多工具</view>
+</navigator>

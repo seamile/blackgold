@@ -1,0 +1,27 @@
+<view>
+    <image mode="aspectFill" src="https://microapi.tangsengwangluo.com/wp-content/uploads/2022/03/405DB4A0ED63DB8D9DB5AD55A752D574.jpg" style="width:750rpx; height:400rpx;"></image>
+</view>
+<view class="tip_block">
+    <view>
+        <official-account style="width:700rpx;"></official-account>
+    </view>
+    <view style="height:30rpx;"></view>
+    <view bindtap="showPic" class="tip_line" style="height: 100rpx;flex-direction: column">
+        <text>反馈意见、获取更多福利</text>
+        <text>↑请关注公众号 "小小怪校园"↑</text>
+    </view>
+    <view style="height:30rpx;"></view>
+    <view bindtap="goToApp" class="tip_line" style="height: 60rpx;">点此体验更多精美壁纸福利！</view>
+    <view style="height:30rpx;"></view>
+
+    <view bindtap="showMoneyPic" class="tip_line" style="height: 100rpx;flex-direction: column">
+        <text>广告收益微薄，你的支持是开发者最大的动力</text>
+        <text>↑点击打赏作者↑</text>
+    </view>
+    <view style="height:30rpx;"></view>
+    <view bindtap="goBack" class="tip_line" style="height: 60rpx;">点此返回</view>
+    <view style="height:30rpx;"></view>
+</view>
+<view>
+    <ad unit-id="adunit-d8f6f9ea5df2de50" ad-type="video" ad-theme="black"></ad>
+</view>

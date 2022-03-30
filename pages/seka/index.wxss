@@ -1,0 +1,32 @@
+
+page {
+  padding: 0;
+  margin: 0;
+  background: #000000;
+}
+
+#container {
+  background-color: #000;
+}
+
+.item {
+  margin: 20rpx;
+  height: 140rpx;
+  border-radius: 8rpx;
+}
+
+.item .en {
+  font-size: 26rpx;
+  padding-top: 16rpx;
+}
+
+.item .cn,.item .en {
+  height: 50rpx;
+  line-height: 50rpx;
+  text-indent: 20rpx;
+}
+
+.item .cn {
+  font-size: 38rpx;
+  font-weight: 400;
+}

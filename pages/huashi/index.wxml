@@ -1,0 +1,5 @@
+
+<view class="mysiv" wx:for="{{datalist}}" wx:key="{{index}}">
+    <navigator class="cell-arrow wenzi" url="{{item.path}}">{{item.name}}</navigator>
+</view>
+<ad unit-id="adunit-d8f6f9ea5df2de50" ad-type="video" ad-theme="black"></ad>

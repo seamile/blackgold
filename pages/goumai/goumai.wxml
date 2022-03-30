@@ -1,0 +1,28 @@
+<view>
+    <image mode="aspectFill" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/624311e7-e587-46b4-b940-a0ba096256d7.jpg" style="width:750rpx; height:400rpx;"></image>
+</view>
+<view class="tip_block">
+    <view>
+        <official-account style="width:700rpx;"></official-account>
+    </view>
+    <view style="height:30rpx;"></view>
+    <view bindtap="showMoneyPic" class="tip_line" style="height: 100rpx;flex-direction: column">
+        <text>本小程序后端是wordpress，支持壁纸采集</text>
+        <text>小程序目前定价299元，详情咨询客服微信Mr_iueasy</text>
+    </view>
+    <view style="height:30rpx;"></view>
+    <view  class="tip_line" style="height: 60rpx;">详细信息可以查看官网www.xmamx.com</view>
+    <view style="height:30rpx;"></view>
+    <view bindtap="showPic" class="tip_line" style="height: 60rpx;">点击这里关注我的公众号</view>
+    <view style="height:30rpx;"></view>
+    <view bindtap="showMoneyPic" class="tip_line" style="height: 100rpx;flex-direction: column">
+        <text>点击这里获取作者微信二维码</text>
+        <text>↑点击获取↑</text>
+    </view>
+    <view style="height:30rpx;"></view>
+    <view bindtap="goBack" class="tip_line" style="height: 60rpx;">点此返回</view>
+    <view style="height:30rpx;"></view>
+</view>
+<view>
+    <ad unit-id="adunit-d8f6f9ea5df2de50" ad-type="video" ad-theme="black"></ad>
+</view>

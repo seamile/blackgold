@@ -1,0 +1,52 @@
+<view class="container">
+    <view class="top-banner-bg">
+        <view class="weui-text-bar">
+            <view class="weui-text-bar__form">
+                <view class="weui-text-bar__box">
+                    <textarea bindblur="maltoseBlur" bindfocus="maltoseFocus" bindinput="bindKeyInput" focus="{{focus}}" name="textarea" placeholder="请输入要转换的文字内容" value="{{textareaValue}}"></textarea>
+                </view>
+            </view>
+            <view>
+                <button bindtap="clearInput" class="share">清空重新输入</button>
+                <button class="share" openType="share"> 分享给好友</button>
+            </view>
+        </view>
+    </view>
+    <scroll-view scrollY style="height: calc(100% - 300rpx);position:fixed; bottom: 0;left: 0;">
+        <view class="bottom-change-list">
+            <view class="bottom-change-list__title">输入完毕之后，点击下面字体特效自动复制</view>
+            <view class="bottom-change-list__ad">
+                <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
+            </view>
+            <view class="bottom-change-list__box">
+                <button bindtap="changeText" id="hxw"> 火星文</button>
+                <button bindtap="changeText" id="ftz"> 繁体字</button>
+                <button bindtap="changeText" id="sbdh"> 上标电话</button>
+                <button bindtap="changeText" id="xbdh"> 下标电话</button>
+                <button bindtap="changeText" id="lhz"> 流汗字</button>
+                <button bindtap="changeText" id="jhw"> 菊花文</button>
+                <button bindtap="changeText" id="tmw1"> 藤蔓文1</button>
+                <button bindtap="changeText" id="tmw2"> 藤蔓文2</button>
+                <button bindtap="changeText" id="tmw3"> 藤蔓文3</button>
+                <button bindtap="changeText" id="hbw"> 花边文</button>
+                <button bindtap="changeText" id="ctw"> 草头文</button>
+                <button bindtap="changeText" id="kaw"> 可爱文</button>
+                <button bindtap="changeText" id="pgyw"> 蒲公英文</button>
+                <button bindtap="changeText" id="blw"> 波浪文</button>
+                <button bindtap="changeText" id="myw"> 萌芽文</button>
+                <button bindtap="changeText" id="sbw"> 水波文</button>
+                <button bindtap="changeText" id="htw"> 横条文</button>
+                <button bindtap="changeText" id="shtw"> 双横条文</button>
+                <button bindtap="changeText" id="fnw"> 飞鸟文</button>
+                <button bindtap="changeText" id="yfw"> 音符文</button>
+                <button bindtap="changeText" id="scx"> 删除线</button>
+                <button bindtap="changeText" id="xhx"> 下划线</button>
+                <button bindtap="changeText" id="mlw"> ℳℓ文</button>
+                <button bindtap="changeText" id="mtz"> 毛体字</button>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<navigator appId="wx657f56c5972b8458" class="smallT" openType="navigate" path="pages/more/more" target="miniProgram" version="release">
+    <view class="shareT">更多工具</view>
+</navigator>

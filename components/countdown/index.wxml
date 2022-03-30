@@ -1,0 +1,46 @@
+<view class="countdown-wrap outer-class" style="margin-right: {{showMillisecond?16:4}}rpx;">
+    <view class="countdown-unit unit-class">
+        <text>{{tools.getHours(seconds)}}</text>
+    </view>:
+	<view class="countdown-unit unit-class">
+        <text>{{tools.getMinutes(seconds)}}</text>
+    </view>:
+	<view class="countdown-unit unit-class">
+        <text>{{tools.getSeconds(seconds)}}</text>
+    </view>
+    <block wx:if="{{showMillisecond}}">
+		:
+		<view class="countdown-unit unit-class">
+            <view class="millisecond">
+                <view class="{{stop?'':'scrollMilliSecond'}}">
+                    <text class="text scroll-unit" wx:for="{{[0,9,8,7,6,5,4,3,2,1]}}" wx:key="index">{{item}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>
+<slot></slot>
+<wxs module="tools">
+function addZero(num) {
+    var str = num.toString();
+    if (str.length === 1) return (('0' + str));;
+    return ((str))
+};
+
+function getHours(seconds) {
+    return ((addZero(Math.floor(seconds / 3600) % 24)))
+};
+
+function getMinutes(seconds) {
+    return ((addZero(Math.floor(seconds / 60) % 60)))
+};
+
+function getSeconds(seconds) {
+    return ((addZero(seconds % 60)))
+};
+module.exports = (({
+    getHours: getHours,
+    getMinutes: getMinutes,
+    getSeconds: getSeconds,
+}));
+</wxs>

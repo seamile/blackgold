@@ -1,0 +1,72 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/dynamic/dynamic",
+          "pathName": "pages/dynamic/dynamic",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/login",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/categories/categories",
+          "pathName": "pages/categories/categories",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/ucenter/ucenter",
+          "pathName": "pages/ucenter/ucenter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/gongju/gongju",
+          "pathName": "pages/gongju/gongju",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/cover/index",
+          "pathName": "pages/cover/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/dynamic/dynamic",
+          "pathName": "pages/dynamic/dynamic",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/profile/profile",
+          "pathName": "pages/profile/profile",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/gallery/gallery",
+          "pathName": "pages/gallery/gallery",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

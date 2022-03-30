@@ -1,0 +1,15 @@
+<view class="count-number" style="height: {{itemHeight}}rpx">
+    <view class="count-up {{item==='.'?'dot no-transition':''}} {{noTransFlag?'no-transition':''}}" data-num="{{item}}" style="{{tools.formatStyle(itemHeight,itemWidth,dotWidth,item)}}" wx:for="{{numAry}}" wx:key="item">
+        <view class="item" style="{{itemStyle}}" wx:for="{{[0,1,2,3,4,5,6,7,8,9,'.']}}" wx:for-item="unit" wx:key="index">{{unit}}</view>
+    </view>
+    <slot></slot>
+</view>
+<wxs module="tools">
+function formatStyle(itemHeight, itemWidth, dotWidth, item) {
+    var _itemHeight = parseInt(itemHeight);
+    var width = item == '.' ? dotWidth : itemWidth;
+    var translateY = item == '.' ? (10 * 100) : (item * 100);
+    return (("width: " + width + "rpx; transform: translateY(-" + translateY + "%)"))
+};
+module.exports.formatStyle = formatStyle;
+</wxs>

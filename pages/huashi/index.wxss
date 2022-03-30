@@ -1,0 +1,80 @@
+page {
+  background-color: #000;
+}
+
+.topImg {
+  width: 100%;
+}
+
+.index_bottom {
+  width: 254rpx;
+  height: 24rpx;
+  position: absolute;
+  left: 248rpx;
+  margin-top: 30rpx;
+}
+
+.follow {
+  width: 80px;
+  height: 50rpx;
+  background-color: rgba(0,0,0,0);
+  position: absolute;
+  left: 220rpx;
+  margin-top: 20rpx;
+}
+
+.share {
+  width: 80px;
+  height: 50rpx;
+  background-color: rgba(0,0,0,0);
+  left: 370rpx;
+  position: absolute;
+  margin-top: 20rpx;
+}
+
+button::after {
+  border: 0;
+}
+
+.mysiv {
+  width: 100%;
+  margin-top: 15rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80rpx;
+}
+
+.cell-arrow {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 17px;
+  width: 600rpx;
+  height: 50rpx;
+  background-color: #252525;
+  border-radius: 10rpx;
+  box-shadow: 0 2px 2px rgba(113,118,118,0.08);
+  color:#fff;
+  font-size: 30rpx;
+}
+
+.cell-arrow:after {
+  content: "";
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-width: 2px 2px 0 0;
+  border-color: #c8c8cd;
+  border-style: solid;
+  transform: matrix(0.71,0.71,-.71,0.71,0,0);
+  top: -2px;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  margin-top: -3px;
+}
+
+.ad {
+  width: 89%;
+}

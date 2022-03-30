@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "封面详情",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false,
+  "navigationBarBackgroundColor": "#f35543",
+  "usingComponents": {
+    "u-icon": "/node-modules/uview-ui/components/u-icon/u-icon",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "u-grid": "/node-modules/uview-ui/components/u-grid/u-grid",
+    "u-grid-item": "/node-modules/uview-ui/components/u-grid-item/u-grid-item",
+    "u--text": "/node-modules/uview-ui/components/u--text/u--text"
+  }
+}

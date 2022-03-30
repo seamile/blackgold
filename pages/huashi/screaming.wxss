@@ -1,0 +1,211 @@
+page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+}
+
+.input-content {
+    width: 450rpx;
+    height: 60rpx;
+    font-size: 30rpx;
+    border-bottom: 1rpx solid #666;
+    background-color: #fff;
+}
+
+.ad {
+    width: 85%;
+    margin-top: 30rpx;
+}
+
+.selectSection {
+    display: flex;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+    width: 85%;
+    margin-top: 15rpx;
+}
+
+.textmag {
+    margin-right: 20rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    min-width: 150rpx;
+}
+
+.radio-group {
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selectBox {
+    border: 1px solid #9d9d9d;
+    background: #fff;
+    font-size: 26rpx;
+    width: 450rpx;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 11rpx;
+    border-radius: 10rpx;
+}
+
+.xlIcon {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAwklEQVRYhe2SvQnDMBBGH5nAXSbRANnGpcuUGkkTeJW0niFgksIS2KBLrL8LBD24+h28DzqdDoyA/dGNADdgBV7Kt3o3+G+0H7DsuACzonz2zgNXYFGQL94VpfUeDt0lbMMH7Dc5tNuDI9JdovYeHsBwVh6otYcnYFLlAVvhgSlXDuV7cCXyQO4esrpLpO6hqLvEPeGBou6fcCfkVbpLDGxtVbpLGLbGKt0lpsgDzbpL7PfQtLtE2INKdwmDYvfOf/IG6XNSyDxVchEAAAAASUVORK5CYII=) center center no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    width: 20rpx;
+    height: 20rpx;
+}
+
+.radio {
+    margin-right: 100rpx;
+    display: inline-flex;
+    align-items: center;
+}
+
+.radio radio {
+    display: none;
+}
+
+.radio .radioIcon {
+    display: inline-block;
+    width: 36rpx;
+    height: 36rpx;
+    background: #fff;
+    border: 1px solid #9d9d9d;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+
+.radio .actIcon {
+    background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAkElEQVRYhe2UwQ3CMBAEr4SURCfsa2+flEQHuAPoADoKDwiKECIW4hQp2pH8nvHZughjjDE/IAkkr5k5ZuZI8kRyXy4GMMzFH84ZwFAWkJm3L/LXNErkJA9L8ulI2v09oOf2sykcKwK65M+AyyYD1n2C1T9hRPcUWok84rGIFiJa6SKakIS3kCYJ5WJjjNkkdwPeA4LdMnoPAAAAAElFTkSuQmCC) center center no-repeat;
+    background-size: 24rpx;
+}
+
+.saveBox {
+    margin-top: 40rpx;
+}
+
+.saveBox .saveTitle {
+    text-align: center;
+    font-size: 30rpx;
+    color: #9d9d9d;
+    margin-bottom: 20rpx;
+}
+
+.canvasBox {
+    margin-top: 10rpx;
+    width: 90%;
+    height: 290rpx;
+    box-sizing: border-box;
+}
+
+.canvasBox image {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.myCanvas {
+    background: #fff;
+    width: 100%;
+    height: 260rpx;
+}
+
+.colorMask {
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.maskBox,.sendBox {
+    width: 620rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 8rpx;
+    background: #fff;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.maskTxt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 130rpx;
+    border-bottom: 1px solid #d9d9d9;
+    font-size: 32rpx;
+    box-sizing: border-box;
+    padding: 0 25rpx;
+}
+
+.maskIcon {
+    display: inline-block;
+    width: 34rpx;
+    height: 34rpx;
+    border: 1px solid #717171;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+
+.maskActIcon {
+    border: 1px solid #07928b;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABKElEQVRYhe1Xy42EMAzNBaeNlEAplDIdzNwi7EMUpyDoYKYD6GDogD1MdsQCmuWTELTaJ1kip+c8PwdbiH+sQGYwB0dXyVSBxbtk6iVT778rcHTNDObBicGVhbTYfBP+GhYbcGWxn9loJZmqxcTTqITRahN3ZjAHS88d5L489Fxdlsxgvpd4HMuTMFqFuPmcEovKIRnr0OQ/PPEJ4MoiIvlLiU/dIZna2AlIi80seQzjrTIkWLodlYBkuhxtvlFgPVWA6ZE0gQPl7yVTf74ETlCC1CZM3YbJHyJvxPhPMVM7Sy7ECX5G8c04Y74JjFbA2AW/OWO3eD5MO5INkgihBDB223cFo9U+T2C9eSwfwnfHmhZtwywmI/hd4fZSZajM+3yJspr9aXwB3b9DIfzW9CoAAAAASUVORK5CYII=) 8rpx 8rpx no-repeat;
+    background-size: 18rpx;
+}
+
+.sendBox button::after {
+    border: none;
+}
+
+.sendBox button {
+    border-bottom: 1px solid #dedede;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: left;
+    font-size: 30rpx;
+    border-radius: 0;
+}
+
+.topview {
+    color:#000;
+    margin-top: 20rpx;
+    font-size: 30rpx;
+}
+
+.make {
+    background-color: #252525;
+    color: #fff;
+    height: 70rpx;
+    width: 600rpx;
+    font-size: 30rpx;
+    line-height: 70rpx;
+    margin-top: 10rpx;
+}
+
+.btnview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 640rpx;
+}
+
+.backbtn {
+    margin-top: 20rpx;
+    font-size: 30rpx;
+    line-height: 70rpx;
+    height: 70rpx;
+    width: 280rpx;
+    background-color: #252525;
+    color: #fff;
+}

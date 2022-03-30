@@ -1,0 +1,191 @@
+
+<view wx:if="{{tcad && tcad.length>0}}">
+  <view class="mask" hidden="{{showAd}}">
+		<view class="AdView-mask" animation="{{animationData}}">
+			<image class="mask-img" data-link="{{tcad[0].link}}" catchtap="handlerIconNavClick"  src="{{tcad[0].ico}}"></image>
+			<image class="an-niu" data-link="{{tcad[0].link}}" catchtap="handlerIconNavClick" src="{{tcad[0].icon}}"></image>
+			<image class="close-mask" bindtap="hiddenMsak" src="../../images/cancel.png"></image>
+		</view>
+	</view>
+</view>
+<view background='rgba(0, 0, 0, 100)'>
+	<navBar background='rgba(0, 0, 0, 100)' searchBar="{{true}}" bindsearch="handlerSearchClick">
+		<view slot="left" class='lxy-nav-bar__logo'>
+			<image src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/67590ef9-83ce-4cd4-8828-b4833fe3bb4c.png"></image>
+		</view>
+	</navBar>
+
+
+
+
+	<view class="tab-content" style="padding-top: 2rpx;">
+		<block wx:if="{{currentTabbz==0}}">
+			<view wx:if="{{iconNavbz && iconNavbz.length>0}}" class="tui-banner-box">
+				<swiper indicator-dots="true" autoplay="true" interval="5000" duration="150" class="tui-banner-swiper" circular="{{true}}" previous-margin="1rpx" next-margin="1rpx" bindchange="handlerSlideChange">
+					<swiper-item wx:for="{{iconNavbz}}" wx:key="index" class="tui-banner-item" data-link="{{item.linkbz}}" catchtap="handlerIconNavClick">
+						<image src="{{item.iconbz}}" class="tui-slide-image {{(current==index || (current==undefined && index==0))?'':'tui-banner-scale'}}" mode="aspectFill" />
+					</swiper-item>
+				</swiper>
+			</view>
+			<view class="container">
+	
+				<view wx:if="{{iconNavbzbz && iconNavbzbz.length>0}}" class="jiangqie-news-icon">
+					<view wx:for="{{iconNavbzbz}}" wx:key="index" class="jiangqie-news-iconbox" data-link="{{item.linkbzbz}}" catchtap="handlerIconNavClick">
+						<view class="jiangqie-news-iconbg1">
+							<image class="jiangqie-news-iconimg1" src="{{item.iconbzbz}}"></image>
+						</view>
+						<text>{{item.titlebzbz}}</text>
+					</view>
+				</view>
+		<!--	
+				<view wx:if="{{iconNac && iconNac.length>0}}" class="jiangqie-rolling-news">
+		<image src="{{iconNac[0].icon}}"></image>
+		<text class="sw-line">|</text>
+		<swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" interval="3000" class="jiangqie-swiper">
+			<swiper-item wx:for="{{iconNac}}" wx:key="index" class="jiangqie-swiper-item">
+				<view class="jiangqie-news-item" data-link="{{item.link}}" bindtap='handlerIconNavClick'>
+					<text>最新</text>{{item.title}}
+				</view>
+			</swiper-item>
+		</swiper>
+	</view>
+	
+				<view wx:if="{{activesbz}}" class="jiangqie-news-view">
+					<view class="jiangqie-news-lightbox jiangqie-news-lightbox-main" data-link="{{activesbz.left.link}}" catchtap="handlerActiveClick">
+						<image class="jiangqie-news-lightimg" src="{{activesbz.left.image}}" mode="aspectFill"></image>
+						<view class="jiangqie-news-lighttext">
+							<text class="jiangqie-news-lihgttitle">{{activesbz.left.title}}</text>
+						</view>
+					</view>
+					<view class="jiangqie-news-lightbox jiangqie-news-lightbox-side" data-link="{{activesbz.right_top.link}}" catchtap="handlerActiveClick">
+						<image class="jiangqie-news-lightimg" src="{{activesbz.right_top.image}}" mode="aspectFill"></image>
+						<view class="jiangqie-news-lighttext">
+							<text class="jiangqie-news-lihgttitle">{{activesbz.right_top.title}}</text>
+						</view>
+					</view>
+					<view class="jiangqie-news-lightbox jiangqie-news-lightbox-side2" data-link="{{activesbz.right_down.link}}" catchtap="handlerActiveClick">
+						<image class="jiangqie-news-lightimg" src="{{activesbz.right_down.image}}" mode="aspectFill"></image>
+						<view class="jiangqie-news-lighttext">
+							<text class="jiangqie-news-lihgttitle">{{activesbz.right_down.title}}</text>
+						</view>
+					</view>
+				</view>
+-->
+
+	      <view class="jiangqie-news-type2">
+					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
+						热门推荐
+						<image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image>
+						<text class="youhua">右滑查看</text>
+					</view>
+				<view wx:if="{{hotbz && hotbz.length>0}}" class="jiangqie-news-view jiangqie-news-hot">
+					<scroll-view class="jiangqie-news-scroll-x-box" scroll-x="true">
+						<view wx:for="{{hotbz}}" wx:key="index" class="jiangqie-hot-scroll-box" data-id="{{item.id}}" catchtap="handlerArticleClick">
+							<image src="{{item.thumbnail}}" mode="aspectFill" class="jiangqie-hot-scroll-image"></image>
+						</view>
+					</scroll-view>
+				</view>
+
+				<view class="jiangqie-news-type2">
+					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
+						热门专题
+					</view>
+				<view wx:if="{{activesbz}}" class="jiangqie-news-view">
+					<view class="jiangqie-news-lightbox jiangqie-news-lightbox-main" data-link="{{activesbz.left.link}}" catchtap="handlerActiveClick">
+						<image class="jiangqie-news-lightimg" src="{{activesbz.left.image}}" mode="aspectFill"></image>
+						<view class="jiangqie-news-lighttext">
+							<text class="jiangqie-news-lihgttitle">{{activesbz.left.title}}</text>
+						</view>
+					</view>
+					<view class="jiangqie-news-lightbox jiangqie-news-lightbox-side" data-link="{{activesbz.right_top.link}}" catchtap="handlerActiveClick">
+						<image class="jiangqie-news-lightimg" src="{{activesbz.right_top.image}}" mode="aspectFill"></image>
+						<view class="jiangqie-news-lighttext">
+							<text class="jiangqie-news-lihgttitle">{{activesbz.right_top.title}}</text>
+						</view>
+					</view>
+					<view class="jiangqie-news-lightbox jiangqie-news-lightbox-side2" data-link="{{activesbz.right_down.link}}" catchtap="handlerActiveClick">
+						<image class="jiangqie-news-lightimg" src="{{activesbz.right_down.image}}" mode="aspectFill"></image>
+						<view class="jiangqie-news-lighttext">
+							<text class="jiangqie-news-lihgttitle">{{activesbz.right_down.title}}</text>
+						</view>
+					</view>
+				</view>
+
+
+			<!--
+				<view  style="background: url(https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c7e07437-a9b5-4e8a-b8ea-33f7b7fd1246.png) no-repeat;background-size: 100% auto;" wx:if="{{postsLast && postsLast.length>0}}" class="jiangqie-news-type">
+						手机潮图：头像下载
+				</view>
+				-->
+				<view class="jiangqie-news-type2">
+					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
+						官方推荐
+						<image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image>
+						<text class="youhua">每日更新</text>
+					</view>
+
+				<view class="list-box data-v-0034d6f4">
+
+					<block wx:for="{{postsLast}}" wx:key="id">
+						<view wx:if="{{(listModebz==1 && false) || (listModebz==2) || (listModebz==3 && index%5==4)}}" class="image data-v-0034d6f4" data-id="{{item.id}}" catchtap="handlerArticleClick">
+							<image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4"></image>
+
+						</view>
+						<view wx:else class="jiangqie-news-block" data-id="{{item.id}}" catchtap="handlerArticleClick">
+							<image src="{{item.thumbnail}}" mode="aspectFill" class="jiangqie-news-image"></image>
+							<view class="jiangqie-news-text">
+								<view class="jiangqie-news-title {{item.excerpt?'':'jiangqie-news-no-excerpt'}}">
+									<text wx:if="{{item.stick==1}}">置顶</text>
+									{{item.title}}
+								</view>
+								<view wx:if="{{item.excerpt}}" class="jiangqie-news-describe">{{item.excerpt}}</view>
+								<view class="jiangqie-news-info">
+									<view class="jiangqie-news-cmt">
+										<image src="../../images/ctm2.png" mode="aspectFill" class=""></image>{{item.views}}
+									</view>
+									<text wx:for="{{item.tags}}" wx:key="id" class="jiangqie-news-tag">{{item.name}}</text>
+									<text class="jiangqie-news-time">{{item.time}}</text>
+								</view>
+							</view>
+				
+						</view>
+						<block wx:if="{{(index+1)%12 ==0}}">
+							<import src="/templates/ad.wxml"/>
+							<template is="ad" data="{{setAD,pagead}}"/>
+						</block>
+
+					</block>
+				</view>
+			</view>
+			<!--加载loadding-->
+			<tui-loadmore visible="{{loaddingLast}}"></tui-loadmore>
+			<tui-nomore visible="{{!pullUpOnLast}}"></tui-nomore>
+			<!--加载loadding-->
+		</block>
+
+		<block wx:else>
+			<view class="container">
+				<view class="list-box data-v-0034d6f4">
+					<block wx:for="{{posts}}" wx:key="id">
+						<image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4" index="{{index2}}"
+							data-id="{{item.id}}" catchtap="handlerArticleClick"></image>
+						<block wx:if="{{(index+1)%12 ==0}}">
+							<import src="/templates/ad.wxml"/>
+							<template is="ad" data="{{setAD,pagead}}"/>
+						</block>
+					</block>
+				</view>
+			</view>
+			<!--加载loadding
+			<tui-loadmore visible="{{loadding}}"></tui-loadmore>
+			<tui-nomore visible="{{!pullUpOn}}"></tui-nomore>-->
+			<!--加载loadding-->
+		</block>
+	</view>
+</view>
+<!--加载框 start-->
+<tui-loading visible="{{loading}}"></tui-loading>
+<!--加载框 end-->
+
+<!-- 回到顶部 -->
+<image class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/086404fb-4060-42e8-ab06-514cdc27e06c.gif"></image><!-- 回到顶部 -->

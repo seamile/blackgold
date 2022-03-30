@@ -1,0 +1,9 @@
+<view hidden="{{!showDialog}}">
+    <view class="dialog-box dialog-wrap">
+        <slot></slot>
+        <form bindsubmit="formSubmit" reportSubmit="true">
+            <button class="close-dialog" data-pos="close_dialog" formType="submit">{{closeInfo}}</button>
+        </form>
+    </view>
+    <view bindtap="closeDialog" class="dialog-mask"></view>
+</view>

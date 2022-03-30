@@ -1,0 +1,27 @@
+<view class="container">
+    <view class="top-banner-bg">
+        <view class="weui-text-bar">
+            <view class="weui-text-bar__form">
+                <view class="weui-text-bar__box">
+                    <view bindtap="" class="weui-text-bar__cancel-btn">{{textareaValue}}</view>
+                </view>
+            </view>
+            <view>
+                <button bindtap="clearInput" class="share">清空重新输入</button>
+                <button bindtap="textCopy" class="share"> 点我复制</button>
+            </view>
+        </view>
+    </view>
+    <scroll-view scrollY style="height: calc(100% - 300rpx);position:fixed; bottom: 0;left: 0;">
+        <view class="zf-li" wx:for="{{ywzdata}}" wx:for-item="i" wx:key="i">
+            <view class="bottom-change-list__title">{{i.class}}</view>
+            <view class="bottom-change-list__box">
+                <button bindtap="addText" id="{{j}}" wx:for="{{i.datalist}}" wx:for-item="j" wx:key="j">{{j}}</button>
+            </view>
+            <view class="clear"></view>
+        </view>
+    </scroll-view>
+</view>
+<navigator appId="wx657f56c5972b8458" class="smallT" openType="navigate" path="pages/more/more" target="miniProgram" version="release">
+    <view class="shareT">更多工具</view>
+</navigator>

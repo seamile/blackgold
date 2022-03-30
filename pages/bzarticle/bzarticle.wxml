@@ -1,0 +1,80 @@
+<!--pages/article/article.wxml-->
+<import src="../../components/wxParse/wxParse.wxml" />
+<import src="../../templates/nodata/nodata.wxml" />
+<import src="../../templates/poplogin/poplogin.wxml" />
+
+<image class="image-self55" src='https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/1aaaa272-d187-417a-b14a-c8d05f728357.png'></image>
+<view class="container jiangqie-page-view">	
+	<image class="image-self66" mode="aspectFill" src="{{bzarticle.imageUrls}}"></image> 
+					<import src="/templates/ad.wxml"/>
+					<template is="ad" data="{{setAD,pagead}}"/>
+</view>
+<view class="date-container">
+        <text class="time">{{time}}</text>
+        <text class="date">{{date}}</text>
+    </view>
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}" bindtap="hideModal">
+	<view class="cu-dialog">
+		<view class="padding-xl">
+			来源：图片来自互联网，如果侵犯了您的权益，请联系我们删除。
+		</view>
+	</view>
+</view>
+<view catchtap="handlerCancelClick" class="pagemake" wx:if="{{show_comment_submit}}"></view>
+<template is="jiangqie_poplogin" data="{{show:showPopLogin}}" />
+<tui-loading visible="{{loading}}"></tui-loading>
+<!-- 操作栏 -->
+<view class="tui-operation" wx:if="{{!show_comment_submit && post.switch_comment==1}}">
+	<!-- <view class="tui-operation-left tui-col-7 tui-height-full tui-ptop-zero">
+		<view class="tui-btn-comment" catchtap="downloadPhotos">下载壁纸</view>
+	</view> -->
+	<view class="tui-operation-right tui-right-flex tui-col-5">
+		<view class="tui-operation-item" bindtap="jumpBtn">
+			<image src="../../images/fhh.png" mode="widthFix"></image>
+			<text>返回</text>
+			<!-- <text>{{comment_count + comment_count_change}}</text> -->
+		</view>
+
+		<view class="tui-operation-item" catchtap="downloadPhoto1">
+			<block >
+				<image src="../../images/xz.png" mode="widthFix"></image>
+				<text>下载</text>
+			</block>
+		</view>
+		
+		<!-- 点赞 -->
+		<view class="tui-operation-item" catchtap="handlerLikeClick">
+			<block wx:if="{{post_like==1}}">
+				<image src="../../images/laud_on.png" mode="widthFix"></image>
+				<text>已赞</text>
+			</block>
+			<block wx:else>
+				<image src="../../images/laud.png" mode="widthFix"></image>
+				<text>点赞</text>
+			</block>
+		</view>
+		
+
+		<!-- 收藏 -->
+		<view class="tui-operation-item" catchtap="handlerFavoriteClick">
+			<block wx:if="{{post_favorite==1}}">
+				<image src="../../images/scc.png" mode="widthFix"></image>
+				<text>已收藏</text>
+			</block>
+			<block wx:else>
+				<image src="../../images/sc.png" mode="widthFix"></image>
+				<text>收藏</text>
+			</block>
+		</view>
+
+		<button open-type="share" class="tui-operation-itemmm" hover-class="opcity" hover-stay-time="150">
+			<block>
+				<image src="../../images/fxx.png" mode="widthFix"></image>
+				<text>分享</text>
+			</block>
+		</button>
+		
+	</view>
+</view>
+<jiangqie-poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}"
+	bind:success="onPosterSuccess" bind:fail="onPosterFail"></jiangqie-poster>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="share-light-detail-a" x1="78.586%" x2="14.241%" y1="10.948%" y2="93.519%">
+      <stop offset="0%" stop-color="#45E09E"/>
+      <stop offset="100%" stop-color="#21BD65"/>
+    </linearGradient>
+    <linearGradient id="share-light-detail-b" x1="100%" x2="70.963%" y1="0%" y2="29.037%">
+      <stop offset="0%" stop-color="#45E09E"/>
+      <stop offset="100%" stop-color="#21BD65"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(7 4)">
+    <path fill="#FFF" fill-rule="nonzero" d="M3,13 L3,29 C3,31.7614237 5.23857625,34 8,34 L26,34 C28.7614237,34 31,31.7614237 31,29 L31,21 L34,21 L34,30 C34,33.8659932 30.8659932,37 27,37 L7,37 C3.13400675,37 0,33.8659932 0,30 L0,15 C0,13.8954305 0.8954305,13 2,13 L3,13 Z"/>
+    <path fill="url(#share-light-detail-a)" fill-rule="nonzero" d="M13,15 C13,10.581722 16.581722,7 21,7 L29,7 L29,11 L21,11 C18.790861,11 17,12.790861 17,15 L17,23 C17,24.1045695 16.1045695,25 15,25 C13.8954305,25 13,24.1045695 13,23 L13,23 L13,15 Z"/>
+    <path fill="url(#share-light-detail-b)" d="M27.5,3 C28.3284271,3 29,3.67157288 29,4.5 L29,13.5 C29,14.3284271 28.3284271,15 27.5,15 C26.6715729,15 26,14.3284271 26,13.5 L26,6 L18.5,6 C17.6715729,6 17,5.32842712 17,4.5 C17,3.67157288 17.6715729,3 18.5,3 L27.5,3 L27.5,3 Z" transform="rotate(45 23 9)"/>
+  </g>
+</svg>

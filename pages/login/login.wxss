@@ -1,0 +1,199 @@
+/*
+ * 酱茄小程序开源版 v1.2.2
+ * Author: 酱茄
+ * Help document: https://www.jiangqie.com/ky
+ * github: https://github.com/longwenjunjie/jiangqie_kafei
+ * gitee: https://gitee.com/longwenjunj/jiangqie_kafei
+ * License：MIT
+ * Copyright ️ 2020 www.jiangqie.com All rights reserved.
+ */
+ page{
+    height: 100%;
+    width: 100%;
+   }
+   .login-box {
+     height: 100%;
+   }
+    
+   image {
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     display: block;
+     width: 100%;
+     height: 100%;
+     z-index: -999;
+   }
+  
+  .jiangqie-app-info {
+      padding: 50rpx 40rpx;
+      text-align: center;
+  }
+  
+  .jiangqie-app-info image {
+      height: 200rpx;
+      width: 200rpx;
+      border-radius: 200rpx;
+  }
+  
+  .jiangqie-app-name {
+      font-size: 32rpx;
+      color: #FFF;
+      font-weight: 500;
+      line-height: 80rpx;
+  }
+  
+  .jiangqie-app-slogan {
+      font-size: 28rpx;
+      color: rgb(255, 255, 255);
+      font-weight: 400;
+      line-height: 40rpx;
+  }
+  
+  .jiangqie-login-btn {
+      padding: 30rpx 160rpx;
+  }
+  
+  
+  .jiangqie-login-btnl,
+  .jiangqie-login-btnr {
+      height: 80rpx;
+      font-size: 30rpx;
+      color: #000;
+      font-weight: 400;
+      border-radius: 40rpx;
+      background: #FFD700;
+      width: 500rpx;
+      margin-top: 30rpx;
+  }
+  
+  .jiangqie-login-btnl {
+      color: #5a5a5a;
+      border: 1rpx solid #fff;
+      background: #FFF;
+  }
+  .container {
+      padding: 180rpx 60rpx;
+    }
+    
+    .wechatapp {
+      padding: 80rpx 0 558rpx;
+      /*border-bottom: 1rpx solid #e3e3e3;*/
+      /*margin-bottom: 72rpx;*/
+      text-align: center;
+    }
+    
+    .wechatapp .header {
+      width: 190rpx;
+      height: 190rpx;
+      border: 2px solid #fff;
+      margin: 0rpx auto 0;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 1px 0px 5px rgba(50, 50, 50, 0.3);
+    }
+    
+    .auth-title {
+        background:  #696969;
+        color: rgb(255, 255, 255);
+        border-radius: 16rpx;
+        font-size: 28rpx;
+        display: flex;
+        align-items: center;
+        padding-left: 20rpx;
+        box-sizing: border-box;
+        padding-top: 0;
+        margin-left: 30rpx;
+      margin-bottom: 40rpx;
+    }
+    
+    .auth-subtitle {
+        background:  rgba(29, 127, 156, 0.65);
+        color: rgb(255, 255, 255);
+        border-radius: 16rpx;
+        font-size: 38rpx;
+        display: flex;
+        align-items: center;
+        padding-left: 20rpx;
+        box-sizing: border-box;
+        padding-top: 0;
+        margin-left: 30rpx;
+      
+    }
+    /*协议*/
+  .tui-loadmore {
+    width: 48%;
+    margin: 1.5em auto;
+    line-height: 1.5em;
+    font-size: 24rpx;
+    text-align: center;
+  }
+  
+  .tui-nomore {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10rpx;
+    padding-bottom: 44rpx;
+  }
+  
+  .tui-nomore::before {
+    content: '';
+    position: absolute;
+    border-bottom: 1rpx solid #e5e5e5;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    width: 360rpx;
+    top: 18rpx;
+  }
+  
+  .tui-text {
+    position: absolute;
+    color: #999;
+    font-size: 24rpx;
+    text-align: center;
+    padding: 0 18rpx;
+    height: 36rpx;
+    line-height: 310rpx;
+    z-index: 1;
+  }
+  
+  .tui-nomore-dot {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 10rpx;
+    padding-bottom: 40rpx;
+  }
+  
+  .tui-nomore-dot::before {
+    content: '';
+    position: absolute;
+    border-bottom: 1rpx solid #e5e5e5;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    width: 360rpx;
+    top: 18rpx;
+  }
+  
+  .tui-dot-text {
+    position: absolute;
+    color: #e5e5e5;
+    font-size: 10px;
+    text-align: center;
+    width: 50rpx;
+    height: 36rpx;
+    line-height: 36rpx;
+    transform: scale(0.8);
+    transform-origin: center center;
+    z-index: 1;
+  }
+  .text {
+    margin-top: 150rpx;
+    color: #fff;
+    text-align: center;
+    font-size: 25rpx;
+    
+}

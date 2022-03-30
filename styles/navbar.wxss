@@ -1,0 +1,126 @@
+.ch-navbar-custom {
+	display: block;
+	position: relative;
+}
+.ch-navbar {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 220rpx;
+}
+.ch-navbar.navbar-light {
+	color: #050607;
+	background-color: #fff;
+}
+.ch-navbar.navbar-black {
+	color: #fff;
+	background-color: #050607;
+}
+.ch-navbar.navbar-grad {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+}
+.ch-navbar .ch-navbar-action {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: center;
+	max-width: 100%;
+}
+.ch-navbar .ch-navbar-action .icon-back {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 40rpx;
+	background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03MDQuNDQ0NDY0LDM3NS41NDk0OTggQzcwNS4xNzYwNDcsMzc0LjgxNjgzNCA3MDYuMzYyMTc4LDM3NC44MTY4MzQgNzA3LjA5Mzc2MSwzNzUuNTQ5NDk4IEM3MDcuODI1MzQzLDM3Ni4yODIxNjIgNzA3LjgyNTM0MywzNzcuNDcwMDQ1IDcwNy4wOTM3NjEsMzc4LjIwMjcwOSBMNjkyLjQ5NjQxNSwzOTIuODIwMjk2IEw3MDcuNDUxMzEzLDQwNy43OTcyOTEgQzcwOC4xODI4OTYsNDA4LjUyOTk1NSA3MDguMTgyODk2LDQwOS43MTc4MzggNzA3LjQ1MTMxMyw0MTAuNDUwNTAyIEM3MDYuNzE5NzMsNDExLjE4MzE2NiA3MDUuNTMzNiw0MTEuMTgzMTY2IDcwNC44MDIwMTcsNDEwLjQ1MDUwMiBMNjg4LjkwNjIzOSwzOTQuNTMxMjM3IEM2ODguODEwNDMxLDM5NC40MzUyODggNjg4LjcyNzE3LDM5NC4zMzE1MzEgNjg4LjY1NjQ1NiwzOTQuMjIyMDEyIEw2ODguNTQ4Njg3LDM5NC4xMjE5NzMgTDY4OC41NDg2ODcsMzk0LjEyMTk3MyBDNjg3LjgxNzEwNCwzOTMuMzg5MzA5IDY4Ny44MTcxMDQsMzkyLjIwMTQyNyA2ODguNTQ4Njg3LDM5MS40Njg3NjMgTDcwNC40NDQ0NjQsMzc1LjU0OTQ5OCBaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNjc0IC0zNjkpIi8+Cjwvc3ZnPgo=');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.ch-navbar.navbar-black .ch-navbar-action .icon-back {
+	background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICA8cGF0aCBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03MDcuNDQ0NDY0LDI1LjU0OTQ5NzkgQzcwOC4xNzYwNDcsMjQuODE2ODM0IDcwOS4zNjIxNzgsMjQuODE2ODM0IDcxMC4wOTM3NjEsMjUuNTQ5NDk3OSBDNzEwLjgyNTM0MywyNi4yODIxNjE5IDcxMC44MjUzNDMsMjcuNDcwMDQ0OCA3MTAuMDkzNzYxLDI4LjIwMjcwODcgTDY5NS40OTY0MTUsNDIuODIwMjk2NCBMNzEwLjQ1MTMxMyw1Ny43OTcyOTEzIEM3MTEuMTgyODk2LDU4LjUyOTk1NTIgNzExLjE4Mjg5Niw1OS43MTc4MzgxIDcxMC40NTEzMTMsNjAuNDUwNTAyMSBDNzA5LjcxOTczLDYxLjE4MzE2NiA3MDguNTMzNiw2MS4xODMxNjYgNzA3LjgwMjAxNyw2MC40NTA1MDIxIEw2OTEuOTA2MjM5LDQ0LjUzMTIzNzQgQzY5MS44MTA0MzEsNDQuNDM1Mjg3NyA2OTEuNzI3MTcsNDQuMzMxNTMwOSA2OTEuNjU2NDU2LDQ0LjIyMjAxMTYgTDY5MS41NDg2ODcsNDQuMTIxOTczNCBMNjkxLjU0ODY4Nyw0NC4xMjE5NzM0IEM2OTAuODE3MTA0LDQzLjM4OTMwOTUgNjkwLjgxNzEwNCw0Mi4yMDE0MjY2IDY5MS41NDg2ODcsNDEuNDY4NzYyNiBMNzA3LjQ0NDQ2NCwyNS41NDk0OTc5IFoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02NzcgLTE5KSIvPgo8L3N2Zz4K');
+}
+.ch-navbar .ch-navbar-action image {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 40rpx;
+}
+.ch-navbar .ch-navbar-action:first-child {
+	margin-left: 20rpx;
+	font-size: 30rpx;
+}
+
+.ch-navbar .ch-navbar-action:last-child {
+	margin-right: 30rpx;
+}
+
+.ch-navbar .ch-navbar-content {
+	position: absolute;
+	text-align: center;
+	width: calc(100% - 440rpx);
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	margin: auto;
+	height: 60rpx;
+	font-size: 32rpx;
+	line-height: 60rpx;
+	cursor: none;
+	pointer-events: none;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.ch-navbar.ios .ch-navbar-content {
+	bottom: 7px;
+	height: 30px;
+	font-size: 32rpx;
+	line-height: 30px;
+}
+
+.ch-navbar.fixed {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 98;
+}
+
+.ch-navbar .ch-navbar-tab {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	text-align: center;
+	width: 256rpx;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	margin: auto;
+	height: 56rpx;
+	line-height: 56rpx;
+	border-radius: 56rpx;
+	background-image: linear-gradient(90deg, #FFEF2A 0%, #FFD100 100%);
+}
+
+.ch-navbar .ch-navbar-tab .ch-navbar-tab-item {
+	flex: 1;
+	font-size: 28rpx;
+	color: #484644;
+	z-index: 1;
+}
+
+.ch-navbar .ch-navbar-tab .ch-navbar-tab-item.ch-navbar-tab-actived {
+	color: #000;
+}
+
+.ch-navbar .ch-navbar-tab .ch-navbar-tab-indicator {
+  position: absolute;
+  top: 4rpx;
+  left: 4rpx;
+  width: 120rpx;
+  height: 48rpx;
+  border-radius: 48rpx;
+  background-color: #fff;
+  transition: transform 0.3s;
+	z-index: 0;
+}

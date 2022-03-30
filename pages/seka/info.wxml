@@ -1,0 +1,18 @@
+<view id="content">
+    <view class="content" style="background-color:{{list.sixteen}};color:{{list.color}};">
+        <view class="title">
+            <view class="en">{{list.en}}</view>
+            <view class="cn">{{list.cn}}</view>
+        </view>
+        <view class="info">
+            <view class="cil">HEX</view>
+            <view class="name">{{list.sixteen}}</view>
+        </view>
+        <view class="info">
+            <view class="cil">RGB</view>
+            <view class="name">R:{{rgb_list[0]}}</view>
+            <view class="name">G:{{rgb_list[1]}}</view>
+            <view class="name">B:{{rgb_list[2]}}</view>
+        </view>
+    </view>
+</view>

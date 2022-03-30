@@ -1,0 +1,17 @@
+{
+  "navigationBarTitleText": "红包封面小程序",
+  "navigationBarBackgroundColor": "#f21400",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "u-sticky": "/node-modules/uview-ui/components/u-sticky/u-sticky",
+    "u-navbar": "/node-modules/uview-ui/components/u-navbar/u-navbar",
+    "u--image": "/node-modules/uview-ui/components/u--image/u--image",
+    "u-transition": "/node-modules/uview-ui/components/u-transition/u-transition",
+    "u-tabs": "/node-modules/uview-ui/components/u-tabs/u-tabs",
+    "u-button": "/node-modules/uview-ui/components/u-button/u-button",
+    "u-empty": "/node-modules/uview-ui/components/u-empty/u-empty",
+    "u-back-top": "/node-modules/uview-ui/components/u-back-top/u-back-top",
+    "tabbar": "/components/tabbar/index"
+  }
+}

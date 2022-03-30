@@ -1,0 +1,25 @@
+<view class="wrap">
+    <view class="header">
+        <text>
+            温馨提示
+
+           1、蓝色效果只有安卓手机可以看到 </text>
+        <text> 2、微信昵称最多能输入6个蓝色字母，否则无法粘贴成功</text>
+    </view>
+    <view class="title">蓝色昵称生成</view>
+    <view class="tool">
+        <view class="input">
+    请输入：
+      <input focus bindinput="generate" maxlength="10" placeholder="{{tool.placeholder}}"></input>
+        </view>
+        <view class="result" hidden="{{result==''?true:false}}">
+            <view>{{result}}</view>
+            <button bindtap="copyResult" type="primary">复制</button>
+        </view>
+    </view>
+</view>
+<view class="adf">
+    <view class="ad">
+        <ad style="border-radius:15rpx;" unitId="adunit-1e0490ad9e80d7ff"></ad>
+    </view>
+</view>

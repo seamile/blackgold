@@ -1,0 +1,35 @@
+<block wx:if="{{!loadFlag}}">
+        <view class="{{['bottom',cssTran?'closeCss':'openCss']}}">
+          <view class="nav-box">
+            <view data-content="{{item.name}}" hoverClass="ch-hover" class="nav-tab" bindtap="navigateBack">
+                <image src="/images/icons/back-circle.svg" size="40" class="nav-tab1"> </image>
+              <text>返回</text>
+            </view>
+            <view class="nav-tab">
+                <image src="/images/icons/share-light-detail.svg" class="nav-tab"> </image>
+              <text>分享</text><button style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;"
+                open-type="share"></button>
+            </view>
+          </view>
+        </view>
+      </block>
+
+
+
+<scroll-view scrollX class="scroll-tab {{scrollConfig.tabFixed?'fixed':''}}">
+<view class="scroll-tab-nav">
+    <view bindtap="tabSelect" class="scroll-tab-item {{item.cid==TabCur? 'scroll-tab-item-active':''}}" data-cid="{{item.cid}}" wx:for="{{categoryList}}">
+        {{item.title}}
+    </view>
+</view>
+</scroll-view>
+<view wx:for="{{gglist}}" wx:key="gglist">
+</view>
+
+<view class="cu-card dynamic no-card">
+<view class="cu-item shadow">
+    <view class="grid flex-sub padding-lr col-3 grid-square">
+        <view bindtap="info" class="bg-img" data-src="{{item.pic}}" style="background-image:url({{item.pic}});" wx:for="{{photos}}" wx:key="{{index}}"></view>
+    </view>
+</view>
+</view>

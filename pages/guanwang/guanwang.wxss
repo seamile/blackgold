@@ -1,0 +1,4 @@
+/* pages/guanwang/guanwang.wxss */
+page {
+  background: #000000;
+}

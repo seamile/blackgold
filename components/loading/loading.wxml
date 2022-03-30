@@ -1,0 +1,6 @@
+ <view class="tui-loading-class tui-loading-init" wx:if="{{visible}}">
+ 
+    <image src='https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/2542a804-ead0-435d-b402-9f022a12b348.png' class='tui-loading-center1' ></image>
+    
+    <view class="tui-loadmore-tips">{{text}}</view>
+  </view>

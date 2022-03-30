@@ -1,0 +1,33 @@
+.section__ctn {
+    text-align: center;
+}
+
+.gzh01 {
+    padding: 8px;
+    font-size: 16px;
+    color: dimgray;
+}
+
+.zan01 {
+    height: 1280rpx;
+    width: 100%;
+}
+
+.zan02 {
+    height: 68px;
+    width: 100%;
+}
+
+.gzh02 {
+    padding: 8px;
+    font-size: 13px;
+    color: blue;
+}
+
+.bottom-change-list__ad {
+    overflow: scroll;
+    width: 94%;
+    padding: 20rpx;
+    padding-bottom: 0rpx;
+    border-radius: 4px;
+}

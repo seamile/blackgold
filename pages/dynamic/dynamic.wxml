@@ -1,0 +1,68 @@
+<!--<view class="add_container" hidden="{{hideGuide}}">
+    <image src="../../images/star.png" style="height: 45rpx;width: 45rpx;margin-left:30rpx"></image>
+    <text>添加到我的小程序，随时更换壁纸</text>
+    <image src="../../images/guide_arrow2.png" style="height: 35rpx;width: 70rpx;margin-left:20rpx;margin-bottom:15rpx"></image>
+    <image bindtap="hideGuideTap" class="img_cancel" src="../../images/cancel1.png"></image>
+</view>-->
+<block wx:if="{{!loadFlag}}">
+        <view class="{{['bottom',cssTran?'closeCss':'openCss']}}">
+          <view class="nav-box">
+            <view data-content="{{item.name}}" hoverClass="ch-hover" class="nav-tab" bindtap="navigateBack">
+                <image src="/images/icons/back-circle.svg" size="40" class="nav-tab1"> </image>
+              <text>返回</text>
+            </view>
+            <view class="nav-tab">
+                <image src="/images/icons/share-light-detail.svg" class="nav-tab"> </image>
+              <text>分享</text><button style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;"
+                open-type="share"></button>
+            </view>
+          </view>
+        </view>
+      </block>
+<view class="tab-container" hidden="{{tabHidden}}">
+    <view bindtap="searchTap" class="tab-item">
+        <view class="img-container1">
+            <image class="img" src="../../images/item_search2.png"></image>
+        </view>
+        <view class="wenzi">
+        <text>搜索</text>
+        </view>
+    </view>
+    <view bindtap="dayTap" class="tab-item">
+        <view class="img-container2">
+            <image class="img" src="../../images/item_hot.png"></image>
+        </view>
+        <text class="wenzi">每日精选</text>
+    </view>
+    <view bindtap="chaoQingTap" class="tab-item">
+        <view class="img-container3">
+            <image class="img" src="../../images/item_sixty.png"></image>
+        </view>
+        <text class="wenzi">60帧超清</text>
+    </view>
+    <view bindtap="QLTap" class="tab-item">
+        <view class="img-container4">
+            <image class="img" src="../../images/item_couple.png"></image>
+        </view>
+        <text class="wenzi">情侣壁纸</text>
+    </view>
+</view>
+<scroll-view bindrefresherrefresh="refresh" bindscrolltolower="onScrollToLower" class="scroll-body" enhanced="{{true}}" lowerThreshold="{{100}}" refresherEnabled="{{true}}" refresherTriggered="{{refreshStatus}}" scrollTop="{{scrollTop}}" scrollY="{{true}}" showScrollbar="{{false}}" style="{{scrollH}}">
+    <block wx:for="{{videos}}" wx:key="vid">
+        <view bindtap="preview" class="grid-item" data-item="{{item}}">
+            <view class="g">
+                <image class="photo" mode="aspectFill" src="{{item.thumb_img}}"></image>
+                <view class="info">
+                    <text class="title">{{item.title}}</text>
+                    <view class="count-container">
+                        <image class="iv" src="../../images/play_num.png"></image>
+                        <text class="count">{{item.play_num}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="adContainer" wx:if="{{index!=0&&(index+1)%12==0}}">
+            <ad adTheme="black" adType="video" unitId="adunit-d8f6f9ea5df2de50"></ad>
+        </view>
+    </block>
+</scroll-view>

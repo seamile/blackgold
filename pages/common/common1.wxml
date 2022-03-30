@@ -1,0 +1,91 @@
+<template name="ch-navbar-main">
+<view id="navWrap" class="ch-navbar-custom" style="height:{{CustomBar+44}}px;">
+    <view class="ch-navbar-fixed">
+        <view class="ch-navbar-front {{navbarBg}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+            <text class="ch-navbar-title">{{title}}</text>
+            <button class="ch-navbar-btn" hover-class="none" open-type="share" wx:if="{{shareEnter}}">
+              <image class="ch-icon ch-icon-2" src=""></image> 
+            </button>
+            <button bindtap="openVideoAD" class="ch-navbar-btn" hover-class="none" wx:if="{{videoEnter}}">
+                <image class="ch-icon ch-icon-2" src=""></image>
+            </button>
+            <navigator class="ch-navbar-btn" hover-class="none" url="/pages/msg/index" wx:if="{{msgEnter}}">
+                <image src="" class="ch-icon-top">
+                  <view class="ch-badge" wx:if="{{message.message>0}}">{{message.message}}</view>
+                </image>
+            </navigator>
+            <navigator class="ch-navbar-btn" hover-class="none" url="/pages/mine/setting" wx:if="{{settingEnter}}">
+                <image src="" class="ch-icon-top"></image>
+            </navigator>
+        </view>
+        <view class="ch-nav-search">
+            <navigator url="/">
+                <icon class="ch-icon "></icon>
+                <text>{{searchPlaceholder}}</text>
+            </navigator>
+        </view>
+    </view>
+</view>
+</template>
+
+<template name="ch-navbar">
+<view class="ch-navbar-custom" style="height:{{CustomBar}}px;">
+    <view class="ch-navbar fixed {{navbarBg}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+        <button class="ch-navbar-action" bindtap="goHomePage" hover-class="none" wx:if="{{isShare}}">
+            <view class="icon-back"></view>
+        </button>
+        <navigator class="ch-navbar-action" open-type="navigateBack" delta="{{delta?delta:'1'}}" hover-class="none" wx:else>
+            <view class="icon-back"></view>
+        </navigator>
+        <view class="ch-navbar-tab" wx:if="{{isNavTab}}" style="top:{{StatusBar}}px;">
+            <view bindtap="changeNavTab" class="ch-navbar-tab-item {{navTabIndex===index&&'ch-navbar-tab-actived animated bounceIn'}}" data-index="{{index}}" wx:for="{{navTabs}}" wx:key="index">{{item}}</view>
+            <view class="ch-navbar-tab-indicator indicator-{{navTabIndex}}" style="transform: translate3d({{navTabIndex*navTabWidth}}rpx, 0, 0);" wx:if="{{navTabWidth}}"></view>
+        </view>
+        <view class="ch-navbar-content" wx:else style="top:{{StatusBar}}px;">{{content}}</view>
+    </view>
+</view>
+</template>
+
+<template name="gotop">
+<view class="goTop {{isIpx?'for-iphonex':''}}" hidden="{{!isGoTop}}">
+    <navigator class="goTop-item" url="/pages/search/search"><image src=""></image></navigator>
+    <view class="goTop-item" bindtap="goTop"><image src=""></image></view>
+</view>
+</template>
+
+<template name="login">
+<view class="ch-pop" hidden="{{!showlogin}}" catchtouchmove="doNothingMove">
+  <view class="ch-pop-show ch-pop-sm">
+    <view class="ch-pop-icon"><image src="/images/logo-gold.png"></image></view>
+    <view class="ch-pop-content">{{nologin?'您的登陆超时了':'为了更好玩壁纸体验，快去授权登陆吧'}}</view>
+    <view class="ch-pop-action">
+      <button bindgetuserinfo="getUserInfoFun" bindtap="comfirm" class="ch-pop-btn {{nologin?'btn-bg-yellow':'btn-bg-green'}}" hover-class="ch-hover" lang="zh_CN" openType="getUserInfo">{{nologin?'重新登录':'授权登录'}}</button>
+      <button bindtap="authCancel" class="ch-pop-btn">暂时不用</button>
+    </view>
+  </view>
+</view>
+</template>
+
+
+
+<template name="login-invite">
+<view class="ch-pop" hidden="{{!showlogin}}" catchtouchmove="doNothingMove">
+  <view class="ch-pop-show ch-pop-sm">
+    <view class="ch-pop-icon"><image src="/images/logo-gold.png"></image></view>
+    <view class="ch-pop-content">欢迎来到{{title}}，赶紧登录领取新用户积分吧~</view>
+    <view class="ch-pop-action">
+      <button bindgetuserinfo="getUserInfoFun" bindtap="comfirm" class="ch-pop-btn {{nologin?'btn-bg-yellow':'btn-bg-green'}}" hover-class="ch-hover" lang="zh_CN" openType="getUserInfo">{{nologin?'重新登录':'立即登录'}}</button>
+      <button bindtap="authCancel" class="ch-pop-btn">先不要了</button>
+    </view>
+  </view>
+</view>
+</template>
+
+<template name="noDataShow">
+<view class="nodata">
+  <image class="nodata-icon" src="/images/nodata.png"></image>
+  <text class="nodata-text">{{content?content:"很意外喉！什么也没有~"}}</text>
+  <button class="nodata-btn" bindtap="{{btnAction}}" hover-class="ch-hover" wx:if="{{btnShow}}">{{btnText?btnText:"返回首页"}}</button>
+  <button class="nodata-btn" open-type="contact" hover-class="ch-hover" wx:if="{{btnContact}}">{{btnContactText?btnContactText:"联系客服小姐姐"}}</button>
+</view>
+</template>
