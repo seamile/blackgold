@@ -14,21 +14,6 @@ Page({
         inputEnable: !0,
         scrollable: !0,
         toolsall1: [ {
-            title: "重要通知",
-            des: "必看！必看！必看！点击查看通知。",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/128bdfab-1405-42a7-9978-8e113bde7df6.jpg",
-            url: "/pages/gongzh/gongzh"
-        }, {
-            title: "外卖红包",
-            des: "外卖超省钱,领红包点外卖,一年省一辆车",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8a658141-835c-44a6-b381-16447788b37d.jpg",
-            url: "/pages/waimai/index"
-        }, {
-            title: "红包封面",
-            des: "超多免费红包封面，让你换个不停，快来试试~",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c43ff92f-7ee2-4a95-8f9d-1f02f0cafd7e.jpg",
-            url: "/pages/cover/index"
-        }, {
             title: "动态壁纸",
             des: "每日精选，60帧超清，情侣等动态壁纸等你拿",
             src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8abb7d10-c6db-41f7-8df7-27282a074249.jpg",
@@ -49,27 +34,27 @@ Page({
             src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8ec31f85-8dc7-45d2-8937-8c54a758dd2b.jpg",
             url: "/pages/huashi/index"
         }, {
-            title: "头像挂件",
-            des: "冬奥会，冰墩墩，节日头像挂件制作",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8031f133-fe23-439d-8f8d-f0a0c9e655c2.jpg",
-            url: "/pages/avatar/index"
-        }, {
-            title: "色卡推荐",
-            des: "一组小清新的色卡参考，程序员专用~",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/3392f994-f709-4602-8d72-1a801c2a5aaa.jpg",
-            url: "/pages/seka/index"
-        }, {
-            title: "搭建同款小程序",
-            des: "点击这个模块可以查看详情~感兴趣的老板看看",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/6fd3aaf1-b532-4ace-8ad6-f3062fb0de05.jpg",
-            url: "/pages/goumai/goumai"
-        } ],
+          title: "外卖红包",
+          des: "外卖超省钱,领红包点外卖,一年省一辆车",
+          src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8a658141-835c-44a6-b381-16447788b37d.jpg",
+          url: "/pages/waimai/index"
+      }, {
+          title: "红包封面",
+          des: "超多免费红包封面，让你换个不停，快来试试~",
+          src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c43ff92f-7ee2-4a95-8f9d-1f02f0cafd7e.jpg",
+          url: "/pages/cover/index"
+      } ],
         toolsall: [ {
-            title: "外卖红包",
-            des: "外卖超省钱,领红包点外卖,一年剩一辆车",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8a658141-835c-44a6-b381-16447788b37d.jpg",
-            url: "/pages/waimai/index"
-        }, {
+          title: "色卡推荐",
+          des: "一组小清新的色卡参考，程序员专用~",
+          src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/3392f994-f709-4602-8d72-1a801c2a5aaa.jpg",
+          url: "/pages/seka/index"
+      }, {
+          title: "头像挂件",
+          des: "冬奥会，冰墩墩，节日头像挂件制作",
+          src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8031f133-fe23-439d-8f8d-f0a0c9e655c2.jpg",
+          url: "/pages/avatar/index"
+      }, {
             title: "趣味测试题",
             des: "趣味测试，爱情测试，缘分测试，性格测试等~",
             src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/dd9ef7ab-b619-4cb1-af99-74c586c06726.jpg",

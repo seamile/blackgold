@@ -56,7 +56,6 @@
 				</button>
 			</view>
 
-
 			<view class="jiangqie-page-laud-list">
 				<view class="jiangqie-page-laud-list-title">- {{like_list.length}}人已赞 -</view>
 				<view class="jiangqie-page-laud-list-block">

@@ -1038,7 +1038,7 @@ search-input-placeholder {
 }
 
 .jiangqie-timeline-head {
-    height: 500rpx;
+    height: 400rpx;
     width: 100%;
     position: relative;
 }
@@ -1051,13 +1051,13 @@ search-input-placeholder {
 .jiangqie-timeline-head image {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    height: 500rpx;
+    height: 400rpx;
     width: 100%;
 }
 
 .timeline-head-text {
     width: 610rpx;
-    background: rgba(0,0,0,.4);
+    background: rgba(0,0,0,0.6);
     padding: 20rpx 40rpx;
     position: absolute;
     bottom: 20rpx;

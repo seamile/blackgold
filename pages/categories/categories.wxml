@@ -4,28 +4,27 @@
 	<view class="categorie-header">
 		<view class="categorie-text">
 			<text>{{setting.title}}</text>
-			<view>{{setting.description}}</view>
+			<!-- <view>{{setting.description}}</view> -->
 		</view>
 		<image src="{{setting.background}}" mode="aspectFill" />
 	</view>
-<!--
-	      <view class="listtit">
-        <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
-        <text class="listleft">小游戏推荐</text>
-        </view>
--->
-				<ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom>
+  <!--
+  <view class="listtit">
+    <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
+    <text class="listleft">小游戏推荐</text>
+  </view>
+  <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom>
 
-	     <view class="listtit">
-        <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
-        <text class="listleft">壁纸分类</text>
-        </view>
-
+  <view class="listtit">
+  <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
+  <text class="listleft">壁纸分类</text>
+  </view>
+  -->
 	<view class="right-box">
 		<view wx:for="{{categories}}" wx:key=" " class="sortbox" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="handlerCategoryClick">
 			<image src="{{item.cover?item.cover:categorie_cover}}" mode="aspectFill" class="sortimage" />
 			<view class="sorttitle">{{item.name}}</view>
-		<!--	<view class="sortsummary">{{item.description}}</view>  -->
+			<!-- <view class="sortsummary">{{item.description}}</view>  -->
 		</view>
 
 	</view>

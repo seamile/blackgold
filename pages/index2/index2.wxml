@@ -11,12 +11,9 @@
 <view background='rgba(0, 0, 0, 100)'>
 	<navBar background='rgba(0, 0, 0, 100)' searchBar="{{true}}" bindsearch="handlerSearchClick">
 		<view slot="left" class='lxy-nav-bar__logo'>
-			<image src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/67590ef9-83ce-4cd4-8828-b4833fe3bb4c.png"></image>
+			<image src="https://pixcdn.seamile.cn/mn_icon.png"></image>
 		</view>
 	</navBar>
-
-
-
 
 	<view class="tab-content" style="padding-top: 2rpx;">
 		<block wx:if="{{currentTabbz==0}}">

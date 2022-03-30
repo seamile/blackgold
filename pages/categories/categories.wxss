@@ -145,7 +145,7 @@
 }
 
 .categorie-header {
-    height: 500rpx;
+    height: 400rpx;
     width: 100%;
     position: relative;
 }
@@ -153,7 +153,7 @@
 .categorie-header image {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    height: 500rpx;
+    height: 400rpx;
     width: 100%;
     position: absolute;
     z-index: 1;
@@ -167,7 +167,7 @@
     color: #FFF;
     z-index: 99;
     padding: 20rpx 40rpx;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 20rpx;
 }
 

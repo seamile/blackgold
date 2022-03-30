@@ -4,15 +4,17 @@
 <import src="../../templates/poplogin/poplogin.wxml" />
 
 <image class="image-self55" src='https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/1aaaa272-d187-417a-b14a-c8d05f728357.png'></image>
-<view class="container jiangqie-page-view">	
-	<image class="image-self66" mode="aspectFill" src="{{bzarticle.imageUrls}}"></image> 
+<view class="container jiangqie-page-view">
+	<image class="image-self66" mode="aspectFill" src="{{bzarticle.imageUrls}}"></image>
 					<import src="/templates/ad.wxml"/>
 					<template is="ad" data="{{setAD,pagead}}"/>
 </view>
+<!--
 <view class="date-container">
-        <text class="time">{{time}}</text>
-        <text class="date">{{date}}</text>
-    </view>
+    <text class="time">{{time}}</text>
+    <text class="date">{{date}}</text>
+</view>
+-->
 <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}" bindtap="hideModal">
 	<view class="cu-dialog">
 		<view class="padding-xl">
@@ -41,7 +43,8 @@
 				<text>下载</text>
 			</block>
 		</view>
-		
+
+        <!--
 		<!-- 点赞 -->
 		<view class="tui-operation-item" catchtap="handlerLikeClick">
 			<block wx:if="{{post_like==1}}">
@@ -53,7 +56,7 @@
 				<text>点赞</text>
 			</block>
 		</view>
-		
+		-->
 
 		<!-- 收藏 -->
 		<view class="tui-operation-item" catchtap="handlerFavoriteClick">
@@ -73,7 +76,7 @@
 				<text>分享</text>
 			</block>
 		</button>
-		
+
 	</view>
 </view>
 <jiangqie-poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}"

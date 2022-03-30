@@ -10,6 +10,6 @@
 
 module.exports = {
     //你的域名
-    JQ_DOMAIN: 'sculpture.xmamx.com',
+    JQ_DOMAIN: 'album.seamile.cn',
     JQ_DEBUG: false
 }

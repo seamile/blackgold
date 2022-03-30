@@ -20,10 +20,12 @@
 
 <view class="container">
     <video autoplay loop bindloadedmetadata="bindloadedmetadata" bindtap="videoTap" controls="{{false}}" enableProgressGesture="{{false}}" id="myVideo" objectFit="cover" showCenterPlayBtn="{{false}}" showFullscreenBtn="{{false}}" showPlayBtn="{{false}}" src="{{videoSrc}}"></video>
+    <!--
     <view class="date-container">
         <text class="time">{{time}}</text>
         <text class="date">{{date}}</text>
     </view>
+    -->
 
   <!--  <image bindtap="backTap" class="back" src="../../images/back.png" wx:else></image>-->
 </view>
