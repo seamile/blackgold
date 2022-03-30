@@ -34,19 +34,18 @@
 						<text>{{item.titlebzbz}}</text>
 					</view>
 				</view>
-		<!--	
+		    <!--	
 				<view wx:if="{{iconNac && iconNac.length>0}}" class="jiangqie-rolling-news">
-		<image src="{{iconNac[0].icon}}"></image>
-		<text class="sw-line">|</text>
-		<swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" interval="3000" class="jiangqie-swiper">
-			<swiper-item wx:for="{{iconNac}}" wx:key="index" class="jiangqie-swiper-item">
-				<view class="jiangqie-news-item" data-link="{{item.link}}" bindtap='handlerIconNavClick'>
-					<text>最新</text>{{item.title}}
-				</view>
-			</swiper-item>
-		</swiper>
-	</view>
-	
+          <image src="{{iconNac[0].icon}}"></image>
+          <text class="sw-line">|</text>
+          <swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" interval="3000" class="jiangqie-swiper">
+            <swiper-item wx:for="{{iconNac}}" wx:key="index" class="jiangqie-swiper-item">
+              <view class="jiangqie-news-item" data-link="{{item.link}}" bindtap='handlerIconNavClick'>
+                <text>最新</text>{{item.title}}
+              </view>
+            </swiper-item>
+          </swiper>
+        </view>
 				<view wx:if="{{activesbz}}" class="jiangqie-news-view">
 					<view class="jiangqie-news-lightbox jiangqie-news-lightbox-main" data-link="{{activesbz.left.link}}" catchtap="handlerActiveClick">
 						<image class="jiangqie-news-lightimg" src="{{activesbz.left.image}}" mode="aspectFill"></image>
@@ -67,14 +66,14 @@
 						</view>
 					</view>
 				</view>
--->
-
+        -->
+        <!--         
 	      <view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
 						热门推荐
 						<image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image>
 						<text class="youhua">右滑查看</text>
-					</view>
+        </view>
 				<view wx:if="{{hotbz && hotbz.length>0}}" class="jiangqie-news-view jiangqie-news-hot">
 					<scroll-view class="jiangqie-news-scroll-x-box" scroll-x="true">
 						<view wx:for="{{hotbz}}" wx:key="index" class="jiangqie-hot-scroll-box" data-id="{{item.id}}" catchtap="handlerArticleClick">
@@ -82,7 +81,7 @@
 						</view>
 					</scroll-view>
 				</view>
-
+        -->
 				<view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
 						热门专题
@@ -108,23 +107,30 @@
 					</view>
 				</view>
 
-
-			<!--
-				<view  style="background: url(https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c7e07437-a9b5-4e8a-b8ea-33f7b7fd1246.png) no-repeat;background-size: 100% auto;" wx:if="{{postsLast && postsLast.length>0}}" class="jiangqie-news-type">
+				<!-- 
+        <view
+          style="background: url(https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c7e07437-a9b5-4e8a-b8ea-33f7b7fd1246.png) no-repeat;background-size: 100% auto;" 
+          wx:if="{{postsLast && postsLast.length>0}}" 
+          class="jiangqie-news-type">
 						手机潮图：头像下载
-				</view>
-				-->
+				</view> 
+        -->
+				
 				<view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
-						官方推荐
-						<image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image>
+						Pixiv 精选 <!-- 官方推荐 -->
+						<!-- <image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image> -->
 						<text class="youhua">每日更新</text>
 					</view>
 
 				<view class="list-box data-v-0034d6f4">
 
 					<block wx:for="{{postsLast}}" wx:key="id">
-						<view wx:if="{{(listModebz==1 && false) || (listModebz==2) || (listModebz==3 && index%5==4)}}" class="image data-v-0034d6f4" data-id="{{item.id}}" catchtap="handlerArticleClick">
+						<view
+              wx:if="{{(listModebz==1 && false) || (listModebz==2) || (listModebz==3 && index%5==4)}}" 
+              class="image data-v-0034d6f4" 
+              data-id="{{item.id}}" 
+              catchtap="handlerArticleClick">
 							<image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4"></image>
 
 						</view>

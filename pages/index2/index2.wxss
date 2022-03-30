@@ -131,11 +131,9 @@
 
 .jiangqie-news-iconimg {
     float: left;
-    
-    margin-top: 0rpx;
-    margin-bottom: 10rpx;
-    height: 50rpx;
-    width: 50rpx;
+    margin-top: 10rpx;
+    height: 40rpx;
+    width: 40rpx;
 }
 
 .jiangqie-news-iconimg1 {
@@ -300,7 +298,7 @@
     font-size: 24rpx;
     font-weight: 400;
     color: #FFD700;
-    margin-right: 8rpx;
+    margin-right: 30rpx;
     margin-top: 25rpx;
     margin-bottom: 10rpx;
 }
