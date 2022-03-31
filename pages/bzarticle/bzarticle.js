@@ -543,7 +543,6 @@ clearInterval(setinad);
             return;
         }
 
-
         //准备下载壁纸
         var self = this;
         //缓存
