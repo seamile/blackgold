@@ -2,7 +2,7 @@
 <import src="../../templates/poplogin/poplogin.wxml" />
 
 <view
-	style="background: url({{setting.background}}) no-repeat; background-size: 100%; background-position: 0 0;	border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+	style="background: url(../../images/bg-ucenter.jpg) no-repeat; background-size: 100%; background-position: 0 0;	border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
 	
 	<view class="jiangqie-userbox">
 		<view class="jiangqie-usersetup">
@@ -19,7 +19,7 @@
 			</block>
 			<block wx:else>
 				<view class="jiangqie-useravatar">
-					<image src="../../images/default_avatar.jpg" mode="aspectFill"></image>
+					<image src="../../images/default-avatar.jpg" mode="aspectFill"></image>
 					<view class="jiangqie-useralogin">
 						<navigator url="../login/login">立即登录</navigator>
 					</view>

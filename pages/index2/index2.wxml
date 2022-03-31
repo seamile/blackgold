@@ -11,7 +11,7 @@
 <view background='rgba(0, 0, 0, 100)'>
 	<navBar background='rgba(0, 0, 0, 100)' searchBar="{{true}}" bindsearch="handlerSearchClick">
 		<view slot="left" class='lxy-nav-bar__logo'>
-			<image src="https://pixcdn.seamile.cn/mini-icon.png"></image>
+			<image src="../../images/logo.png"></image>
 		</view>
 	</navBar>
 

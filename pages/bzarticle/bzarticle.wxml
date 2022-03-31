@@ -27,9 +27,6 @@
 <tui-loading visible="{{loading}}"></tui-loading>
 <!-- 操作栏 -->
 <view class="tui-operation" wx:if="{{!show_comment_submit && post.switch_comment==1}}">
-	<!-- <view class="tui-operation-left tui-col-7 tui-height-full tui-ptop-zero">
-		<view class="tui-btn-comment" catchtap="downloadPhotos">下载壁纸</view>
-	</view> -->
 	<view class="tui-operation-right tui-right-flex tui-col-5">
 		<view class="tui-operation-item" bindtap="jumpBtn">
 			<image src="../../images/fhh.png" mode="widthFix"></image>
