@@ -2,7 +2,7 @@
 <import src="../../templates/poplogin/poplogin.wxml" />
 
 <view
-	style="background: url(../../images/bg-ucenter.jpg) no-repeat; background-size: 100%; background-position: 0 0;	border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+	style="background: url(http://pixcdn.seamile.cn/ele/bg-ucenter.jpg) no-repeat; background-size: 100%; background-position: 0 0;	border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
 	
 	<view class="jiangqie-userbox">
 		<view class="jiangqie-usersetup">

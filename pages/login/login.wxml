@@ -1,6 +1,6 @@
 <!-- <view> -->
 <view class = "login-box" >
-  <image src='../../images/bg-login.jpg'></image>
+  <image src='http://pixcdn.seamile.cn/ele/bg-login.jpg'></image>
   <view class="container">
     <view class="wechatapp">
       <view class="header">
