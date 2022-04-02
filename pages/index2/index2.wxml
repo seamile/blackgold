@@ -25,16 +25,7 @@
 				</swiper>
 			</view>
 			<view class="container">
-	
-				<view wx:if="{{iconNavbzbz && iconNavbzbz.length>0}}" class="jiangqie-news-icon">
-					<view wx:for="{{iconNavbzbz}}" wx:key="index" class="jiangqie-news-iconbox" data-link="{{item.linkbzbz}}" catchtap="handlerIconNavClick">
-						<view class="jiangqie-news-iconbg1">
-							<image class="jiangqie-news-iconimg1" src="{{item.iconbzbz}}"></image>
-						</view>
-						<text>{{item.titlebzbz}}</text>
-					</view>
-				</view>
-		    <!--	
+		    <!--
 				<view wx:if="{{iconNac && iconNac.length>0}}" class="jiangqie-rolling-news">
           <image src="{{iconNac[0].icon}}"></image>
           <text class="sw-line">|</text>
@@ -67,9 +58,10 @@
 					</view>
 				</view>
         -->
-        <!--         
-	      <view class="jiangqie-news-type2">
-					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
+        
+        <!-- 热门推荐 -->
+	      <!-- <view class="jiangqie-news-type2">
+					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
 						热门推荐
 						<image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image>
 						<text class="youhua">右滑查看</text>
@@ -80,12 +72,12 @@
 							<image src="{{item.thumbnail}}" mode="aspectFill" class="jiangqie-hot-scroll-image"></image>
 						</view>
 					</scroll-view>
-				</view>
-        -->
+				</view> -->
+       
 				<view class="jiangqie-news-type2">
-					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
+					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
 						热门专题
-					</view>
+        </view>
 				<view wx:if="{{activesbz}}" class="jiangqie-news-view">
 					<view class="jiangqie-news-lightbox jiangqie-news-lightbox-main" data-link="{{activesbz.left.link}}" catchtap="handlerActiveClick">
 						<image class="jiangqie-news-lightimg" src="{{activesbz.left.image}}" mode="aspectFill"></image>
@@ -107,17 +99,30 @@
 					</view>
 				</view>
 
-				<!-- 
-        <view
+        <view class="jiangqie-news-type2">
+					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
+						工具箱
+        </view>
+        <view wx:if="{{iconNavbzbz && iconNavbzbz.length>0}}" class="jiangqie-news-icon">
+					<view wx:for="{{iconNavbzbz}}" wx:key="index" class="jiangqie-news-iconbox" data-link="{{item.linkbzbz}}" catchtap="handlerIconNavClick">
+						<view class="jiangqie-news-iconbg1">
+							<image class="jiangqie-news-iconimg1" src="{{item.iconbzbz}}"></image>
+						</view>
+						<text>{{item.titlebzbz}}</text>
+					</view>
+				</view>
+
+				
+        <!-- <view
           style="background: url(https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c7e07437-a9b5-4e8a-b8ea-33f7b7fd1246.png) no-repeat;background-size: 100% auto;" 
           wx:if="{{postsLast && postsLast.length>0}}" 
           class="jiangqie-news-type">
 						手机潮图：头像下载
-				</view> 
-        -->
+				</view> -->
+       
 				
 				<view class="jiangqie-news-type2">
-					<image class="jiangqie-news-iconimg" src="{{iconNac[0].icon}}"></image>
+					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
 						Pixiv 精选 <!-- 官方推荐 -->
 						<!-- <image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image> -->
 						<text class="youhua">每日更新</text>
@@ -179,16 +184,15 @@
 					</block>
 				</view>
 			</view>
-			<!--加载loadding
-			<tui-loadmore visible="{{loadding}}"></tui-loadmore>
-			<tui-nomore visible="{{!pullUpOn}}"></tui-nomore>-->
 			<!--加载loadding-->
+			<!-- <tui-loadmore visible="{{loadding}}"></tui-loadmore>
+			<tui-nomore visible="{{!pullUpOn}}"></tui-nomore> -->
 		</block>
 	</view>
 </view>
 <!--加载框 start-->
-<tui-loading visible="{{loading}}"></tui-loading>
+<!-- <tui-loading visible="{{loading}}"></tui-loading> -->
 <!--加载框 end-->
 
 <!-- 回到顶部 -->
-<image class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/086404fb-4060-42e8-ab06-514cdc27e06c.gif"></image><!-- 回到顶部 -->
+<image class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"src="../../images/top-fill.png"></image><!-- 回到顶部 -->

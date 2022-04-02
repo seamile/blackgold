@@ -13,7 +13,6 @@ const Api = require('../../utils/api.js');
 const Rest = require('../../utils/rest');
 
 Page({
-
     data: {
         setting: {},
         tabbar: ['浏览数', '点赞数', '收藏数', '评论数'],
@@ -89,7 +88,7 @@ Page({
     handlerHotArticle: function (e) {
         let post_id = e.currentTarget.dataset.id;
         wx.navigateTo({
-            url: '/pages/article/article?post_id=' + post_id
+            url: '/pages/bzarticle/bzarticle?post_id=' + post_id
         })
     },
 

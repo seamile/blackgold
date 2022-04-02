@@ -1,4 +1,4 @@
-<!--pages/article/article.wxml-->
+<!--pages/bzarticle/bzarticle.wxml-->
 <import src="../../components/wxParse/wxParse.wxml" />
 <import src="../../templates/nodata/nodata.wxml" />
 <import src="../../templates/poplogin/poplogin.wxml" />

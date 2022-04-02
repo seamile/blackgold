@@ -6,7 +6,6 @@
     "pages/search/search",
     "pages/list/list",
     "pages/categories/categories",
-    "pages/article/article",
     "pages/bzarticle/bzarticle",
     "pages/about/about",
     "pages/login/login",
