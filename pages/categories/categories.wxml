@@ -8,18 +8,19 @@
 		</view>
 		<image src="http://pixcdn.seamile.cn/ele/bg-category.jpg" mode="aspectFill" />
 	</view>
-  <!--
-  <view class="listtit">
+  
+  <!-- 小游戏广告 -->
+  <!-- <view class="listtit">
     <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
     <text class="listleft">小游戏推荐</text>
-  </view>
+  </view> -->
   <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom>
 
-  <view class="listtit">
+  <!-- <view class="listtit">
   <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
   <text class="listleft">壁纸分类</text>
-  </view>
-  -->
+  </view> -->
+ 
 	<view class="right-box">
 		<view wx:for="{{categories}}" wx:key=" " class="sortbox" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="handlerCategoryClick">
 			<image src="{{item.cover?item.cover:categorie_cover}}" mode="aspectFill" class="sortimage" />

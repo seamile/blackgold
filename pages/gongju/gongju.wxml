@@ -5,15 +5,19 @@
             <text>工具箱</text>
         </view>
     </view>
-    <!-- <view class="tab-content">
+
+
+    <!-- 小广告 -->
+    <view class="tab-content">
         <view class="index">
-            <view class="listtit">
+            <!-- <view class="listtit">
                 <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
                 <text class="listleft">精品推荐</text>
-            </view>
+            </view> -->
             <ad class="bgads" unitId="adunit-056807f43659baad"></ad>
         </view>
-    </view> -->
+    </view>
+
     <view class="tab-content">
         <view class="index">
             <!-- <view class="listtit">

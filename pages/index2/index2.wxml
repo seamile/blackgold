@@ -195,4 +195,4 @@
 <!--加载框 end-->
 
 <!-- 回到顶部 -->
-<image class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"src="../../images/top-fill.png"></image><!-- 回到顶部 -->
+<image class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"src="../../images/top-fill.png"></image>
