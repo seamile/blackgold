@@ -273,7 +273,6 @@ Page({
             that.setData({
                 logo: logo,
                 topNavbz: that.data.topNavbz.concat(res.data.top_navbz),
-                slidebz: res.data.slidebz,
                 iconNavbzbz: res.data.icon_navbzbz,
                 iconNavbz: res.data.icon_navbz,
                 tcad: res.data.tcad,

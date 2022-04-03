@@ -22,19 +22,12 @@ Page({
         post: {},
         post_like: 0,
         post_favorite: 0,
-        comment_count: 0,
-        comments: [],
         loadding: false,
         pullUpOn: true,
         loaded: false,
-        pagead:7,
-        show_comment_submit: false,
-        comment_content: '',
-        comment_count_change: 0
-
+        pagead: 7,
     },
     post_id: 0,
-    comment_id: 0,
 
     //小程序码
     wxacode: '',
@@ -81,14 +74,11 @@ Page({
                 post: res.data,
                 post_like: res.data.user.islike,
                 post_favorite: res.data.user.isfavorite,
-                comment_count: Number(res.data.comment_count),
                 like_list: res.data.like_list,
             });
 
             WxParse.wxParse('bzarticle', 'html', res.data.content, that, 5);
         });
-
-        this.loadComments(true);
     },
    
  // 获取小程序插屏广告
@@ -129,7 +119,6 @@ clearInterval(setinad);
         if (!this.data.pullUpOn) {
             return;
         }
-
         this.loadComments(false);
     },
 
@@ -312,88 +301,6 @@ clearInterval(setinad);
     },
 
     /**
-     * 评论 弹框
-     */
-    handlerCommentClick: function (e) {
-        this.comment_id = 0;
-        this.setData({
-            show_comment_submit: true
-        });
-    },
-
-    /**
-     * 评论 取消
-     */
-    handlerCancelClick: function (e) {
-        this.setData({
-            show_comment_submit: false
-        });
-    },
-
-    /**
-     * 评论 提交
-     */
-    handlerCommentSubmit: function (e) {
-        let that = this;
-        Rest.get(Api.JIANGQIE_COMMENT_ADD, {
-            post_id: that.post_id,
-            parent_id: that.comment_id,
-            content: that.data.comment_content
-        }).then(res => {
-            that.setData({
-                comment_count_change: that.data.comment_count_change + (res.data.comment_verify == 1 ? 0 : 1),
-                show_comment_submit: false
-            });
-
-            that.loadComments(true);
-        });
-    },
-
-    /**
-     * 评论 回复
-     */
-    handlerCommentReplyClick: function (e) {
-        this.comment_id = e.currentTarget.dataset.id;
-        this.setData({
-            show_comment_submit: true
-        });
-    },
-
-    /**
-     * 评论 删除
-     */
-    handlerCommentDeleteClick: function (e) {
-        let that = this;
-
-        wx.showModal({
-            title: '提示',
-            content: '确定要删除吗？',
-            success(res) {
-                if (res.confirm) {
-                    let comment_id = e.currentTarget.dataset.id;
-                    Rest.get(Api.JIANGQIE_COMMENT_DELETE, {
-                        comment_id: comment_id
-                    }).then(res => {
-                        that.setData({
-                            comment_count_change: that.data.comment_count_change - 1
-                        });
-                        that.loadComments(true);
-                    });
-                }
-            }
-        });
-    },
-
-    /**
-     * 评论输入
-     */
-    handlerContentInput: function (e) {
-        this.setData({
-            comment_content: e.detail.value
-        });
-    },
-
-    /**
      * 文章 收藏
      */
     handlerFavoriteClick: function (e) {
@@ -418,34 +325,6 @@ clearInterval(setinad);
             that.wxacode = res.data;
         }, err => {
             console.log(err);
-        });
-    },
-
-    /**
-     * 加载 评论
-     */
-    loadComments: function (refresh) {
-        let that = this;
-
-        that.setData({
-            loadding: true
-        });
-
-        let offset = 0;
-        if (!refresh) {
-            offset = that.data.comments.length;
-        }
-
-        Rest.get(Api.JIANGQIE_COMMENT_INDEX, {
-            post_id: that.post_id,
-            offset: offset
-        }).then(res => {
-            that.setData({
-                loaded: true,
-                loadding: false,
-                comments: refresh ? res.data : that.data.comments.concat(res.data),
-                pullUpOn: res.data.length == Constants.JQ_PER_PAGE_COUNT,
-            });
         });
     },
 
@@ -500,7 +379,7 @@ clearInterval(setinad);
             return;
         }
         var t = this;
-        var photourl = t.data.bzarticle.imageUrls[0];
+        var photourl = t.data.bzarticle.imageUrls[1];
         wx.showLoading({
             title: '正在保存...',
         })
@@ -632,18 +511,12 @@ clearInterval(setinad);
                         })
                 })
         }
-
     },
-
-
-
-
-
 
     //下载壁纸
     downloadPhoto: function (e) {
         var t = this;
-        var photourl = t.data.bzarticle.imageUrls[0];
+        var photourl = t.data.bzarticle.imageUrls[1];
         wx.showLoading({
             title: '正在保存...',
         })

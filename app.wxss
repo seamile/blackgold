@@ -4936,7 +4936,7 @@ button,image,input,label,navigator,scroll-view,swiper,textarea,view {
     content: "";
     left: -1000px;
     top: -1000px;
-    animation: shadow-preload .1s;
+    animation: shadow-preload .3s;
     animation-delay: 3s;
   }
   
@@ -4971,8 +4971,6 @@ button,image,input,label,navigator,scroll-view,swiper,textarea,view {
   
   /*人生重开模拟器wxss*/
   
-  
-  
   page,text,view {
     box-sizing: border-box;
   }
@@ -4996,6 +4994,3 @@ button,image,input,label,navigator,scroll-view,swiper,textarea,view {
   video {
     width: 100%;
   }
-  
-  
-  
