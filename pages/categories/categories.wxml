@@ -11,11 +11,12 @@
   
   <!-- 小游戏广告 -->
   <!-- <view class="listtit">
-    <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
+    <image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
     <text class="listleft">小游戏推荐</text>
-  </view> -->
-  <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom>
+  </view>
+  <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom> -->
 
+  <!-- 分类标题 -->
   <!-- <view class="listtit">
   <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
   <text class="listleft">壁纸分类</text>

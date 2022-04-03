@@ -114,9 +114,9 @@ Page({
 
        //跳转到隐私协议页面  
    gotogzh: function (options) {
-    wx.navigateTo({
-          url: '../gongzh/gongzh',//要跳转到的页面路径
-    })  
+    wx.previewImage({
+      urls: ["https://pixcdn.seamile.cn/ele/QR-Code.jpg"]
+    })
     },
 
        //跳转到隐私协议页面  

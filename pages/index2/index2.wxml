@@ -8,8 +8,8 @@
 		</view>
 	</view>
 </view>
-<view background='rgba(0, 0, 0, 100)'>
-	<navBar background='rgba(0, 0, 0, 100)' searchBar="{{true}}" bindsearch="handlerSearchClick">
+<view background='#000000'>
+	<navBar background='#000000' searchBar="{{true}}" bindsearch="handlerSearchClick">
 		<view slot="left" class='lxy-nav-bar__logo'>
 			<image src="../../images/logo.png"></image>
 		</view>

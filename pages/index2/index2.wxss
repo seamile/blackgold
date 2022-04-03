@@ -137,8 +137,9 @@
 }
 
 .jiangqie-news-iconimg1 {
-    height: 100rpx;
-    width: 100rpx;
+
+    height: 110rpx;
+    width: 110rpx;
 }
 
 .jiangqie-news-iconimg2 {
@@ -169,14 +170,14 @@
 }
 
 .jiangqie-news-lightbox-main {
-    height: 550rpx;
+    height: 430rpx;
     width: 345rpx;
     /* box-shadow: 5rpx 5rpx 20rpx rgba(0, 0, 0, 0.2); */
 }
 
 .jiangqie-news-lightbox-side,
 .jiangqie-news-lightbox-side2 {
-    height: 275rpx;
+    height: 215rpx;
     width: 345rpx;
     text-align: left;
     margin-left: 1rpx;
@@ -184,14 +185,14 @@
 }
 
 .jiangqie-news-lightimg {
-    height: 550rpx;
+    height: 430rpx;
     width: 345rpx;
     border-radius: 5rpx;
 }
 
 .jiangqie-news-lightbox-side .jiangqie-news-lightimg,
 .jiangqie-news-lightbox-side2 .jiangqie-news-lightimg {
-    height: 275rpx;
+    height: 215rpx;
     width: 345rpx;
     position: relative;
 }

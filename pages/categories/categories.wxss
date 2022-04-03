@@ -7,232 +7,232 @@
  * License：MIT
  * Copyright ️ 2020 www.jiangqie.com All rights reserved.
  */
- page{
-    background: #000000;
+page {
+  background: #000000;
 }
 .tui-searchbox {
-    width: 100%;
-    height: 92rpx;
-    padding: 0 30rpx;
-    box-sizing: border-box;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
+  width: 100%;
+  height: 92rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
 }
 
 .tui-searchbox::after {
-    content: '';
-    position: absolute;
-    border-bottom: 1rpx solid #d2d2d2;
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
-    bottom: 0;
-    right: 0;
-    left: 0;
+  content: '';
+  position: absolute;
+  border-bottom: 1rpx solid #d2d2d2;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .tui-search-input {
-    width: 100%;
-    height: 60rpx;
-    background: #f1f1f1;
-    border-radius: 30rpx;
-    font-size: 26rpx;
-    color: #999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 60rpx;
+  background: #f1f1f1;
+  border-radius: 30rpx;
+  font-size: 26rpx;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tui-search-text {
-    padding-left: 16rpx;
+  padding-left: 16rpx;
 }
 
 
 .right-box {
-    padding: 10rpx 14rpx 0 14rpx;
-    padding-bottom: env(safe-area-inset-bottom);
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-    
-    top: 140rpx;
+  padding: 10rpx 14rpx 0 14rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  
+  top: 140rpx;
 }
 
 
 .page-view {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
 .sortbox {
-    background: #fff;
-    width: 340rpx;
-    height: 190rpx;
-    box-sizing: border-box;
-    border-radius: 12rpx;
-    /* padding: 20rpx 20rpx 20rpx 180rpx; */
-    overflow: hidden;
-    /* border-bottom: 1rpx solid #DDD; */
-    margin: 12rpx 10rpx;
-    background-color: rgba(0, 0, 0, 0.4);
-    position: relative;
+  background: #fff;
+  width: 340rpx;
+  height: 190rpx;
+  box-sizing: border-box;
+  border-radius: 12rpx;
+  /* padding: 20rpx 20rpx 20rpx 180rpx; */
+  overflow: hidden;
+  /* border-bottom: 1rpx solid #DDD; */
+  margin: 12rpx 10rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: relative;
 }
 
 .sortimage {
-    height: 190rpx;
-    width: 340rpx;
-    float: left;
-    border-radius: 12rpx;
-    /* margin-left: -160rpx; */
+  height: 190rpx;
+  width: 340rpx;
+  float: left;
+  border-radius: 12rpx;
+  /* margin-left: -160rpx; */
 }
 
 .sorttitle {
-    overflow: hidden;
-    position: absolute;
-    bottom: 0rpx;
-    right: 0rpx;
-    padding: 8rpx 15rpx;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 15rpx 0 0 0;
-    font-weight: 500;
-    font-size: 28rpx;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0rpx;
+  right: 0rpx;
+  padding: 8rpx 15rpx;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 15rpx 0 0 0;
+  font-weight: 500;
+  font-size: 28rpx;
 }
 
 .sortline{
-    width: 306rpx;
-    height: 2rpx;
-    background-color: rgba(255, 255, 255, 0.8);
-    position: absolute;
-    top: 320rpx;
-    margin: 0rpx 0rpx 26rpx 20rpx;
+  width: 306rpx;
+  height: 2rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 320rpx;
+  margin: 0rpx 0rpx 26rpx 20rpx;
 }
 
 .sortsummary {
-    overflow: hidden;
-    /*margin: 0rpx 0rpx 0rpx 12rpx;*/
-    background: rgba(255, 0, 0, 0.5);
-    height: 25rpx;
-    
-    border: 1rpx solid rgb(255, 255, 255);
-    border-radius: 26rpx;
-    margin-right: 12rpx;
-    padding: 10rpx 3rpx 10rpx 20rpx;
-    font-weight: 700;
-    color: #333;
-    position: absolute;
-    color: #fff;
-    font-size: 28rpx;
-    top: 315rpx;
-    font-size: 20rpx;
-    font-weight: 200;
-    
-    position: absolute;
-   
-    /*width: 300rpx;
-    text-overflow: ellipsis;
-    /*white-space: nowrap;*/
+  overflow: hidden;
+  /*margin: 0rpx 0rpx 0rpx 12rpx;*/
+  background: rgba(255, 0, 0, 0.5);
+  height: 25rpx;
+  
+  border: 1rpx solid rgb(255, 255, 255);
+  border-radius: 26rpx;
+  margin-right: 12rpx;
+  padding: 10rpx 3rpx 10rpx 20rpx;
+  font-weight: 700;
+  color: #333;
+  position: absolute;
+  color: #fff;
+  font-size: 28rpx;
+  top: 315rpx;
+  font-size: 20rpx;
+  font-weight: 200;
+  
+  position: absolute;
+  
+  /*width: 300rpx;
+  text-overflow: ellipsis;
+  /*white-space: nowrap;*/
 }
 
 .categorie-header {
-    height: 400rpx;
-    width: 100%;
-    position: relative;
+  height: 400rpx;
+  width: 100%;
+  position: relative;
 }
 
 .categorie-header image {
-    /* border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px; */
-    height: 400rpx;
-    width: 100%;
-    position: absolute;
-    z-index: 1;
+  /* border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px; */
+  height: 400rpx;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
 }
 
 .categorie-text {
-    position: absolute;
-    width: auto;
-    left: 30rpx;
-    bottom: 20rpx;
-    color: #FFF;
-    z-index: 99;
-    padding: 20rpx 40rpx;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 20rpx;
+  position: absolute;
+  width: auto;
+  left: 30rpx;
+  bottom: 20rpx;
+  color: #FFF;
+  z-index: 99;
+  padding: 20rpx 40rpx;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20rpx;
 }
 
 .categorie-text text {
-    font-size: 36rpx;
-    color: #fff;
-    font-weight: 500; 
-    display: block;
-    line-height: 40rpx;
+  font-size: 36rpx;
+  color: #fff;
+  font-weight: 500; 
+  display: block;
+  line-height: 40rpx;
 }
 
 .categorie-text view {
-    font-size: 26rpx;
-    color: #fff;
-    font-weight: 200;
-    line-height: 40rpx;
+  font-size: 26rpx;
+  color: #fff;
+  font-weight: 200;
+  line-height: 40rpx;
 }
 .sortround{
-    background-color: rgba(255, 255, 255, 0.8);
-    position: absolute;
-    top: 340rpx;
-    /* margin: 0rpx 0rpx 26rpx 20rpx; */
-    width: 12rpx;
-    height: 12rpx;
-    right: 20rpx;
-    border-radius: 12rpx;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: absolute;
+  top: 340rpx;
+  /* margin: 0rpx 0rpx 26rpx 20rpx; */
+  width: 12rpx;
+  height: 12rpx;
+  right: 20rpx;
+  border-radius: 12rpx;
 }
 .sortround-1{
-    right: 42rpx;
+  right: 42rpx;
 
 }
 
 .homeAD,.listtit {
-    width: auto;
-    height: auto;
-  }
-  
-  .listtit {
-    margin-top: 30rpx;
-    margin-left: 25rpx;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .listleft {
-    font-size: 40rpx;
-    font-weight: bolder;
-    color: #fff;
-    display: block;
-    width: 300rpx;
-  }
-  
-  .listright {
-    display: block;
-    width: 100%;
-    margin-left: 350rpx;
-    width: 18rpx;
-    margin-top: 14rpx;
-  }
-  .jiangqie-news-iconimg {
-    float: left;
-    margin-top: 0rpx;
-    margin-bottom: 10rpx;
-    height: 50rpx;
-    width: 50rpx;
-  } 
+  width: auto;
+  height: auto;
+}
 
-  .adcustom{
-      width: 700rpx;
-      margin-top: 15rpx;
-      margin-left: 28rpx;
-  }
+.listtit {
+  margin-top: 30rpx;
+  margin-left: 25rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.listleft {
+  font-size: 40rpx;
+  font-weight: bolder;
+  color: #fff;
+  display: block;
+  width: 300rpx;
+}
+
+.listright {
+  display: block;
+  width: 100%;
+  margin-left: 350rpx;
+  width: 18rpx;
+  margin-top: 14rpx;
+}
+.jiangqie-news-iconimg {
+  float: left;
+  margin-top: 0rpx;
+  margin-bottom: 10rpx;
+  height: 50rpx;
+  width: 50rpx;
+} 
+
+.adcustom{
+    width: 700rpx;
+    margin-top: 15rpx;
+    margin-left: 28rpx;
+}
