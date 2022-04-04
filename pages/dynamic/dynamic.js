@@ -85,7 +85,7 @@ Page({
     },
     searchTap: function(e) {
         wx.navigateTo({
-            url: "../../pages/searchvideo/searchvideo"
+            url: "/pages/searchvideo/searchvideo"
         });
     },
     dayTap: function(t) {

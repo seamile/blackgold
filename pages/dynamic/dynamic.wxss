@@ -46,6 +46,7 @@ page {
 .tab-container,.tab-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .tab-item {

@@ -11,7 +11,7 @@
     <!-- <view class="tab-content">
         <view class="index">
             <view class="listtit">
-                <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
+                <image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
                 <text class="listleft">精品推荐</text>
             </view>
             <ad class="bgads" unitId="adunit-056807f43659baad"></ad>
@@ -26,14 +26,24 @@
             </view> -->
             <view class="ToolAll">
                 <view class="ToolLeft">
-                    <view bindtap="gotoDetail" class="one" data-url="{{item.url}}" wx:if="{{index%2!==1}}" wx:for="{{toolsall1}}">
+                    <view bindtap="gotoDetail"
+                          class="one"
+                          data-url="{{item.url}}"
+                          wx:if="{{index%2!==1}}"
+                          wx:for="{{toolsall1}}"
+                          wx:key="tool_left">
                         <image class="toolicon" mode="widthFix" src="{{item.src}}"></image>
                         <text class="onetitle">{{item.title}}</text>
                         <text class="onedes">{{item.des}}</text>
                     </view>
                 </view>
                 <view class="ToolRight">
-                    <view bindtap="gotoDetail" class="one" data-url="{{item.url}}" wx:if="{{index%2==1}}" wx:for="{{toolsall1}}">
+                    <view bindtap="gotoDetail"
+                          class="one"
+                          data-url="{{item.url}}"
+                          wx:if="{{index%2==1}}"
+                          wx:for="{{toolsall1}}"
+                          wx:key="tool_right">
                         <image class="toolicon" mode="widthFix" src="{{item.src}}"></image>
                         <text class="onetitle">{{item.title}}</text>
                         <text class="onedes">{{item.des}}</text>

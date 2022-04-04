@@ -18,7 +18,7 @@ Page({
             });
           } else {
             wx.switchTab({
-              url: "../../home/grouplist/grouplist"
+              url: "/home/grouplist/grouplist"
             });
           }
         } else {

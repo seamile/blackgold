@@ -157,7 +157,6 @@ Page({
           let that = this;
         await  util.getshare(that);
         await  Rest.get(Api.JIANGQIE_SETTING_HOME).then(res => {
-              console.log(res.data)
               that.setData({
                   //topNav: that.data.topNav.concat(res.data.top_nav)
               })
@@ -173,10 +172,6 @@ Page({
         var date = new Date(n);
         //获取时
         var h = date.getHours();
-        
-        console.log("现在的时间是"+h+"点")
-    
-      
         if (0 < h && h <= 6) {
           console.log("  0：00—6:00凌晨:勤奋的你")
           that.setData({
@@ -221,15 +216,12 @@ Page({
           })
         }
         else if (18 <= h && h <= 21) {
-         
-            console.log("16：00：00—18:00傍晚:活力的你")
             that.setData({
               bh: '晚上好，',
               Greetings:"在看一会就要去休息哦！身体重要！"
             })
           }
         else {
-           console.log("晚上啦，记得好好照顾自已，别熬夜")
             that.setData({
                 bh: '晚上好，',
                 Greetings:"晚上啦，记得好好照顾自已，别熬夜！"
@@ -243,7 +235,6 @@ Page({
         
       await that.init();
         let today = wx.getStorageSync('today')
-        console.log(today)
         if (!today) {
             wx.setStorageSync("today", new Date().toLocaleDateString());
             that.setData({
@@ -361,9 +352,8 @@ onHide(){
             imageUrl: that.data.shares.share_image,
          }
     },
-//获取滚动条当前位置
+    //获取滚动条当前位置
     onPageScroll: function (e) {
-        console.log(e)
         if (e.scrollTop > 100) {
           this.setData({
             floorstatus: true

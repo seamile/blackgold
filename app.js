@@ -21,7 +21,8 @@ var t = require("./utils/ubt"), e = require("./utils/login"), a = require("confi
 
 App({
 
-    appName: '小小怪头像',
+    appName: '次元画册',
+    lazyCodeLoading: "requiredComponents",
     onLaunch: function(t) {
     },
     onShow: function(t) {
@@ -64,12 +65,12 @@ App({
     onLaunch: function () {
         Auth.checkSession();
     },
-    
+
   //下拉刷新
   onPullDownRefresh:function()
   {
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    
+
     //模拟加载
     setTimeout(function()
     {
@@ -78,5 +79,5 @@ App({
       wx.stopPullDownRefresh() //停止下拉刷新
     },1500);
   },
-    
+
 })

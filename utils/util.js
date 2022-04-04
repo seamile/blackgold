@@ -30,17 +30,20 @@ function navigateBack() {
 }
 function getAD(that,showad){
     Rest.get(Api.JIANGQIE_SETTING_AD).then(res => {
+      if (!res.data.posisionad) {
+        return
+      } else {
         res.data.posisionad = res.data.posisionad.split(',');
         console.log(res.data)
         that.setData({
             setAD: res.data
         })
-        showad();
+        showad();          
+      }
     })
 }
 function getshare(that){
     Rest.get(Api.JIANGQIE_SETTING_SHARE).then(res => {
-        console.log(res.data)
         that.setData({
             shares: res.data
         })

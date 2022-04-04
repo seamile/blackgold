@@ -4,7 +4,7 @@
 	</view>
 	<view class="hope-text-box">
 		<view class="hope-title">介绍</view>
-		<view class="hope-text">小小怪头像是在酱茄开源小程序的基础上进行二开美化，在使用中遇到任何情况请联系微信Mr_iueasy解决记录，不要联系酱茄官方客服！</view>
+		<view class="hope-text">次元画册是在酱茄开源小程序的基础上进行二开美化，在使用中遇到任何情况请联系微信Mr_iueasy解决记录，不要联系酱茄官方客服！</view>
 		<view class="hope-title">联系我们</view>
 		<view class="hope-text">邮箱：1306666033@qq.com<text decode="true">\n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>  微信：Mr_iueasy</view>
 		<view class="hope-title">隐私协议</view>

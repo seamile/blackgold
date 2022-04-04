@@ -20,7 +20,7 @@ Component({
         //isDot为false时生效
         text: {
             type: String,
-            value: "© 小小怪头像"
+            value: "© 次元画册"
         }
     },
     data: {

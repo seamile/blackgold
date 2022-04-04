@@ -99,7 +99,7 @@
 			</view> -->
 		</block>
 	</view>
-	<ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom>
+	<!-- <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom> -->
 	<view class="jiangqie-listbox-about">
 		<block wx:for="{{menu}}" wx:key="index">
 			<view wx:if="{{item.tp=='contact'}}"

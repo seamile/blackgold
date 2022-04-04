@@ -33,18 +33,13 @@ Page({
             des: "各类微信炫酷，透明昵称全面升级",
             src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8ec31f85-8dc7-45d2-8937-8c54a758dd2b.jpg",
             url: "/pages/huashi/index"
-        }, {
-          title: "外卖红包",
-          des: "外卖超省钱,领红包点外卖,一年省一辆车",
-          src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8a658141-835c-44a6-b381-16447788b37d.jpg",
-          url: "/pages/waimai/index"
-      }, {
+        }],
+        toolsall: [ {
           title: "红包封面",
           des: "超多免费红包封面，让你换个不停，快来试试~",
           src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c43ff92f-7ee2-4a95-8f9d-1f02f0cafd7e.jpg",
           url: "/pages/cover/index"
-      } ],
-        toolsall: [ {
+      }, {
           title: "色卡推荐",
           des: "一组小清新的色卡参考，程序员专用~",
           src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/3392f994-f709-4602-8d72-1a801c2a5aaa.jpg",
@@ -115,14 +110,14 @@ Page({
         var e = this;
         wx.createInterstitialAd && ((t = wx.createInterstitialAd({
             adUnitId: "adunit-5809e52ca8e02862"
-        })).onLoad(function() {}), t.onError(function(e) {}), t.onClose(function() {})), 
+        })).onLoad(function() {}), t.onError(function(e) {}), t.onClose(function() {})),
         wx.getSystemInfo({
             success: function(t) {
                 e.setData({
                     isIphoneX: t.model.match(/iPhone X/gi)
                 });
             }
-        }), this.getSiteInfo(), this.getStickyPosts(), this.getCategories(), this.getAdvert(), 
+        }), this.getSiteInfo(), this.getStickyPosts(), this.getCategories(), this.getAdvert(),
         this.getPostList();
     },
     onReady: function() {},
@@ -196,7 +191,7 @@ Page({
                 isLastPage: !0,
                 loadtext: "到底啦",
                 showloadmore: !1
-            }), a.data.isBottom, t.posts = [].concat(a.data.posts, e), t.page = a.data.page + 1, 
+            }), a.data.isBottom, t.posts = [].concat(a.data.posts, e), t.page = a.data.page + 1,
             a.setData(t), wx.stopPullDownRefresh();
         }).catch(function(e) {
             console.log(e), wx.stopPullDownRefresh();

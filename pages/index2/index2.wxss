@@ -436,7 +436,7 @@
 }
 
 .jiangqie-news-scroll-x-box {
-    height: 512rpx;
+    height: 432rpx;
     white-space: nowrap;
 }
 
@@ -447,8 +447,7 @@
 }
 
 .jiangqie-hot-scroll-box {
-    width: 323rpx;
-    height: 512rpx;
+    width: 272rpx;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -466,8 +465,8 @@
 }
 
 .jiangqie-hot-scroll-image {
-    width: 320rpx;
-    height: 512rpx;
+    width: 270rpx;
+    height: 432rpx;
     border-radius: 15rpx;
     margin-bottom: 10rpx;
 }
@@ -710,7 +709,6 @@
     font-weight: 200;
     color: 	rgb(253, 0, 0);
     margin-bottom: 2rpx;
-    
 }
 
 /**公告结束**/

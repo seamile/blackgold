@@ -1,5 +1,5 @@
-<import src="../common/common.wxml" />
-<import src="../common/wallpaper-grid.wxml" />
+<!-- <import src="../common/common.wxml" /> -->
+<!-- <import src="../common/wallpaper-grid.wxml" /> -->
 <import src="../common/common1.wxml" />
 
 <block wx:if="{{item==''}}">

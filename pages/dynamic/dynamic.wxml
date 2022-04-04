@@ -1,9 +1,3 @@
-<!--<view class="add_container" hidden="{{hideGuide}}">
-    <image src="../../images/star.png" style="height: 45rpx;width: 45rpx;margin-left:30rpx"></image>
-    <text>添加到我的小程序，随时更换壁纸</text>
-    <image src="../../images/guide_arrow2.png" style="height: 35rpx;width: 70rpx;margin-left:20rpx;margin-bottom:15rpx"></image>
-    <image bindtap="hideGuideTap" class="img_cancel" src="../../images/cancel1.png"></image>
-</view>-->
 <block wx:if="{{!loadFlag}}">
         <view class="{{['bottom',cssTran?'closeCss':'openCss']}}">
           <view class="nav-box">
@@ -20,14 +14,6 @@
         </view>
       </block>
 <view class="tab-container" hidden="{{tabHidden}}">
-    <view bindtap="searchTap" class="tab-item">
-        <view class="img-container1">
-            <image class="img" src="../../images/item_search2.png"></image>
-        </view>
-        <view class="wenzi">
-        <text>搜索</text>
-        </view>
-    </view>
     <view bindtap="dayTap" class="tab-item">
         <view class="img-container2">
             <image class="img" src="../../images/item_hot.png"></image>

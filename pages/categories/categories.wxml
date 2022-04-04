@@ -23,7 +23,7 @@
   </view> -->
  
 	<view class="right-box">
-		<view wx:for="{{categories}}" wx:key=" " class="sortbox" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="handlerCategoryClick">
+		<view wx:for="{{categories}}" wx:key="category" class="sortbox" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="handlerCategoryClick">
 			<image src="{{item.cover?item.cover:categorie_cover}}" mode="aspectFill" class="sortimage" />
 			<view class="sorttitle">{{item.name}}</view>
 			<!-- <view class="sortsummary">{{item.description}}</view>  -->

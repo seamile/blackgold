@@ -16,11 +16,12 @@ const Auth = require('../../utils/auth');
 const WxParse = require('../../components/wxParse/wxParse');
 const Poster = require('../../components/poster/poster/poster');
 let rewardedVideoAd = null;
+var e = getApp(), o = null;
 Page({
 
     data: {
         post: {},
-        post_like: 0,
+        // post_like: 0,
         post_favorite: 0,
         loadding: false,
         pullUpOn: true,
@@ -44,7 +45,6 @@ Page({
 
         //小程序码
         this.loadWxacode();
-
         this.getDate(), this.data.isShare || wx.createInterstitialAd && ((o = wx.createInterstitialAd({
             adUnitId: e.globalData.AD_CHAPING
         })).onLoad(function() {}), o.onError(function(t) {}), o.onClose(function() {}))
@@ -65,14 +65,14 @@ Page({
         Rest.get(Api.JIANGQIE_POST_DETAIL, {
             post_id: that.post_id
         }).then(res => {
-            console.log(res)
+            // console.log(res)
             wx.setNavigationBarTitle({
                 title: res.data.title,
             })
 
             that.setData({
                 post: res.data,
-                post_like: res.data.user.islike,
+                // post_like: res.data.user.islike,
                 post_favorite: res.data.user.isfavorite,
                 like_list: res.data.like_list,
             });
@@ -81,40 +81,40 @@ Page({
         });
     },
    
- // 获取小程序插屏广告
- setInterstitialAd: function () {
-     var that = this;
-    if(that.data.setAD.interstitialid&&wx.createInterstitialAd){
-        let interstitialAd = wx.createInterstitialAd({
-            adUnitId: that.data.setAD.interstitialid
-        })
-         // 监听插屏错误事件
-        interstitialAd.onError((err) => {
-            console.error(err)
-        })
-         // 显示广告
-        if (interstitialAd) {
-            if(that.data.setAD.switch_inad=='yes'){
-                setinad = setInterval(() => {
-                    interstitialAd.show().catch((err) => {
-                        console.error(err)
-                    })
-                }, 2000);
-            }
-            else{
-                setTimeout(() => {
-                    interstitialAd.show().catch((err) => {
-                        console.error(err)
-                    })
-                }, 6000);
-            }
-            
-     }
-    }
-},
-onHide(){
-clearInterval(setinad);
-},
+    // 获取小程序插屏广告
+    setInterstitialAd: function () {
+        var that = this;
+        if(that.data.setAD.interstitialid&&wx.createInterstitialAd){
+            let interstitialAd = wx.createInterstitialAd({
+                adUnitId: that.data.setAD.interstitialid
+            })
+            // 监听插屏错误事件
+            interstitialAd.onError((err) => {
+                console.error(err)
+            })
+            // 显示广告
+            if (interstitialAd) {
+                if(that.data.setAD.switch_inad=='yes'){
+                    setinad = setInterval(() => {
+                        interstitialAd.show().catch((err) => {
+                            console.error(err)
+                        })
+                    }, 2000);
+                }
+                else{
+                    setTimeout(() => {
+                        interstitialAd.show().catch((err) => {
+                            console.error(err)
+                        })
+                    }, 6000);
+                }
+                
+        }
+        }
+    },
+    // onHide(){
+    //   clearInterval(setinad);
+    // },
     onReachBottom: function () {
         if (!this.data.pullUpOn) {
             return;
@@ -294,7 +294,7 @@ clearInterval(setinad);
             }
 
             that.setData({
-                post_like: (that.data.post_like == 1 ? 0 : 1),
+                // post_like: (that.data.post_like == 1 ? 0 : 1),
                 like_list: that.data.like_list
             });
         })
@@ -337,9 +337,9 @@ clearInterval(setinad);
     getDate: function() {
         var t = new Date(), e = (t.getFullYear(), t.getMonth() + 1), o = t.getDate(), n = t.getHours(), a = t.getMinutes(), i = (t.getSeconds(), 
         e + "月" + o + "日"), c = [ n, a ].map(this.formatNumber).join(":");
-        console.log(i), console.log(c), this.setData({
-            date: i,
-            time: c
+        this.setData({
+          date: i,
+          time: c
         });
     },
     formatNumber: function(t) {

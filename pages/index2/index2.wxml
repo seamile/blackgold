@@ -98,7 +98,8 @@
 					</view>
 				</view>
 
-        <view class="jiangqie-news-type2">
+        <!-- 工具栏：动态壁纸、头像、套图、花式昵称 -->
+        <!-- <view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
 						工具箱
         </view>
@@ -109,7 +110,7 @@
 						</view>
 						<text>{{item.titlebzbz}}</text>
 					</view>
-				</view>
+				</view> -->
 
 				
         <!-- <view

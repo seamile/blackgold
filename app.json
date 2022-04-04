@@ -13,10 +13,8 @@
     "pages/share/share",
     "pages/yinsi/yinsi",
     "pages/yonghu/yonghu",
-    "pages/guanwang/guanwang",
     "pages/gongju/gongju",
     "pages/lingzan/lingzan",
-    "pages/goumai/goumai",
     "pages/cover/index",
     "pages/detail/index",
     "pages/passport/login",
@@ -35,7 +33,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000000",
-    "navigationBarTitleText": "小小怪头像",
+    "navigationBarTitleText": "次元画册",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#F7F7F7",
     "backgroundColorTop": "#F7F7F7",
@@ -69,14 +67,6 @@
     ]
   },
   "subPackages": [
-    {
-      "root": "pages/waimai",
-      "name": "waimai",
-      "pages": [
-        "index"
-      ]
-    },
-
     {
       "root": "pages/profile",
       "name": "profile",
