@@ -436,7 +436,7 @@
 }
 
 .jiangqie-news-scroll-x-box {
-    height: 290rpx;
+    height: 512rpx;
     white-space: nowrap;
 }
 
@@ -447,32 +447,28 @@
 }
 
 .jiangqie-hot-scroll-box {
-    width: 440rpx;
-    height: 290rpx;
+    width: 323rpx;
+    height: 512rpx;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
     margin-bottom: 10rpx;
-    margin-left: -290rpx;
     display: inline-block;
 }
 
-
-
 .jiangqie-hot-scroll-box:first-child {
-    margin-left: 30rpx;
+  margin-left: 30rpx;
 }
 
 .jiangqie-hot-scroll-box:last-child {
-    margin-right: 30rpx;
+  margin-right: 30rpx;
 }
 
 .jiangqie-hot-scroll-image {
-    width: 140rpx;
-    height: 290rpx;
-    border-radius: 16rpx;
-    box-shadow: 5rpx 5rpx 20rpx rgba(0, 0, 0, 0.2);
+    width: 320rpx;
+    height: 512rpx;
+    border-radius: 15rpx;
     margin-bottom: 10rpx;
 }
 

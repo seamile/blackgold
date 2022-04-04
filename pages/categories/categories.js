@@ -65,5 +65,4 @@ Page({
             url: '/pages/list/list?cat_id=' + cat_id + '&title=' + cat_name
         })
     },
-
 })

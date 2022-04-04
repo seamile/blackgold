@@ -18,7 +18,7 @@
 
   <!-- 分类标题 -->
   <!-- <view class="listtit">
-  <image class="jiangqie-news-iconimg" src="https://sculpture.xmamx.com/wp-content/uploads/2022/02/CD.png"></image>
+  <image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
   <text class="listleft">壁纸分类</text>
   </view> -->
  
@@ -28,7 +28,6 @@
 			<view class="sorttitle">{{item.name}}</view>
 			<!-- <view class="sortsummary">{{item.description}}</view>  -->
 		</view>
-
 	</view>
 </view>
 <!--加载框 start-->

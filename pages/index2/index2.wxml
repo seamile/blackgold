@@ -60,11 +60,10 @@
         -->
         
         <!-- 热门推荐 -->
-	      <!-- <view class="jiangqie-news-type2">
+	      <view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
-						热门推荐
-						<image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image>
-						<text class="youhua">右滑查看</text>
+						今日更新
+						<text class="youhua">右滑查看更多 >></text>
         </view>
 				<view wx:if="{{hotbz && hotbz.length>0}}" class="jiangqie-news-view jiangqie-news-hot">
 					<scroll-view class="jiangqie-news-scroll-x-box" scroll-x="true">
@@ -72,7 +71,7 @@
 							<image src="{{item.thumbnail}}" mode="aspectFill" class="jiangqie-hot-scroll-image"></image>
 						</view>
 					</scroll-view>
-				</view> -->
+				</view>
        
 				<view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
