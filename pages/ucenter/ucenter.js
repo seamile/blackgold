@@ -195,13 +195,6 @@ Page({
         }
     },
 
-    handlerPageClick: function (e) {
-        let page_id = e.currentTarget.dataset.page_id;
-        wx.navigateTo({
-            url: '/pages/viewhtml/viewhtml?page_id=' + page_id,
-        })
-    },
-
     handlerLoginCancelClick: function (e) {
         this.setData({
             showPopLogin: false

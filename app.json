@@ -9,12 +9,10 @@
     "pages/bzarticle/bzarticle",
     "pages/about/about",
     "pages/login/login",
-    "pages/viewhtml/viewhtml",
     "pages/share/share",
     "pages/yinsi/yinsi",
     "pages/yonghu/yonghu",
     "pages/gongju/gongju",
-    "pages/lingzan/lingzan",
     "pages/cover/index",
     "pages/detail/index",
     "pages/passport/login",
@@ -87,13 +85,6 @@
       "pages": [
         "gallery"
       ]
-    },
-    {
-      "root": "pages/seka",
-      "name": "seka",
-      "pages": [
-        "index"
-      ]
     }
   ],
   "networkTimeout": {
@@ -107,5 +98,6 @@
       "desc": "你的位置信息将用于导航"
     }
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }

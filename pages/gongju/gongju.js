@@ -40,11 +40,6 @@ Page({
           src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c43ff92f-7ee2-4a95-8f9d-1f02f0cafd7e.jpg",
           url: "/pages/cover/index"
       }, {
-          title: "色卡推荐",
-          des: "一组小清新的色卡参考，程序员专用~",
-          src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/3392f994-f709-4602-8d72-1a801c2a5aaa.jpg",
-          url: "/pages/seka/index"
-      }, {
           title: "头像挂件",
           des: "冬奥会，冰墩墩，节日头像挂件制作",
           src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8031f133-fe23-439d-8f8d-f0a0c9e655c2.jpg",
@@ -55,56 +50,16 @@ Page({
             src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/dd9ef7ab-b619-4cb1-af99-74c586c06726.jpg",
             url: "/pages/index1/index"
         }, {
-            title: "亲戚计算器",
-            des: "最全面的中国亲戚关系计算器，逢年过节",
-            src: "https://img.zcool.cn/community/01e0e960bedb7911013eaf7026a55e.jpg@520w_390h_1c_1e_2o_100sh.jpg",
-            url: "/pages/qinqi/index"
-        }, {
             title: "花式昵称",
             des: "各类微信炫酷，透明昵称全面升级",
             src: "https://img.zcool.cn/community/01853a60bc736011013eaf70ddb4ff.jpg@520w_390h_1c_1e_2o_100sh.jpg",
             url: "/pages/huashi/index"
         }, {
-            title: "程序员黄历",
-            des: "敲代码测试修复提交之前求一签！",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/5c77d39f-bf48-4fca-b662-9cf00a41d67e.jpg",
-            url: "/pages/chengxuyuan/index"
-        }, {
-            title: "免费QQ名片赞",
-            des: "每天免费获取1000+QQ名片赞！！！",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/6fd3aaf1-b532-4ace-8ad6-f3062fb0de05.jpg",
-            url: "/pages/lingzan/index"
-        }, {
             title: "尺子套餐",
             des: "提供直尺，量角器小工具，学霸必备！",
             src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/d5675218-aab8-4881-bbe7-405ff49f0cc3.jpg",
             url: "/pages/chizi/index"
-        }, {
-            title: "指尖光环",
-            des: "超火的聚会喝酒神器，指尖光环",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/cf83518c-cf48-4f64-b17a-4ab8bd60468d.jpg",
-            url: "/pages/zhijian/index"
-        }, {
-            title: "BMI体重指数",
-            des: "计算您的体脂率，帮助您检测身体状况",
-            src: "https://img.zcool.cn/community/01da0660bd9fe111013eaf70b1be76.jpg@520w_390h_1c_1e_2o_100sh.jpg",
-            url: "/pages/bmi/index"
-        }, {
-            title: "房贷计算器",
-            des: "最专业的免费房贷税费计算神器！",
-            src: "https://img.zcool.cn/community/0187f560bef1c211013eaf70bcc9c1.jpg@520w_390h_1c_1e_2o_100sh.jpg",
-            url: "/pages/fangdai/index"
-        }, {
-            title: "色卡推荐",
-            des: "一组小清新的色卡参考",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/3392f994-f709-4602-8d72-1a801c2a5aaa.jpg",
-            url: "/pages/seka/index"
-        }, {
-            title: "金额大写转换",
-            des: "金额转大写工具",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/5a42b4bd-6f5b-444b-93f1-2ff0b9528a87.jpg",
-            url: "/pages/upcasing/index"
-        } ]
+        }]
     },
     onLoad: function() {
         var e = this;

@@ -45,36 +45,7 @@ page {
     line-height: 68rpx;
 }
 
-.banner-title_text {
-    display: inline-block;
-    vertical-align: middle;
-}
 
-.banner-avatar {
-    position: relative;
-    vertical-align: middle;
-    float: right;
-}
-
-.avatar,.default-avatar {
-    width: 72rpx;
-    height: 72rpx;
-    border: 5rpx solid #fff;
-    border-radius: 50%;
-    background-size: cover;
-}
-
-.default-avatar {
-    background-image: url(https://cloud-minapp-16269.cloud.ifanrusercontent.com/default-avator.jpg);
-}
-
-.unread-message {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    pointer-events: none;
-}
 
 .banner-brief {
     font-size: 28rpx;
@@ -97,29 +68,8 @@ page {
     padding: 20rpx 36rpx;
 }
 
-.top_text {
-    width: 100%;
-    text-align: center;
-    color: #aaa;
-    font-size: 24rpx;
-}
-
 page::-webkit-scrollbar {
     display: none;
-}
-
-.slide_box {
-    margin: 0 auto;
-    box-shadow: 0rpx 2rpx 14rpx 0rpx rgba(38,38,38,.1);
-}
-
-.slide_box,.slide_image {
-    width: 678rpx;
-    height: 280rpx;
-}
-
-.slide_image {
-    border-radius: 4rpx;
 }
 
 .dots {
@@ -149,25 +99,6 @@ page::-webkit-scrollbar {
 .index_label {
     position: relative;
     margin-top: 80rpx;
-}
-
-.index_label_title {
-    font-size: 48rpx;
-    color: #262626;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.index_label_bg {
-    width: 160rpx;
-    height: 12rpx;
-    background: linear-gradient(270deg,rgba(249,228,135,0),#f1c54f);
-    border-radius: 11rpx;
-    position: absolute;
-    top: 48rpx;
-    left: 0;
 }
 
 .index_label_more {
@@ -372,34 +303,6 @@ page::-webkit-scrollbar {
     align-items: center;
     padding: 24rpx;
     box-sizing: border-box;
-}
-
-.search-icon {
-    flex-grow: 0;
-    flex-shrink: 0;
-    width: 40rpx;
-    height: 40rpx;
-    background-image: url("https://cloud-minapp-16269.cloud.ifanrusercontent.com/product-search.svg");
-    background-size: contain;
-}
-
-.search-input {
-    flex-grow: 1;
-    flex-shrink: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-left: 20rpx;
-    font-size: 26rpx;
-    color: #a8a8a8;
-}
-
-input.search-input {
-    color: #222;
-}
-
-search-input-placeholder {
-    color: #a8a8a8;
 }
 
 .close-btn {

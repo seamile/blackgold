@@ -1,6 +1,0 @@
-<view id="container">
-    <view bindtap="getinfo" class="item" data-i="{{index}}" style="background-color:{{item.sixteen}};color:{{item.color}};" wx:for="{{list}}" wx:key="key">
-        <view class="en">{{item.en}}</view>
-        <view class="cn">{{item.cn}}</view>
-    </view>
-</view>
