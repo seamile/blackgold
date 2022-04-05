@@ -8,8 +8,10 @@
  * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
  */
  page {
-    background: #000000;
-  }
+    background: black;
+    font-weight: 500;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -21,62 +23,59 @@
 .jiangqie-search-box {
     box-sizing: border-box;
     padding: 30rpx 0;
-    border-bottom: 1rpx solid #DDDDDD;
+    border-bottom: 1rpx solid grey;
+    color: orange;
 }
 
 .jiangqie-search-head {
     text-align: left;
-    font-size: 30rpx;
-    font-weight: 500;
+    font-size: 32rpx;
 }
 
 .jiangqie-search-icon {
-    height: 28rpx;
-    width: 28rpx;
-    margin-right: 8rpx;
+    height: 35rpx;
+    width: 35rpx;
+    margin-right: 20rpx;
 }
 
 .jiangqie-search-clear {
     float: right;
     font-size: 24rpx;
-    color: #999;
-    font-weight: 300;
+    color: rgb(224, 224, 224);
+    padding: 5rpx 15rpx;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 50rpx;
 }
 
 .jiangqie-search-list {
     flex-direction: column;
     box-sizing: border-box;
-    padding: 10rpx 0;
+    padding: 20rpx 0;
 }
 
 .jiangqie-search-tag {
     float: left;
-    padding: 4rpx 60rpx 8rpx 26rpx;
+    padding: 4rpx 25rpx 8rpx 25rpx;
     vertical-align: middle;
-    background: #252525;
+    background: rgb(64, 64, 64);
     border-radius: 40rpx;
     margin-right: 20rpx;
     margin-bottom: 20rpx;
 }
 
-.jiangqie-search-hot .jiangqie-search-tag {
-    padding-right: 26rpx;
-}
-
 .jiangqie-search-tag text {
-    font-weight: 300;
-    font-size: 24rpx;
-    color: #fff;
+    font-weight: 400;
+    font-size: 26rpx;
+    color: rgb(224, 224, 224);
 }
 
 .jiangqie-search-del {
     float: right;
     height: 22rpx;
     width: 22rpx;
-    margin-right: -36rpx;
     margin-top: 14rpx;
+    margin-left: 15rpx;
 }
-
 
 .jiangqie-searchbox {
     padding: 30rpx 0;
@@ -87,38 +86,41 @@
 
 .jiangqie-search-input {
     width: 100%;
-    height: 66rpx;
+    height: 65rpx;
     border-radius: 35rpx;
     padding: 0 30rpx;
     box-sizing: border-box;
-    background: #252525;
+    background: rgb(64, 64, 64);
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
-    border: 1rpx solid #fff;
+    border: 2rpx solid rgb(192, 192, 192);
+}
+
+.search-icon{
+  padding-top: 20rpx;
 }
 
 .jiangqie-input {
     flex: 1;
-    color: #333;
+    color: white;
     padding: 0 16rpx;
     font-size: 28rpx;
 }
 
 .jiangqie-input-plholder {
     font-size: 28rpx;
-    color: #b2b2b2;
+    font-weight: 400;
+    color: rgb(128, 128, 128);
 }
 
-.jiangqie-cancle {
-    color: #888;
-    font-size: 28rpx;
-    padding-left: 30rpx;
-    flex-shrink: 0;
-}
 
-.jiangqie-search {
-    font-size: 28rpx;
-    padding-left: 30rpx;
-    flex-shrink: 0;
+.jiangqie-cancle, .jiangqie-search {
+  flex-shrink: 0;
+  font-size: 28rpx;
+  margin-left: 20rpx;
+  color: rgb(224, 224, 224);
+  padding: 11rpx 20rpx;
+  border: 1px solid rgb(192, 192, 192);
+  border-radius: 50rpx;
 }
