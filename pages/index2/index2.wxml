@@ -62,7 +62,7 @@
         <!-- 热门推荐 -->
 	      <view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
-						今日更新
+						热门推荐
 						<text class="youhua">右滑查看更多 >></text>
         </view>
 				<view wx:if="{{hotbz && hotbz.length>0}}" class="jiangqie-news-view jiangqie-news-hot">
