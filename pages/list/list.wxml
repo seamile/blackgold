@@ -5,9 +5,7 @@
 <!--新闻列表——常规-->
 <view class="container">
 	<view class="list-box data-v-0034d6f4">
-
 		<block wx:if="{{posts.length > 0}}">
-
 			<view class="list-box data-v-0034d6f4">
 				<block wx:for="{{posts}}" wx:key="id">
 					<image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4" index="{{index}}"
