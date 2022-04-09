@@ -1,6 +1,0 @@
-<template name="gotop">
-    <view bindtap="goTop" class="temp-wrap" wx:if="{{show}}">
-        <view class="temp-icon"></view>
-        <text class="temp-info">TOP</text>
-    </view>
-</template>
