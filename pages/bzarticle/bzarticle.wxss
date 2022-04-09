@@ -345,7 +345,7 @@ button {
 }
 
 .tui-operation-item {
-left: 9rpx;
+  left: 9rpx;
   flex: 1;
   display: flex;
   align-items: center;

@@ -138,7 +138,6 @@
 }
 
 .jiangqie-news-iconimg1 {
-
     height: 110rpx;
     width: 110rpx;
 }
@@ -576,21 +575,16 @@
     display: -webkit-flex;
     display: flex;
     -webkit-box-pack: start;
-    justify-content: flex-start;
+    justify-content: space-around;
     flex-wrap: wrap;
-    align-content: flex-start;
+    align-content: space-around;
 }
 
 .list-box .image.data-v-0034d6f4 {
-    width: 230rpx;
-    height: 420rpx;
-    /*box-shadow: 0 0.5rpx 10rpx 0 #000;*/
-    /*border-radius: 4rpx;*/
-    /*background: #333;*/
-    margin-top: 7.5rpx;
-    margin-bottom: 7.5rpx;
-    margin-left: 10rpx;
-    border-radius: 20rpx;
+  width: 247rpx;
+  height: 440rpx;
+  border-radius: 10rpx;
+  margin: 2rpx 0;
 }
 .Welcome {
     font-size: 25rpx;
@@ -626,7 +620,6 @@
     height: 70%;
     margin-top: 160rpx;
     margin-left: 100rpx;
-  
   }
   
   .mask .AdView-mask .an-niu {
@@ -647,7 +640,6 @@
 
   /**公告**/
 .jiangqie-rolling-news {
-
     width: 100%;
     padding: 18rpx 30rpx 18rpx 170rpx;
     box-sizing: border-box;
@@ -713,8 +705,3 @@
 }
 
 /**公告结束**/
-
-
-
-
-

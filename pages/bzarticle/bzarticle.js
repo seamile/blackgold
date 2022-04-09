@@ -26,6 +26,7 @@ Page({
         loadding: false,
         pullUpOn: true,
         loaded: false,
+        showOptionBar: true,
         pagead: 7,
     },
     post_id: 0,
@@ -35,7 +36,7 @@ Page({
 
     //返回页面是否需要刷新
     needRefresh: true,
-   
+
     onLoad: function (options) {
         if (options.scene) {
             this.post_id = decodeURIComponent(options.scene);
@@ -143,6 +144,13 @@ Page({
             imageUrl: that.data.post.thumbnail,
         }
     },
+
+  switchOptionBarState: function(){
+    this.setData({
+      showOptionBar: (!this.data.showOptionBar),
+    })
+  },
+
   // 收藏
   onAddToFavorites:function(){
     var that = this;
