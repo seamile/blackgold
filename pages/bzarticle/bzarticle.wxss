@@ -14,7 +14,7 @@
 @import "../../colorui/main.wxss";
 @import "../../colorui/icon.wxss";
 
-page{
+page {
   background: #000000;
 }
 
@@ -317,7 +317,7 @@ button {
   position: fixed;
   left: 75rpx;
   bottom: 65rpx;
-  
+
   border-radius: 30rpx;
   /* z-index: 99999; */
   /*padding-bottom: env(safe-area-inset-bottom);*/
@@ -355,7 +355,7 @@ button {
 }
 
 .tui-operation-itemmm {
-left: 4rpx;
+  left: 4rpx;
   flex: 1;
   display: flex;
   align-items: center;
@@ -365,16 +365,14 @@ left: 4rpx;
 }
 
 .tui-operation-item image {
-
   height: 42rpx;
   width: 42rpx;
 }
 
 .tui-operation-itemmm image {
-
-height: 42rpx;
-width: 42rpx;
-bottom: -11rpx;
+  height: 42rpx;
+  width: 42rpx;
+  bottom: -11rpx;
 }
 
 .tui-operation-item text {
@@ -387,12 +385,12 @@ bottom: -11rpx;
 }
 
 .tui-operation-itemmm text {
-/*position: absolute;*/
-/*right: 10rpx;*/
-color: #9c9898;
-font-size: 20rpx;
-top: 30rpx;
-padding: 4rpx;
+  /*position: absolute;*/
+  /*right: 10rpx;*/
+  color: #9c9898;
+  font-size: 20rpx;
+  top: 30rpx;
+  padding: 4rpx;
 }
 
 .tui-operation-right {
@@ -625,7 +623,8 @@ button.jiangqie-page-laud-btn {
   height: 100%;
   overflow: hidden;
 }
-.shangxia{
+
+.shangxia {
   position: fixed;
   bottom: 20%;
   left: 220rpx;
@@ -633,55 +632,63 @@ button.jiangqie-page-laud-btn {
   width: 320rpx;
   z-index: 10;
 }
-.shangxia image{
+
+.shangxia image {
   width: 40rpx;
   height: 40rpx;
-  padding:20rpx;
+  padding: 20rpx;
   z-index: 10;
 }
-.shangxia .shangtu{
+
+.shangxia .shangtu {
   width: 80rpx;
   height: 80rpx;
   position: absolute;
   z-index: 10;
-  top:0;
+  top: 0;
   left: 0;
   background: #fff;
-  border-radius:20rpx;  opacity:0.4;
+  border-radius: 20rpx;
+  opacity: 0.4;
 }
-.shangxia .xiatu{
+
+.shangxia .xiatu {
   width: 80rpx;
   position: absolute;
   z-index: 10;
-  top:0;
+  top: 0;
   right: 0;
   height: 80rpx;
   background: #fff;
-  border-radius:20rpx;  opacity:0.4;
+  border-radius: 20rpx;
+  opacity: 0.4;
 }
-.shangxia .shouye{
+
+.shangxia .shouye {
   width: 80rpx;
   position: absolute;
   z-index: 10;
-  top:0;
+  top: 0;
   left: 100rpx;
   height: 80rpx;
   margin: 0 20rpx;
   background: #fff;
-  border-radius:20rpx;  opacity:0.4;
+  border-radius: 20rpx;
+  opacity: 0.4;
 }
+
 /* 底部菜单 */
 
 .date-container {
-    width: 100%;
-    height: 300rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 200rpx;
-    opacity: .9;
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 200rpx;
+  opacity: .9;
 }
 
 .time {

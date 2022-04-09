@@ -18,7 +18,6 @@ const Poster = require('../../components/poster/poster/poster');
 let rewardedVideoAd = null;
 var e = getApp(), o = null;
 Page({
-
     data: {
         post: {},
         // post_like: 0,
@@ -48,7 +47,7 @@ Page({
         this.loadWxacode();
         this.getDate(), this.data.isShare || wx.createInterstitialAd && ((o = wx.createInterstitialAd({
             adUnitId: e.globalData.AD_CHAPING
-        })).onLoad(function() {}), o.onError(function(t) {}), o.onClose(function() {}))
+        })).onLoad(function () { }), o.onError(function (t) { }), o.onClose(function () { }))
     },
 
     onShow: function () {
@@ -58,10 +57,10 @@ Page({
         }
 
         let that = this;
-       Util.getAD(that,function(){
-           // that.setInterstitialAd(); //加载插屏广告
-              //加载广告
-              that.loadInterstitialAd();
+        Util.getAD(that, function () {
+            // that.setInterstitialAd(); //加载插屏广告
+            //加载广告
+            that.loadInterstitialAd();
         })
         Rest.get(Api.JIANGQIE_POST_DETAIL, {
             post_id: that.post_id
@@ -81,11 +80,11 @@ Page({
             WxParse.wxParse('bzarticle', 'html', res.data.content, that, 5);
         });
     },
-   
+
     // 获取小程序插屏广告
     setInterstitialAd: function () {
         var that = this;
-        if(that.data.setAD.interstitialid&&wx.createInterstitialAd){
+        if (that.data.setAD.interstitialid && wx.createInterstitialAd) {
             let interstitialAd = wx.createInterstitialAd({
                 adUnitId: that.data.setAD.interstitialid
             })
@@ -95,22 +94,22 @@ Page({
             })
             // 显示广告
             if (interstitialAd) {
-                if(that.data.setAD.switch_inad=='yes'){
+                if (that.data.setAD.switch_inad == 'yes') {
                     setinad = setInterval(() => {
                         interstitialAd.show().catch((err) => {
                             console.error(err)
                         })
                     }, 2000);
                 }
-                else{
+                else {
                     setTimeout(() => {
                         interstitialAd.show().catch((err) => {
                             console.error(err)
                         })
                     }, 6000);
                 }
-                
-        }
+
+            }
         }
     },
     // onHide(){
@@ -124,13 +123,13 @@ Page({
     },
 
     onShareAppMessage: function () {
-    let that = this;
+        let that = this;
         wx.showShareMenu({
             withShareTicket: true,
             menus: ['shareAppMessage', 'shareTimeline']
         })
         return {
-            title: "【"+that.data.post.title+"】分享这张好看的手机壁纸给你~",
+            title: "【" + that.data.post.title + "】分享这张好看的手机壁纸给你~",
             imageUrl: this.data.post.thumbnail,
             path: 'pages/bzarticle/bzarticle?post_id=' + this.post_id,
         }
@@ -139,26 +138,26 @@ Page({
     onShareTimeline: function () {
         let that = this;
         return {
-            title: "【"+that.data.post.title+"】分享这张好看的手机壁纸给你~",
+            title: "【" + that.data.post.title + "】分享这张好看的手机壁纸给你~",
             query: 'post_id=' + that.post_id,
             imageUrl: that.data.post.thumbnail,
         }
     },
 
-  switchOptionBarState: function(){
-    this.setData({
-      showOptionBar: (!this.data.showOptionBar),
-    })
-  },
+    switchOptionBarState: function () {
+        this.setData({
+            showOptionBar: (!this.data.showOptionBar),
+        })
+    },
 
-  // 收藏
-  onAddToFavorites:function(){
-    var that = this;
-    return {
-        title: that.data.post.title,
-        imageUrl: that.data.post.thumbnail,
-    }
-},
+    // 收藏
+    onAddToFavorites: function () {
+        var that = this;
+        return {
+            title: that.data.post.title,
+            imageUrl: that.data.post.thumbnail,
+        }
+    },
     /**
      * 海报分享
      */
@@ -175,39 +174,39 @@ Page({
                 x: 30,
                 y: 234,
                 backgroundColor: '#FFFFFF'
-            }, ],
+            },],
             texts: [{
-                    x: 375,
-                    y: 120,
-                    baseLine: 'middle',
-                    textAlign: 'center',
-                    text: this.data.post.title,
-                    width: 600,
-                    fontSize: 38,
-                    color: '#FFFFFF',
-                },
-                {
-                    x: 70,
-                    y: 780,
-                    fontSize: 28,
-                    lineHeight: 40,
-                    baseLine: 'middle',
-                    text: this.data.post.excerpt,
-                    width: 600,
-                    lineNum: 3,
-                    color: '#000000',
-                    zIndex: 200,
-                },
-                {
-                    x: 360,
-                    y: 1170,
-                    baseLine: 'middle',
-                    textAlign: 'center',
-                    text: getApp().appName,
-                    fontSize: 28,
-                    color: '#888888',
-                    zIndex: 200,
-                }
+                x: 375,
+                y: 120,
+                baseLine: 'middle',
+                textAlign: 'center',
+                text: this.data.post.title,
+                width: 600,
+                fontSize: 38,
+                color: '#FFFFFF',
+            },
+            {
+                x: 70,
+                y: 780,
+                fontSize: 28,
+                lineHeight: 40,
+                baseLine: 'middle',
+                text: this.data.post.excerpt,
+                width: 600,
+                lineNum: 3,
+                color: '#000000',
+                zIndex: 200,
+            },
+            {
+                x: 360,
+                y: 1170,
+                baseLine: 'middle',
+                textAlign: 'center',
+                text: getApp().appName,
+                fontSize: 28,
+                color: '#888888',
+                zIndex: 200,
+            }
             ],
             images: [
                 {
@@ -342,15 +341,15 @@ Page({
         });
     },
 
-    getDate: function() {
-        var t = new Date(), e = (t.getFullYear(), t.getMonth() + 1), o = t.getDate(), n = t.getHours(), a = t.getMinutes(), i = (t.getSeconds(), 
-        e + "月" + o + "日"), c = [ n, a ].map(this.formatNumber).join(":");
+    getDate: function () {
+        var t = new Date(), e = (t.getFullYear(), t.getMonth() + 1), o = t.getDate(), n = t.getHours(), a = t.getMinutes(), i = (t.getSeconds(),
+            e + "月" + o + "日"), c = [n, a].map(this.formatNumber).join(":");
         this.setData({
-          date: i,
-          time: c
+            date: i,
+            time: c
         });
     },
-    formatNumber: function(t) {
+    formatNumber: function (t) {
         return (t = t.toString())[1] ? t : "0" + t;
     },
 
@@ -376,9 +375,9 @@ Page({
     },
     // 二开版权信息end
 
-   //没流量主壁纸下载
-       
-       downloadPhoto1: function (e) {
+    //没流量主壁纸下载
+
+    downloadPhoto1: function (e) {
         // 判断用户是否登入
         if (!Auth.getUser()) {
             this.setData({
@@ -419,7 +418,7 @@ Page({
                 })
             }
         })
-      },
+    },
     // 二开下载
     downloadPhotos: function (e) {
         // 判断用户是否登入
