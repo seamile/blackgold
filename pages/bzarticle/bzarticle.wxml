@@ -29,14 +29,14 @@
 <view class="tui-operation" wx:if="{{ showOptionBar }}">
 	<view class="tui-operation-right tui-right-flex tui-col-5">
 		<view class="tui-operation-item" bindtap="jumpBtn">
-			<image src="../../images/fhh.png" mode="widthFix"></image>
+			<image src="../../images/back.svg" mode="widthFix"></image>
 			<text>返回</text>
 			<!-- <text>{{comment_count + comment_count_change}}</text> -->
 		</view>
 
 		<view class="tui-operation-item" catchtap="downloadPhotos">
 			<block >
-				<image src="../../images/xz.png" mode="widthFix"></image>
+				<image src="../../images/download.svg" mode="widthFix"></image>
 				<text>下载</text>
 			</block>
 		</view>
@@ -45,11 +45,11 @@
     <!--
 		<view class="tui-operation-item" catchtap="handlerLikeClick">
 			<block wx:if="{{post_like==1}}">
-				<image src="../../images/laud_on.png" mode="widthFix"></image>
+				<image src="../../images/like1.svg" mode="widthFix"></image>
 				<text>已赞</text>
 			</block>
 			<block wx:else>
-				<image src="../../images/laud.png" mode="widthFix"></image>
+				<image src="../../images/like2.svg" mode="widthFix"></image>
 				<text>点赞</text>
 			</block>
 		</view>
@@ -58,18 +58,18 @@
 		<!-- 收藏 -->
 		<view class="tui-operation-item" catchtap="handlerFavoriteClick">
 			<block wx:if="{{post_favorite==1}}">
-				<image src="../../images/scc.png" mode="widthFix"></image>
+				<image src="../../images/fav1.svg" mode="widthFix"></image>
 				<text>已收藏</text>
 			</block>
 			<block wx:else>
-				<image src="../../images/sc.png" mode="widthFix"></image>
+				<image src="../../images/fav2.svg" mode="widthFix"></image>
 				<text>收藏</text>
 			</block>
 		</view>
 
-		<button open-type="share" class="tui-operation-itemmm" hover-class="opcity" hover-stay-time="150">
+		<button class="tui-operation-item" open-type="share" hover-class="opcity" hover-stay-time="150">
 			<block>
-				<image src="../../images/fxx.png" mode="widthFix"></image>
+				<image src="../../images/share.svg" mode="widthFix"></image>
 				<text>分享</text>
 			</block>
 		</button>

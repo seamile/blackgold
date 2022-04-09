@@ -5,9 +5,6 @@
 	style="background: url(http://pixcdn.seamile.cn/ele/bg-ucenter.jpg) no-repeat; background-size: 100%; background-position: 0 0;	border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
 	
 	<view class="jiangqie-userbox">
-		<view class="jiangqie-usersetup">
-			<image src="../../images/setup.png"></image>
-		</view>
 		<view class="jiangqie-userinfo">
 			<block wx:if="{{user}}">
 				<view class="jiangqie-useravatar">
@@ -56,7 +53,7 @@
           <text class="vip-tips data-v-3590e630">{{$root.f0}}</text>
         </view>
         <text class="vip-right-tips data-v-3590e630">{{showVipTips}}</text>
-        <image class="right-arrows data-v-3590e630" mode="aspectFit" src="../../images/right_white.png"></image>
+        <image class="right-arrows data-v-3590e630" mode="aspectFit" src="../../images/right.svg"></image>
     </view>
 
 	<view class="jiangqie-listbox jiangqie-postcount">
@@ -66,7 +63,7 @@
             data-track="favorites" 
             catchtap="handlerPostTrack">
 				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/myico/star_no.svg" mode="aspectFill"></image>
+					<image wx:if="{{item.icon}}" src="../../images/star.svg" mode="aspectFill"></image>
 					<text>{{item.title}}</text>
 				</view>
 			</view>
@@ -75,7 +72,7 @@
 			<view wx:if="{{item.tp=='views'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
 				data-track="views" catchtap="handlerPostTrack">
 				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/myico/eye.svg" mode="aspectFill"></image>
+					<image wx:if="{{item.icon}}" src="../../images/eye.svg" mode="aspectFill"></image>
 					<text >{{item.title}}</text>
 				</view>
 			</view>
@@ -84,7 +81,7 @@
 			<!-- <view wx:if="{{item.tp=='about'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
 				data-track="about" catchtap="handlerguanwang">
 				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/myico/sms.svg" mode="aspectFill"></image>
+					<image wx:if="{{item.icon}}" src="../../images/gzh.svg" mode="aspectFill"></image>
 					<text>{{item.title}}</text>
 				</view>
 			</view> -->
@@ -93,7 +90,7 @@
 			<!-- <view wx:if="{{item.tp=='likes'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
 				data-track="likes" catchtap="handlerPostTrack">
 				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/myico/heart_outline.svg" mode="aspectFill"></image>
+					<image wx:if="{{item.icon}}" src="../../images/heart_outline.svg" mode="aspectFill"></image>
 					<text>{{item.title}}</text>
 				</view>
 			</view> -->
@@ -105,7 +102,7 @@
 			<view wx:if="{{item.tp=='contact'}}"
 				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
 				<button bindtap="gotoabout" class="jiangqie-listtitle-x">
-					<image src="../../images/guanwang.png" mode="aspectFill"></image>
+					<image src="../../images/ours.svg" mode="aspectFill"></image>
 					<text class="text-x">关于我们</text>
 				</button>
 			</view>
@@ -113,7 +110,7 @@
 			<view wx:if="{{item.tp=='contact'}}"
 				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
 				<button bindtap="gotoyinsi" class="jiangqie-listtitle-x">
-					<image src="../../images/yijian.png" mode="aspectFill"></image>
+					<image src="../../images/privacy.svg" mode="aspectFill"></image>
 					<text class="text-x">隐私政策</text>
 				</button>
 			</view>
@@ -121,7 +118,7 @@
 			<view wx:if="{{item.tp=='contact'}}"
 				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
 				<button bindtap="gotoyonghu" class="jiangqie-listtitle-x">
-					<image src="../../images/yonghu.png" mode="aspectFill"></image>
+					<image src="../../images/doc.svg" mode="aspectFill"></image>
 					<text class="text-x">用户协议</text>
 				</button>
 			</view>
@@ -129,21 +126,21 @@
 			<view wx:if="{{item.tp=='feedback'}}"
 				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
 				<button open-type="feedback" class="jiangqie-listtitle-x">
-					<image src="../../images/myico/new_post.png" mode="aspectFill"></image>
+					<image src="../../images/feedback.svg" mode="aspectFill"></image>
 					<text class="text-x">{{item.title}}</text>
 				</button>
 			</view>
 			<view wx:if="{{item.tp=='contact'}}"
 				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
 				<button open-type="contact" class="jiangqie-listtitle-x">
-					<image src="../../images/kefu11.png" mode="aspectFill"></image>
+					<image src="../../images/service.svg" mode="aspectFill"></image>
 					<text class="text-x">{{item.title}}</text>
 				</button>
 			</view>
 			<view wx:if="{{item.tp=='clear'}}"
 				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}" catchtap="handlerClearCache">
 				<view class="jiangqie-listtitle-x">
-					<image src="../../images/qingli.png" mode="aspectFill"></image>
+					<image src="../../images/clean.svg" mode="aspectFill"></image>
 					<text class="text-x">{{item.title}}</text>
 				</view>
 			</view>

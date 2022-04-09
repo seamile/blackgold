@@ -2,15 +2,15 @@
         <view class="{{['bottom',cssTran?'closeCss':'openCss']}}">
           <view class="nav-box">
             <view data-content="{{item.name}}" hoverClass="ch-hover" class="nav-tab" bindtap="navigateBack">
-                <image src="/images/icons/back-circle.svg" size="40" class="nav-tab1"> </image>
+                <image src="/images/back.svg" size="40" class="nav-tab1"> </image>
               <text>返回</text>
             </view>
             <view data-content="{{item.name}}" hoverClass="ch-hover" class="nav-tab" bindtap="downloadTap">
-                <image src="/images/icons/download-light-detail.svg" size="40" class="nav-tab1"> </image>
+                <image src="/images/download.svg" size="40" class="nav-tab1"> </image>
               <text>下载</text>
             </view>
             <view class="nav-tab">
-                <image src="/images/icons/share-light-detail.svg" class="nav-tab"> </image>
+                <image src="/images/share.svg" class="nav-tab"> </image>
               <text>分享</text><button style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;"
                 open-type="share"></button>
             </view>

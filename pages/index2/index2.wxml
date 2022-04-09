@@ -4,7 +4,7 @@
 		<view class="AdView-mask" animation="{{animationData}}">
 			<image class="mask-img" data-link="{{tcad[0].link}}" catchtap="handlerIconNavClick"  src="{{tcad[0].ico}}"></image>
 			<image class="an-niu" data-link="{{tcad[0].link}}" catchtap="handlerIconNavClick" src="{{tcad[0].icon}}"></image>
-			<image class="close-mask" bindtap="hiddenMsak" src="../../images/cancel.png"></image>
+			<image class="close-mask" bindtap="hiddenMsak" src="../../images/cancel.svg"></image>
 		</view>
 	</view>
 </view>
@@ -124,12 +124,10 @@
 				<view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
 						Pixiv 精选 <!-- 官方推荐 -->
-						<!-- <image class="jiangqie-news-iconimg2" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/9da45837-78ad-41da-8aa1-24e8418c1ef0.png"></image> -->
 						<text class="youhua">每日更新</text>
 					</view>
 
 				<view class="list-box data-v-0034d6f4">
-
 					<block wx:for="{{postsLast}}" wx:key="id">
 						<view
               wx:if="{{(listModebz==1 && false) || (listModebz==2) || (listModebz==3 && index%5==4)}}" 
@@ -137,7 +135,6 @@
               data-id="{{item.id}}" 
               catchtap="handlerArticleClick">
 							<image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4"></image>
-
 						</view>
 						<view wx:else class="jiangqie-news-block" data-id="{{item.id}}" catchtap="handlerArticleClick">
 							<image src="{{item.thumbnail}}" mode="aspectFill" class="jiangqie-news-image"></image>
@@ -149,13 +146,12 @@
 								<view wx:if="{{item.excerpt}}" class="jiangqie-news-describe">{{item.excerpt}}</view>
 								<view class="jiangqie-news-info">
 									<view class="jiangqie-news-cmt">
-										<image src="../../images/ctm2.png" mode="aspectFill" class=""></image>{{item.views}}
+										<image src="../../images/eye.svg" mode="aspectFill" class=""></image>{{item.views}}
 									</view>
 									<text wx:for="{{item.tags}}" wx:key="id" class="jiangqie-news-tag">{{item.name}}</text>
 									<text class="jiangqie-news-time">{{item.time}}</text>
 								</view>
 							</view>
-				
 						</view>
 						<block wx:if="{{(index+1)%12 ==0}}">
 							<import src="/templates/ad.wxml"/>
@@ -195,4 +191,4 @@
 <!--加载框 end-->
 
 <!-- 回到顶部 -->
-<image class='goTop' hidden='{{!floorstatus}}' bindtap="goTop"src="../../images/top-fill.png"></image>
+<image class='goTop' hidden='{{!floorstatus}}' bindtap="goTop" src="../../images/top.svg"></image>
