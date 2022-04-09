@@ -45,20 +45,10 @@ Page({
           src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8031f133-fe23-439d-8f8d-f0a0c9e655c2.jpg",
           url: "/pages/avatar/index"
       }, {
-            title: "趣味测试题",
-            des: "趣味测试，爱情测试，缘分测试，性格测试等~",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/dd9ef7ab-b619-4cb1-af99-74c586c06726.jpg",
-            url: "/pages/index1/index"
-        }, {
             title: "花式昵称",
             des: "各类微信炫酷，透明昵称全面升级",
             src: "https://img.zcool.cn/community/01853a60bc736011013eaf70ddb4ff.jpg@520w_390h_1c_1e_2o_100sh.jpg",
             url: "/pages/huashi/index"
-        }, {
-            title: "尺子套餐",
-            des: "提供直尺，量角器小工具，学霸必备！",
-            src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/d5675218-aab8-4881-bbe7-405ff49f0cc3.jpg",
-            url: "/pages/chizi/index"
         }]
     },
     onLoad: function() {

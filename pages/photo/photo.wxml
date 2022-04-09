@@ -1,6 +1,4 @@
-<!-- <import src="../common/common.wxml" /> -->
-<!-- <import src="../common/wallpaper-grid.wxml" /> -->
-<import src="../common/common1.wxml" />
+<import src="../common/common.wxml" />
 
 <block wx:if="{{item==''}}">
     <view class="cu-card case">

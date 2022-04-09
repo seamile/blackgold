@@ -1,9 +1,4 @@
 var t = null;
-const common = require('../../mixins/common');
-const detail = require('../../mixins/detail');
-const canvas = require('../../utils/canvas');
-const advert = require('../../mixins/advert');
-const app = getApp();
 Page({
     data: {
         src: "",
@@ -32,7 +27,7 @@ Page({
     onLoad: function(n) {
         wx.createRewardedVideoAd && ((t = wx.createRewardedVideoAd({
             adUnitId: ""
-        })).onError(function(t) {}), t.onClose(function(t) {
+        })).onError(function() {}), t.onClose(function(t) {
             t && t.isEnded;
         }));
         var o = n.src;
@@ -70,7 +65,7 @@ Page({
         t && t.show().catch(function() {
             t.load().then(function() {
                 return t.show();
-            }).catch(function(t) {
+            }).catch(function() {
                 console.log("激励视频 广告显示失败");
             });
         });
@@ -86,70 +81,70 @@ Page({
                     success: function(t) {
                         wx.saveImageToPhotosAlbum({
                             filePath: t.path,
-                            success: function(t) {
+                            success: function() {
                                 wx.showToast({
                                     title: "下载成功",
                                     icon: "success",
                                     image: "",
                                     duration: 1e3,
                                     mask: !0,
-                                    success: function(t) {},
-                                    fail: function(t) {},
-                                    complete: function(t) {}
+                                    success: function() {},
+                                    fail: function() {},
+                                    complete: function() {}
                                 });
                             },
-                            fail: function(t) {},
-                            complete: function(t) {}
+                            fail: function() {},
+                            complete: function() {}
                         });
                     },
-                    fail: function(t) {},
-                    complete: function(t) {}
+                    fail: function() {},
+                    complete: function() {}
                 }), wx.getImageInfo({
                     src: c,
                     success: function(t) {
                         wx.saveImageToPhotosAlbum({
                             filePath: t.path,
-                            success: function(t) {
+                            success: function() {
                                 wx.showToast({
                                     title: "下载成功",
                                     icon: "success",
                                     image: "",
                                     duration: 1e3,
                                     mask: !0,
-                                    success: function(t) {},
-                                    fail: function(t) {},
-                                    complete: function(t) {}
+                                    success: function() {},
+                                    fail: function() {},
+                                    complete: function() {}
                                 });
                             },
-                            fail: function(t) {},
-                            complete: function(t) {}
+                            fail: function() {},
+                            complete: function() {}
                         });
                     },
-                    fail: function(t) {},
-                    complete: function(t) {}
+                    fail: function() {},
+                    complete: function() {}
                 })), null != e && wx.getImageInfo({
                     src: e,
                     success: function(t) {
                         wx.saveImageToPhotosAlbum({
                             filePath: t.path,
-                            success: function(t) {
+                            success: function() {
                                 wx.showToast({
                                     title: "下载成功",
                                     icon: "success",
                                     image: "",
                                     duration: 1e3,
                                     mask: !0,
-                                    success: function(t) {},
-                                    fail: function(t) {},
-                                    complete: function(t) {}
+                                    success: function() {},
+                                    fail: function() {},
+                                    complete: function() {}
                                 });
                             },
-                            fail: function(t) {},
-                            complete: function(t) {}
+                            fail: function() {},
+                            complete: function() {}
                         });
                     },
-                    fail: function(t) {},
-                    complete: function(t) {}
+                    fail: function() {},
+                    complete: function() {}
                 })) : wx.authorize({
                     scope: "scope.writePhotosAlbum",
                     success: function() {
@@ -158,70 +153,70 @@ Page({
                             success: function(t) {
                                 wx.saveImageToPhotosAlbum({
                                     filePath: t.path,
-                                    success: function(t) {
+                                    success: function() {
                                         wx.showToast({
                                             title: "下载成功",
                                             icon: "success",
                                             image: "",
                                             duration: 1e3,
                                             mask: !0,
-                                            success: function(t) {},
-                                            fail: function(t) {},
-                                            complete: function(t) {}
+                                            success: function() {},
+                                            fail: function() {},
+                                            complete: function() {}
                                         });
                                     },
-                                    fail: function(t) {},
-                                    complete: function(t) {}
+                                    fail: function() {},
+                                    complete: function() {}
                                 });
                             },
-                            fail: function(t) {},
-                            complete: function(t) {}
+                            fail: function() {},
+                            complete: function() {}
                         }), wx.getImageInfo({
                             src: c,
                             success: function(t) {
                                 wx.saveImageToPhotosAlbum({
                                     filePath: t.path,
-                                    success: function(t) {
+                                    success: function() {
                                         wx.showToast({
                                             title: "下载成功",
                                             icon: "success",
                                             image: "",
                                             duration: 1e3,
                                             mask: !0,
-                                            success: function(t) {},
-                                            fail: function(t) {},
-                                            complete: function(t) {}
+                                            success: function() {},
+                                            fail: function() {},
+                                            complete: function() {}
                                         });
                                     },
-                                    fail: function(t) {},
-                                    complete: function(t) {}
+                                    fail: function() {},
+                                    complete: function() {}
                                 });
                             },
-                            fail: function(t) {},
-                            complete: function(t) {}
+                            fail: function() {},
+                            complete: function() {}
                         })), null != e && wx.getImageInfo({
                             src: e,
                             success: function(t) {
                                 wx.saveImageToPhotosAlbum({
                                     filePath: t.path,
-                                    success: function(t) {
+                                    success: function() {
                                         wx.showToast({
                                             title: "下载成功",
                                             icon: "success",
                                             image: "",
                                             duration: 1e3,
                                             mask: !0,
-                                            success: function(t) {},
-                                            fail: function(t) {},
-                                            complete: function(t) {}
+                                            success: function() {},
+                                            fail: function() {},
+                                            complete: function() {}
                                         });
                                     },
-                                    fail: function(t) {},
-                                    complete: function(t) {}
+                                    fail: function() {},
+                                    complete: function() {}
                                 });
                             },
-                            fail: function(t) {},
-                            complete: function(t) {}
+                            fail: function() {},
+                            complete: function() {}
                         });
                     },
                     fail: function() {
@@ -233,9 +228,9 @@ Page({
                             cancelColor: "",
                             confirmText: "确定",
                             confirmColor: "",
-                            success: function(t) {},
-                            fail: function(t) {},
-                            complete: function(t) {}
+                            success: function() {},
+                            fail: function() {},
+                            complete: function() {}
                         });
                     }
                 });
@@ -246,20 +241,20 @@ Page({
         var n = t.currentTarget.dataset.content;
         wx.setClipboardData({
             data: n,
-            success: function(t) {
+            success: function() {
                 wx.showToast({
                     title: "复制完成",
                     icon: "success",
                     image: "",
                     duration: 1e3,
                     mask: !0,
-                    success: function(t) {},
-                    fail: function(t) {},
-                    complete: function(t) {}
+                    success: function() {},
+                    fail: function() {},
+                    complete: function() {}
                 });
             },
-            fail: function(t) {},
-            complete: function(t) {}
+            fail: function() {},
+            complete: function() {}
         });
     },
     onShareAppMessage: function() {

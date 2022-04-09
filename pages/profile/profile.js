@@ -1,4 +1,7 @@
-var t = require("../../utils/1.js"), e = t(require("../../utils/2.js")), n = t(require("../../utils/3.js")), a = require("../../utils/4.js");
+import t from "../../utils/1.js";
+var e = t(require("../../utils/2.js"));
+var n = t(require("../../utils/3.js"));
+import { request } from "../../utils/4.js";
 
 Page({
     data: {
@@ -91,7 +94,7 @@ Page({
                 for (;;) switch (t.prev = t.next) {
                   case 0:
                     return t.next = 2, new Promise(function(t, e) {
-                        a.request("https://spare.maibaapp.com/bbs/newUgc/category/list/0").then(function(n) {
+                        request("https://spare.maibaapp.com/bbs/newUgc/category/list/0").then(function(n) {
                             200 == n.statusCode && "request:ok" == n.errMsg && 0 == n.data.code && "success" == n.data.msg ? t(n.data.data) : e("获取分类失败");
                         }).catch(function(t) {
                             e("获取分类失败");
@@ -117,7 +120,7 @@ Page({
                 for (;;) switch (t.prev = t.next) {
                   case 0:
                     return t.next = 2, new Promise(function(t, e) {
-                        a.request("https://spare.maibaapp.com/bbs/newUgc/category/info/0/" + n + "/" + r + "/" + (r + 17)).then(function(n) {
+                        request("https://spare.maibaapp.com/bbs/newUgc/category/info/0/" + n + "/" + r + "/" + (r + 17)).then(function(n) {
                             200 == n.statusCode && "request:ok" == n.errMsg && 0 == n.data.code && "success" == n.data.msg ? t(n.data.data) : e("获取图片列表失败");
                         }).catch(function(t) {
                             e("获取图片列表失败");
