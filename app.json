@@ -13,7 +13,6 @@
     "pages/yinsi/yinsi",
     "pages/yonghu/yonghu",
     "pages/gongju/gongju",
-    "pages/cover/index",
     "pages/detail/index",
     "pages/passport/login",
     "pages/huashi/index",
@@ -24,7 +23,6 @@
     "pages/huashi/wordsExp",
     "pages/huashi/emoticon",
     "pages/huashi/blank",
-    "pages/avatar/index",
     "pages/dynamicdetail/dynamicdetail",
     "pages/dynamic/dynamic"
   ],
@@ -41,8 +39,7 @@
     "color": "#fff",
     "selectedColor": "#1296db",
     "backgroundColor": "#000000",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index2/index2",
         "iconPath": "images/tabbar/index_gray.png",
         "selectedIconPath": "images/tabbar/index_active.png"
@@ -64,8 +61,7 @@
       }
     ]
   },
-  "subPackages": [
-    {
+  "subPackages": [{
       "root": "pages/profile",
       "name": "profile",
       "pages": [

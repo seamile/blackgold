@@ -30,7 +30,7 @@
                           class="one"
                           data-url="{{item.url}}"
                           wx:if="{{index%2!==1}}"
-                          wx:for="{{toolsall1}}"
+                          wx:for="{{toolsall}}"
                           wx:key="tool_left">
                         <image class="toolicon" mode="widthFix" src="{{item.src}}"></image>
                         <text class="onetitle">{{item.title}}</text>
@@ -42,7 +42,7 @@
                           class="one"
                           data-url="{{item.url}}"
                           wx:if="{{index%2==1}}"
-                          wx:for="{{toolsall1}}"
+                          wx:for="{{toolsall}}"
                           wx:key="tool_right">
                         <image class="toolicon" mode="widthFix" src="{{item.src}}"></image>
                         <text class="onetitle">{{item.title}}</text>

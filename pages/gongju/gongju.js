@@ -13,7 +13,7 @@ Page({
         autoFocus: !1,
         inputEnable: !0,
         scrollable: !0,
-        toolsall1: [ {
+        toolsall: [ {
             title: "动态壁纸",
             des: "每日精选，60帧超清，情侣等动态壁纸等你拿",
             src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8abb7d10-c6db-41f7-8df7-27282a074249.jpg",
@@ -32,22 +32,6 @@ Page({
             title: "花式昵称",
             des: "各类微信炫酷，透明昵称全面升级",
             src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8ec31f85-8dc7-45d2-8937-8c54a758dd2b.jpg",
-            url: "/pages/huashi/index"
-        }],
-        toolsall: [ {
-          title: "红包封面",
-          des: "超多免费红包封面，让你换个不停，快来试试~",
-          src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c43ff92f-7ee2-4a95-8f9d-1f02f0cafd7e.jpg",
-          url: "/pages/cover/index"
-      }, {
-          title: "头像挂件",
-          des: "冬奥会，冰墩墩，节日头像挂件制作",
-          src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/8031f133-fe23-439d-8f8d-f0a0c9e655c2.jpg",
-          url: "/pages/avatar/index"
-      }, {
-            title: "花式昵称",
-            des: "各类微信炫酷，透明昵称全面升级",
-            src: "https://img.zcool.cn/community/01853a60bc736011013eaf70ddb4ff.jpg@520w_390h_1c_1e_2o_100sh.jpg",
             url: "/pages/huashi/index"
         }]
     },
