@@ -9,40 +9,26 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   z-index: 9999;
   font-size: 26rpx;
   color: #fff;
-  background:rgba(0, 0, 0, .7);
+  background: rgba(0, 0, 0, .7);
   border-radius: 10rpx;
 }
 
 .tui-loading-center {
-  width: 50rpx;
-  height: 50rpx;
-  border: 3px solid #fff;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
-  margin: 0 6px;
+  margin: 10px;
   display: inline-block;
   vertical-align: middle;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 40%);
+  /* clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 40%); */
   animation: rotate 1s linear infinite;
-  
 }
 
-.tui-loading-center1 {
-  width: 70rpx;
-  height: 70rpx;
-  border: 3px solid #fff;
-  border-radius: 50%;
-  margin: 0 6px;
-  display: inline-block;
-  vertical-align: middle;
- /* clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 40%);*/
-  animation: rotate 1s linear infinite;
-  margin-bottom: 26rpx;
-}
-.tui-loadmore-tips{
+.tui-loadmore-tips {
   text-align: center;
   padding: 0 20rpx;
   box-sizing: border-box;

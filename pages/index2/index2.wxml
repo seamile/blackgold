@@ -162,7 +162,7 @@
 				</view>
 			</view>
 			<!--加载loadding-->
-			<tui-loadmore visible="{{loaddingLast}}"></tui-loadmore>
+			<tui-loading visible="{{loading}}"></tui-loading>
 			<tui-nomore visible="{{!pullUpOnLast}}"></tui-nomore>
 			<!--加载loadding-->
 		</block>
@@ -181,11 +181,12 @@
 				</view>
 			</view>
 			<!--加载loadding-->
-			<!-- <tui-loadmore visible="{{loadding}}"></tui-loadmore>
-			<tui-nomore visible="{{!pullUpOn}}"></tui-nomore> -->
+			<tui-loading visible="{{loading}}"></tui-loading>
+			<tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
 		</block>
 	</view>
 </view>
+
 <!--加载框 start-->
 <!-- <tui-loading visible="{{loading}}"></tui-loading> -->
 <!--加载框 end-->
