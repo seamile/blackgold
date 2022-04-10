@@ -49,23 +49,25 @@ Page({
       var e = this;
       wx.getSetting({
         success: function (t) {
-          t.authSetting["scope.writePhotosAlbum"] ? e.save() : wx.authorize({
-            scope: "scope.writePhotosAlbum",
-            success: function () {
-              e.save();
-            },
-            fail: function () {
-              wx.showModal({
-                title: "温馨提示",
-                content: "您未授予我们使用相册的权限，无法保存，请前往允许使用相册",
-                confirmText: "去允许",
-                confirmColor: "red",
-                success: function (t) {
-                  t.confirm && wx.openSetting({});
-                }
-              });
-            }
-          });
+          t.authSetting["scope.writePhotosAlbum"]
+            ? e.save()
+            : wx.authorize({
+              scope: "scope.writePhotosAlbum",
+              success: function () {
+                e.save();
+              },
+              fail: function () {
+                wx.showModal({
+                  title: "温馨提示",
+                  content: "您未授予我们使用相册的权限，无法保存，请前往允许使用相册",
+                  confirmText: "去允许",
+                  confirmColor: "red",
+                  success: function (t) {
+                    t.confirm && wx.openSetting({});
+                  }
+                });
+              }
+            });
         }
       });
     }

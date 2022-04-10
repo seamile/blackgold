@@ -5,7 +5,7 @@
               <image src="/images/back.svg" class="nav-tab"> </image>
               <text>返回</text>
             </view>
-            <view data-content="{{item.name}}" hoverClass="ch-hover" class="nav-tab" bindtap="downloadTap">
+            <view data-content="{{item.name}}" hoverClass="ch-hover" class="nav-tab" bindtap="save">
               <image src="/images/download.svg" class="nav-tab"> </image>
               <text>下载</text>
             </view>
