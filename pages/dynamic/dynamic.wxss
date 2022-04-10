@@ -61,41 +61,33 @@ page {
 }
 
 .img-container1 {
-  background-color: #20b2aa;
-}
-
-.img-container1,
-.img-container2 {
-  width: 80rpx;
-  height: 80rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
+  background-color: white;
 }
 
 .img-container2 {
-  background-color: red;
+  background-color: #74caff;
 }
 
 .img-container3 {
-  background-color: #87cefa;
+  background-color: hotpink;
 }
 
+.img-container4 {
+  background-color: red;
+}
+
+.img-container1,
+.img-container2,
 .img-container3,
 .img-container4 {
   width: 80rpx;
   height: 80rpx;
+  margin-bottom: 10rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-}
-
-.img-container4 {
-  background-color: plum;
 }
 
 .img {

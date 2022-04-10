@@ -13,11 +13,11 @@
 	<view wx:if="{{historySearch.length>0}}" class="jiangqie-search-box">
 		<view class="jiangqie-search-head">
 			<text class="jiangqie-search-clear" catchtap="handlerClearHistory">清除全部历史</text>
-			<image src="../../images/time.png" mode="widthFix" class="jiangqie-search-icon"></image>搜索历史
+			<image src="../../images/time.svg" mode="widthFix" class="jiangqie-search-icon"></image>搜索历史
 		</view>
 		<view class="jiangqie-search-list">
 			<view wx:for="{{historySearch}}" wx:key="index" class="jiangqie-search-tag" data-item="{{item}}" catchtap="handlerSearchItemClick">
-				<image src="../../images/del.png" mode="widthFix" class="jiangqie-search-del" data-item="{{item}}" catchtap="handlerSearchItemDelete"></image>
+				<image src="../../images/del.svg" mode="widthFix" class="jiangqie-search-del" data-item="{{item}}" catchtap="handlerSearchItemDelete"></image>
 				<text>{{item}}</text>
 			</view>
 		</view>
@@ -26,7 +26,7 @@
 	<!--热门模块-->
 	<view wx:if="{{hotSearch.length>0}}" class="jiangqie-search-box">
 		<view class="jiangqie-search-head">
-			<image src="../../images/hot.png" mode="widthFix" class="jiangqie-search-icon"></image>热 门
+			<image src="../../images/fire.svg" mode="widthFix" class="jiangqie-search-icon"></image>热 门
 		</view>
 		<view class="jiangqie-search-list jiangqie-search-hot">
 			<view wx:for="{{hotSearch}}" wx:key="index" class="jiangqie-search-tag" data-item="{{item}}" catchtap="handlerSearchItemClick">

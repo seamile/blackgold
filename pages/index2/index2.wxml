@@ -61,7 +61,7 @@
         
         <!-- 热门推荐 -->
 	      <view class="jiangqie-news-type2">
-					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
+					<image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
 						热门推荐
 						<text class="youhua">右滑查看更多 >></text>
         </view>
@@ -74,7 +74,7 @@
 				</view>
        
 				<view class="jiangqie-news-type2">
-					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
+					<image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
 						热门专题
         </view>
 				<view wx:if="{{activesbz}}" class="jiangqie-news-view">
@@ -100,7 +100,7 @@
 
         <!-- 工具栏：动态壁纸、头像、套图、花式昵称 -->
         <!-- <view class="jiangqie-news-type2">
-					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
+					<image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
 						工具箱
         </view>
         <view wx:if="{{iconNavbzbz && iconNavbzbz.length>0}}" class="jiangqie-news-icon">
@@ -122,7 +122,7 @@
        
 				
 				<view class="jiangqie-news-type2">
-					<image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
+					<image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
 						Pixiv 精选 <!-- 官方推荐 -->
 						<text class="youhua">每日更新</text>
 					</view>

@@ -11,14 +11,14 @@
   
   <!-- 小游戏广告 -->
   <!-- <view class="listtit">
-    <image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
+    <image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
     <text class="listleft">小游戏推荐</text>
   </view>
   <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom> -->
 
   <!-- 分类标题 -->
   <!-- <view class="listtit">
-  <image class="jiangqie-news-iconimg" src="../../images/cd.png"></image>
+  <image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
   <text class="listleft">壁纸分类</text>
   </view> -->
  

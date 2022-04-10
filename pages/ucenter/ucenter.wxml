@@ -47,7 +47,7 @@
 
 
 	<view bindtap="gotogzh" class="vip-box data-v-3590e630" >
-        <image class="vip-logo data-v-3590e630" mode="aspectFit" src="../../images/my_vip_icon.png"></image>
+        <image class="vip-logo data-v-3590e630" mode="aspectFit" src="../../images/vip.png"></image>
         <view class="vip-content data-v-3590e630">
           <text class="vip-title data-v-3590e630">关注公众号，更多二次元美图~</text>
           <text class="vip-tips data-v-3590e630">{{$root.f0}}</text>

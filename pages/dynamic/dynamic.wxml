@@ -15,20 +15,20 @@
       </block>
 <view class="tab-container" hidden="{{tabHidden}}">
     <view bindtap="dayTap" class="tab-item">
-        <view class="img-container2">
-            <image class="img" src="../../images/item_hot.png"></image>
+        <view class="img-container1">
+            <image class="img" src="../../images/fire.svg"></image>
         </view>
         <text class="wenzi">每日精选</text>
     </view>
     <view bindtap="chaoQingTap" class="tab-item">
-        <view class="img-container3">
-            <image class="img" src="../../images/item_sixty.png"></image>
+        <view class="img-container2">
+            <image class="img" src="../../images/60fps.svg"></image>
         </view>
         <text class="wenzi">60帧超清</text>
     </view>
     <view bindtap="QLTap" class="tab-item">
-        <view class="img-container4">
-            <image class="img" src="../../images/item_couple.png"></image>
+        <view class="img-container3">
+            <image class="img" src="../../images/love.svg"></image>
         </view>
         <text class="wenzi">情侣壁纸</text>
     </view>
@@ -41,7 +41,7 @@
                 <view class="info">
                     <text class="title">{{item.title}}</text>
                     <view class="count-container">
-                        <image class="iv" src="../../images/play_num.png"></image>
+                        <image class="iv" src="../../images/play.svg"></image>
                         <text class="count">{{item.play_num}}</text>
                     </view>
                 </view>
