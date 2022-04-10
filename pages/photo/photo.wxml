@@ -8,8 +8,7 @@
             </view>
         </view>
     </view>
-    <view wx:for="{{gglist}}" wx:key="gglist">
-    </view>
+
     <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
 
     <block wx:if="{{!loadFlag}}">
@@ -31,7 +30,6 @@
           </view>
         </view>
       </block>
-
 </block>
 <block wx:else>
     <view class="cu-card dynamic">
@@ -47,33 +45,32 @@
             </view>
         </view>
     </view>
-    <view wx:for="{{gglist}}" wx:key="gglist">
-    </view>
+
     <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
 
     <block wx:if="{{!loadFlag}}">
         <view class="{{['bottom',cssTran?'closeCss':'openCss']}}">
           <view class="nav-box">
             <view data-event-opts="{{[['tap',[['backClick',['$event']]]]]}}" class="nav-tab" bindtap="navigateBack">
-                <image src="/images/back.svg" class="nav-tab"> </image>
+              <image src="/images/back.svg" class="nav-tab"> </image>
               <text>返回</text>
             </view>
             <view data-content="{{item.name}}" hoverClass="ch-hover" class="nav-tab" bindtap="copy">
-                <image src="/images/icons/copy1.png" size="40" class="nav-tab1"> </image>
+              <image src="/images/copy.svg" class="nav-tab"> </image>
               <text>复制网名</text>
             </view>
             <view data-content="{{item.memo}}" hoverClass="ch-hover" class="nav-tab" bindtap="copy">
-                <image src="/images/icons/copy2.png" size="40" class="nav-tab1"> </image>
+              <image src="/images/signature.svg" class="nav-tab"> </image>
               <text>复制签名</text>
             </view>
             <view data-event-opts="{{[['tap',[['downloadTap']]]]}}" class="nav-tab" bindtap="saveImg">
-                <image src="/images/download.svg"  class="nav-tab"> </image>
+              <image src="/images/download.svg"  class="nav-tab"> </image>
               <text>下载套图</text>
             </view>
             <view class="nav-tab">
-                <image src="/images/share.svg" class="nav-tab"> </image>
-              <text>分享</text><button style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;"
-                open-type="share"></button>
+              <image src="/images/share.svg" class="nav-tab"></image>
+              <text>分享</text>
+              <button style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;" open-type="share"></button>
             </view>
           </view>
         </view>

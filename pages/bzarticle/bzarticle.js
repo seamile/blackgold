@@ -27,6 +27,7 @@ Page({
     loaded: false,
     showOptionBar: true,
     pagead: 7,
+    posterConfig: null
   },
   post_id: 0,
 
@@ -73,7 +74,7 @@ Page({
       that.setData({
         post: res.data,
         // post_like: res.data.user.islike,
-        post_favorite: res.data.user.isfavorite,
+        post_favorite: res.data.user.isfavorite || 0,
         like_list: res.data.like_list,
       });
 
@@ -316,7 +317,7 @@ Page({
       post_id: that.data.post.id
     }).then(res => {
       that.setData({
-        post_favorite: (that.data.post_favorite == 1 ? 0 : 1)
+        post_favorite: 1 - that.data.post_favorite
       });
     })
   },

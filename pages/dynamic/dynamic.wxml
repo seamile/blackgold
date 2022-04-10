@@ -1,18 +1,3 @@
-<block wx:if="{{!loadFlag}}">
-        <view class="{{['bottom',cssTran?'closeCss':'openCss']}}">
-          <view class="nav-box">
-            <view data-content="{{item.name}}" hoverClass="ch-hover" class="nav-tab" bindtap="navigateBack">
-                <image src="/images/back.svg" class="nav-tab1"> </image>
-              <text>返回</text>
-            </view>
-            <view class="nav-tab">
-                <image src="/images/share.svg" class="nav-tab"> </image>
-              <text>分享</text><button style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;"
-                open-type="share"></button>
-            </view>
-          </view>
-        </view>
-      </block>
 <view class="tab-container" hidden="{{tabHidden}}">
     <view bindtap="dayTap" class="tab-item">
         <view class="img-container1">

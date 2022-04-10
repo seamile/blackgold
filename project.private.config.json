@@ -1,9 +1,9 @@
 {
   "setting": {
-    "compileHotReLoad": true,
+    "compileHotReLoad": false,
     "urlCheck": true,
     "preloadBackgroundData": false,
-    "autoAudits": true
+    "autoAudits": false
   },
   "condition": {
     "miniprogram": {
