@@ -8,7 +8,7 @@
  * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
  */
 
-const Util = require('../../utils/util');
+const Util = require('../../utils/util').default;
 const Auth = require('../../utils/auth');
 const Api = require('../../utils/api.js');
 const Rest = require('../../utils/rest');

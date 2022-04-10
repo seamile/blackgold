@@ -11,7 +11,7 @@
 const Constants = require('../../utils/constants');
 const Api = require('../../utils/api.js');
 const Rest = require('../../utils/rest');
-const util = require('../../utils/util.js');
+const util = require('../../utils/util.js').default;
 let setinad;
 
 Page({

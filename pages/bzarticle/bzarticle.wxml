@@ -31,7 +31,7 @@
 			<text>返回</text>
 		</view>
 
-		<view class="tui-operation-item" catchtap="downloadPhotos">
+		<view class="tui-operation-item" catchtap="downloadPhoto">
 			<block >
 				<image src="../../images/download.svg" mode="widthFix"></image>
 				<text>下载</text>

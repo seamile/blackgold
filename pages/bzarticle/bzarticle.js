@@ -9,7 +9,7 @@
  */
 
 const Constants = require('../../utils/constants');
-const Util = require('../../utils/util');
+const Util = require('../../utils/util').default;
 const Api = require('../../utils/api.js');
 const Rest = require('../../utils/rest');
 const Auth = require('../../utils/auth');
@@ -48,7 +48,7 @@ Page({
     this.loadWxacode();
     this.getDate(), this.data.isShare || wx.createInterstitialAd && ((o = wx.createInterstitialAd({
       adUnitId: e.globalData.AD_CHAPING
-    })).onLoad(function () { }), o.onError(function (t) { }), o.onClose(function () { }))
+    })).onLoad(function () { }), o.onError(function (_t) { }), o.onClose(function () { }))
   },
 
   onShow: function () {
@@ -162,7 +162,7 @@ Page({
   /**
    * 海报分享
    */
-  sharePosterClick: function (e) {
+  sharePosterClick: function (_e) {
     let posterConfig = {
       width: 750,
       height: 1334,
@@ -281,18 +281,18 @@ Page({
   /**
    * 跳转返回
    */
-  jumpBtn: function (options) {
+  jumpBtn: function (_options) {
     Util.navigateBack();
   },
 
   /**
    * 文章 点赞
    */
-  handlerLikeClick: function (e) {
+  handlerLikeClick: function (_e) {
     let that = this;
     Rest.get(Api.JIANGQIE_USER_LIKE, {
       post_id: that.data.post.id
-    }).then(res => {
+    }).then(_res => {
       let avatar = Auth.getUser().avatar;
       var index = that.data.like_list.indexOf(avatar);
       if (index > -1) {
@@ -311,11 +311,11 @@ Page({
   /**
    * 文章 收藏
    */
-  handlerFavoriteClick: function (e) {
+  handlerFavoriteClick: function (_e) {
     let that = this;
     Rest.get(Api.JIANGQIE_USER_FAVORITE, {
       post_id: that.data.post.id
-    }).then(res => {
+    }).then(_res => {
       that.setData({
         post_favorite: 1 - that.data.post_favorite
       });
@@ -336,7 +336,7 @@ Page({
     });
   },
 
-  handlerLoginCancelClick: function (e) {
+  handlerLoginCancelClick: function (_e) {
     this.setData({
       showPopLogin: false
     });
@@ -354,7 +354,7 @@ Page({
     return (t = t.toString())[1] ? t : "0" + t;
   },
 
-  handlerDoLoginClick: function (e) {
+  handlerDoLoginClick: function (_e) {
     wx.navigateTo({
       url: '/pages/login/login',
     });
@@ -369,7 +369,7 @@ Page({
       modalName: e.currentTarget.dataset.target
     })
   },
-  hideModal(e) {
+  hideModal(_e) {
     this.setData({
       modalName: null
     })
@@ -378,7 +378,7 @@ Page({
 
   //没流量主壁纸下载
 
-  downloadPhoto1: function (e) {
+  downloadPhoto1: function (_e) {
     // 判断用户是否登入
     if (!Auth.getUser()) {
       this.setData({
@@ -396,7 +396,7 @@ Page({
       success: function (e) {
         wx.saveImageToPhotosAlbum({
           filePath: e.tempFilePath,
-          success: function (e) {
+          success: function (_e) {
             setTimeout(function () {
               wx.hideLoading()
             }, 2000)
@@ -413,7 +413,7 @@ Page({
               }
             });
           },
-          complete: function (e) {
+          complete: function (_e) {
             wx.hideLoading();
           }
         })
@@ -511,7 +511,7 @@ Page({
         .catch(() => {
           rewardedVideoAd.load()
             .then(() => rewardedVideoAd.show())
-            .catch(err => {
+            .catch(_err => {
               console.log('激励视频 广告显示失败');
               self.setData({
                 detailSummaryHeight: ''
@@ -522,7 +522,7 @@ Page({
   },
 
   //下载壁纸
-  downloadPhoto: function (e) {
+  downloadPhoto: function (_e) {
     var t = this;
     var photourl = t.data.bzarticle.imageUrls[1];
     wx.showLoading({
@@ -533,7 +533,7 @@ Page({
       success: function (e) {
         wx.saveImageToPhotosAlbum({
           filePath: e.tempFilePath,
-          success: function (e) {
+          success: function (_e) {
             setTimeout(function () {
               wx.hideLoading()
             }, 2000)
@@ -550,7 +550,7 @@ Page({
               }
             });
           },
-          complete: function (e) {
+          complete: function (_e) {
             wx.hideLoading();
           }
         })

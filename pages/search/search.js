@@ -9,7 +9,7 @@
  */
 
 const Constant = require('../../utils/constants');
-const Util = require('../../utils/util');
+const Util = require('../../utils/util').default;
 const Api = require('../../utils/api.js');
 const Rest = require('../../utils/rest');
 
