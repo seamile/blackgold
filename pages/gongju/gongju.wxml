@@ -1,6 +1,6 @@
 <view class="page {{isIphoneX?'iphone-x':''}}">
     <view class="jiangqie-timeline-head">
-        <image mode="aspectFill" src="http://pixcdn.seamile.cn/ele/bg-tool.jpg"></image>
+        <image mode="aspectFill" src="https://pixcdn.seamile.cn/ele/bg-tool.jpg"></image>
         <view class="timeline-head-text">
             <text>工具箱</text>
         </view>
