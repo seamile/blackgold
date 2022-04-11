@@ -24,61 +24,45 @@ Page({
     background: Api.JIANGQIE_BG_MY,
     menu: [ //views,likes,favorites,comments,about,feedback,contact,clear,split,link,page
       {
-        tp: 'views',
-        icon: '../../images/eye.svg',
-        title: '我的浏览',
-        line: 1,
-      },
-      {
-        tp: 'likes',
-        icon: '../../images/like2.svg',
-        title: '我的点赞',
-        line: 1,
-      },
-      {
         tp: 'favorites',
         icon: '../../images/star.svg',
         title: '我的收藏',
         line: 1,
       },
       {
-        tp: 'about',
-        icon: '../../images/gzh.svg',
-        title: '公众号',
-        line: 0,
-      },
-      {
-        tp: 'split'
+        tp: 'views',
+        icon: '../../images/eye.svg',
+        title: '浏览记录',
+        line: 1,
       },
       // {
-      //     tp: 'about',
-      //     icon: '',
-      //     title: '关于我们',
-      //     line: 1,
+      //   tp: 'likes',
+      //   icon: '../../images/fav1.svg',
+      //   title: '我的点赞',
+      //   line: 1,
       // },
-
       {
         tp: 'contact',
-        icon: '',
+        icon: '../../images/service.svg',
         title: '在线客服',
         line: 1,
       },
       {
-        tp: 'feedback',
-        icon: '',
-        title: '意见反馈',
-        line: 1,
-      },
-      {
         tp: 'clear',
-        icon: '',
+        icon: '../../images/clean.svg',
         title: '清除缓存',
         line: 0,
+      },
+      {
+        tp: 'about',
+        icon: '../../images/ours.svg',
+        title: '关于我们',
+        line: 1,
       },
     ]
   },
 
-  onShow: function (options) {
+  onShow: function (_options) {
     let that = this;
     let user = Auth.getUser();
     that.setData({
@@ -100,28 +84,28 @@ Page({
   },
 
   //跳转到隐私协议页面  
-  gotoyinsi: function (options) {
+  gotoyinsi: function (_options) {
     wx.navigateTo({
       url: '../yinsi/yinsi',//要跳转到的页面路径
     })
   },
 
   //跳转到隐私协议页面  
-  gotoyonghu: function (options) {
+  gotoyonghu: function (_options) {
     wx.navigateTo({
       url: '../yonghu/yonghu',//要跳转到的页面路径
     })
   },
 
   //跳转到隐私协议页面  
-  gotogzh: function (options) {
+  gotogzh: function (_options) {
     wx.previewImage({
       urls: ["https://pixcdn.seamile.cn/ele/QR-Code.jpg"]
     })
   },
 
   //跳转到隐私协议页面  
-  gotoabout: function (options) {
+  gotoabout: function (_options) {
     wx.navigateTo({
       url: '../about/about',//要跳转到的页面路径
     })
@@ -154,13 +138,13 @@ Page({
     })
   },
 
-  handlerguanwang: function (e) {
+  handlerguanwang: function (_e) {
     wx.navigateTo({
       url: '/pages/gongzh/gongzh',
     })
   },
 
-  handlerClearCache: function (e) {
+  handlerClearCache: function (_e) {
     wx.showModal({
       title: '提示',
       content: '清除缓存 需要重新登录',
@@ -187,7 +171,7 @@ Page({
     } else {
       wx.navigateToMiniProgram({
         appId: link,
-        fail: res => {
+        fail: _res => {
           wx.showToast({
             title: '无效链接',
           })
@@ -196,13 +180,13 @@ Page({
     }
   },
 
-  handlerLoginCancelClick: function (e) {
+  handlerLoginCancelClick: function (_e) {
     this.setData({
       showPopLogin: false
     });
   },
 
-  handlerDoLoginClick: function (e) {
+  handlerDoLoginClick: function (_e) {
     wx.navigateTo({
       url: '/pages/login/login',
     });

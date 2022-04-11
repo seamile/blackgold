@@ -1,11 +1,11 @@
 {
-    "navigationBarTitleText": "我的",
-    "backgroundColorTop": "#1385FF",
-    "navigationBarBackgroundColor": "#1385FF",
-    "backgroundColorBottom": "#1385FF",
-    "onReachBottomDistance": 50,
-    "navigationStyle": "custom",
-    "usingComponents": {
-        "tui-loading": "../../components/loading/loading"
-    }
+  "navigationBarTitleText": "我的",
+  "backgroundColorTop": "#010101",
+  "navigationBarBackgroundColor": "#010101",
+  "backgroundColorBottom": "#010101",
+  "onReachBottomDistance": 50,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-loading": "../../components/loading/loading"
+  }
 }

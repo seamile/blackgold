@@ -9,8 +9,6 @@
     "pages/about/about",
     "pages/login/login",
     "pages/share/share",
-    "pages/yinsi/yinsi",
-    "pages/yonghu/yonghu",
     "pages/gongju/gongju",
     "pages/detail/index",
     "pages/passport/login",

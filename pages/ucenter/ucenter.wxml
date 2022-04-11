@@ -2,154 +2,129 @@
 <import src="../../templates/poplogin/poplogin.wxml" />
 
 <view
-	style="background: url(https://pixcdn.seamile.cn/ele/bg-ucenter.jpg) no-repeat; background-size: 100%; background-position: 0 0;	border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
-	
-	<view class="jiangqie-userbox">
-		<view class="jiangqie-userinfo">
-			<block wx:if="{{user}}">
-				<view class="jiangqie-useravatar">
-					<image src="{{user.avatar}}" mode="aspectFill"></image>
-				</view>
-				<view class="jiangqie-username">
-					<text>{{user.nickname}}</text>
-				</view>
-			</block>
-			<block wx:else>
-				<view class="jiangqie-useravatar">
-					<image src="../../images/default-avatar.jpg" mode="aspectFill"></image>
-					<view class="jiangqie-useralogin">
-						<navigator url="../login/login">立即登录</navigator>
-					</view>
-				</view>
-			</block>
-		</view>
-		<!-- 
-    <view class="jiangqie-countinfo">
-			<view class="jiangqie-countblock">
-				<view class="jiangqie-countnumber">39</view>
-				<view class="jiangqie-counttype">帖子</view>
-			</view>
-			<view class="jiangqie-countblock">
-				<view class="jiangqie-countnumber">56</view>
-				<view class="jiangqie-counttype">文章</view>
-			</view>
-			<view class="jiangqie-countblock">
-				<view class="jiangqie-countnumber">72</view>
-				<view class="jiangqie-counttype">粉丝</view>
-			</view>
-			<view class="jiangqie-countblock">
-				<view class="jiangqie-countnumber">18</view>
-				<view class="jiangqie-counttype">关注</view>
-			</view>
-		</view> 
-    -->
-	</view>
+  style="background: url({{setting.background}}) no-repeat; background-size: 100%; background-position: 0 0;  border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;">
+  
+  <view class="jiangqie-userbox">
+    <view class="jiangqie-userinfo">
+      <block wx:if="{{user}}">
+        <view class="jiangqie-useravatar">
+          <image src="{{user.avatar}}" mode="aspectFill"></image>
+        </view>
+        <view class="jiangqie-username">
+          <text>{{user.nickname}}</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="jiangqie-useravatar">
+          <image src="../../images/default-avatar.jpg" mode="aspectFill"></image>
+          <view class="jiangqie-useralogin">
+            <navigator url="../login/login">立即登录</navigator>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
 
 
-	<view bindtap="gotogzh" class="vip-box data-v-3590e630" >
+  <view bindtap="gotogzh" class="vip-box data-v-3590e630" >
         <image class="vip-logo data-v-3590e630" mode="aspectFit" src="../../images/vip.png"></image>
         <view class="vip-content data-v-3590e630">
-          <text class="vip-title data-v-3590e630">关注公众号，更多二次元美图~</text>
+          <text class="vip-title data-v-3590e630">关注公众号，更多二次元美图</text>
           <text class="vip-tips data-v-3590e630">{{$root.f0}}</text>
         </view>
         <text class="vip-right-tips data-v-3590e630">{{showVipTips}}</text>
         <image class="right-arrows data-v-3590e630" mode="aspectFit" src="../../images/right.svg"></image>
     </view>
 
-	<view class="jiangqie-listbox jiangqie-postcount">
-		<block wx:for="{{menu}}" wx:key="index">
+  <view class="jiangqie-listbox jiangqie-postcount">
+    <!-- <block wx:for="{{menu}}" wx:key="index">
+    </block> -->
+  </view>
+
+  <!-- <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom> -->
+
+  <view class="jiangqie-listbox-about">
+    <block wx:for="{{menu}}" wx:key="index">
       <!-- 我的收藏 -->
-			<view wx:if="{{item.tp=='favorites'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}" 
-            data-track="favorites" 
-            catchtap="handlerPostTrack">
-				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/star.svg" mode="aspectFill"></image>
-					<text>{{item.title}}</text>
-				</view>
-			</view>
+      <view wx:if="{{item.tp=='favorites'}}"
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}"
+            data-track="favorites">
+        <button bindtap="handlerPostTrack" class="jiangqie-listtitle-x">
+          <image src="{{item.icon}}" mode="aspectFill"></image>
+          <text class="text-x">{{ item.title }}</text>
+        </button>
+      </view>
 
       <!-- 浏览记录 -->
-			<view wx:if="{{item.tp=='views'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
-				data-track="views" catchtap="handlerPostTrack">
-				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/eye.svg" mode="aspectFill"></image>
-					<text >{{item.title}}</text>
-				</view>
-			</view>
-
-      <!-- 公众号 -->
-			<!-- <view wx:if="{{item.tp=='about'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
-				data-track="about" catchtap="handlerguanwang">
-				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/gzh.svg" mode="aspectFill"></image>
-					<text>{{item.title}}</text>
-				</view>
-			</view> -->
+      <view wx:if="{{item.tp=='views'}}"
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}"
+            data-track="views">
+        <button bindtap="handlerPostTrack" class="jiangqie-listtitle-x">
+          <image src="{{item.icon}}" mode="aspectFill"></image>
+          <text class="text-x" >{{ item.title }}</text>
+        </button>
+      </view>
 
       <!-- 点赞 -->
-			<!-- <view wx:if="{{item.tp=='likes'}}" class="jiangqie-listblock {{item.line=='yes'?'jiangqie-listblock-line':''}}"
-				data-track="likes" catchtap="handlerPostTrack">
-				<view class="jiangqie-listtitle">
-					<image wx:if="{{item.icon}}" src="../../images/heart_outline.svg" mode="aspectFill"></image>
-					<text>{{item.title}}</text>
-				</view>
-			</view> -->
-		</block>
-	</view>
-	<!-- <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom> -->
-	<view class="jiangqie-listbox-about">
-		<block wx:for="{{menu}}" wx:key="index">
-			<view wx:if="{{item.tp=='contact'}}"
-				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
-				<button bindtap="gotoabout" class="jiangqie-listtitle-x">
-					<image src="../../images/ours.svg" mode="aspectFill"></image>
-					<text class="text-x">关于我们</text>
-				</button>
-			</view>
+      <view wx:if="{{item.tp=='likes'}}"
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}"
+            data-track="likes">
+        <button bindtap="handlerPostTrack" class="jiangqie-listtitle-x">
+          <image src="{{item.icon}}" mode="aspectFill"></image>
+          <text class="text-x">{{ item.title }}</text>
+        </button>
+      </view>
 
-			<view wx:if="{{item.tp=='contact'}}"
-				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
-				<button bindtap="gotoyinsi" class="jiangqie-listtitle-x">
-					<image src="../../images/privacy.svg" mode="aspectFill"></image>
-					<text class="text-x">隐私政策</text>
-				</button>
-			</view>
 
-			<view wx:if="{{item.tp=='contact'}}"
-				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
-				<button bindtap="gotoyonghu" class="jiangqie-listtitle-x">
-					<image src="../../images/doc.svg" mode="aspectFill"></image>
-					<text class="text-x">用户协议</text>
-				</button>
-			</view>
+      <view wx:if="{{item.tp=='about'}}"
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}">
+        <button bindtap="gotoabout" class="jiangqie-listtitle-x">
+          <image src="{{ item.icon }}" mode="aspectFill"></image>
+          <text class="text-x">{{ item.title }}</text>
+        </button>
+      </view>
+      <view wx:if="{{item.tp=='contact'}}"
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}">
+        <button open-type="contact" class="jiangqie-listtitle-x">
+          <image src="{{ item.icon }}" mode="aspectFill"></image>
+          <text class="text-x">{{ item.title }}</text>
+        </button>
+      </view>
+      <view wx:if="{{item.tp=='privacy'}}"
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}">
+        <button bindtap="gotoyinsi" class="jiangqie-listtitle-x">
+          <image src="{{ item.icon }}" mode="aspectFill"></image>
+          <text class="text-x">{{ item.title }}</text>
+        </button>
+      </view>
+      <view wx:if="{{item.tp=='license'}}"
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}">
+        <button bindtap="gotoyonghu" class="jiangqie-listtitle-x">
+          <image src="{{ item.icon }}" mode="aspectFill"></image>
+          <text class="text-x">{{ item.title }}</text>
+        </button>
+      </view>
+      <view wx:elif="{{item.tp=='feedback'}}"
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}">
+        <button open-type="feedback" class="jiangqie-listtitle-x">
+          <image src="{{ item.icon }}" mode="aspectFill"></image>
+          <text class="text-x">{{ item.title }}</text>
+        </button>
+      </view>
+      <view wx:if="{{item.tp=='clear'}}"
+            class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
+        <button bindtap="handlerClearCache"  class="jiangqie-listtitle-x">
+            <image src="{{ item.icon }}" mode="aspectFill"></image>
+            <text class="text-x">{{ item.title }}</text>
+        </button>
+      </view>
+    </block>
+  </view>
 
-			<view wx:if="{{item.tp=='feedback'}}"
-				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
-				<button open-type="feedback" class="jiangqie-listtitle-x">
-					<image src="../../images/feedback.svg" mode="aspectFill"></image>
-					<text class="text-x">{{item.title}}</text>
-				</button>
-			</view>
-			<view wx:if="{{item.tp=='contact'}}"
-				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}">
-				<button open-type="contact" class="jiangqie-listtitle-x">
-					<image src="../../images/service.svg" mode="aspectFill"></image>
-					<text class="text-x">{{item.title}}</text>
-				</button>
-			</view>
-			<view wx:if="{{item.tp=='clear'}}"
-				class="jiangqie-listblock-x {{item.line=='yes'?'jiangqie-listblock-line-x':''}}" catchtap="handlerClearCache">
-				<view class="jiangqie-listtitle-x">
-					<image src="../../images/clean.svg" mode="aspectFill"></image>
-					<text class="text-x">{{item.title}}</text>
-				</view>
-			</view>
-		</block>
-	</view>
-<!--	<view class="hope-ad">
-		<ad unit-id="adunit-7f0ca13736a80548" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
-	</view>
--->
+  <view class="hope-ad">
+    <ad unit-id="adunit-7f0ca13736a80548" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white"></ad>
+  </view>
+
 </view>
 
 <template is="jiangqie_poplogin" data="{{show:showPopLogin}}" />

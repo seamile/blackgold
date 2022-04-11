@@ -6,7 +6,7 @@
 			<text>{{setting.title}}</text>
 			<!-- <view>{{setting.description}}</view> -->
 		</view>
-		<image src="https://pixcdn.seamile.cn/ele/bg-category.jpg" mode="aspectFill" />
+		<image src="{{setting.background}}" mode="aspectFill" />
 	</view>
   
   <!-- 小游戏广告 -->
