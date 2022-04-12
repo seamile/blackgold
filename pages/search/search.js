@@ -15,174 +15,174 @@ const Rest = require('../../utils/rest');
 
 Page({
 
-    data: {
-        canSearch: false,
-        historySearch: [],
-        hotSearch: [],
-        placeholder: '',
-    },
+  data: {
+    canSearch: false,
+    historySearch: [],
+    hotSearch: [],
+    placeholder: '',
+  },
 
-    keyword: '',
+  keyword: '',
 
-    onLoad: function (options) {
-        let that = this;
-        wx.getStorage({
-            key: Constant.JQ_SEARCH_KEY,
-            success(res) {
-                that.setData({
-                    historySearch: res.data
-                });
-            }
+  onLoad: function (_options) {
+    let that = this;
+    wx.getStorage({
+      key: Constant.JQ_SEARCH_KEY,
+      success(res) {
+        that.setData({
+          historySearch: res.data
         });
+      }
+    });
+
+    that.setData({
+      placeholder: getApp().appName
+    });
+
+    Rest.get(Api.JIANGQIE_POSTS_SEARCH_HOT).then(res => {
+      that.setData({
+        hotSearch: res.data
+      });
+    })
+  },
+
+  onShareAppMessage: function () {
+    return {
+      title: getApp().appName,
+      path: 'pages/index/index',
+    }
+  },
+
+  onShareTimeline: function () {
+    return {
+      title: getApp().appName,
+    }
+  },
+
+  //输入
+  handlerSearchInput: function (e) {
+    this.keyword = e.detail.value;
+    this.setData({
+      canSearch: this.keyword.length > 0
+    });
+  },
+
+  handerSearchConfirm: function (_e) {
+    this.search();
+  },
+
+  //搜索
+  handerSearchClick: function (_e) {
+    this.search();
+  },
+
+  search: function () {
+    let that = this;
+    wx.getStorage({
+      key: Constant.JQ_SEARCH_KEY,
+      success(res) {
+        let keys = [that.keyword];
+        for (let i = 0; i < res.data.length && keys.length < Constant.JQ_SEARCH_MAX_COUNT; i++) {
+          if (that.keyword == res.data[i]) {
+            continue;
+          }
+
+          keys.push(res.data[i]);
+        }
 
         that.setData({
-            placeholder: getApp().appName
+          historySearch: keys
         });
 
-        Rest.get(Api.JIANGQIE_POSTS_SEARCH_HOT).then(res => {
-            that.setData({
-                hotSearch: res.data
-            });
+        wx.setStorage({
+          data: keys,
+          key: Constant.JQ_SEARCH_KEY,
         })
-    },
+      },
+      fail(_e) {
+        let keys = [that.keyword];
 
-    onShareAppMessage: function () {
-        return {
-            title: getApp().appName,
-            path: 'pages/index/index',
-        }
-    },
-
-    onShareTimeline: function () {
-        return {
-            title: getApp().appName,
-        }
-    },
-
-    //输入
-    handlerSearchInput: function (e) {
-        this.keyword = e.detail.value;
-        this.setData({
-            canSearch: this.keyword.length > 0
+        that.setData({
+          historySearch: keys
         });
-    },
 
-    handerSearchConfirm: function(e) {
-        this.search();
-    },
+        wx.setStorage({
+          data: keys,
+          key: Constant.JQ_SEARCH_KEY,
+        })
+      }
+    });
 
-    //搜索
-    handerSearchClick: function (e) {
-        this.search();
-    },
+    wx.navigateTo({
+      url: '/pages/list/list?search=' + this.keyword
+    })
+  },
 
-    search: function() {
-        let that = this;
-        wx.getStorage({
+  //取消搜索
+  handerCancelClick: function (_e) {
+    Util.navigateBack();
+  },
+
+  //清楚搜索历史
+  handlerClearHistory: function (_e) {
+    let that = this;
+
+    wx.showModal({
+      title: '提示',
+      content: '确定要清除吗？',
+      success(res) {
+        if (res.confirm) {
+          wx.setStorage({
             key: Constant.JQ_SEARCH_KEY,
-            success(res) {
-                let keys = [that.keyword];
-                for (let i = 0; i < res.data.length && keys.length < Constant.JQ_SEARCH_MAX_COUNT; i++) {
-                    if (that.keyword == res.data[i]) {
-                        continue;
-                    }
-
-                    keys.push(res.data[i]);
-                }
-
-                that.setData({
-                    historySearch: keys
-                });
-
-                wx.setStorage({
-                    data: keys,
-                    key: Constant.JQ_SEARCH_KEY,
-                })
-            },
-            fail(e) {
-                let keys = [that.keyword];
-
-                that.setData({
-                    historySearch: keys
-                });
-
-                wx.setStorage({
-                    data: keys,
-                    key: Constant.JQ_SEARCH_KEY,
-                })
+            data: [],
+            success() {
+              that.setData({
+                historySearch: []
+              });
             }
-        });
+          });
+        }
+      }
+    })
+  },
 
-        wx.navigateTo({
-            url: '/pages/list/list?search=' + this.keyword
-        })
-    },
+  //点击 搜索历史
+  handlerSearchItemClick: function (e) {
+    let item = e.currentTarget.dataset.item;
+    wx.navigateTo({
+      url: '/pages/list/list?search=' + item
+    })
+  },
 
-    //取消搜索
-    handerCancelClick: function (e) {
-        Util.navigateBack();
-    },
-
-    //清楚搜索历史
-    handlerClearHistory: function (e) {
-        let that = this;
-
-        wx.showModal({
-            title: '提示',
-            content: '确定要清除吗？',
-            success(res) {
-                if (res.confirm) {
-                    wx.setStorage({
-                        key: Constant.JQ_SEARCH_KEY,
-                        data: [],
-                        success() {
-                            that.setData({
-                                historySearch: []
-                            });
-                        }
-                    });
-                }
+  //历史删除
+  handlerSearchItemDelete: function (e) {
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除吗？',
+      success(res) {
+        if (res.confirm) {
+          let item = e.currentTarget.dataset.item;
+          let keys = [];
+          for (let i = 0; i < that.data.historySearch.length; i++) {
+            if (item == that.data.historySearch[i]) {
+              continue;
             }
-        })
-    },
 
-    //点击 搜索历史
-    handlerSearchItemClick: function (e) {
-        let item = e.currentTarget.dataset.item;
-        wx.navigateTo({
-            url: '/pages/list/list?search=' + item
-        })
-    },
+            keys.push(that.data.historySearch[i]);
+          }
 
-    //历史删除
-    handlerSearchItemDelete: function (e) {
-        let that = this;
-        wx.showModal({
-            title: '提示',
-            content: '确定要删除吗？',
-            success(res) {
-                if (res.confirm) {
-                    let item = e.currentTarget.dataset.item;
-                    let keys = [];
-                    for (let i = 0; i < that.data.historySearch.length; i++) {
-                        if (item == that.data.historySearch[i]) {
-                            continue;
-                        }
+          that.setData({
+            historySearch: keys
+          });
 
-                        keys.push(that.data.historySearch[i]);
-                    }
-
-                    that.setData({
-                        historySearch: keys
-                    });
-
-                    wx.setStorage({
-                        data: keys,
-                        key: Constant.JQ_SEARCH_KEY,
-                    })
-                }
-            }
-        })
-    }
+          wx.setStorage({
+            data: keys,
+            key: Constant.JQ_SEARCH_KEY,
+          })
+        }
+      }
+    })
+  }
 
 })

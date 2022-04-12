@@ -114,7 +114,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: getApp().appName,
-      path: 'pages/index2/index2',
+      path: 'pages/index/index',
     }
   },
 
@@ -155,7 +155,7 @@ Page({
             title: '清除完毕',
           });
           wx.reLaunch({
-            url: '/pages/index2/index2',
+            url: '/pages/index/index',
           })
         }
       }

@@ -21,7 +21,7 @@ function navigateBack() {
 
     fail: function (_res) {
       wx.switchTab({
-        url: '/pages/index2/index2',
+        url: '/pages/index/index',
       })
     }
   });
