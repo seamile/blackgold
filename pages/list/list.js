@@ -67,7 +67,6 @@ Page({
     }
     var that = this;
     util.getshare(that);
-    console.log(1111111111111111111111111);
   },
 
   onPullDownRefresh: function () {
