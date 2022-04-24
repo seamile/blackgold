@@ -1,4 +1,4 @@
-<!--pages/bzarticle/bzarticle.wxml-->
+<!--pages/illust/illust.wxml-->
 <import src="../../components/wxParse/wxParse.wxml" />
 <import src="../../templates/nodata/nodata.wxml" />
 <import src="../../templates/poplogin/poplogin.wxml" />
@@ -8,7 +8,7 @@
        src='https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/1aaaa272-d187-417a-b14a-c8d05f728357.png'>
 </image>
 <view class="container jiangqie-page-view" bindtap="switchOptionBarState">
-	<image class="image-self66" mode="aspectFill" src="{{bzarticle.imageUrls[0]}}"></image>
+	<image class="image-self66" mode="aspectFill" src="{{illust.imageUrls[0]}}"></image>
   <import src="/templates/ad.wxml"/>
   <template is="ad" data="{{setAD,pagead}}"/>
 </view>

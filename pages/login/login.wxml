@@ -3,9 +3,7 @@
   <image src='https://api.newzhuti.com' mode="aspectFill"></image>
   <view class="container">
     <view class="wechatapp">
-      <view class="header">
-        <open-data  type="userAvatarUrl"></open-data>
-      </view>
+      <image class="header" src="../../images/default-avatar.jpg"></image>
     </view>
 
     <view class="login-btn">

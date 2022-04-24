@@ -9,6 +9,7 @@
         </view>
     </view>
 
+    <!--banner广告-->
     <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
 
     <block wx:if="{{!loadFlag}}">
@@ -18,8 +19,8 @@
             <image src="/images/back.svg" class="nav-tab"> </image>
               <text>返回</text>
             </view>
-            <view data-event-opts="{{[['tap',[['downloadTap']]]]}}" class="nav-tab" bindtap="saveImg">
-                <image src="/images/download.svg" class="nav-tab"> </image>
+            <view class="nav-tab" bindtap="saveImg"  data-src="{{src}}">
+              <image src="/images/download.svg" class="nav-tab"> </image>
               <text>下载头像</text>
             </view>
             <view class="nav-tab">
@@ -46,6 +47,7 @@
         </view>
     </view>
 
+    <!--banner广告-->
     <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
 
     <block wx:if="{{!loadFlag}}">
@@ -63,10 +65,12 @@
               <image src="/images/signature.svg" class="nav-tab"> </image>
               <text>复制签名</text>
             </view>
-            <view data-event-opts="{{[['tap',[['downloadTap']]]]}}" class="nav-tab" bindtap="saveImg">
+
+            <view class="nav-tab" bindtap="saveImg" data-avatar="{{item.avatar}}" data-card="{{item.card}}">
               <image src="/images/download.svg"  class="nav-tab"> </image>
               <text>下载套图</text>
             </view>
+
             <view class="nav-tab">
               <image src="/images/share.svg" class="nav-tab"></image>
               <text>分享</text>
@@ -75,5 +79,5 @@
           </view>
         </view>
       </block>
- 
+
 </block>

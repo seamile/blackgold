@@ -1,6 +1,6 @@
 {
   "setting": {
-    "compileHotReLoad": false,
+    "compileHotReLoad": true,
     "urlCheck": true,
     "preloadBackgroundData": false,
     "autoAudits": false
@@ -51,8 +51,8 @@
           "scene": null
         },
         {
-          "name": "pages/profile/profile",
-          "pathName": "pages/profile/profile",
+          "name": "pages/avatar/avatar",
+          "pathName": "pages/avatar/avatar",
           "query": "",
           "scene": null
         },

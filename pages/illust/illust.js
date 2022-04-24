@@ -78,7 +78,7 @@ Page({
         like_list: res.data.like_list,
       });
 
-      WxParse.wxParse('bzarticle', 'html', res.data.content, that, 5);
+      WxParse.wxParse('illust', 'html', res.data.content, that, 5);
     });
   },
 
@@ -132,7 +132,7 @@ Page({
     return {
       title: "【" + that.data.post.title + "】分享这张好看的手机壁纸给你~",
       imageUrl: this.data.post.thumbnail,
-      path: 'pages/bzarticle/bzarticle?post_id=' + this.post_id,
+      path: 'pages/illust/illust?post_id=' + this.post_id,
     }
   },
 
@@ -387,7 +387,7 @@ Page({
       return;
     }
     var t = this;
-    var photourl = t.data.bzarticle.imageUrls[1];
+    var photourl = t.data.illust.imageUrls[1];
     wx.showLoading({
       title: '正在保存...',
     })
@@ -524,7 +524,7 @@ Page({
   //下载壁纸
   downloadPhoto: function (_e) {
     var t = this;
-    var photourl = t.data.bzarticle.imageUrls[1];
+    var photourl = t.data.illust.imageUrls[1];
     wx.showLoading({
       title: '正在保存...',
     })

@@ -28,7 +28,7 @@ Page({
       title: "精美头像",
       des: "超多男头，女头，情侣头像，速来下载！",
       src: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/02a2dd1d-1299-4c44-9039-3ee899b4b02e.jpg",
-      url: "/pages/profile/profile"
+      url: "/pages/avatar/avatar"
     }, {
       title: "精美套图",
       des: "昵称，签名，头像，背景图一键打包获取，",

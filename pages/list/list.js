@@ -153,7 +153,7 @@ Page({
   handlerArticleClick: function (e) {
     let post_id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/bzarticle/bzarticle?post_id=' + post_id
+      url: '/pages/illust/illust?post_id=' + post_id
     })
   },
 

@@ -5,7 +5,7 @@
     "pages/search/search",
     "pages/list/list",
     "pages/categories/categories",
-    "pages/bzarticle/bzarticle",
+    "pages/illust/illust",
     "pages/about/about",
     "pages/login/login",
     "pages/share/share",
@@ -59,10 +59,10 @@
     ]
   },
   "subPackages": [{
-      "root": "pages/profile",
-      "name": "profile",
+      "root": "pages/avatar",
+      "name": "avatar",
       "pages": [
-        "profile"
+        "avatar"
       ]
     },
     {
