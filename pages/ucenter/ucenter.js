@@ -100,7 +100,7 @@ Page({
   //跳转到隐私协议页面  
   gotogzh: function (_options) {
     wx.previewImage({
-      urls: ["https://pixcdn.seamile.cn/ele/QR-Code.jpg"]
+      urls: ["http://pixcdn.seamile.cn/ele/QR-Code.jpg"]
     })
   },
 

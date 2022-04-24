@@ -86,7 +86,7 @@ Page({
     util.getAD(that, function () {
       that.setInterstitialAd(); //加载插屏广告
     })
-    this.loadPost(true);
+    this.loadPost(false);
   },
   // 获取小程序插屏广告
   setInterstitialAd: function () {
