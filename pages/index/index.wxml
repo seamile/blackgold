@@ -136,7 +136,7 @@
               catchtap="handlerArticleClick">
 							<image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4"></image>
 						</view>
-						<view wx:else class="jiangqie-news-block" data-id="{{item.id}}" catchtap="handlerArticleClick">
+						<!-- <view wx:else class="jiangqie-news-block" data-id="{{item.id}}" catchtap="handlerArticleClick">
 							<image src="{{item.thumbnail}}" mode="aspectFill" class="jiangqie-news-image"></image>
 							<view class="jiangqie-news-text">
 								<view class="jiangqie-news-title {{item.excerpt?'':'jiangqie-news-no-excerpt'}}">
@@ -146,16 +146,15 @@
 								<view wx:if="{{item.excerpt}}" class="jiangqie-news-describe">{{item.excerpt}}</view>
 								<view class="jiangqie-news-info">
 									<view class="jiangqie-news-cmt">
-										<image src="../../images/eye.svg" mode="aspectFill" class=""></image>{{item.views}}
+										<image src="../../images/eye.svg" mode="aspectFill"></image>{{item.views}}
 									</view>
 									<text wx:for="{{item.tags}}" wx:key="id" class="jiangqie-news-tag">{{item.name}}</text>
 									<text class="jiangqie-news-time">{{item.time}}</text>
 								</view>
 							</view>
-						</view>
-						<block wx:if="{{(index+1)%12 ==0}}">
-							<import src="/templates/ad.wxml"/>
-							<template is="ad" data="{{setAD,pagead}}"/>
+						</view> -->
+						<block wx:if="{{(index+1)%21 == 0}}">
+							<ad unitId="adunit-ad838463e466ec75"></ad>
 						</block>
 
 					</block>
@@ -173,7 +172,7 @@
 					<block wx:for="{{posts}}" wx:key="id">
 						<image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4" index="{{index}}"
 							data-id="{{item.id}}" catchtap="handlerArticleClick"></image>
-						<block wx:if="{{(index+1)%12 ==0}}">
+						<block wx:if="{{(index+1)%21 ==0}}">
 							<import src="/templates/ad.wxml"/>
 							<template is="ad" data="{{setAD,pagead}}"/>
 						</block>

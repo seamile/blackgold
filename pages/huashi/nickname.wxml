@@ -19,7 +19,7 @@
     <scroll-view scrollY style="height: calc(100% - 300rpx);position:fixed; bottom: 0;left: 0;">
         <view class="bottom-change-list" wx:for="{{nickdata}}" wx:for-item="i" wx:key="i">
             <view class="bottom-change-list__ad">
-                <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
+                <ad class="bgads" unit-id="adunit-2f153135581264fa"></ad>
             </view>
             <view class="bottom-change-list__title">{{i.class}}</view>
             <view class="bottom-change-list__box">

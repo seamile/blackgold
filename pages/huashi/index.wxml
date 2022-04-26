@@ -1,4 +1,4 @@
 <view class="mysiv" wx:for="{{datalist}}" wx:key="hushi_idx">
     <navigator class="cell-arrow wenzi" url="{{item.path}}">{{item.name}}</navigator>
 </view>
-<ad unit-id="adunit-d8f6f9ea5df2de50" ad-type="video" ad-theme="black"></ad>
+<ad unit-id="adunit-a3d3a4de210b388f" ad-type="video" ad-theme="black"></ad>

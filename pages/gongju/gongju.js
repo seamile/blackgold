@@ -44,7 +44,7 @@ Page({
   onLoad: function () {
     var e = this;
     wx.createInterstitialAd && ((t = wx.createInterstitialAd({
-      adUnitId: "adunit-5809e52ca8e02862"
+      adUnitId: "adunit-f154314d6dfd9b36"
     })).onLoad(function () { }), t.onError(function (e) { }), t.onClose(function () { })),
       wx.getSystemInfo({
         success: function (t) {

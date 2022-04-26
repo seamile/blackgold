@@ -36,7 +36,7 @@
     <button bindopensetting="handler" class="backbtn" openType="openSetting" wx:if="{{!ldata}}">授权</button>
 </view>
 <view class="ad">
-    <ad style="border-radius:15rpx;" unitId="adunit-1e0490ad9e80d7ff"></ad>
+    <ad style="border-radius:15rpx;" unitId="adunit-2f153135581264fa"></ad>
 </view>
 <view class="colorMask" wx:if="{{isShowMask}}">
     <view class="maskBox">

@@ -8,20 +8,20 @@
 		</view>
 		<image src="{{setting.background}}" mode="aspectFill" />
 	</view>
-  
+
   <!-- 小游戏广告 -->
-  <!-- <view class="listtit">
+  <view class="listtit">
     <image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
-    <text class="listleft">小游戏推荐</text>
+    <text class="listleft">游戏推荐</text>
   </view>
-  <ad-custom class="adcustom" unit-id="adunit-44a6a135e42c148e"></ad-custom> -->
+  <ad-custom class="adcustom" unit-id="adunit-a3d3a4de210b388f"></ad-custom>
 
   <!-- 分类标题 -->
-  <!-- <view class="listtit">
+  <view class="listtit">
   <image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
-  <text class="listleft">壁纸分类</text>
-  </view> -->
- 
+  <text class="listleft">动漫专辑</text>
+  </view>
+
 	<view class="right-box">
 		<view wx:for="{{categories}}" wx:key="category" class="sortbox" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="handlerCategoryClick">
 			<image src="{{item.cover?item.cover:categorie_cover}}" mode="aspectFill" class="sortimage" />

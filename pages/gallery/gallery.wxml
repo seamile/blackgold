@@ -15,7 +15,7 @@
     </view>
 </scroll-view>
 
-<ad-custom unit-id="adunit-84bc5f5c2578d437"></ad-custom> 
+<ad-custom unit-id="adunit-6d50f37cbe7f552d"></ad-custom> 
 
 <view class="cu-card dynamic">
     <view bindtap="info" class="cu-item shadow" data-item="{{item}}" style="height:260px;" wx:for="{{photos}}" wx:key="gallery_items">

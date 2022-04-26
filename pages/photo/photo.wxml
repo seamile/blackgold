@@ -10,7 +10,7 @@
     </view>
 
     <!--banner广告-->
-    <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
+    <ad class="bgads" unit-id="adunit-b8f5a7f12c4657fd"></ad>
 
     <block wx:if="{{!loadFlag}}">
         <view class="{{['bottom',cssTran?'closeCss':'openCss']}}">
@@ -48,7 +48,7 @@
     </view>
 
     <!--banner广告-->
-    <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
+    <ad class="bgads" unit-id="adunit-2f153135581264fa"></ad>
 
     <block wx:if="{{!loadFlag}}">
         <view class="{{['bottom',cssTran?'closeCss':'openCss']}}">

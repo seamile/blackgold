@@ -16,7 +16,7 @@
         <view class="bottom-change-list">
             <view class="bottom-change-list__title">输入完毕之后，点击下面字体特效自动复制</view>
             <view class="bottom-change-list__ad">
-                <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
+                <ad class="bgads" unit-id="adunit-2f153135581264fa"></ad>
             </view>
             <view class="bottom-change-list__box">
                 <button bindtap="changeText" id="hxw"> 火星文</button>

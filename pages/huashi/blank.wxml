@@ -6,7 +6,7 @@
         <button bindtap="iosCopyEvent" type="primary">苹果点我</button>
     </view>
     <view class="bottom-change-list__ad">
-        <ad class="bgads" unit-id="adunit-1e0490ad9e80d7ff"></ad>
+        <ad class="bgads" unit-id="adunit-2f153135581264fa"></ad>
     </view>
 </view>
 

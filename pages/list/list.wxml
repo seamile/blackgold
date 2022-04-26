@@ -14,9 +14,8 @@
                  data-id="{{item.id}}" 
                  catchtap="handlerArticleClick">
           </image>
-          <block wx:if="{{(index+1)%12 ==0}}">
-            <import src="/templates/ad.wxml"/>
-            <template is="ad" data="{{setAD,pagead}}"/>
+          <block wx:if="{{(index+1)%21 ==0}}">
+            <ad unitId="adunit-ad838463e466ec75"></ad>
           </block>
         </block>
       </view>
@@ -30,8 +29,7 @@
 
     </block>
     <block wx:elif="{{loaded}}">
-      <import src="/templates/ad.wxml"/>
-      <template is="ad" data="{{setAD,pagead}}"/>
+      <ad class="bgads" unitId="adunit-ad838463e466ec75"></ad>
       <template is="jiangqie_nodata" />
     </block>
 

@@ -33,7 +33,7 @@
             </view>
         </view>
         <view class="adContainer" wx:if="{{index!=0&&(index+1)%12==0}}">
-            <ad adTheme="black" adType="video" unitId="adunit-d8f6f9ea5df2de50"></ad>
+            <ad adTheme="black" adType="video" unitId="adunit-6d50f37cbe7f552d"></ad>
         </view>
     </block>
 </scroll-view>
