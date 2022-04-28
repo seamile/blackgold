@@ -1,4 +1,6 @@
 var t = null;
+var APP = getApp();
+
 Page({
   data: {
     src: "",
@@ -26,7 +28,7 @@ Page({
 
   onLoad: function (n) {
     wx.createRewardedVideoAd && ((t = wx.createRewardedVideoAd({
-      adUnitId: ""
+      adUnitId: APP.globalData.AD_REWARD
     })).onError(function () { }), t.onClose(function (t) {
       t && t.isEnded;
     }));

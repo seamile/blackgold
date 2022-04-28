@@ -1,4 +1,8 @@
-var e, t = require("../../utils/api1"), i = getApp(), a = null, o = "";
+var e;
+import { refreshUsedTimeAndDate, getConfig, getSearchVideo as _getSearchVideo } from "../../utils/api1";
+var i = getApp();
+var a = null;
+var o = "";
 
 Page({
   data: {
@@ -13,19 +17,19 @@ Page({
     wx.navigateBack({ changed: true });//返回上一页
   },
   onShow: function () {
-    t.refreshUsedTimeAndDate();
+    refreshUsedTimeAndDate();
   },
   onLoad: function () {
     this.initHideGuide();
     var n = this;
     wx.showLoading({
       title: "加载中..."
-    }), t.getConfig(function () {
+    }), getConfig(function () {
       n.setData({
         tabHidden: i.globalData.isShenHe
       }), o = i.globalData.isShenHe ? "情侣壁纸" : "视频壁纸榜", e = 1, n.getSearchVideo();
     }), wx.createInterstitialAd && ((a = wx.createInterstitialAd({
-      adUnitId: i.globalData.AD_CHAPING_HOME
+      adUnitId: i.globalData.AD_CHAPING
     })).onLoad(function () { }), a.onError(function (e) { }), a.onClose(function () { }));
   },
   hideGuideTap: function (e) {
@@ -39,7 +43,7 @@ Page({
   },
   getSearchVideo: function () {
     var i = this, a = this.data.videos;
-    t.getSearchVideo(o, e, function (t) {
+    _getSearchVideo(o, e, function (t) {
       1 == e && (a = [], i.setData({
         scrollTop: 0
       }));

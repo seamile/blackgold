@@ -2,7 +2,6 @@
 <import src="../../templates/nodata/nodata.wxml" />
 <import src="../../templates/poplogin/poplogin.wxml" />
 
-<!--新闻列表——常规-->
 <view class="container">
   <view class="list-box data-v-0034d6f4">
     <block wx:if="{{posts.length > 0}}">
@@ -14,8 +13,8 @@
                  data-id="{{item.id}}" 
                  catchtap="handlerArticleClick">
           </image>
-          <block wx:if="{{(index+1)%21 ==0}}">
-            <ad unitId="adunit-ad838463e466ec75"></ad>
+          <block wx:if="{{(index+1) % 12 == 0}}">
+            <view class="ad-info-stream"><ad unitId="adunit-ad838463e466ec75" /></view>
           </block>
         </block>
       </view>

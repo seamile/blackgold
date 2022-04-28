@@ -236,8 +236,11 @@ page {
   width: 50rpx;
 }
 
-.adcustom {
+.ad-grid {
   width: 100%;
-  margin-top: 15rpx;
-  margin-left: 28rpx;
+  margin: 20rpx 50rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
 }

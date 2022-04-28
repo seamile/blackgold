@@ -8,12 +8,13 @@
  * Copyright ️ 2020 www.jiangqie.com All rights reserved.
  */
 
-const Constants = require('../../utils/constants');
-const Util = require('../../utils/util').default;
-const Api = require('../../utils/api.js');
-const Rest = require('../../utils/rest');
-const util = require('../../utils/util.js').default;
+import { JQ_PER_PAGE_COUNT } from '../../utils/constants';
+import Util from '../../utils/util';
+import { JIANGQIE_POSTS_CATEGORY, JIANGQIE_POSTS_TAG, JIANGQIE_POSTS_SEARCH, JIANGQIE_POSTS_MY, JIANGQIE_POSTS_LAST } from '../../utils/api.js';
+import { get } from '../../utils/rest';
+import util from '../../utils/util.js';
 let setinad;
+
 Page({
   data: {
     posts: [],
@@ -175,27 +176,27 @@ Page({
     };
 
     if (that.cat_id !== undefined) {
-      url = Api.JIANGQIE_POSTS_CATEGORY;
+      url = JIANGQIE_POSTS_CATEGORY;
       params.cat_id = that.cat_id;
     } else if (that.tag_id !== undefined) {
-      url = Api.JIANGQIE_POSTS_TAG;
+      url = JIANGQIE_POSTS_TAG;
       params.tag_id = that.tag_id;
     } else if (that.search !== undefined) {
-      url = Api.JIANGQIE_POSTS_SEARCH;
+      url = JIANGQIE_POSTS_SEARCH;
       params.search = that.search;
     } else if (that.track !== undefined) {
-      url = Api.JIANGQIE_POSTS_MY;
+      url = JIANGQIE_POSTS_MY;
       params.track = that.track;
     } else {
-      url = Api.JIANGQIE_POSTS_LAST;
+      url = JIANGQIE_POSTS_LAST;
     }
 
-    Rest.get(url, params).then(res => {
+    get(url, params).then(res => {
       that.setData({
         loaded: true,
         loadding: false,
         posts: refresh ? res.data : that.data.posts.concat(res.data),
-        pullUpOn: res.data.length == Constants.JQ_PER_PAGE_COUNT
+        pullUpOn: res.data.length == JQ_PER_PAGE_COUNT
       });
     })
   },

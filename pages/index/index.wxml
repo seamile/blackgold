@@ -112,20 +112,18 @@
 					</view>
 				</view> -->
 
-				
         <!-- <view
           style="background: url(https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/c7e07437-a9b5-4e8a-b8ea-33f7b7fd1246.png) no-repeat;background-size: 100% auto;" 
           wx:if="{{postsLast && postsLast.length>0}}" 
           class="jiangqie-news-type">
 						手机潮图：头像下载
 				</view> -->
-       
-				
+
 				<view class="jiangqie-news-type2">
 					<image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
-						Pixiv 精选 <!-- 官方推荐 -->
-						<text class="youhua">每日更新</text>
-					</view>
+          Pixiv 精选 <!-- 官方推荐 -->
+          <text class="youhua">每日更新</text>
+        </view>
 
 				<view class="list-box data-v-0034d6f4">
 					<block wx:for="{{postsLast}}" wx:key="id">
@@ -153,10 +151,9 @@
 								</view>
 							</view>
 						</view> -->
-						<block wx:if="{{(index+1)%21 == 0}}">
-							<ad unitId="adunit-ad838463e466ec75"></ad>
+						<block wx:if="{{(index+1)%9 == 0}}">
+              <view class="ad-info-stream"><ad unitId="adunit-ad838463e466ec75" /></view>
 						</block>
-
 					</block>
 				</view>
 			</view>

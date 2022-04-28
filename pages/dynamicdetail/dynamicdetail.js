@@ -1,11 +1,14 @@
-var t = require("../../utils/api1"), e = getApp(), o = null, n = null;
+import { setVIP, addUsedTime, canUse } from "../../utils/api1";
+var e = getApp();
+var o = null;
+var rewardAd = null;
 
 Page({
   data: {
     videoSrc: "",
     imgSrc: "",
-    hideBtn: !1,
-    isShare: !1
+    hideBtn: false,
+    isShare: false
   },
   navigateBack: function () {
     wx.navigateBack({ changed: true });//返回上一页
@@ -14,23 +17,40 @@ Page({
     wx.showLoading({
       title: "壁纸加载中..."
     });
-    var i = decodeURIComponent(a.url), c = decodeURIComponent(a.imgSrc);
-    console.log(i), this.setData({
-      videoSrc: i,
-      imgSrc: c,
-      isShare: a.isShare
-    }), this.getDate(), this.data.isShare || wx.createInterstitialAd && ((o = wx.createInterstitialAd({
-      adUnitId: e.globalData.AD_CHAPING
-    })).onLoad(function () { }), o.onError(function (t) { }), o.onClose(function () { })),
-      wx.createRewardedVideoAd && ((n = wx.createRewardedVideoAd({
+    var videoUrl = decodeURIComponent(a.url), coverUrl = decodeURIComponent(a.imgSrc);
+    console.log(videoUrl);
+    console.log(coverUrl);
+    this.setData({
+      videoSrc: videoUrl,
+      imgSrc: coverUrl,
+      isShare: a.isShare || false
+    })
+    this.getDate()
+
+    if (!this.data.isShare && wx.createInterstitialAd) {
+      let interstitialAd = wx.createInterstitialAd({
+        adUnitId: e.globalData.AD_CHAPING
+      })
+      interstitialAd.onLoad(() => { })
+      interstitialAd.onError((err) => { })
+      interstitialAd.onClose(() => { })
+    }
+
+    if (wx.createRewardedVideoAd) {
+      rewardAd = wx.createRewardedVideoAd({
         adUnitId: e.globalData.AD_REWARD
-      })).onLoad(function () { }), n.onError(function (t) { }), n.onClose(function (e) {
-        wx.createVideoContext("myVideo").play(), e && e.isEnded && (t.setVIP(!0), wx.showModal({
+      })
+      rewardAd.onLoad(() => { })
+      rewardAd.onError((err) => { console.log(err) })
+      rewardAd.onClose((res) => {
+        wx.createVideoContext("myVideo").play()
+        res && res.isEnded && (setVIP(true), wx.showModal({
           content: "已解锁今日无限次下载",
           confirmText: "知道了",
-          showCancel: !1
+          showCancel: false
         }));
-      }));
+      })
+    }
   },
   backTap: function (t) {
     this.data.isShare ? wx.reLaunch({
@@ -46,15 +66,15 @@ Page({
   },
   downloadTap: function (t) {
     if (this.canUseOcr()) {
-      var e = this;
+      var self = this;
       wx.getSetting({
         success: function (t) {
           t.authSetting["scope.writePhotosAlbum"]
-            ? e.save()
+            ? self.save()
             : wx.authorize({
               scope: "scope.writePhotosAlbum",
               success: function () {
-                e.save();
+                self.save();
               },
               fail: function () {
                 wx.showModal({
@@ -87,7 +107,7 @@ Page({
               content: "保存成功，请在相册中查看",
               confirmText: "知道了",
               showCancel: !1
-            }), t.addUsedTime();
+            }), addUsedTime();
           }
         });
       },
@@ -105,9 +125,16 @@ Page({
     });
   },
   getDate: function () {
-    var t = new Date(), e = (t.getFullYear(), t.getMonth() + 1), o = t.getDate(), n = t.getHours(), a = t.getMinutes(), i = (t.getSeconds(),
-      e + "月" + o + "日"), c = [n, a].map(this.formatNumber).join(":");
-    console.log(i), console.log(c), this.setData({
+    var t = new Date(),
+      e = (t.getFullYear(), t.getMonth() + 1),
+      o = t.getDate(),
+      n = t.getHours(),
+      a = t.getMinutes(),
+      i = (t.getSeconds(), e + "月" + o + "日"),
+      c = [n, a].map(this.formatNumber).join(":");
+
+    console.log(i), console.log(c)
+    this.setData({
       date: i,
       time: c
     });
@@ -116,14 +143,17 @@ Page({
     return (t = t.toString())[1] ? t : "0" + t;
   },
   canUseOcr: function () {
-    return t.canUse(function () {
-      n && (wx.createVideoContext("myVideo").pause(), n.show().catch(function () {
-        n.load().then(function () {
-          n.show(), wx.createVideoContext("myVideo").pause();
-        }).catch(function (t) {
-          console.log("激励视频 广告显示失败");
-        });
-      }));
+    return canUse(function () {
+      rewardAd && (
+        wx.createVideoContext("myVideo").pause(),
+        rewardAd.show().catch(function () {
+          rewardAd.load().then(function () {
+            rewardAd.show(),
+              wx.createVideoContext("myVideo").pause();
+          }).catch(function (t) {
+            console.log("激励视频 广告显示失败");
+          });
+        }));
     });
   },
   onShareAppMessage: function (t) {

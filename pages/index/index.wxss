@@ -710,3 +710,10 @@ page {
 }
 
 /**公告结束**/
+
+.ad-info-stream {
+  width: 100%;
+  margin-top: 3rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}

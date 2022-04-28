@@ -56,8 +56,7 @@ App({
     isShenHe: !1,
     COUNT: 1e4,
     AD_REWARD: "adunit-b1aef89d19d2e4da",
-    AD_CHAPING: "adunit-f154314d6dfd9b36",
-    AD_CHAPING_HOME: "adunit-f154314d6dfd9b36"
+    AD_CHAPING: "adunit-f154314d6dfd9b36"
   },
   errLog: function (t) {
     console.log(t);

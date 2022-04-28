@@ -9,13 +9,7 @@
 
     <!-- 小广告 -->
     <view class="tab-content">
-        <view class="index">
-            <view class="listtit">
-                <image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
-                <text class="listleft">精品推荐</text>
-            </view>
-            <ad class="bgads" unitId="adunit-2f153135581264fa"></ad>
-        </view>
+      <ad class="bgads" unitId="adunit-2f153135581264fa"></ad>
     </view>
 
     <view class="tab-content">

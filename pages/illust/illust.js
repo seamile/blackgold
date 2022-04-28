@@ -1,22 +1,13 @@
-/*
- * 酱茄小程序开源版 v1.1.8
- * Author: 酱茄
- * Help document: https://www.jiangqie.com/ky
- * github: https://github.com/longwenjunjie/jiangqie_kafei
- * gitee: https://gitee.com/longwenjunj/jiangqie_kafei
- * License：MIT
- * Copyright ️ 2020 www.jiangqie.com All rights reserved.
- */
+import Util from '../../utils/util';
+import { JIANGQIE_POST_DETAIL, JIANGQIE_USER_LIKE, JIANGQIE_USER_FAVORITE, JIANGQIE_POST_WXACODE } from '../../utils/api.js';
+import { get } from '../../utils/rest';
+import { getUser } from '../../utils/auth';
+import { wxParse } from '../../components/wxParse/wxParse';
+import { create } from '../../components/poster/poster/poster';
 
-const Constants = require('../../utils/constants');
-const Util = require('../../utils/util').default;
-const Api = require('../../utils/api.js');
-const Rest = require('../../utils/rest');
-const Auth = require('../../utils/auth');
-const WxParse = require('../../components/wxParse/wxParse');
-const Poster = require('../../components/poster/poster/poster');
-let rewardedVideoAd = null;
+var rewardedVideoAd = null;
 var e = getApp(), o = null;
+
 Page({
   data: {
     post: {},
@@ -29,13 +20,10 @@ Page({
     pagead: 7,
     posterConfig: null
   },
-  post_id: 0,
 
-  //小程序码
-  wxacode: '',
-
-  //返回页面是否需要刷新
-  needRefresh: true,
+  post_id: 0, // 插画ID
+  wxacode: '', // 小程序码
+  needRefresh: true, // 返回页面是否需要刷新
 
   onLoad: function (options) {
     if (options.scene) {
@@ -44,11 +32,17 @@ Page({
       this.post_id = options.post_id;
     }
 
-    //小程序码
-    this.loadWxacode();
-    this.getDate(), this.data.isShare || wx.createInterstitialAd && ((o = wx.createInterstitialAd({
-      adUnitId: e.globalData.AD_CHAPING
-    })).onLoad(function () { }), o.onError(function (_t) { }), o.onClose(function () { }))
+
+    this.loadWxacode();  // 小程序码
+    this.getDate();
+    if (this.data.isShare || wx.createInterstitialAd) {
+      let interstitialAd = wx.createInterstitialAd({
+        adUnitId: e.globalData.AD_CHAPING
+      })
+      interstitialAd.onLoad(function () { })
+      interstitialAd.onError(function (_t) { })
+      interstitialAd.onClose(function () { })
+    }
   },
 
   onShow: function () {
@@ -57,37 +51,35 @@ Page({
       return;
     }
 
-    let that = this;
-    Util.getAD(that, function () {
-      // that.setInterstitialAd(); //加载插屏广告
-      //加载广告
-      that.loadInterstitialAd();
+    let self = this;
+    Util.getAD(self, function () {
+      self.loadInterstitialAd();  // 加载插屏广告
+      self.loadRewardedVideoAd();  // 加载激励广告
     })
-    Rest.get(Api.JIANGQIE_POST_DETAIL, {
-      post_id: that.post_id
+    get(JIANGQIE_POST_DETAIL, {
+      post_id: self.post_id
     }).then(res => {
       // console.log(res)
       wx.setNavigationBarTitle({
         title: res.data.title,
       })
 
-      that.setData({
+      self.setData({
         post: res.data,
         // post_like: res.data.user.islike,
-        post_favorite: res.data.user.isfavorite || 0,
+        post_favorite: res.data.user.isfavorite || false,
         like_list: res.data.like_list,
       });
 
-      WxParse.wxParse('illust', 'html', res.data.content, that, 5);
+      wxParse('illust', 'html', res.data.content, self, 5);
     });
   },
 
   // 获取小程序插屏广告
-  setInterstitialAd: function () {
-    var that = this;
-    if (that.data.setAD.interstitialid && wx.createInterstitialAd) {
+  loadInterstitialAd: function () {
+    if (this.data.setAD.interstitialid && wx.createInterstitialAd) {
       let interstitialAd = wx.createInterstitialAd({
-        adUnitId: that.data.setAD.interstitialid
+        adUnitId: this.data.setAD.interstitialid
       })
       // 监听插屏错误事件
       interstitialAd.onError((err) => {
@@ -95,7 +87,7 @@ Page({
       })
       // 显示广告
       if (interstitialAd) {
-        if (that.data.setAD.switch_inad == 'yes') {
+        if (this.data.setAD.switch_inad == 'yes') {
           setinad = setInterval(() => {
             interstitialAd.show().catch((err) => {
               console.error(err)
@@ -109,13 +101,10 @@ Page({
             })
           }, 6000);
         }
-
       }
     }
   },
-  // onHide(){
-  //   clearInterval(setinad);
-  // },
+
   onReachBottom: function () {
     if (!this.data.pullUpOn) {
       return;
@@ -232,7 +221,7 @@ Page({
     this.setData({
       posterConfig: posterConfig
     }, () => {
-      Poster.create(true); // 入参：true为抹掉重新生成 
+      create(true); // 入参：true为抹掉重新生成 
     });
   },
 
@@ -290,10 +279,10 @@ Page({
    */
   handlerLikeClick: function (_e) {
     let that = this;
-    Rest.get(Api.JIANGQIE_USER_LIKE, {
+    get(JIANGQIE_USER_LIKE, {
       post_id: that.data.post.id
     }).then(_res => {
-      let avatar = Auth.getUser().avatar;
+      let avatar = getUser().avatar;
       var index = that.data.like_list.indexOf(avatar);
       if (index > -1) {
         that.data.like_list.splice(index, 1);
@@ -313,7 +302,7 @@ Page({
    */
   handlerFavoriteClick: function (_e) {
     let that = this;
-    Rest.get(Api.JIANGQIE_USER_FAVORITE, {
+    get(JIANGQIE_USER_FAVORITE, {
       post_id: that.data.post.id
     }).then(_res => {
       that.setData({
@@ -322,15 +311,12 @@ Page({
     })
   },
 
-  /**
-   * 加载小程序码
-   */
+  // 加载小程序码
   loadWxacode: function () {
-    let that = this;
-    Rest.get(Api.JIANGQIE_POST_WXACODE, {
-      post_id: that.post_id
+    get(JIANGQIE_POST_WXACODE, {
+      post_id: this.post_id
     }).then(res => {
-      that.wxacode = res.data;
+      this.wxacode = res.data;
     }, err => {
       console.log(err);
     });
@@ -350,6 +336,7 @@ Page({
       time: c
     });
   },
+
   formatNumber: function (t) {
     return (t = t.toString())[1] ? t : "0" + t;
   },
@@ -363,6 +350,7 @@ Page({
       showPopLogin: false
     });
   },
+
   // 二开版权信息
   showModal(e) {
     this.setData({
@@ -376,114 +364,61 @@ Page({
   },
   // 二开版权信息end
 
-  //没流量主壁纸下载
-
-  downloadPhoto1: function (_e) {
-    // 判断用户是否登入
-    if (!Auth.getUser()) {
-      this.setData({
-        showPopLogin: true
-      });
-      return;
-    }
-    var t = this;
-    var photourl = t.data.illust.imageUrls[1];
-    wx.showLoading({
-      title: '正在保存...',
-    })
-    wx.downloadFile({
-      url: photourl,
-      success: function (e) {
-        wx.saveImageToPhotosAlbum({
-          filePath: e.tempFilePath,
-          success: function (_e) {
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 2000)
-            wx.showToast({
-              title: '保存成功',
-              icon: "success",
-              duration: 2e3
-            })
-          },
-          fail: function (e) {
-            "saveImageToPhotosAlbum:fail auth deny" === e.errMsg && wx.openSetting({
-              success: function (e) {
-                console.log(e), e.authSetting["scope.writePhotosAlbum"] ? console.log("获取权限成功，给出再次点击图片保存到相册的提示。") : console.log("获取权限失败，给出不给权限就无法正常使用的提示");
-              }
-            });
-          },
-          complete: function (_e) {
-            wx.hideLoading();
-          }
-        })
-      }
-    })
+  // 打开激励视频
+  readMore: function () {
+    rewardedVideoAd.show()
+      .catch(() => {
+        rewardedVideoAd.load()
+          .then(() => rewardedVideoAd.show())
+          .catch(_err => {
+            console.log('激励视频广告显示失败');
+          })
+      })
   },
-  // 二开下载
-  downloadPhotos: function (e) {
+
+  // 下载
+  downloadPhotos: function () {
+    let self = this;
     // 判断用户是否登入
-    if (!Auth.getUser()) {
-      this.setData({
-        showPopLogin: true
-      });
+    if (!getUser()) {
+      self.setData({ showPopLogin: true });
       return;
     }
 
-    //准备下载壁纸
-    var self = this;
     //缓存
-    var openAdLogs = wx.getStorageSync('openAdLogs');
-    var atdate = new Date();
-    atdate = atdate.getFullYear() + "-" + (atdate.getMonth() + 1) + '-' + atdate.getDate();
-    console.log("当前日期：" + atdate);
-
-    if (openAdLogs.length <= 0) { //缓存不存在
+    var rewardedAdTime = wx.getStorageSync('rewardedAdTime');
+    if (!rewardedAdTime) {
+      // 上次播放时间不存在时
       wx.showModal({
         title: '壁纸下载',
-        content: '您只需要看一次广告即可在24小时内免费下载所有壁纸！',
+        content: '只需要看一次广告，即可在 10 分钟内无限下载所有壁纸！',
         success(res) {
           if (res.confirm) {
             console.log('用户点击确定');
             self.readMore();
-          } else if (res.cancel) {
+          } else {
             console.log('用户点击取消')
           }
         }
       })
-    } else { //缓存存在
-      if (openAdLogs[0].date == atdate) {
-        if (openAdLogs[0].num != 0) {
-          openAdLogs[0].num = openAdLogs[0].num - 1
-          wx.setStorageSync('openAdLogs', openAdLogs);
-          self.downloadPhoto(e);
-        } else {
-          wx.showModal({
-            title: '提示',
-            content: '已经下载10张啦~需要我帮你收藏这张壁纸吗？等明天再来下载',
-            success(res) {
-              if (res.confirm) {
-                self.handlerFavoriteClick(e);
-                console.log('用户点击确定')
-              } else if (res.cancel) {
-                console.log('用户点击取消')
-              }
-            }
-          })
-        }
+    } else {
+      var now = new Date();
+      let timeDiff = now - rewardedAdTime;
+      console.log("当前日期：" + now.toISOString());
+      console.log("时间差值：" + timeDiff.toString());
+
+      if (timeDiff <= 600e3) {
+        self.downloadPhoto();
       } else {
         wx.showModal({
           title: '壁纸下载',
-          content: '您只需要看一次广告即可在24小时内免费下载所有壁纸！~',
+          content: '只需要看一次广告，即可在 10 分钟内无限下载所有壁纸！',
           success(res) {
             if (res.confirm) {
               console.log('用户点击确定');
-
               self.readMore();
-
               console.log("无广告下载~");
-
-            } else if (res.cancel) {
+            } else {
               console.log('用户点击取消')
             }
           }
@@ -492,44 +427,11 @@ Page({
     }
   },
 
-
-  // 打开激励视频
-  readMore: function () {
-    var self = this;
-    var platform = self.data.platform
-    if (platform == 'devtools') {
-      wx.showToast({
-        title: "开发工具无法显示激励视频",
-        icon: "none",
-        duration: 2000
-      });
-      self.setData({
-        detailSummaryHeight: ''
-      })
-    } else {
-      rewardedVideoAd.show()
-        .catch(() => {
-          rewardedVideoAd.load()
-            .then(() => rewardedVideoAd.show())
-            .catch(_err => {
-              console.log('激励视频 广告显示失败');
-              self.setData({
-                detailSummaryHeight: ''
-              })
-            })
-        })
-    }
-  },
-
   //下载壁纸
-  downloadPhoto: function (_e) {
-    var t = this;
-    var photourl = t.data.illust.imageUrls[1];
-    wx.showLoading({
-      title: '正在保存...',
-    })
+  downloadPhoto: function () {
+    wx.showLoading({ title: '正在保存...' })
     wx.downloadFile({
-      url: photourl,
+      url: this.data.illust.imageUrls[1],
       success: function (e) {
         wx.saveImageToPhotosAlbum({
           filePath: e.tempFilePath,
@@ -546,7 +448,10 @@ Page({
           fail: function (e) {
             "saveImageToPhotosAlbum:fail auth deny" === e.errMsg && wx.openSetting({
               success: function (e) {
-                console.log(e), e.authSetting["scope.writePhotosAlbum"] ? console.log("获取权限成功，给出再次点击图片保存到相册的提示。") : console.log("获取权限失败，给出不给权限就无法正常使用的提示");
+                console.log(e)
+                e.authSetting["scope.writePhotosAlbum"]
+                  ? console.log("获取权限成功，给出再次点击图片保存到相册的提示。")
+                  : console.log("获取权限失败，给出不给权限就无法正常使用的提示");
               }
             });
           },
@@ -558,55 +463,22 @@ Page({
     })
   },
 
-
-
-  //加载广告
-  loadInterstitialAd: function () {
-    var self = this;
+  //加载激励广告
+  loadRewardedVideoAd: function () {
     if (wx.createRewardedVideoAd) {
       rewardedVideoAd = wx.createRewardedVideoAd({
-        adUnitId: self.data.setAD.rewardedVideoid
+        adUnitId: this.data.setAD.rewardedVideoid
       })
-      rewardedVideoAd.onLoad(() => {
-        console.log('onLoad event emit')
-      })
-      rewardedVideoAd.onError((err) => {
-        console.log(err);
-        this.setData({
-          detailSummaryHeight: ''
-        })
-      })
+      rewardedVideoAd.onLoad(() => console.log('初始化激励视频'))
+      rewardedVideoAd.onError((err) => console.log(err))
       rewardedVideoAd.onClose((res) => {
-
-        var id = self.data.post.id;
         if (res && res.isEnded) {
-
-          var nowDate = new Date();
-          nowDate = nowDate.getFullYear() + "-" + (nowDate.getMonth() + 1) + '-' + nowDate.getDate();
-
-          var openAdLogs = [];
-          // 过滤重复值
-          if (openAdLogs.length > 0) {
-            openAdLogs = openAdLogs.filter(function (log) {
-              return log["id"] !== id;
-            });
-          }
-          // 如果超过指定数量不再记录
-          if (openAdLogs.length < 21) {
-            var log = {
-              "id": id,
-              "date": nowDate,
-              "num": 9
-            }
-            openAdLogs.unshift(log);
-            wx.setStorageSync('openAdLogs', openAdLogs);
-            console.log(openAdLogs);
-
-          }
-          this.setData({
-            detailSummaryHeight: ''
-          })
-          self.downloadPhoto();
+          // 视频完整播完, 记录时间
+          let now = new Date();
+          wx.setStorageSync('rewardedAdTime', now);
+          console.log('视频已播完' + now.toISOString());
+          // 下载插画
+          this.downloadPhoto();
         } else {
           wx.showToast({
             title: "你中途关闭了视频",

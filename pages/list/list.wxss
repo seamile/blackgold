@@ -7,35 +7,43 @@
  * License：MIT
  * Copyright ️ 2020 www.jiangqie.com All rights reserved.
  */
- page {
-    background: #000000;
-  }
- @import '../../templates/nodata/nodata.wxss';
- @import '../../templates/poplogin/poplogin.wxss';
- 
+page {
+  background: #000000;
+}
+
+@import '../../templates/nodata/nodata.wxss';
+@import '../../templates/poplogin/poplogin.wxss';
+
 .container {
-     display: flex;
-     flex-direction: column;
-     box-sizing: border-box;
-     height: 1430rpx;
-     padding-bottom: env(safe-area-inset-bottom);
- }
- 
- /* 文章列表 */
- .list-box.data-v-0034d6f4 {
-     width: 100vw;
-     display: -webkit-box;
-     display: -webkit-flex;
-     display: flex;
-     -webkit-box-pack: start;
-     justify-content:space-around;
-     flex-wrap: wrap;
-     align-content: space-around;
- }
- 
- .list-box .image.data-v-0034d6f4 {
-     width: 247rpx;
-     height: 440rpx;
-     border-radius: 5rpx;
-     margin: 2rpx 0;
- }
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 1430rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 文章列表 */
+.list-box.data-v-0034d6f4 {
+  width: 100vw;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.list-box .image.data-v-0034d6f4 {
+  width: 247rpx;
+  height: 440rpx;
+  border-radius: 5rpx;
+  margin: 2rpx 0;
+}
+
+.ad-info-stream {
+  width: 100%;
+  margin-top: 3rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
