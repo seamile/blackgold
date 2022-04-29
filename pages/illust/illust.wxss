@@ -700,3 +700,14 @@ button.jiangqie-page-laud-btn {
   font-size: 40rpx;
   color: #fff;
 }
+
+.disclaimer {
+  position: relative;
+  margin-top: 5rpx;
+  padding: 30rpx;
+  margin-bottom: 200rpx;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  /* overflow: hidden; */
+}

@@ -10,19 +10,14 @@
 <view class="container jiangqie-page-view" bindtap="switchOptionBarState">
 	<image class="image-self66" mode="aspectFill" src="{{illust.imageUrls[0]}}"></image>
   <import src="/templates/ad.wxml"/>
-  <template is="ad" data="{{setAD,pagead}}"/>
+  <template style="width: 100%;" is="ad" data="{{setAD,pagead}}" />
+
+  <view class="disclaimer">
+    声明：图片来自互联网，如果侵犯了您的权益，请联系我们删除。
+  </view>
 </view>
 
-<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}" bindtap="hideModal">
-	<view class="cu-dialog">
-		<view class="padding-xl">
-			来源：图片来自互联网，如果侵犯了您的权益，请联系我们删除。
-		</view>
-	</view>
-</view>
-<view catchtap="handlerCancelClick" class="pagemake" wx:if="{{show_comment_submit}}"></view>
-<template is="jiangqie_poplogin" data="{{show:showPopLogin}}" />
-<tui-loading visible="{{loading}}"></tui-loading>
+
 <!-- 操作栏 -->
 <view class="tui-operation" wx:if="{{ showOptionBar }}">
 	<view class="tui-operation-right tui-right-flex tui-col-5">
@@ -31,7 +26,7 @@
 			<text>返回</text>
 		</view>
 
-		<view class="tui-operation-item" catchtap="downloadPhotos">
+		<view class="tui-operation-item" catchtap="downloadIllusts">
 			<block >
 				<image src="../../images/download.svg" mode="widthFix"></image>
 				<text>下载</text>

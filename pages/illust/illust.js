@@ -6,7 +6,7 @@ import { wxParse } from '../../components/wxParse/wxParse';
 import { create } from '../../components/poster/poster/poster';
 
 var rewardedVideoAd = null;
-var e = getApp(), o = null;
+var e = getApp();
 
 Page({
   data: {
@@ -34,7 +34,6 @@ Page({
 
 
     this.loadWxacode();  // 小程序码
-    this.getDate();
     if (this.data.isShare || wx.createInterstitialAd) {
       let interstitialAd = wx.createInterstitialAd({
         adUnitId: e.globalData.AD_CHAPING
@@ -105,11 +104,31 @@ Page({
     }
   },
 
-  onReachBottom: function () {
-    if (!this.data.pullUpOn) {
-      return;
+  //加载激励广告
+  loadRewardedVideoAd: function (_e) {
+    if (wx.createRewardedVideoAd) {
+      rewardedVideoAd = wx.createRewardedVideoAd({
+        adUnitId: this.data.setAD.rewardedVideoid
+      })
+      rewardedVideoAd.onLoad(() => console.log('初始化激励视频'))
+      rewardedVideoAd.onError((err) => console.log(err))
+      rewardedVideoAd.onClose((res) => {
+        if (res && res.isEnded) {
+          // 视频完整播完, 记录时间
+          let now = new Date();
+          wx.setStorageSync('rewardedAdTime', now);
+          console.log('视频已播完' + now.toISOString());
+          // 下载插画
+          this.saveIllust();
+        } else {
+          wx.showToast({
+            title: "你中途关闭了视频",
+            icon: "none",
+            duration: 3000
+          });
+        }
+      })
     }
-    this.loadComments(false);
   },
 
   onShareAppMessage: function () {
@@ -148,9 +167,8 @@ Page({
       imageUrl: that.data.post.thumbnail,
     }
   },
-  /**
-   * 海报分享
-   */
+
+  // 海报分享
   sharePosterClick: function (_e) {
     let posterConfig = {
       width: 750,
@@ -274,9 +292,7 @@ Page({
     Util.navigateBack();
   },
 
-  /**
-   * 文章 点赞
-   */
+  // 文章 点赞
   handlerLikeClick: function (_e) {
     let that = this;
     get(JIANGQIE_USER_LIKE, {
@@ -297,9 +313,7 @@ Page({
     })
   },
 
-  /**
-   * 文章 收藏
-   */
+  // 文章 收藏
   handlerFavoriteClick: function (_e) {
     let that = this;
     get(JIANGQIE_USER_FAVORITE, {
@@ -328,15 +342,6 @@ Page({
     });
   },
 
-  getDate: function () {
-    var t = new Date(), e = (t.getFullYear(), t.getMonth() + 1), o = t.getDate(), n = t.getHours(), a = t.getMinutes(), i = (t.getSeconds(),
-      e + "月" + o + "日"), c = [n, a].map(this.formatNumber).join(":");
-    this.setData({
-      date: i,
-      time: c
-    });
-  },
-
   formatNumber: function (t) {
     return (t = t.toString())[1] ? t : "0" + t;
   },
@@ -351,21 +356,8 @@ Page({
     });
   },
 
-  // 二开版权信息
-  showModal(e) {
-    this.setData({
-      modalName: e.currentTarget.dataset.target
-    })
-  },
-  hideModal(_e) {
-    this.setData({
-      modalName: null
-    })
-  },
-  // 二开版权信息end
-
   // 打开激励视频
-  readMore: function () {
+  openRewardedVideoAd: function () {
     rewardedVideoAd.show()
       .catch(() => {
         rewardedVideoAd.load()
@@ -377,7 +369,7 @@ Page({
   },
 
   // 下载
-  downloadPhotos: function () {
+  downloadIllusts: function () {
     let self = this;
     // 判断用户是否登入
     if (!getUser()) {
@@ -395,7 +387,7 @@ Page({
         success(res) {
           if (res.confirm) {
             console.log('用户点击确定');
-            self.readMore();
+            self.openRewardedVideoAd();
           } else {
             console.log('用户点击取消')
           }
@@ -408,7 +400,7 @@ Page({
       console.log("时间差值：" + timeDiff.toString());
 
       if (timeDiff <= 600e3) {
-        self.downloadPhoto();
+        self.saveIllust();
       } else {
         wx.showModal({
           title: '壁纸下载',
@@ -416,7 +408,7 @@ Page({
           success(res) {
             if (res.confirm) {
               console.log('用户点击确定');
-              self.readMore();
+              self.openRewardedVideoAd();
               console.log("无广告下载~");
             } else {
               console.log('用户点击取消')
@@ -428,7 +420,7 @@ Page({
   },
 
   //下载壁纸
-  downloadPhoto: function () {
+  saveIllust: function () {
     wx.showLoading({ title: '正在保存...' })
     wx.downloadFile({
       url: this.data.illust.imageUrls[1],
@@ -436,9 +428,7 @@ Page({
         wx.saveImageToPhotosAlbum({
           filePath: e.tempFilePath,
           success: function (_e) {
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 2000)
+            setTimeout(function () { wx.hideLoading() }, 2000)
             wx.showToast({
               title: '保存成功',
               icon: "success",
@@ -461,32 +451,5 @@ Page({
         })
       }
     })
-  },
-
-  //加载激励广告
-  loadRewardedVideoAd: function () {
-    if (wx.createRewardedVideoAd) {
-      rewardedVideoAd = wx.createRewardedVideoAd({
-        adUnitId: this.data.setAD.rewardedVideoid
-      })
-      rewardedVideoAd.onLoad(() => console.log('初始化激励视频'))
-      rewardedVideoAd.onError((err) => console.log(err))
-      rewardedVideoAd.onClose((res) => {
-        if (res && res.isEnded) {
-          // 视频完整播完, 记录时间
-          let now = new Date();
-          wx.setStorageSync('rewardedAdTime', now);
-          console.log('视频已播完' + now.toISOString());
-          // 下载插画
-          this.downloadPhoto();
-        } else {
-          wx.showToast({
-            title: "你中途关闭了视频",
-            icon: "none",
-            duration: 3000
-          });
-        }
-      })
-    }
   },
 })
