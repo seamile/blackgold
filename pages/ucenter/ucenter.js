@@ -83,28 +83,28 @@ Page({
     })
   },
 
-  //跳转到隐私协议页面  
+  //跳转到隐私协议页面
   gotoyinsi: function (_options) {
     wx.navigateTo({
       url: '../yinsi/yinsi',//要跳转到的页面路径
     })
   },
 
-  //跳转到隐私协议页面  
+  //跳转到隐私协议页面
   gotoyonghu: function (_options) {
     wx.navigateTo({
       url: '../yonghu/yonghu',//要跳转到的页面路径
     })
   },
 
-  //跳转到隐私协议页面  
+  //跳转到隐私协议页面
   gotogzh: function (_options) {
     wx.previewImage({
       urls: ["http://pixcdn.seamile.cn/ele/QR-Code.jpg"]
     })
   },
 
-  //跳转到隐私协议页面  
+  //跳转到隐私协议页面
   gotoabout: function (_options) {
     wx.navigateTo({
       url: '../about/about',//要跳转到的页面路径

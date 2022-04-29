@@ -47,9 +47,8 @@
     <block wx:for="{{menu}}" wx:key="index">
       <!-- 我的收藏 -->
       <view wx:if="{{item.tp=='favorites'}}"
-            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}"
-            data-track="favorites">
-        <button bindtap="handlerPostTrack" class="jiangqie-listtitle-x">
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}">
+        <button data-track="favorites" bindtap="handlerPostTrack" class="jiangqie-listtitle-x">
           <image src="{{item.icon}}" mode="aspectFill"></image>
           <text class="text-x">{{ item.title }}</text>
         </button>
@@ -57,9 +56,8 @@
 
       <!-- 浏览记录 -->
       <view wx:if="{{item.tp=='views'}}"
-            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}"
-            data-track="views">
-        <button bindtap="handlerPostTrack" class="jiangqie-listtitle-x">
+            class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}">
+        <button data-track="views" bindtap="handlerPostTrack" class="jiangqie-listtitle-x">
           <image src="{{item.icon}}" mode="aspectFill"></image>
           <text class="text-x" >{{ item.title }}</text>
         </button>
@@ -74,7 +72,6 @@
           <text class="text-x">{{ item.title }}</text>
         </button>
       </view>
-
 
       <view wx:if="{{item.tp=='about'}}"
             class="jiangqie-listblock-x {{item.line=='yes' ? 'jiangqie-listblock-line-x' : ''}}">
