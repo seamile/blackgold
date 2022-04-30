@@ -111,7 +111,11 @@ Page({
         adUnitId: this.data.setAD.rewardedVideoid
       })
       rewardedVideoAd.onLoad(() => console.log('初始化激励视频'))
-      rewardedVideoAd.onError((err) => console.log(err))
+      rewardedVideoAd.onError((err) => {
+        console.log(err);
+        // 视频播放异常时，允许用户下载
+        this.saveIllust();
+      })
       rewardedVideoAd.onClose((res) => {
         if (res && res.isEnded) {
           // 视频完整播完, 记录时间
@@ -132,24 +136,24 @@ Page({
   },
 
   onShareAppMessage: function () {
-    let that = this;
+    let self = this;
     wx.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
     })
     return {
-      title: "【" + that.data.post.title + "】分享这张好看的手机壁纸给你~",
+      title: "【" + self.data.post.title + "】分享这张好看的手机壁纸给你~",
       imageUrl: this.data.post.thumbnail,
       path: 'pages/illust/illust?post_id=' + this.post_id,
     }
   },
 
   onShareTimeline: function () {
-    let that = this;
+    let self = this;
     return {
-      title: "【" + that.data.post.title + "】分享这张好看的手机壁纸给你~",
-      query: 'post_id=' + that.post_id,
-      imageUrl: that.data.post.thumbnail,
+      title: "【" + self.data.post.title + "】分享这张好看的手机壁纸给你~",
+      query: 'post_id=' + self.post_id,
+      imageUrl: self.data.post.thumbnail,
     }
   },
 
@@ -161,10 +165,10 @@ Page({
 
   // 收藏
   onAddToFavorites: function () {
-    var that = this;
+    var self = this;
     return {
-      title: that.data.post.title,
-      imageUrl: that.data.post.thumbnail,
+      title: self.data.post.title,
+      imageUrl: self.data.post.thumbnail,
     }
   },
 
@@ -294,33 +298,33 @@ Page({
 
   // 文章 点赞
   handlerLikeClick: function (_e) {
-    let that = this;
+    let self = this;
     get(JIANGQIE_USER_LIKE, {
-      post_id: that.data.post.id
+      post_id: self.data.post.id
     }).then(_res => {
       let avatar = getUser().avatar;
-      var index = that.data.like_list.indexOf(avatar);
+      var index = self.data.like_list.indexOf(avatar);
       if (index > -1) {
-        that.data.like_list.splice(index, 1);
+        self.data.like_list.splice(index, 1);
       } else {
-        that.data.like_list.unshift(avatar);
+        self.data.like_list.unshift(avatar);
       }
 
-      that.setData({
-        // post_like: (that.data.post_like == 1 ? 0 : 1),
-        like_list: that.data.like_list
+      self.setData({
+        // post_like: (self.data.post_like == 1 ? 0 : 1),
+        like_list: self.data.like_list
       });
     })
   },
 
   // 文章 收藏
   handlerFavoriteClick: function (_e) {
-    let that = this;
+    let self = this;
     get(JIANGQIE_USER_FAVORITE, {
-      post_id: that.data.post.id
+      post_id: self.data.post.id
     }).then(_res => {
-      that.setData({
-        post_favorite: 1 - that.data.post_favorite
+      self.setData({
+        post_favorite: !self.data.post_favorite
       });
     })
   },
@@ -362,9 +366,7 @@ Page({
       .catch(() => {
         rewardedVideoAd.load()
           .then(() => rewardedVideoAd.show())
-          .catch(_err => {
-            console.log('激励视频广告显示失败');
-          })
+          .catch(_err => { console.log('激励视频广告显示失败'); })
       })
   },
 
@@ -409,7 +411,6 @@ Page({
             if (res.confirm) {
               console.log('用户点击确定');
               self.openRewardedVideoAd();
-              console.log("无广告下载~");
             } else {
               console.log('用户点击取消')
             }

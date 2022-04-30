@@ -8,16 +8,18 @@
  * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
  */
 
-require('./common/runtime.js')
-require('./common/vendor.js')
-require('./common/main.js')
+import './common/runtime.js';
+import './common/vendor.js';
+import './common/main.js';
 
-const Auth = require('./utils/auth.js');
+import { checkSession } from './utils/auth.js';
 !function (t) {
   t && t.__esModule;
 }(require("./utils/flcache"));
 
-var t = require("./utils/ubt"), e = require("./utils/login"), a = require("configApi");
+import { UBT } from "./utils/ubt";
+import { flLoginRequest } from "./utils/login";
+import { backfl } from "configApi";
 
 App({
 
@@ -30,7 +32,7 @@ App({
   },
   bindSpm: function (e) {
     var a = e.currentTarget.dataset.spm, r = e.currentTarget.dataset.url, n = e.currentTarget.dataset.type, i = e.currentTarget.dataset.shopid, o = e.currentTarget.dataset.appid, u = e.currentTarget.dataset.lc;
-    a && (0, t.UBT)(a), 2 == n ? this.getShopActivityPath(i, r, u, function (t) {
+    a && (0, UBT)(a), 2 == n ? this.getShopActivityPath(i, r, u, function (t) {
       t.activity_path && wx.navigateToMiniProgram({
         appId: o,
         path: t.activity_path,
@@ -43,8 +45,8 @@ App({
   },
   uploadFormid: function (t) {
     var r = t.detail.formId;
-    (0, e.flLoginRequest)({
-      url: a.backfl.reportFormId,
+    (0, flLoginRequest)({
+      url: backfl.reportFormId,
       data: {
         formid: r
       }
@@ -62,7 +64,7 @@ App({
     console.log(t);
   },
   onLaunch: function () {
-    Auth.checkSession();
+    checkSession();
   },
 
   //下拉刷新

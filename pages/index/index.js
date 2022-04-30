@@ -8,10 +8,16 @@
  * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
  */
 
-const Constants = require('../../utils/constants');
-const Api = require('../../utils/api.js');
-const Rest = require('../../utils/rest');
-const util = require('../../utils/util.js').default;
+import { JQ_PER_PAGE_COUNT } from '../../utils/constants';
+import {
+  JIANGQIE_SETTING_HOME,
+  JIANGQIE_SETTING_HOMEBZ,
+  JIANGQIE_BG_INDEX,
+  JIANGQIE_POSTS_LAST,
+  JIANGQIE_POSTS_CATEGORY
+} from '../../utils/api.js';
+import { get } from '../../utils/rest';
+import util from '../../utils/util.js';
 let setinad;
 
 Page({
@@ -156,7 +162,7 @@ Page({
 
     let that = this;
     await util.getshare(that);
-    await Rest.get(Api.JIANGQIE_SETTING_HOME).then(res => {
+    await get(JIANGQIE_SETTING_HOME).then(res => {
       that.setData({
         //topNav: that.data.topNav.concat(res.data.top_nav)
       })
@@ -256,7 +262,7 @@ Page({
     let that = this;
 
     //获取配置
-    Rest.get(Api.JIANGQIE_SETTING_HOMEBZ).then(res => {
+    get(JIANGQIE_SETTING_HOMEBZ).then(res => {
       let logo = 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/2542a804-ead0-435d-b402-9f022a12b348.png';
       if (res.data.logo && res.data.logo.length > 0) {
         logo = res.data.logo;
@@ -272,7 +278,7 @@ Page({
         hotbz: res.data.hotbz,
         listModebz: res.data.list_modebz,
 
-        background: (res.data.slide && res.data.slide.length > 0) ? Api.JIANGQIE_BG_INDEX : '',
+        background: (res.data.slide && res.data.slide.length > 0) ? JIANGQIE_BG_INDEX : '',
       });
 
       if (res.data.title && res.data.title.length > 0) {
@@ -416,7 +422,7 @@ Page({
     }
 
     this.setData({
-      background: (cur == 0 && this.data.slide && this.data.slide.length > 0) ? Api.JIANGQIE_BG_INDEX : '',
+      background: (cur == 0 && this.data.slide && this.data.slide.length > 0) ? JIANGQIE_BG_INDEX : '',
       currentTabbz: cur
     })
 
@@ -462,13 +468,13 @@ Page({
       offset = that.data.postsLast.length;
     }
 
-    Rest.get(Api.JIANGQIE_POSTS_LAST, {
+    get(JIANGQIE_POSTS_LAST, {
       'offset': offset
     }).then(res => {
       that.setData({
         loaddingLast: false,
         postsLast: refresh ? res.data : that.data.postsLast.concat(res.data),
-        pullUpOnLast: res.data.length >= Constants.JQ_PER_PAGE_COUNT
+        pullUpOnLast: res.data.length >= JQ_PER_PAGE_COUNT
       });
     })
   },
@@ -485,14 +491,14 @@ Page({
       offset = that.data.posts.length;
     }
 
-    Rest.get(Api.JIANGQIE_POSTS_CATEGORY, {
+    get(JIANGQIE_POSTS_CATEGORY, {
       'offset': offset,
       'cat_id': that.data.topNavbz[that.data.currentTabbz].id
     }).then(res => {
       that.setData({
         loadding: false,
         posts: refresh ? res.data : that.data.posts.concat(res.data),
-        pullUpOn: res.data.length >= Constants.JQ_PER_PAGE_COUNT
+        pullUpOn: res.data.length >= JQ_PER_PAGE_COUNT
       });
     })
   },

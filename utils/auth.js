@@ -8,61 +8,48 @@
  * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
  */
 
-const Constant = require('./constants');
+import { JQ_USER_KEY } from './constants';
 
 //获取TOKEN
-function getToken() {
-    let user = wx.getStorageSync(Constant.JQ_USER_KEY);
-    if (!user) {
-        return false;
-    }
+export function getToken() {
+  let user = wx.getStorageSync(JQ_USER_KEY);
+  if (!user) {
+    return false;
+  }
 
-    return user.token;
+  return user.token;
 }
 
 //注销
-function logout() {
-    wx.setStorageSync(Constant.JQ_USER_KEY, false);
+export function logout() {
+  wx.setStorageSync(JQ_USER_KEY, false);
 }
 
-module.exports = {
-    //检查登录态
-    checkSession: function () {
-        wx.checkSession({
-            fail() {
-                logout();
-            }
-        })
-    },
+export function checkSession() {
+  wx.checkSession({
+    fail() {
+      logout();
+    }
+  });
+}
 
-    logout: logout,
 
-    //获取TOKEN
-    getToken: getToken,
-
-    //是否已登录
-    isLogin: getToken,
-
-    //获取用户信息
-    getWXUser: function () {
-        return new Promise(function (resolve, reject) {
-            wx.login({
-                success: function (res) {
-                    resolve(res);
-                },
-                fail: function (err) {
-                    reject(err);
-                }
-            });
-        });
-    },
-
-    setUser: function(user) {
-        wx.setStorageSync(Constant.JQ_USER_KEY, user);
-    },
-
-    getUser: function() {
-        return wx.getStorageSync(Constant.JQ_USER_KEY);
-    },
-    
+export const isLogin = getToken;
+export function getWXUser() {
+  return new Promise(function (resolve, reject) {
+    wx.login({
+      success: function (res) {
+        resolve(res);
+      },
+      fail: function (err) {
+        reject(err);
+      }
+    });
+  });
+}
+export function setUser(user) {
+  wx.setStorageSync(JQ_USER_KEY, user);
+}
+export function getUser() {
+  return wx.getStorageSync(JQ_USER_KEY);
 }

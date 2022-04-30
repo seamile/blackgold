@@ -8,9 +8,9 @@
  * Copyright ️ 2020 www.jiangqie.com All rights reserved.
  */
 
-const Auth = require('../../utils/auth');
-const Api = require('../../utils/api.js');
-const Rest = require('../../utils/rest');
+import { getUser } from '../../utils/auth';
+import { JIANGQIE_BG_MY, JIANGQIE_SETTING_UCENTER } from '../../utils/api.js';
+import { get } from '../../utils/rest';
 
 Page({
 
@@ -21,7 +21,7 @@ Page({
   },
 
   default: {
-    background: Api.JIANGQIE_BG_MY,
+    background: JIANGQIE_BG_MY,
     menu: [ //views,likes,favorites,comments,about,feedback,contact,clear,split,link,page
       {
         tp: 'favorites',
@@ -64,12 +64,12 @@ Page({
 
   onShow: function (_options) {
     let that = this;
-    let user = Auth.getUser();
+    let user = getUser();
     that.setData({
       user: user
     });
 
-    Rest.get(Api.JIANGQIE_SETTING_UCENTER).then(res => {
+    get(JIANGQIE_SETTING_UCENTER).then(res => {
       let menu = that.default.menu;
       if (res.data.menu.length > 0) {
         menu = res.data.menu;
@@ -125,7 +125,7 @@ Page({
   },
 
   handlerPostTrack: function (e) {
-    if (!Auth.getUser()) {
+    if (!getUser()) {
       this.setData({
         showPopLogin: true
       });

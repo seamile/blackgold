@@ -17,6 +17,8 @@
   </view>
 </view>
 
+<template is="jiangqie_poplogin" data="{{show:showPopLogin}}" />
+<tui-loading visible="{{loading}}"></tui-loading>
 
 <!-- 操作栏 -->
 <view class="tui-operation" wx:if="{{ showOptionBar }}">
