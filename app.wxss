@@ -5146,29 +5146,8 @@ page::after {
   content: "";
   left: -1000px;
   top: -1000px;
-  animation: shadow-preload .3s;
-  animation-delay: 3s;
 }
 
-@-webkit-keyframes shadow-preload {
-  0% {
-    background-image: url(https://cdn.dcloud.net.cn/img/shadow-grey.png);
-  }
-
-  100% {
-    background-image: url(https://cdn.dcloud.net.cn/img/shadow-grey.png);
-  }
-}
-
-@keyframes shadow-preload {
-  0% {
-    background-image: url(https://cdn.dcloud.net.cn/img/shadow-grey.png);
-  }
-
-  100% {
-    background-image: url(https://cdn.dcloud.net.cn/img/shadow-grey.png);
-  }
-}
 
 [bind-data-custom-hidden="true"],
 [data-custom-hidden="true"] {
