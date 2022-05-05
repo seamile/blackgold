@@ -1,24 +1,22 @@
 import Util from '../../utils/util';
-import { JIANGQIE_POST_DETAIL, JIANGQIE_USER_LIKE, JIANGQIE_USER_FAVORITE, JIANGQIE_POST_WXACODE } from '../../utils/api.js';
+import { JIANGQIE_POST_DETAIL, JIANGQIE_USER_LIKE, JIANGQIE_USER_FAVORITE } from '../../utils/api.js';
 import { get } from '../../utils/rest';
 import { getUser } from '../../utils/auth';
 import { wxParse } from '../../components/wxParse/wxParse';
-import { create } from '../../components/poster/poster/poster';
 
 var rewardedVideoAd = null;
-var e = getApp();
+var app = getApp();
 
 Page({
   data: {
     post: {},
     // post_like: 0,
     post_favorite: 0,
-    loadding: false,
-    pullUpOn: true,
-    loaded: false,
     showOptionBar: true,
     pagead: 7,
-    posterConfig: null
+    posterConfig: null,
+    loading: true,
+    imode: 'aspectFill'
   },
 
   post_id: 0, // 插画ID
@@ -32,11 +30,10 @@ Page({
       this.post_id = options.post_id;
     }
 
-
-    this.loadWxacode();  // 小程序码
     if (this.data.isShare || wx.createInterstitialAd) {
+      // 初始化插屏广告
       let interstitialAd = wx.createInterstitialAd({
-        adUnitId: e.globalData.AD_CHAPING
+        adUnitId: app.globalData.AD_CHAPING
       })
       interstitialAd.onLoad(function () { })
       interstitialAd.onError(function (_t) { })
@@ -72,6 +69,17 @@ Page({
 
       wxParse('illust', 'html', res.data.content, self, 5);
     });
+  },
+
+  onIllustLoaded: function (res) {
+    let inf = wx.getSystemInfoSync();
+    let sysAspectRatio = inf.windowWidth / inf.windowHeight; // 屏幕宽高比
+    let imgAspectRatio = res.detail.width / res.detail.height; // 图片宽高比
+
+    this.setData({
+      loading: false, // 关闭“加载中”状态
+      imode: (imgAspectRatio >= sysAspectRatio) ? 'aspectFill' : 'widthFix' // 根据宽高比设置相应显示模式
+    })
   },
 
   // 获取小程序插屏广告
@@ -172,103 +180,6 @@ Page({
     }
   },
 
-  // 海报分享
-  sharePosterClick: function (_e) {
-    let posterConfig = {
-      width: 750,
-      height: 1334,
-      backgroundColor: '#23aaff',
-      debug: false,
-      pixelRatio: 1,
-      blocks: [{
-        width: 690,
-        height: 1000,
-        x: 30,
-        y: 234,
-        backgroundColor: '#EEEEEE'
-      },],
-      texts: [{
-        x: 375,
-        y: 120,
-        baseLine: 'middle',
-        textAlign: 'center',
-        text: this.data.post.title,
-        width: 600,
-        fontSize: 38,
-        color: '#EEEEEE',
-      },
-      {
-        x: 70,
-        y: 780,
-        fontSize: 28,
-        lineHeight: 40,
-        baseLine: 'middle',
-        text: this.data.post.excerpt,
-        width: 600,
-        lineNum: 3,
-        color: '#000000',
-        zIndex: 200,
-      },
-      {
-        x: 360,
-        y: 1170,
-        baseLine: 'middle',
-        textAlign: 'center',
-        text: getApp().appName,
-        fontSize: 28,
-        color: '#888888',
-        zIndex: 200,
-      }
-      ],
-      images: [
-        {
-          width: 690,
-          height: 520,
-          x: 30,
-          y: 200,
-          url: this.data.post.thumbnail,
-          zIndex: 100
-        },
-        {
-          width: 200,
-          height: 200,
-          x: 275,
-          y: 920,
-          url: this.wxacode,
-        }
-      ]
-
-    }
-
-    this.setData({
-      posterConfig: posterConfig
-    }, () => {
-      create(true); // 入参：true为抹掉重新生成 
-    });
-  },
-
-  /**
-   * 画报生成成功
-   */
-  onPosterSuccess(e) {
-    this.needRefresh = false;
-
-    const {
-      detail
-    } = e;
-    wx.previewImage({
-      current: detail,
-      urls: [detail]
-    })
-  },
-
-  /**
-   * 画报生成失败
-   */
-  onPosterFail(err) {
-    console.error(err);
-  },
-
   /**
    * 文章中a标签点击
    */
@@ -296,7 +207,7 @@ Page({
     Util.navigateBack();
   },
 
-  // 文章 点赞
+  // 点赞
   handlerLikeClick: function (_e) {
     let self = this;
     get(JIANGQIE_USER_LIKE, {
@@ -317,7 +228,7 @@ Page({
     })
   },
 
-  // 文章 收藏
+  // 收藏
   handlerFavoriteClick: function (_e) {
     let self = this;
     get(JIANGQIE_USER_FAVORITE, {
@@ -327,17 +238,6 @@ Page({
         post_favorite: !self.data.post_favorite
       });
     })
-  },
-
-  // 加载小程序码
-  loadWxacode: function () {
-    get(JIANGQIE_POST_WXACODE, {
-      post_id: this.post_id
-    }).then(res => {
-      this.wxacode = res.data;
-    }, err => {
-      console.log(err);
-    });
   },
 
   handlerLoginCancelClick: function (_e) {
