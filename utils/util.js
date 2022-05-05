@@ -34,7 +34,6 @@ function getAD(that, showad) {
       return
     } else {
       res.data.posisionad = res.data.posisionad.split(',');
-      console.log(res.data)
       that.setData({
         setAD: res.data
       })

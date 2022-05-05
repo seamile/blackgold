@@ -1,13 +1,3 @@
-/*
- * 酱茄小程序开源版 v1.1.8
- * Author: 酱茄
- * Help document: https://www.jiangqie.com/ky
- * github: https://github.com/longwenjunjie/jiangqie_kafei
- * gitee: https://gitee.com/longwenjunj/jiangqie_kafei
- * License：MIT
- * Copyright ️ 2020 www.jiangqie.com All rights reserved.
- */
-
 import { JQ_PER_PAGE_COUNT } from '../../utils/constants';
 import Util from '../../utils/util';
 import { JIANGQIE_POSTS_CATEGORY, JIANGQIE_POSTS_TAG, JIANGQIE_POSTS_SEARCH, JIANGQIE_POSTS_MY, JIANGQIE_POSTS_LAST } from '../../utils/api.js';
@@ -33,45 +23,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let self = this;
+    let title = '最新文章';
     if (options.cat_id) { //分类
-      wx.setNavigationBarTitle({
-        title: options.title,
-      });
-      this.cat_id = options.cat_id;
+      self.cat_id = options.cat_id;
+      title = decodeURIComponent(options.title);
     } else if (options.tag_id) { //标签
-      wx.setNavigationBarTitle({
-        title: options.title,
-      });
-      this.tag_id = options.tag_id;
+      self.tag_id = options.tag_id;
+      title = decodeURIComponent(options.title);
     } else if (options.search) { //搜索
-      wx.setNavigationBarTitle({
-        title: '搜索【' + options.search + '】',
-      });
-      this.search = options.search;
+      self.search = decodeURIComponent(options.search);
+      title = '搜索【' + self.search + '】';
     } else if (options.track) { //我的足迹
-      let title = '我的浏览';
-      if (options.track == 'likes') {
-        title = '我的点赞';
-      } else if (options.track == 'favorites') {
-        title = '我的收藏';
-      } else if (options.track == 'comments') {
-        title = '我的评论';
+      switch (options.track) {
+        case 'likes':
+          title = '我的点赞'; break;
+        case 'favorites':
+          title = '我的收藏'; break;
+        default:
+          title = '我的浏览';
       }
-      wx.setNavigationBarTitle({
-        title: title,
-      });
-      this.track = options.track;
-    } else { //最新
-      wx.setNavigationBarTitle({
-        title: '最新文章',
-      });
+      self.track = options.track;
     }
-    var that = this;
-    util.getshare(that);
+    wx.setNavigationBarTitle({ title: title });
+    util.getshare(self);
   },
 
   onPullDownRefresh: function () {
-
   },
 
   onReachBottom: function () {
@@ -83,18 +61,18 @@ Page({
   },
 
   onShow() {
-    var that = this;
-    util.getAD(that, function () {
-      that.setInterstitialAd(); //加载插屏广告
+    var self = this;
+    util.getAD(self, function () {
+      self.setInterstitialAd(); //加载插屏广告
     })
     this.loadPost(false);
   },
   // 获取小程序插屏广告
   setInterstitialAd: function () {
-    var that = this;
-    if (that.data.setAD.interstitialid && wx.createInterstitialAd) {
+    var self = this;
+    if (self.data.setAD.interstitialid && wx.createInterstitialAd) {
       let interstitialAd = wx.createInterstitialAd({
-        adUnitId: that.data.setAD.interstitialid
+        adUnitId: self.data.setAD.interstitialid
       })
       // 监听插屏错误事件
       interstitialAd.onError((err) => {
@@ -102,7 +80,7 @@ Page({
       })
       // 显示广告
       if (interstitialAd) {
-        if (that.data.setAD.switch_inad == 'yes') {
+        if (self.data.setAD.switch_inad == 'yes') {
           setinad = setInterval(() => {
             interstitialAd.show().catch((err) => {
               console.error(err)
@@ -124,30 +102,30 @@ Page({
     clearInterval(setinad);
   },
   onShareAppMessage: function () {
-    var that = this;
+    var self = this;
     wx.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
     })
     return {
-      title: that.data.shares.share_title,
-      imageUrl: that.data.shares.share_image,
+      title: self.data.shares.share_title,
+      imageUrl: self.data.shares.share_image,
     }
   },
   //转发朋友圈
   onShareTimeline: function () {
-    var that = this;
+    var self = this;
     return {
-      title: that.data.shares.share_title,
-      imageUrl: that.data.shares.share_image,
+      title: self.data.shares.share_title,
+      imageUrl: self.data.shares.share_image,
     }
   },
   // 收藏
   onAddToFavorites: function () {
-    var that = this;
+    var self = this;
     return {
-      title: that.data.shares.share_title,
-      imageUrl: that.data.shares.share_image,
+      title: self.data.shares.share_title,
+      imageUrl: self.data.shares.share_image,
     }
   },
 
@@ -159,15 +137,15 @@ Page({
   },
 
   loadPost: function (refresh) {
-    let that = this;
+    let self = this;
 
-    that.setData({
+    self.setData({
       loadding: true
     });
 
     let offset = 0;
     if (!refresh) {
-      offset = that.data.posts.length;
+      offset = self.data.posts.length;
     }
 
     let url = '';
@@ -175,27 +153,27 @@ Page({
       offset: offset
     };
 
-    if (that.cat_id !== undefined) {
+    if (self.cat_id !== undefined) {
       url = JIANGQIE_POSTS_CATEGORY;
-      params.cat_id = that.cat_id;
-    } else if (that.tag_id !== undefined) {
+      params.cat_id = self.cat_id;
+    } else if (self.tag_id !== undefined) {
       url = JIANGQIE_POSTS_TAG;
-      params.tag_id = that.tag_id;
-    } else if (that.search !== undefined) {
+      params.tag_id = self.tag_id;
+    } else if (self.search !== undefined) {
       url = JIANGQIE_POSTS_SEARCH;
-      params.search = that.search;
-    } else if (that.track !== undefined) {
+      params.search = self.search;
+    } else if (self.track !== undefined) {
       url = JIANGQIE_POSTS_MY;
-      params.track = that.track;
+      params.track = self.track;
     } else {
       url = JIANGQIE_POSTS_LAST;
     }
 
     get(url, params).then(res => {
-      that.setData({
+      self.setData({
         loaded: true,
         loadding: false,
-        posts: refresh ? res.data : that.data.posts.concat(res.data),
+        posts: refresh ? res.data : self.data.posts.concat(res.data),
         pullUpOn: res.data.length == JQ_PER_PAGE_COUNT
       });
     })

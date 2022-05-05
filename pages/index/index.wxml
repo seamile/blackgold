@@ -169,7 +169,7 @@
 					<block wx:for="{{posts}}" wx:key="id">
 						<image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4" index="{{index}}"
 							data-id="{{item.id}}" catchtap="handlerArticleClick"></image>
-						<block wx:if="{{(index+1)%21 ==0}}">
+						<block wx:if="{{(index+1)%12 ==0}}">
 							<import src="/templates/ad.wxml"/>
 							<template is="ad" data="{{setAD,pagead}}"/>
 						</block>

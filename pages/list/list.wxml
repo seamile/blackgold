@@ -14,24 +14,22 @@
                  catchtap="handlerArticleClick">
           </image>
           <block wx:if="{{(index+1) % 12 == 0}}">
-            <view class="ad-info-stream"><ad unitId="adunit-ad838463e466ec75" /></view>
+            <!-- <view class="ad-info-stream"><ad unitId="adunit-6d50f37cbe7f552d" /></view> -->
+            <import src="/templates/ad.wxml"/>
+            <template style="width: 100%;" is="ad" data="{{setAD,pagead}}" />
           </block>
         </block>
       </view>
 
-      <!-- 文章列表二开end -->
-
       <!--加载loadding-->
       <tui-loading visible="{{loading}}"></tui-loading>
       <tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
-      <!--加载loadding-->
-
     </block>
+
     <block wx:elif="{{loaded}}">
       <ad class="bgads" unitId="adunit-ad838463e466ec75"></ad>
       <template is="jiangqie_nodata" />
     </block>
-
   </view>
 </view>
 
