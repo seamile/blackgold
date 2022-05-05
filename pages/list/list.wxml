@@ -13,10 +13,8 @@
                  data-id="{{item.id}}" 
                  catchtap="handlerArticleClick">
           </image>
-          <block wx:if="{{(index+1) % 12 == 0}}">
-            <!-- <view class="ad-info-stream"><ad unitId="adunit-6d50f37cbe7f552d" /></view> -->
-            <import src="/templates/ad.wxml"/>
-            <template style="width: 100%;" is="ad" data="{{setAD,pagead}}" />
+          <block wx:if="{{(index+1) % 9 == 0}}">
+            <view class="ad-info-stream"><ad unitId="adunit-6d50f37cbe7f552d" /></view>
           </block>
         </block>
       </view>

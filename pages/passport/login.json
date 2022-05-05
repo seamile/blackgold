@@ -2,8 +2,5 @@
   "navigationBarTitleText": "授权登录",
   "enablePullDownRefresh": false,
   "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {
-    "u-avatar": "/node-modules/uview-ui/components/u-avatar/u-avatar",
-    "u-button": "/node-modules/uview-ui/components/u-button/u-button"
-  }
+  "usingComponents": {}
 }
