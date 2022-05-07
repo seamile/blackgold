@@ -12,9 +12,8 @@
     <view class="hope-text">本程序坚决抵制任何违法内容，对于违法内容您可以及时举报，发现后立马删除。如有疑问请通过邮件联系我们。</view>
   </view>
 
-  <!-- <view class="hope-title ad">点击下方广告支持我们</view>
+  <view class="hope-title ad">点击下方广告支持我们</view>
   <view class="hope-ad">
-    <import src="/templates/ad.wxml"/>
-    <template is="ad" data="{{setAD,pagead}}"/>
-  </view> -->
+    <ad unit-id="adunit-6d50f37cbe7f552d" ad-type="video" ad-theme="white"></ad>
+  </view>
 </view>

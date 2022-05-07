@@ -36,7 +36,8 @@
 	</view>
 </view>
 
-<ad class="bgads" unitId="adunit-2f153135581264fa"></ad>
+<ad-custom unit-id="adunit-5ac67c8aa58a6eca"></ad-custom>
+
 <!--加载框 start-->
 <tui-loading visible="{{loading}}"></tui-loading>
 <!--加载框 end-->

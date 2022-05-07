@@ -10,14 +10,7 @@
 	</view>
 
   <!-- 小游戏广告 -->
-  <!-- <view class="listtit">
-    <image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
-    <text class="listleft">游戏推荐</text>
-  </view> -->
-  
-  <view class="ad-grid">
-    <ad-custom unit-id="adunit-a3d3a4de210b388f"></ad-custom>
-  </view>
+  <ad-custom unit-id="adunit-a3d3a4de210b388f"></ad-custom>
 
   <!-- 分类标题 -->
   <!-- <view class="listtit">

@@ -14,7 +14,7 @@
                  catchtap="handlerArticleClick">
           </image>
           <block wx:if="{{(index+1) % 9 == 0}}">
-            <view class="ad-info-stream"><ad unitId="adunit-6d50f37cbe7f552d" /></view>
+            <ad-custom unit-id="adunit-5ac67c8aa58a6eca"></ad-custom>
           </block>
         </block>
       </view>
@@ -24,9 +24,9 @@
       <tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
     </block>
 
-    <block wx:elif="{{loaded}}">
-      <ad class="bgads" unitId="adunit-ad838463e466ec75"></ad>
+    <block wx:elif="{{!loading}}">
       <template is="jiangqie_nodata" />
+      <ad unit-id="adunit-6d50f37cbe7f552d" ad-type="video" ad-theme="black"></ad>
     </block>
   </view>
 </view>

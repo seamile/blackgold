@@ -6,12 +6,6 @@
         </view>
     </view>
 
-
-    <!-- 小广告 -->
-    <view class="tab-content">
-      <ad class="bgads" unitId="adunit-2f153135581264fa"></ad>
-    </view>
-
     <view class="tab-content">
         <view class="index">
             <!-- <view class="listtit">
@@ -49,4 +43,7 @@
             <view class="last_text" wx:if="{{!isLastPage&&posts.length>0}}">努力加载中...</view>
         </view>
     </view>
+
+    <!-- 小广告 -->
+    <ad-custom unit-id="adunit-5ac67c8aa58a6eca"></ad-custom>
 </view>

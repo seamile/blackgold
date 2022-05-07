@@ -13,8 +13,8 @@
   <view class="disclaimer">
     声明：图片来自互联网，如果侵犯了您的权益，请联系我们删除。
   </view>
-  <import src="/templates/ad.wxml"/>
-  <template style="width: 100%;" is="ad" data="{{setAD,pagead}}" />
+
+  <ad unit-id="adunit-6d50f37cbe7f552d" ad-type="video" ad-theme="white"></ad>
 </view>
 
 <template is="jiangqie_poplogin" data="{{show:showPopLogin}}" />
