@@ -6,6 +6,7 @@ import { wxParse } from '../../components/wxParse/wxParse';
 
 var rewardedVideoAd = null;
 var app = getApp();
+var adRewardTimes = 6;
 
 Page({
   data: {
@@ -128,7 +129,7 @@ Page({
         if (res && res.isEnded) {
           // 视频完整播完, 记录时间
           let now = new Date();
-          wx.setStorageSync('rewardedAdTime', now);
+          wx.setStorageSync('rewardedAdTimes', adRewardTimes);
           console.log('视频已播完' + now.toISOString());
           // 下载插画
           this.saveIllust();
@@ -159,7 +160,7 @@ Page({
   onShareTimeline: function () {
     let self = this;
     return {
-      title: "【" + self.data.post.title + "】分享这张好看的手机壁纸给你~",
+      title: "【" + self.data.post.title + "】分享这张好看的壁纸给你~",
       query: 'post_id=' + self.post_id,
       imageUrl: self.data.post.thumbnail,
     }
@@ -246,10 +247,6 @@ Page({
     });
   },
 
-  formatNumber: function (t) {
-    return (t = t.toString())[1] ? t : "0" + t;
-  },
-
   handlerDoLoginClick: function (_e) {
     wx.navigateTo({
       url: '/pages/login/login',
@@ -280,12 +277,13 @@ Page({
     }
 
     //缓存
-    var rewardedAdTime = wx.getStorageSync('rewardedAdTime');
-    if (!rewardedAdTime) {
-      // 上次播放时间不存在时
+    var rewardedAdTimes = wx.getStorageSync('rewardedAdTimes') || 0;
+    console.log(rewardedAdTimes);
+    if (rewardedAdTimes <= 0) {
+      // 上次播放次数不存在，或者播放次数不足
       wx.showModal({
         title: '壁纸下载',
-        content: '只需要看一次广告，即可在 10 分钟内无限下载所有壁纸！',
+        content: '只需看一次广告，即可免费下载 ' + adRewardTimes + ' 张超清壁纸！',
         success(res) {
           if (res.confirm) {
             console.log('用户点击确定');
@@ -296,32 +294,12 @@ Page({
         }
       })
     } else {
-      var now = new Date();
-      let timeDiff = now - rewardedAdTime;
-      console.log("当前日期：" + now.toISOString());
-      console.log("时间差值：" + timeDiff.toString());
-
-      if (timeDiff <= 600e3) {
-        self.saveIllust();
-      } else {
-        wx.showModal({
-          title: '壁纸下载',
-          content: '只需要看一次广告，即可在 10 分钟内无限下载所有壁纸！',
-          success(res) {
-            if (res.confirm) {
-              console.log('用户点击确定');
-              self.openRewardedVideoAd();
-            } else {
-              console.log('用户点击取消')
-            }
-          }
-        })
-      }
+      self.saveIllust();
     }
   },
 
   //下载壁纸
-  saveIllust: function () {
+  saveIllust: function (rewardedAdTimes) {
     wx.showLoading({ title: '正在保存...' })
     wx.downloadFile({
       url: this.data.illust.imageUrls[1],
@@ -329,12 +307,17 @@ Page({
         wx.saveImageToPhotosAlbum({
           filePath: e.tempFilePath,
           success: function (_e) {
-            setTimeout(function () { wx.hideLoading() }, 2000)
+            setTimeout(function () { wx.hideLoading() }, 2000);
+            // 修改下载次数
+            let rewardedAdTimes = wx.getStorageSync('rewardedAdTimes')
+            rewardedAdTimes -= 1;
+            wx.setStorageSync('rewardedAdTimes', rewardedAdTimes);
+            // 显示提示
             wx.showToast({
-              title: '保存成功',
+              title: '保存成功！',
               icon: "success",
-              duration: 2e3
-            })
+              duration: 3e3
+            });
           },
           fail: function (e) {
             "saveImageToPhotosAlbum:fail auth deny" === e.errMsg && wx.openSetting({
