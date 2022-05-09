@@ -10,19 +10,21 @@
 	</view>
 
   <!-- 小游戏广告 -->
-  <ad-custom unit-id="adunit-a3d3a4de210b388f"></ad-custom>
-
-  <!-- 分类标题 -->
-  <!-- <view class="listtit">
-  <image class="jiangqie-news-iconimg" src="../../images/label.svg"></image>
-  <text class="listleft">动漫专辑</text>
-  </view> -->
+  <view class="ad-games">
+    <ad-custom unit-id="adunit-a3d3a4de210b388f"></ad-custom>
+  </view>
 
 	<view class="right-box">
-		<view wx:for="{{categories}}" wx:key="category" class="sortbox" data-id="{{item.id}}" data-name="{{item.name}}" catchtap="handlerCategoryClick">
+		<view
+        wx:for="{{categories}}"
+        wx:key="category"
+        class="sortbox"
+        data-id="{{item.id}}"
+        data-name="{{item.name}}"
+        catchtap="handlerCategoryClick">
 			<image src="{{item.cover?item.cover:categorie_cover}}" mode="aspectFill" class="sortimage" />
 			<view class="sorttitle">{{item.name}}</view>
-			<!-- <view class="sortsummary">{{item.description}}</view>  -->
+			<!-- <view class="sortsummary">{{item.description}}</view> -->
 		</view>
 	</view>
 </view>

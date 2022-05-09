@@ -13,9 +13,12 @@
                  data-id="{{item.id}}" 
                  catchtap="handlerArticleClick">
           </image>
-          <block wx:if="{{(index+1) % 9 == 0}}">
-            <ad-custom unit-id="adunit-5ac67c8aa58a6eca"></ad-custom>
-          </block>
+
+          <block wx:if="{{(index+1)%9 == 0}}">
+              <view class="ad-info-stream">
+                <ad-custom unit-id="adunit-5ac67c8aa58a6eca"></ad-custom>
+              </view>
+            </block>
         </block>
       </view>
 
@@ -24,6 +27,7 @@
       <tui-nomore visible="{{!pullUpOn}}"></tui-nomore>
     </block>
 
+    <!-- 没有数据时显示默认值 -->
     <block wx:elif="{{!loading}}">
       <template is="jiangqie_nodata" />
       <ad unit-id="adunit-6d50f37cbe7f552d" ad-type="video" ad-theme="black"></ad>

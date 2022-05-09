@@ -235,3 +235,10 @@ page {
   height: 50rpx;
   width: 50rpx;
 }
+
+.ad-games {
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
