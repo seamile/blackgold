@@ -299,7 +299,7 @@ Page({
   },
 
   //下载壁纸
-  saveIllust: function (rewardedAdTimes) {
+  saveIllust: function () {
     wx.showLoading({ title: '正在保存...' })
     wx.downloadFile({
       url: this.data.illust.imageUrls[1],
