@@ -22,7 +22,6 @@ page {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* 文章列表 */
 .list-box.data-v-0034d6f4 {
   width: 100vw;
   display: -webkit-box;

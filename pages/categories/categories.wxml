@@ -1,32 +1,32 @@
 <!--pages/navbar/navbar.wxml-->
 
 <view class="container">
-	<view class="categorie-header">
-		<view class="categorie-text">
-			<text>{{setting.title}}</text>
-			<!-- <view>{{setting.description}}</view> -->
-		</view>
-		<image src="{{setting.background}}" mode="aspectFill" />
-	</view>
+  <view class="categorie-header">
+    <view class="categorie-text">
+      <text>{{setting.title}}</text>
+      <!-- <view>{{setting.description}}</view> -->
+    </view>
+    <image src="{{setting.background}}" mode="aspectFill" />
+  </view>
 
   <!-- 小游戏广告 -->
   <view class="ad-games">
     <ad-custom unit-id="adunit-a3d3a4de210b388f"></ad-custom>
   </view>
 
-	<view class="right-box">
-		<view
+  <view class="right-box">
+    <view
         wx:for="{{categories}}"
         wx:key="category"
         class="sortbox"
         data-id="{{item.id}}"
         data-name="{{item.name}}"
         catchtap="handlerCategoryClick">
-			<image src="{{item.cover?item.cover:categorie_cover}}" mode="aspectFill" class="sortimage" />
-			<view class="sorttitle">{{item.name}}</view>
-			<!-- <view class="sortsummary">{{item.description}}</view> -->
-		</view>
-	</view>
+      <image src="{{item.cover?item.cover:categorie_cover}}" mode="aspectFill" class="sortimage" />
+      <view class="sorttitle">{{item.name}}</view>
+    </view>
+    <view class="emptybox"></view>
+  </view>
 </view>
 <!--加载框 start-->
 <tui-loading visible="{{loading}}"></tui-loading>
