@@ -1,6 +1,6 @@
 {
   "setting": {
-    "compileHotReLoad": true,
+    "compileHotReLoad": false,
     "urlCheck": true,
     "preloadBackgroundData": false,
     "autoAudits": false

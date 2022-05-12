@@ -28,7 +28,7 @@
 			<text>返回</text>
 		</view>
 
-		<view class="tui-operation-item" catchtap="downloadIllusts">
+		<view class="tui-operation-item" catchtap="downloadIllust">
 			<block >
 				<image src="../../images/download.svg" mode="widthFix"></image>
 				<text>下载</text>
