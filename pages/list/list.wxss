@@ -42,5 +42,5 @@ page {
 
 .ad-info-stream {
   width: 100%;
-  margin-top: 5rpx;
+  margin: 3rpx 0;
 }

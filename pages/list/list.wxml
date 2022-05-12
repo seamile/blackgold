@@ -8,10 +8,10 @@
       <view class="list-box data-v-0034d6f4">
         <block wx:for="{{posts}}" wx:key="thumbnail">
           <image src="{{item.thumbnail}}" 
-                 mode="aspectFill" 
-                 class="image data-v-0034d6f4" 
+                 mode="aspectFill"
+                 class="image data-v-0034d6f4"
                  index="{{index}}"
-                 data-id="{{item.id}}" 
+                 data-id="{{item.id}}"
                  catchtap="handlerArticleClick">
           </image>
 
