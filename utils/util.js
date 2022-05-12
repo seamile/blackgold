@@ -25,8 +25,6 @@ function navigateBack() {
       })
     }
   });
-
-
 }
 function getAD(that, showad) {
   get(JIANGQIE_SETTING_AD).then(res => {

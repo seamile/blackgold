@@ -29,7 +29,7 @@ Page({
         tabHidden: i.globalData.isShenHe
       }), o = i.globalData.isShenHe ? "情侣壁纸" : "视频壁纸榜", e = 1, n.getSearchVideo();
     }), wx.createInterstitialAd && ((a = wx.createInterstitialAd({
-      adUnitId: i.globalData.AD_CHAPING
+      adUnitId: i.globalData.AD_INTERSTITIAL
     })).onLoad(function () { }), a.onError(function (e) { }), a.onClose(function () { }));
   },
   hideGuideTap: function (e) {

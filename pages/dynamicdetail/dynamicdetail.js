@@ -29,7 +29,7 @@ Page({
 
     if (!this.data.isShare && wx.createInterstitialAd) {
       let interstitialAd = wx.createInterstitialAd({
-        adUnitId: e.globalData.AD_CHAPING
+        adUnitId: e.globalData.AD_INTERSTITIAL
       })
       interstitialAd.onLoad(() => { })
       interstitialAd.onError((err) => { })
