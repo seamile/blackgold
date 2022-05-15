@@ -29,41 +29,26 @@ function i(t) {
   });
 }
 
-var d = "a76e8f5ee36e2233";
-var c = "305420";
-var r = "Config";
-var s = "cKPWEEEN";
-import { initialize, Query } from "./Bmob-2.2.5.min.js";
 var g = getApp();
 var w = "usedTime";
 
-export function getConfig(t) {
-  wx.showLoading({
-    title: "加载中..."
-  }), g.globalData.objectId ? t() : (initialize(d, c), Query(r).get(s).then(function (a) {
-    console.log(a), g.globalData.objectId = a.objectId, g.globalData.isShenHe = a.isShenHe,
-      g.globalData.COUNT = a.count, t();
-  }).catch(function (t) {
-    console.log(t);
-  }));
-}
-export function getSearchVideo(t, a, e, o) {
+export function getSearchVideo(keyword, page, e, o) {
   wx.request({
     url: "https://search.hyhuo.com/so/tag",
     method: "POST",
     data: {
-      keyword: t,
+      keyword: keyword,
       search_type: 3,
       sort: "hot",
-      page: a
+      page: page
     },
     header: {
       "content-type": "application/x-www-form-urlencoded"
     },
-    success: function (t) {
-      wx.hideLoading(), t.data && t.data.data ? e(t.data.data.data_list) : o(t.data.errMsg);
+    success: function (res) {
+      wx.hideLoading(), res.data && res.data.data ? e(res.data.data.data_list) : o(res.data.errMsg);
     },
-    fail: function (t) {
+    fail: function (_res) {
       wx.hideLoading(), o(0);
     }
   });
@@ -83,7 +68,7 @@ export function getSearchImg(t, a, e, o) {
     success: function (t) {
       wx.hideLoading(), t.data && t.data.data ? e(t.data.data.data_list) : o(t.data.errMsg);
     },
-    fail: function (t) {
+    fail: function () {
       wx.hideLoading(), o(0);
     }
   });
@@ -98,7 +83,7 @@ export function getHeadCategory(t, a) {
     success: function (e) {
       wx.hideLoading(), e.data && e.data.data ? t(e.data.data.categoryList) : a("");
     },
-    fail: function (t) {
+    fail: function () {
       wx.hideLoading(), a(0);
     }
   });
@@ -113,7 +98,7 @@ export function getHead(t, a, e, o, n) {
     success: function (t) {
       wx.hideLoading(), t.data && t.data.data ? o(t.data.data.list) : n("");
     },
-    fail: function (t) {
+    fail: function () {
       wx.hideLoading(), n(0);
     }
   });
@@ -128,7 +113,7 @@ export function getSetCategory(t, a) {
     success: function (e) {
       wx.hideLoading(), e.data && e.data.data ? t(e.data.data.categoryList) : a("");
     },
-    fail: function (t) {
+    fail: function () {
       wx.hideLoading(), a(0);
     }
   });
@@ -143,7 +128,7 @@ export function getSet(t, a, e, o, n) {
     success: function (t) {
       wx.hideLoading(), t.data && t.data.data ? o(t.data.data.list) : n("");
     },
-    fail: function (t) {
+    fail: function () {
       wx.hideLoading(), n(0);
     }
   });
@@ -157,7 +142,7 @@ export function refreshUsedTimeAndDate() {
         data: t(new Date())
       }), o(), i(!1));
     },
-    fail: function (a) {
+    fail: function () {
       wx.setStorage({
         key: "date",
         data: t(new Date())

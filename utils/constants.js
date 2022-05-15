@@ -1,13 +1,3 @@
-/*
- * 酱茄小程序开源版 v1.3.5
- * Author: 酱茄
- * Help document: https://www.jiangqie.com/ky
- * github: https://github.com/longwenjunjie/jiangqie_kafei
- * gitee: https://gitee.com/longwenjunj/jiangqie_kafei
- * License：MIT
- * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
- */
-
 export const JQ_VERSION = '1.3.5';
 // 分页 每页 数量 需要与服务器一致
 export const JQ_PER_PAGE_COUNT = 12;

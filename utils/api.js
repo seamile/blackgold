@@ -1,25 +1,11 @@
-/*
- * 酱茄小程序开源版 v1.3.5
- * Author: 酱茄
- * Help document: https://www.jiangqie.com/ky
- * github: https://github.com/longwenjunjie/jiangqie_kafei
- * gitee: https://gitee.com/longwenjunj/jiangqie_kafei
- * License：MIT
- * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
- */
-
-import { JQ_DEBUG, JQ_DOMAIN } from './config';
+const HOST = 'album.seamile.cn';
 
 function makeURL(module, action) {
-  if (JQ_DEBUG) {
-    return `http://test.wp.com/wp-json/jiangqie/v1/${module}/${action}`;
-  } else {
-    return `https://${JQ_DOMAIN}/wp-json/jiangqie/v1/${module}/${action}`;
-  }
+  return `https://${HOST}/wp-json/jiangqie/v1/${module}/${action}`;
 }
 
 function makeRes(res, name) {
-  return `https://${JQ_DOMAIN}/wp-content/plugins/jiangqie-api/public/${res}/${name}`;
+  return `https://${HOST}/wp-content/plugins/jiangqie-api/public/${res}/${name}`;
 }
 
 // 获取首页配置

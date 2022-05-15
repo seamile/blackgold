@@ -28,7 +28,7 @@ App({
   globalData: {
     userInfo: null,
     objectId: "",
-    isShenHe: !1,
+    isShenHe: false,
     COUNT: 1e4,
     PER_AD_REWARD: 6,
     AD_REWARD: "adunit-b1aef89d19d2e4da",
