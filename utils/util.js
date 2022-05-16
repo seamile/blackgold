@@ -11,13 +11,13 @@ function navigateBack() {
     }
   });
 }
-function getAD(that, showad) {
+function getAD(self, showad) {
   get(JIANGQIE_SETTING_AD).then(res => {
     if (!res.data.posisionad) {
       return
     } else {
       res.data.posisionad = res.data.posisionad.split(',');
-      that.setData({
+      self.setData({
         setAD: res.data
       })
       showad();
@@ -25,9 +25,9 @@ function getAD(that, showad) {
   })
 }
 
-function getshare(that) {
+function getshare(self) {
   get(JIANGQIE_SETTING_SHARE).then(res => {
-    that.setData({
+    self.setData({
       shares: res.data
     })
   })

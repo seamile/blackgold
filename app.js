@@ -1,17 +1,6 @@
-/*
- * 酱茄小程序开源版 v1.3.5
- * Author: 酱茄
- * Help document: https://www.jiangqie.com/ky
- * github: https://github.com/longwenjunjie/jiangqie_kafei
- * gitee: https://gitee.com/longwenjunj/jiangqie_kafei
- * License：MIT
- * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
- */
-
 import './common/runtime.js';
 import './common/vendor.js';
 import './common/main.js';
-
 import { checkSession } from './utils/auth.js';
 !function (t) {
   t && t.__esModule;
@@ -20,6 +9,8 @@ import { checkSession } from './utils/auth.js';
 import { UBT } from "./utils/ubt";
 import { flLoginRequest } from "./utils/login";
 import { backfl } from "configApi";
+import { get } from './utils/rest';
+import { JIANGQIE_SETTING_AD } from './utils/api';
 
 App({
   appName: '次元画册',
@@ -29,17 +20,32 @@ App({
     userInfo: null,
     objectId: "",
     isShenHe: false,
-    COUNT: 1e4,
-    PER_AD_REWARD: 6,
+    PER_AD_REWARD: 15,
     AD_REWARD: "adunit-b1aef89d19d2e4da",
     AD_INTERSTITIAL: "adunit-f154314d6dfd9b36"
   },
 
-  onLaunch: function (t) {
+  onLaunch: function () {
+    checkSession();
+
   },
+
   onShow: function (t) {
     wx.setStorageSync("weapp_scene", t.scene);
+    get(JIANGQIE_SETTING_AD).then(res => {
+      if (!res.data.posisionad) {
+        return
+      } else {
+        let ads = res.data;
+        let posisionad = ads.posisionad.split(',');
+        this.globalData.PER_AD_REWARD = Number(posisionad[posisionad.length - 1]);
+        ads.rewardedVideoid && (this.globalData.AD_REWARD = ads.rewardedVideoid);
+        ads.interstitialid && (this.globalData.AD_INTERSTITIAL = ads.interstitialid);
+      }
+    })
+    console.log(this.globalData)
   },
+
   bindSpm: function (e) {
     var a = e.currentTarget.dataset.spm;
     var r = e.currentTarget.dataset.url;
@@ -59,6 +65,7 @@ App({
       url: r
     });
   },
+
   uploadFormid: function (t) {
     var r = t.detail.formId;
     (0, flLoginRequest)({
@@ -71,9 +78,6 @@ App({
 
   errLog: function (t) {
     console.log(t);
-  },
-  onLaunch: function () {
-    checkSession();
   },
 
   //下拉刷新

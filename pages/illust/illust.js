@@ -298,6 +298,8 @@ Page({
           success: function (_) {
             // 修改下载次数
             wx.setStorageSync('downloadPoints', --downloadPoints);
+            console.log('downloadPoints: ' + downloadPoints)
+
             // 显示提示
             wx.showToast({
               title: '保存成功！',

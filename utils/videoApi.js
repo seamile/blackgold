@@ -133,42 +133,7 @@ export function getSet(t, a, e, o, n) {
     }
   });
 }
-export function refreshUsedTimeAndDate() {
-  wx.getStorage({
-    key: "date",
-    success: function (a) {
-      a.data != t(new Date()) && (wx.setStorage({
-        key: "date",
-        data: t(new Date())
-      }), o(), i(!1));
-    },
-    fail: function () {
-      wx.setStorage({
-        key: "date",
-        data: t(new Date())
-      }), o(), i(!1);
-    }
-  });
-}
-export function addUsedTime() {
-  var t = e();
-  t += 1
-  wx.setStorage({
-    key: w,
-    data: t
-  });
-}
-export function canUse(t) {
-  return !(!n() && e() >= g.globalData.COUNT && (wx.showModal({
-    title: "",
-    content: "今日赠送下载次数已用完，观看一小段广告解锁今日无限次下载",
-    confirmText: "观看",
-    success: function (res) {
-      if (res.confirm) {
-        t()
-      };
-    }
-  }), 1));
-}
+
+
 export const setVIP = i;
 export const getIsVIP = n;

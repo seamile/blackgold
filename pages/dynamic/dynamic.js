@@ -1,10 +1,9 @@
-import { refreshUsedTimeAndDate, getSearchVideo as _getSearchVideo } from "../../utils/videoApi";
+import { getSearchVideo as _getSearchVideo } from "../../utils/videoApi";
 var APP = getApp();
 var a = null;
 var keyword = "";
 var page = 1;
 var interstitialAd = null;
-var rewardAd = null;
 
 Page({
   data: {
@@ -18,10 +17,6 @@ Page({
 
   navigateBack: function () {
     wx.navigateBack({ changed: true });  //返回上一页
-  },
-
-  onShow: function () {
-    refreshUsedTimeAndDate();
   },
 
   onLoad: function () {
