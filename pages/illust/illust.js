@@ -267,12 +267,12 @@ Page({
       self.setData({ showPopLogin: true });
       return;
     }
-    console.log(downloadPoints)
-    if (downloadPoints <= 0) {
+
+    if (downloadPoints < 1) {
       // 播放次数不足
       wx.showModal({
         title: '壁纸下载',
-        content: '只需看一次广告，即可免费下载 ' + APP.globalData.PER_AD_REWARD + ' 张超清壁纸！',
+        content: '您的下载次数不足。只需看一次广告，即可免费下载 ' + APP.globalData.PER_AD_REWARD + ' 张超清壁纸！',
         success(res) {
           if (res.confirm) {
             console.log('用户点击确定');
@@ -295,9 +295,9 @@ Page({
       success: function (res) {
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
-          success: function (_e) {
-            setTimeout(function () { wx.hideLoading() }, 2000);
-            wx.setStorageSync('downloadPoints', --downloadPoints);  // 修改下载次数
+          success: function (_) {
+            // 修改下载次数
+            wx.setStorageSync('downloadPoints', --downloadPoints);
             // 显示提示
             wx.showToast({
               title: '保存成功！',
@@ -305,20 +305,17 @@ Page({
               duration: 3e3
             });
           },
-          fail: function (e) {
-            console.log(e);
-            "saveImageToPhotosAlbum:fail auth deny" === e.errMsg && wx.openSetting({
-              success: function (e) {
-                console.log(e)
-                e.authSetting["scope.writePhotosAlbum"]
+          fail: function (err) {
+            console.log(err);
+            "saveImageToPhotosAlbum:fail auth deny" === err.errMsg && wx.openSetting({
+              success: function (_res) {
+                _res.authSetting["scope.writePhotosAlbum"]
                   ? console.log("获取权限成功，给出再次点击图片保存到相册的提示。")
                   : console.log("获取权限失败，给出不给权限就无法正常使用的提示");
               }
             });
           },
-          complete: function (_e) {
-            wx.hideLoading();
-          }
+          complete: function () { wx.hideLoading(); }
         })
       }
     })

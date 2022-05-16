@@ -18,7 +18,17 @@
         <text class="wenzi">情侣壁纸</text>
     </view>
 </view>
-<scroll-view bindrefresherrefresh="refresh" bindscrolltolower="onScrollToLower" class="scroll-body" enhanced="{{true}}" lowerThreshold="{{100}}" refresherEnabled="{{true}}" refresherTriggered="{{refreshStatus}}" scrollTop="{{scrollTop}}" scrollY="{{true}}" showScrollbar="{{false}}" style="{{scrollH}}">
+<scroll-view bindrefresherrefresh="refresh"
+             bindscrolltolower="onScrollToLower" 
+             class="scroll-body"
+             enhanced="{{true}}"
+             lowerThreshold="{{100}}"
+             refresherEnabled="{{true}}"
+             refresherTriggered="{{refreshStatus}}"
+             scrollTop="{{scrollTop}}"
+             scrollY="{{true}}"
+             showScrollbar="{{false}}"
+             style="{{scrollH}}">
     <block wx:for="{{videos}}" wx:key="vid">
         <view bindtap="preview" class="grid-item" data-item="{{item}}">
             <view class="g">

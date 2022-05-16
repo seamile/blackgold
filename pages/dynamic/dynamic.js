@@ -1,14 +1,16 @@
-import { refreshUsedTimeAndDate, getSearchVideo as _getSearchVideo } from "../../utils/api1";
+import { refreshUsedTimeAndDate, getSearchVideo as _getSearchVideo } from "../../utils/videoApi";
 var APP = getApp();
 var a = null;
 var keyword = "";
 var page = 1;
+var interstitialAd = null;
+var rewardAd = null;
 
 Page({
   data: {
     videos: [],
-    tabHidden: !0,
-    refreshStatus: !1,
+    tabHidden: false,
+    refreshStatus: false,
     scrollTop: 0,
     hideGuide: !0,
     scrollH: "88%"
@@ -17,13 +19,14 @@ Page({
   navigateBack: function () {
     wx.navigateBack({ changed: true });  //返回上一页
   },
+
   onShow: function () {
     refreshUsedTimeAndDate();
   },
 
   onLoad: function () {
     let self = this;
-    self.initHideGuide();
+
     wx.showLoading({
       title: "加载中..."
     });
@@ -36,24 +39,13 @@ Page({
     page = 1;
     self.getSearchVideo();
 
-    // 插屏广告
-    let interstitialAd = wx.createInterstitialAd({
+    // 初始化插屏广告
+    interstitialAd = wx.createInterstitialAd({
       adUnitId: APP.globalData.AD_INTERSTITIAL
     });
-
     interstitialAd.onLoad(function () { });
     interstitialAd.onError(function (err) { console.log(err); });
     interstitialAd.onClose(function () { });
-  },
-
-  hideGuideTap: function () {
-    this.setData({
-      hideGuide: !0,
-      scrollH: "88%"
-    }), wx.setStorage({
-      key: "hideGuide",
-      data: !0
-    });
   },
 
   getSearchVideo: function () {
@@ -90,9 +82,9 @@ Page({
   },
 
   refresh: function (_target) {
-    page = 1, this.getSearchVideo(), this.setData({
-      refreshStatus: !0
-    });
+    page = 1;
+    this.getSearchVideo();
+    this.setData({ refreshStatus: false });
   },
 
   onScrollToLower: function (_target) {
@@ -126,28 +118,6 @@ Page({
     wx.showLoading({
       title: "加载中..."
     }), keyword = "情侣壁纸", page = 1, this.getSearchVideo();
-  },
-
-  initHideGuide: function () {
-    var self = this;
-    wx.getStorage({
-      key: "hideGuide",
-      success: function (res) {
-        self.setData({
-          hideGuide: res.data
-        }), self.data.hideGuide ? self.setData({
-          scrollH: "88%"
-        }) : self.setData({
-          scrollH: "81%"
-        });
-      },
-      fail: function (_res) {
-        self.setData({
-          hideGuide: !1,
-          scrollH: "81%"
-        });
-      }
-    });
   },
 
   onShareAppMessage: function () {

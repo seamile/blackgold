@@ -1,7 +1,9 @@
-import { setVIP, addUsedTime, canUse } from "../../utils/api1";
-var e = getApp();
-var o = null;
-var rewardAd = null;
+import { getUser } from '../../utils/auth';
+
+var APP = getApp();
+var interstitialAd = null;
+var rewardedVideoAd = null;
+var downloadPoints = 0;
 
 Page({
   data: {
@@ -13,45 +15,53 @@ Page({
   navigateBack: function () {
     wx.navigateBack({ changed: true });//返回上一页
   },
+
   onLoad: function (a) {
-    wx.showLoading({
-      title: "壁纸加载中..."
-    });
-    var videoUrl = decodeURIComponent(a.url), coverUrl = decodeURIComponent(a.imgSrc);
-    console.log(videoUrl);
-    console.log(coverUrl);
+    wx.showLoading({ title: "壁纸加载中..." });
+
     this.setData({
-      videoSrc: videoUrl,
-      imgSrc: coverUrl,
+      videoSrc: decodeURIComponent(a.url),
+      imgSrc: decodeURIComponent(a.imgSrc),
       isShare: a.isShare || false
     })
-    this.getDate()
 
-    if (!this.data.isShare && wx.createInterstitialAd) {
-      let interstitialAd = wx.createInterstitialAd({
-        adUnitId: e.globalData.AD_INTERSTITIAL
+    // 插屏广告
+    if (!this.data.isShare) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: APP.globalData.AD_INTERSTITIAL
       })
       interstitialAd.onLoad(() => { })
-      interstitialAd.onError((err) => { })
+      interstitialAd.onError((err) => { console.log(err); })
       interstitialAd.onClose(() => { })
     }
 
-    if (wx.createRewardedVideoAd) {
-      rewardAd = wx.createRewardedVideoAd({
-        adUnitId: e.globalData.AD_REWARD
-      })
-      rewardAd.onLoad(() => { })
-      rewardAd.onError((err) => { console.log(err) })
-      rewardAd.onClose((res) => {
-        wx.createVideoContext("myVideo").play()
-        res && res.isEnded && (setVIP(true), wx.showModal({
-          content: "已解锁今日无限次下载",
-          confirmText: "知道了",
-          showCancel: false
-        }));
-      })
-    }
+    // 激励视频广告
+    rewardedVideoAd = wx.createRewardedVideoAd({
+      adUnitId: APP.globalData.AD_REWARD
+    })
+    rewardedVideoAd.onLoad(() => { })
+    rewardedVideoAd.onError((err) => { console.log(err) })
+    rewardedVideoAd.onClose((res) => {
+      wx.createVideoContext("myVideo").play()
+      if (res && res.isEnded) {
+        // 视频完整播完, 更新下载次数
+        downloadPoints += APP.globalData.PER_AD_REWARD;
+        wx.setStorageSync('downloadPoints', downloadPoints);
+        this.saveVideo()
+      };
+    })
   },
+
+  onUnload: function (_) {
+    wx.hideLoading();
+  },
+
+  onShow: function () {
+    // 获取下载次数
+    downloadPoints = wx.getStorageSync('downloadPoints') || 0;
+    console.log(downloadPoints);
+  },
+
   backTap: function (t) {
     this.data.isShare ? wx.reLaunch({
       url: "../../pages/dynamic/dynamic"
@@ -59,105 +69,92 @@ Page({
       delta: 1
     });
   },
+
   videoTap: function (t) {
     this.setData({
       hideBtn: !this.data.hideBtn
     });
   },
-  downloadTap: function (t) {
-    if (this.canUseOcr()) {
-      var self = this;
-      wx.getSetting({
-        success: function (t) {
-          t.authSetting["scope.writePhotosAlbum"]
-            ? self.save()
-            : wx.authorize({
-              scope: "scope.writePhotosAlbum",
-              success: function () {
-                self.save();
-              },
-              fail: function () {
-                wx.showModal({
-                  title: "温馨提示",
-                  content: "您未授予我们使用相册的权限，无法保存，请前往允许使用相册",
-                  confirmText: "去允许",
-                  confirmColor: "red",
-                  success: function (t) {
-                    t.confirm && wx.openSetting({});
-                  }
-                });
-              }
-            });
+
+  // 打开激励视频
+  showRewardedVideoAd: function () {
+    wx.createVideoContext("myVideo").pause();
+    rewardedVideoAd.show()
+      .catch(() => {
+        rewardedVideoAd.load()
+          .then(() => {
+            wx.createVideoContext("myVideo").pause();
+            rewardedVideoAd.show();
+          })
+          .catch(_err => { console.log('激励视频广告显示失败'); })
+      })
+  },
+
+  downloadTap: function () {
+    let self = this;
+    // 判断用户是否登入
+    if (!getUser()) {
+      wx.showModal({
+        title: '您尚未登录',
+        content: '登录以后才可以下载壁纸哦~',
+        confirmText: '点击前往',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({ url: '/pages/login/login' });
+          }
         }
-      });
+      })
+      return;
+    }
+
+    if (downloadPoints < 1) {
+      // 播放次数不足
+      wx.showModal({
+        title: '动态壁纸下载',
+        content: '您的下载次数不足。看一次广告可免费下载 ' + APP.globalData.PER_AD_REWARD + ' 个动态壁纸！',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            self.showRewardedVideoAd();
+          } else {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    } else {
+      self.saveVideo();
     }
   },
-  save: function () {
-    wx.showLoading({
-      title: "下载中"
-    });
-    var e = this;
+
+  saveVideo: function () {
+    var self = this;
+    wx.showLoading({ title: "下载中..." });
     wx.downloadFile({
-      url: e.data.videoSrc.replace("http", "https"),
-      success: function (e) {
-        200 === e.statusCode && wx.saveVideoToPhotosAlbum({
-          filePath: e.tempFilePath,
-          success: function (e) {
-            wx.hideLoading(), wx.showModal({
+      url: self.data.videoSrc.replace("http", "https"),
+      success: function (res) {
+        res.statusCode === 200 && wx.saveVideoToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success: function (_) {
+            // 修改下载次数
+            wx.setStorageSync('downloadPoints', --downloadPoints);
+            wx.showModal({
               content: "保存成功，请在相册中查看",
               confirmText: "知道了",
-              showCancel: !1
-            }), addUsedTime();
+              showCancel: false
+            });
           }
         });
       },
-      complete: function () {
-        wx.hideLoading();
-      }
+      complete: function () { wx.hideLoading(); }
     });
   },
-  onUnload: function (t) {
-    wx.hideLoading();
-  },
-  bindloadedmetadata: function (t) {
-    wx.hideLoading(), o && o.show().catch(function (t) {
-      console.error(t);
-    });
-  },
-  getDate: function () {
-    var t = new Date(),
-      e = (t.getFullYear(), t.getMonth() + 1),
-      o = t.getDate(),
-      n = t.getHours(),
-      a = t.getMinutes(),
-      i = (t.getSeconds(), e + "月" + o + "日"),
-      c = [n, a].map(this.formatNumber).join(":");
 
-    console.log(i), console.log(c)
-    this.setData({
-      date: i,
-      time: c
-    });
+  bindloadedmetadata: function (t) {
+    wx.hideLoading({})
   },
-  formatNumber: function (t) {
-    return (t = t.toString())[1] ? t : "0" + t;
-  },
-  canUseOcr: function () {
-    return canUse(function () {
-      rewardAd && (
-        wx.createVideoContext("myVideo").pause(),
-        rewardAd.show().catch(function () {
-          rewardAd.load().then(function () {
-            rewardAd.show(),
-              wx.createVideoContext("myVideo").pause();
-          }).catch(function (t) {
-            console.log("激励视频 广告显示失败");
-          });
-        }));
-    });
-  },
+
   onShareAppMessage: function (t) {
-    return e.globalData.isShenHe ? {
+    return APP.globalData.isShenHe ? {
       title: "海量高清手机壁纸，动态壁纸，情侣头像",
       path: "pages/dynamic/dynamic",
       imageUrl: this.data.imgSrc
