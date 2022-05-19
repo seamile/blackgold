@@ -27,27 +27,11 @@ Page({
         adUnitId: that.data.setAD.interstitialid
       })
       // 监听插屏错误事件
-      interstitialAd.onError((err) => {
-        console.error(err)
-      })
+      interstitialAd.onError((err) => { console.error(err) })
       // 显示广告
-      if (interstitialAd) {
-        if (that.data.setAD.switch_inad == 'yes') {
-          setinad = setInterval(() => {
-            interstitialAd.show().catch((err) => {
-              console.error(err)
-            })
-          }, 2000);
-        }
-        else {
-          setTimeout(() => {
-            interstitialAd.show().catch((err) => {
-              console.error(err)
-            })
-          }, 6000);
-        }
-
-      }
+      setTimeout(() => {
+        interstitialAd.show().catch((err) => { console.error(err) })
+      }, 6000);
     }
   },
   onHide() {

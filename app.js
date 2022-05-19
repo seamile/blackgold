@@ -27,7 +27,6 @@ App({
 
   onLaunch: function () {
     checkSession();
-
   },
 
   onShow: function (t) {

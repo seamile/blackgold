@@ -59,7 +59,6 @@ Page({
         post: res.data,
         // post_like: res.data.user.islike,
         post_favorite: res.data.user.isfavorite || false,
-        like_list: res.data.like_list,
       });
 
       // 解析 POST 内容
@@ -182,19 +181,6 @@ Page({
     let self = this;
     get(JIANGQIE_USER_LIKE, {
       post_id: self.data.post.id
-    }).then(_res => {
-      let avatar = getUser().avatar;
-      var index = self.data.like_list.indexOf(avatar);
-      if (index > -1) {
-        self.data.like_list.splice(index, 1);
-      } else {
-        self.data.like_list.unshift(avatar);
-      }
-
-      self.setData({
-        // post_like: (self.data.post_like == 1 ? 0 : 1),
-        like_list: self.data.like_list
-      });
     })
   },
 

@@ -1,6 +1,5 @@
 import { JQ_PER_PAGE_COUNT } from '../../utils/constants';
 import {
-  JIANGQIE_SETTING_HOME,
   JIANGQIE_SETTING_HOMEBZ,
   JIANGQIE_BG_INDEX,
   JIANGQIE_POSTS_LAST,
@@ -13,9 +12,6 @@ let setinad;
 Page({
   data: {
     logo: '',
-    bh: '', // 当前小时
-    background: 'https://hoperp-han-1300874036.cos.ap-shanghai.myqcloud.com/2020/09/1599615195-id_bg.png',
-    Greetings: "",//问候语
     background: '',
 
     //顶部导航
@@ -123,6 +119,7 @@ Page({
           key: Constant.JQ_SEARCH_KEY,
         })
       },
+
       fail(e) {
         let keys = [that.keyword];
 
@@ -148,87 +145,33 @@ Page({
   },
 
 
-  onLoad: async function (options) {
-
+  onLoad: async function (_options) {
     let that = this;
-    await util.getshare(that);
-    await get(JIANGQIE_SETTING_HOME).then(res => {
-      that.setData({
-        //topNav: that.data.topNav.concat(res.data.top_nav)
-      })
-    })
+    util.getshare(that);
 
-    var timestamp = Date.parse(new Date());
-    timestamp = timestamp / 1000;
-    // console.log("当前时间戳为：" + timestamp);
-
-    //获取当前时间
-    var n = timestamp * 1000;
-
-    var date = new Date(n);
-    //获取时
-    var h = date.getHours();
-    if (0 < h && h <= 6) {
-      console.log("  0：00—6:00凌晨:勤奋的你")
-      that.setData({
-        bh: '凌晨了，',
-        Greetings: "凌晨勤奋的你，要注意身体哟！"
-      })
-    } else if (6 <= h && h < 9) {
-      console.log("6：00—6:00早上:奋斗的你")
-      that.setData({
-        bh: '早上好，',
-        Greetings: "早起奋斗的你，加油哦！"
-      })
-    }
-    else if (9 <= h && h < 11) {
-      console.log("6：00—6:00早上:奋斗的你")
-      that.setData({
-        bh: '早上好，',
-        Greetings: "时间一分一秒的溜走，再也不回来！"
-      })
-    }
-    else if (11 <= h && h <= 14) {
-
-      console.log("11：00—13:00中午:激情的你")
-      that.setData({
-        bh: '中午好，',
-        Greetings: "再忙再累，也要按时吃饭哦！"
-      })
-    } else if (14 <= h && h <= 16) {
-
-      console.log("18:00—24:00下午:懒洋洋的你")
-      that.setData({
-        bh: '下午好，',
-        Greetings: "有点懒洋洋哦！打起精神来！"
-      })
-    }
-    else if (16 <= h && h <= 18) {
-
-      console.log("16：00：00—18:00傍晚:活力的你")
-      that.setData({
-        bh: '晚上好，',
-        Greetings: "坚持一会，下班后就会充满活力！"
-      })
-    }
-    else if (18 <= h && h <= 21) {
-      that.setData({
-        bh: '晚上好，',
-        Greetings: "在看一会就要去休息哦！身体重要！"
-      })
-    }
-    else {
-      that.setData({
-        bh: '晚上好，',
-        Greetings: "晚上啦，记得好好照顾自已，别熬夜！"
-      })
-
+    // 时间
+    let now = new Date();
+    let hour = now.getHours();
+    let isoTime = now.toISOString();
+    if (0 <= hour && hour < 6) {
+      console.log(isoTime + " 凌晨了，要注意身体啊，快去睡吧！");
+    } else if (6 <= hour && hour < 8) {
+      console.log(isoTime + " 早上好，奋斗的你，元气满满！加油哦！");
+    } else if (8 <= hour && hour < 11) {
+      console.log(isoTime + " 上午好，时间一分一秒的溜走，再也不回来！");
+    } else if (11 <= hour && hour < 14) {
+      console.log(isoTime + " 中午好，再忙再累，也要按时吃饭哦！");
+    } else if (14 <= hour && hour < 17) {
+      console.log(isoTime + " 下午好，有点懒洋洋啊！打起精神来！");
+    } else if (17 <= hour && hour < 19) {
+      console.log(isoTime + " 天黑咯，坚持一会，下班后就会充满活力！");
+    } else if (19 <= hour && hour < 22) {
+      console.log(isoTime + " 晚上好，改一个Bug就去休息哦！身体最重要！");
+    } else {
+      console.log(isoTime + " 夜深了，记得好好照顾自已，别熬夜！");
     }
 
     //加载topNav，也就是顶部分类导航栏
-
-
-
     await that.init();
     let today = wx.getStorageSync('today')
     if (!today) {
@@ -248,17 +191,16 @@ Page({
       }
     }
   },
+
   init: async function () {
     let that = this;
 
     //获取配置
     get(JIANGQIE_SETTING_HOMEBZ).then(res => {
-      let logo = 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-f7f3f46c-2ca3-4514-81d9-6144e0e5180f/2542a804-ead0-435d-b402-9f022a12b348.png';
-      if (res.data.logo && res.data.logo.length > 0) {
-        logo = res.data.logo;
-      }
+      console.log(res);
+
       that.setData({
-        logo: logo,
+        logo: res.data.logo,
         topNavbz: that.data.topNavbz.concat(res.data.top_navbz),
         iconNavbzbz: res.data.icon_navbzbz,
         iconNavbz: res.data.icon_navbz,
@@ -295,6 +237,7 @@ Page({
       this.loadPost(false);
     }
   },
+
   onShow() {
     var that = this;
     util.getAD(that, function () {
@@ -302,6 +245,7 @@ Page({
     })
 
   },
+
   // 获取小程序插屏广告
   setInterstitialAd: function () {
     var that = this;
@@ -310,33 +254,18 @@ Page({
         adUnitId: that.data.setAD.interstitialid
       })
       // 监听插屏错误事件
-      interstitialAd.onError((err) => {
-        console.error(err)
-      })
+      interstitialAd.onError((err) => { console.error(err) })
       // 显示广告
-      if (interstitialAd) {
-        if (that.data.setAD.switch_inad == 'yes') {
-          setinad = setInterval(() => {
-            interstitialAd.show().catch((err) => {
-              console.error(err)
-            })
-          }, 2000);
-        }
-        else {
-          setTimeout(() => {
-            interstitialAd.show().catch((err) => {
-              console.error(err)
-            })
-          }, 6000);
-        }
-
-      }
+      setTimeout(() => {
+        interstitialAd.show().catch((err) => { console.error(err) })
+      }, 6000);
     }
   },
 
   onHide() {
     clearInterval(setinad);
   },
+
   onShareAppMessage: function () {
     var that = this;
     wx.showShareMenu({
@@ -348,6 +277,7 @@ Page({
       imageUrl: that.data.shares.share_image,
     }
   },
+
   //获取滚动条当前位置
   onPageScroll: function (e) {
     if (e.scrollTop > 100) {
@@ -394,6 +324,7 @@ Page({
       url: '/pages/search/search'
     })
   },
+
   //nav end ----
 
   //slide start----
@@ -402,6 +333,7 @@ Page({
       current: e.detail.current
     })
   },
+
   //slide end----
 
   //tab -- start
@@ -426,6 +358,7 @@ Page({
       url: '/pages/categories/categories',
     })
   },
+
   //tab -- end
 
   handlerIconNavClick: function (e) {
