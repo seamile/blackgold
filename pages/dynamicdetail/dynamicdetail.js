@@ -1,7 +1,6 @@
 import { getUser } from '../../utils/auth';
 
 var APP = getApp();
-var interstitialAd = null;
 var rewardedVideoAd = null;
 var downloadPoints = 0;
 
@@ -16,39 +15,32 @@ Page({
     wx.navigateBack({ changed: true });//返回上一页
   },
 
-  onLoad: function (a) {
+  onLoad: function (vSource) {
     wx.showLoading({ title: "壁纸加载中..." });
 
     this.setData({
-      videoSrc: decodeURIComponent(a.url),
-      imgSrc: decodeURIComponent(a.imgSrc),
-      isShare: a.isShare || false
+      videoSrc: decodeURIComponent(vSource.url),
+      imgSrc: decodeURIComponent(vSource.imgSrc),
+      isShare: vSource.isShare || false
     })
-
-    // 插屏广告
-    if (!this.data.isShare) {
-      interstitialAd = wx.createInterstitialAd({
-        adUnitId: APP.globalData.AD_INTERSTITIAL
-      })
-      interstitialAd.onLoad(() => { })
-      interstitialAd.onError((err) => { console.log(err); })
-      interstitialAd.onClose(() => { })
-    }
 
     // 激励视频广告
     rewardedVideoAd = wx.createRewardedVideoAd({
       adUnitId: APP.globalData.AD_REWARD
     })
     rewardedVideoAd.onLoad(() => { })
-    rewardedVideoAd.onError((err) => { console.log(err) })
+    rewardedVideoAd.onError((err) => {
+      console.log(err);
+      this.saveVideo();
+    })
     rewardedVideoAd.onClose((res) => {
       wx.createVideoContext("myVideo").play()
       if (res && res.isEnded) {
         // 视频完整播完, 更新下载次数
         downloadPoints += APP.globalData.PER_AD_REWARD;
         wx.setStorageSync('downloadPoints', downloadPoints);
-        this.saveVideo()
-      };
+        this.saveVideo();
+      }
     })
   },
 

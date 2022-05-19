@@ -10,7 +10,6 @@ import { wxParse } from '../../components/wxParse/wxParse';
 
 var APP = getApp();
 var rewardedVideoAd = null;
-var interstitialAd = null;
 var downloadPoints = 0;
 
 Page({
@@ -37,7 +36,6 @@ Page({
       self.post_id = options.post_id;
     }
 
-    self.loadInterstitialAd();  // 加载插屏广告
     self.loadRewardedVideoAd();  // 加载激励广告
   },
 
@@ -81,36 +79,6 @@ Page({
       loading: false, // 关闭“加载中”状态
       imode: (imgAspectRatio >= sysAspectRatio) ? 'aspectFill' : 'widthFix' // 根据宽高比设置相应显示模式
     })
-  },
-
-  // 初始化插屏广告
-  loadInterstitialAd: function () {
-    interstitialAd = wx.createInterstitialAd({
-      adUnitId: APP.globalData.AD_INTERSTITIAL
-    })
-    interstitialAd.onLoad(function () { })
-    interstitialAd.onError((err) => { console.error(err); })
-    interstitialAd.onClose(function () { })
-  },
-
-  // 显示插屏广告
-  showInterstitialAd: function () {
-    if (interstitialAd) {
-      if (this.data.setAD.switch_inad == 'yes') {
-        setinad = setInterval(() => {
-          interstitialAd.show().catch((err) => {
-            console.error(err)
-          })
-        }, 2000);
-      }
-      else {
-        setTimeout(() => {
-          interstitialAd.show().catch((err) => {
-            console.error(err)
-          })
-        }, 6000);
-      }
-    }
   },
 
   //加载激励广告
