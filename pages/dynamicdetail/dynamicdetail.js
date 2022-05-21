@@ -51,7 +51,7 @@ Page({
   onShow: function () {
     // 获取下载次数
     downloadPoints = wx.getStorageSync('downloadPoints') || 0;
-    console.log(downloadPoints);
+    console.log('downloadPoints: ' + downloadPoints);
   },
 
   backTap: function (t) {

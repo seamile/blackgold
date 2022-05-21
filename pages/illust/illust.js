@@ -66,6 +66,7 @@ Page({
 
       // 获取下载次数
       downloadPoints = wx.getStorageSync('downloadPoints') || 0;
+      console.log('downloadPoints: ' + downloadPoints);
     });
   },
 

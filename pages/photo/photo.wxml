@@ -19,7 +19,7 @@
             <image src="/images/back.svg" class="nav-tab"> </image>
               <text>返回</text>
             </view>
-            <view class="nav-tab" bindtap="saveImg"  data-src="{{src}}">
+            <view class="nav-tab" bindtap="downloadTap"  data-src="{{src}}">
               <image src="/images/download.svg" class="nav-tab"> </image>
               <text>下载头像</text>
             </view>
@@ -66,7 +66,7 @@
               <text>复制签名</text>
             </view>
 
-            <view class="nav-tab" bindtap="saveImg" data-avatar="{{item.avatar}}" data-card="{{item.card}}">
+            <view class="nav-tab" bindtap="downloadTap" data-avatar="{{item.avatar}}" data-card="{{item.card}}">
               <image src="/images/download.svg"  class="nav-tab"> </image>
               <text>下载套图</text>
             </view>

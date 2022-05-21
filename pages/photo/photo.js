@@ -1,5 +1,8 @@
-var t = null;
+import { getUser } from '../../utils/auth';
+
 var APP = getApp();
+var rewardedVideoAd = null;
+var downloadPoints = 0;
 
 Page({
   data: {
@@ -27,206 +30,143 @@ Page({
   },
 
   onLoad: function (n) {
-    wx.createRewardedVideoAd && ((t = wx.createRewardedVideoAd({
-      adUnitId: APP.globalData.AD_REWARD
-    })).onError(function () { }), t.onClose(function (t) {
-      t && t.isEnded;
-    }));
-    var o = n.src;
-    if (null != o && this.setData({
-      src: o
-    }), null != n.item) {
-      var c = JSON.parse(n.item);
-      this.setData({
-        item: c
-      });
+    if (n.src != null)
+      this.setData({ src: n.src })
+
+    if (n.item != null) {
+      let item = JSON.parse(n.item);
+      this.setData({ item: item });
+    }
+
+    rewardedVideoAd = wx.createRewardedVideoAd({ adUnitId: APP.globalData.AD_REWARD })
+    rewardedVideoAd.onError(function (err) { console.log(err) })
+    rewardedVideoAd.onClose(function (res) {
+      if (res && res.isEnded) {
+        // 视频完整播完, 更新下载次数
+        downloadPoints += APP.globalData.PER_AD_REWARD;
+        wx.setStorageSync('downloadPoints', downloadPoints);
+        wx.showToast({
+          title: '奖励已到账！\n当前下载点数：' + downloadPoints,
+          duration: 5,
+        })
+      };
+    });
+  },
+
+  onShow: function () {
+    // 获取下载次数
+    downloadPoints = wx.getStorageSync('downloadPoints') || 0;
+    console.log('downloadPoints: ' + downloadPoints);
+  },
+
+  // 打开激励视频
+  showRewardedVideoAd: function () {
+    rewardedVideoAd.show().catch(() => {
+      rewardedVideoAd.load().then(() => {
+        wx.createVideoContext("myVideo").pause();
+        rewardedVideoAd.show();
+      }).catch(_err => {
+        console.log('激励视频广告显示失败');
+      })
+    })
+  },
+
+  downloadTap: function (target) {
+    let self = this;
+    // 判断用户是否登入
+    if (!getUser()) {
+      wx.showModal({
+        title: '您尚未登录',
+        content: '登录以后才可以下载壁纸哦~',
+        confirmText: '点击前往',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({ url: '/pages/login/login' });
+          }
+        }
+      })
+      return;
+    }
+
+    if (downloadPoints < 1) {
+      // 播放次数不足
+      wx.showModal({
+        title: '次数不够啦',
+        content: '您的下载次数不足。看一次广告可免费下载 ' + APP.globalData.PER_AD_REWARD + ' 次哦！',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            self.showRewardedVideoAd();
+          } else {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    } else {
+      self.saveImg(target);
     }
   },
 
-  onReady: function () { },
-  onShow: function () { },
-  onHide: function () { },
-  onUnload: function () { },
-  onPullDownRefresh: function () { },
-  onReachBottom: function () { },
-  saveImg: function (n) {
-    t && t.show().catch(function () {
-      t.load().then(function () {
-        return t.show();
-      }).catch(function () {
-        console.log("激励视频 广告显示失败");
-      });
-    });
-    var o = n.currentTarget.dataset.avatar;
-    null != o && (o = o.replace("http", "https"));
-    var c = n.currentTarget.dataset.card;
-    null != c && (c = c.replace("http", "https"));
-    var e = n.currentTarget.dataset.src;
-    null != e && (e = e.replace("http", "https")), wx.getSetting({
-      success: function (t) {
-        t.authSetting["scope.writePhotosAlbum"] ? (null != o && null != c && (wx.getImageInfo({
-          src: o,
-          success: function (t) {
-            wx.saveImageToPhotosAlbum({
-              filePath: t.path,
-              success: function () {
-                wx.showToast({
-                  title: "下载成功",
-                  icon: "success",
-                  image: "",
-                  duration: 1e3,
-                  mask: !0,
-                  success: function () { },
-                  fail: function () { },
-                  complete: function () { }
-                });
-              },
-              fail: function () { },
-              complete: function () { }
-            });
-          },
-          fail: function () { },
-          complete: function () { }
-        }), wx.getImageInfo({
-          src: c,
-          success: function (t) {
-            wx.saveImageToPhotosAlbum({
-              filePath: t.path,
-              success: function () {
-                wx.showToast({
-                  title: "下载成功",
-                  icon: "success",
-                  image: "",
-                  duration: 1e3,
-                  mask: !0,
-                  success: function () { },
-                  fail: function () { },
-                  complete: function () { }
-                });
-              },
-              fail: function () { },
-              complete: function () { }
-            });
-          },
-          fail: function () { },
-          complete: function () { }
-        })), null != e && wx.getImageInfo({
-          src: e,
-          success: function (t) {
-            wx.saveImageToPhotosAlbum({
-              filePath: t.path,
-              success: function () {
-                wx.showToast({
-                  title: "下载成功",
-                  icon: "success",
-                  image: "",
-                  duration: 1e3,
-                  mask: !0,
-                  success: function () { },
-                  fail: function () { },
-                  complete: function () { }
-                });
-              },
-              fail: function () { },
-              complete: function () { }
-            });
-          },
-          fail: function () { },
-          complete: function () { }
-        })) : wx.authorize({
-          scope: "scope.writePhotosAlbum",
+  saveToAlbum: function (src) {
+    wx.getImageInfo({
+      src: src,
+      success: function (res) {
+        wx.saveImageToPhotosAlbum({
+          filePath: res.path,
           success: function () {
-            null != o && null != c && (wx.getImageInfo({
-              src: o,
-              success: function (t) {
-                wx.saveImageToPhotosAlbum({
-                  filePath: t.path,
-                  success: function () {
-                    wx.showToast({
-                      title: "下载成功",
-                      icon: "success",
-                      image: "",
-                      duration: 1e3,
-                      mask: !0,
-                      success: function () { },
-                      fail: function () { },
-                      complete: function () { }
-                    });
-                  },
-                  fail: function () { },
-                  complete: function () { }
-                });
-              },
-              fail: function () { },
-              complete: function () { }
-            }), wx.getImageInfo({
-              src: c,
-              success: function (t) {
-                wx.saveImageToPhotosAlbum({
-                  filePath: t.path,
-                  success: function () {
-                    wx.showToast({
-                      title: "下载成功",
-                      icon: "success",
-                      image: "",
-                      duration: 1e3,
-                      mask: !0,
-                      success: function () { },
-                      fail: function () { },
-                      complete: function () { }
-                    });
-                  },
-                  fail: function () { },
-                  complete: function () { }
-                });
-              },
-              fail: function () { },
-              complete: function () { }
-            })), null != e && wx.getImageInfo({
-              src: e,
-              success: function (t) {
-                wx.saveImageToPhotosAlbum({
-                  filePath: t.path,
-                  success: function () {
-                    wx.showToast({
-                      title: "下载成功",
-                      icon: "success",
-                      image: "",
-                      duration: 1e3,
-                      mask: !0,
-                      success: function () { },
-                      fail: function () { },
-                      complete: function () { }
-                    });
-                  },
-                  fail: function () { },
-                  complete: function () { }
-                });
-              },
-              fail: function () { },
-              complete: function () { }
+            // 修改下载次数
+            wx.setStorageSync('downloadPoints', --downloadPoints);
+            wx.showToast({
+              title: "下载成功",
+              icon: "success",
+              duration: 2e3,
+              mask: !0,
             });
           },
-          fail: function () {
-            wx.showModal({
-              title: "未授权",
-              content: "请授权",
-              showCancel: !0,
-              cancelText: "取消",
-              cancelColor: "",
-              confirmText: "确定",
-              confirmColor: "",
-              success: function () { },
-              fail: function () { },
-              complete: function () { }
-            });
-          }
         });
+      },
+    })
+  },
+
+  saveImg: function (target) {
+    let self = this;
+    var o = target.currentTarget.dataset.avatar;
+    o != null && (o = o.replace("http", "https"));
+    var c = target.currentTarget.dataset.card;
+    c != null && (c = c.replace("http", "https"));
+    var e = target.currentTarget.dataset.src;
+    e != null && (e = e.replace("http", "https"))
+
+    wx.getSetting({
+      success: function (res) {
+        res.authSetting["scope.writePhotosAlbum"]
+          ? (
+            null != o && null != c && (self.saveToAlbum(o), self.saveToAlbum(c)),
+            null != e && self.saveToAlbum(e)
+          )
+          : wx.authorize({
+            scope: "scope.writePhotosAlbum",
+            success: function () {
+              null != o && null != c && (
+                self.saveToAlbum(o), self.saveToAlbum(c)),
+                null != e && self.saveToAlbum(e);
+            },
+            fail: function () {
+              wx.showModal({
+                title: "未授权",
+                content: "请授权",
+                showCancel: false,
+                cancelText: "取消",
+                confirmText: "确定",
+              });
+            }
+          });
       }
     });
   },
-  copy: function (t) {
-    var n = t.currentTarget.dataset.content;
+
+  copy: function (target) {
+    var n = target.currentTarget.dataset.content;
     wx.setClipboardData({
       data: n,
       success: function () {
@@ -245,6 +185,8 @@ Page({
       complete: function () { }
     });
   },
+
+
   onShareAppMessage: function () {
     return null != this.data.src && "" != this.data.src ? {
       title: "咚，好友发给你一张头像、请查收！",
