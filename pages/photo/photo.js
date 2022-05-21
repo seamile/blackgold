@@ -71,8 +71,16 @@ Page({
     })
   },
 
+  canDownload: function (target) {
+    if (target.currentTarget.dataset.src)
+      return downloadPoints >= 1;
+    else
+      return downloadPoints >= 2;
+  },
+
   downloadTap: function (target) {
     let self = this;
+
     // 判断用户是否登入
     if (!getUser()) {
       wx.showModal({
@@ -88,7 +96,9 @@ Page({
       return;
     }
 
-    if (downloadPoints < 1) {
+    if (self.canDownload(target)) {
+      self.saveImg(target);
+    } else {
       // 播放次数不足
       wx.showModal({
         title: '次数不够啦',
@@ -102,8 +112,6 @@ Page({
           }
         }
       })
-    } else {
-      self.saveImg(target);
     }
   },
 
@@ -130,26 +138,29 @@ Page({
 
   saveImg: function (target) {
     let self = this;
-    var o = target.currentTarget.dataset.avatar;
-    o != null && (o = o.replace("http", "https"));
-    var c = target.currentTarget.dataset.card;
-    c != null && (c = c.replace("http", "https"));
-    var e = target.currentTarget.dataset.src;
-    e != null && (e = e.replace("http", "https"))
 
+    // 获取头像、套图的网址
+    var gAvatar = target.currentTarget.dataset.avatar;
+    gAvatar != null && (gAvatar = gAvatar.replace("http", "https"));
+    var gCard = target.currentTarget.dataset.card;
+    gCard != null && (gCard = gCard.replace("http", "https"));
+    var avatar = target.currentTarget.dataset.src;
+    avatar != null && (avatar = avatar.replace("http", "https"))
+
+    // 下载
     wx.getSetting({
       success: function (res) {
         res.authSetting["scope.writePhotosAlbum"]
           ? (
-            null != o && null != c && (self.saveToAlbum(o), self.saveToAlbum(c)),
-            null != e && self.saveToAlbum(e)
+            null != gAvatar && null != gCard && (self.saveToAlbum(gAvatar), self.saveToAlbum(gCard)),
+            null != avatar && self.saveToAlbum(avatar)
           )
           : wx.authorize({
             scope: "scope.writePhotosAlbum",
             success: function () {
-              null != o && null != c && (
-                self.saveToAlbum(o), self.saveToAlbum(c)),
-                null != e && self.saveToAlbum(e);
+              null != gAvatar && null != gCard && (
+                self.saveToAlbum(gAvatar), self.saveToAlbum(gCard)),
+                null != avatar && self.saveToAlbum(avatar);
             },
             fail: function () {
               wx.showModal({

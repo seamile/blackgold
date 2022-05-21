@@ -1,4 +1,4 @@
-<scroll-view scrollX class="scroll-tab {{scrollConfig.tabFixed?'fixed':''}}">
+<scroll-view scrollX class="scroll-tab {{scrollConfig.tabFixed?'fixed':''}}" enable-flex="true">
 <view class="scroll-tab-nav">
     <view
         bindtap="tabSelect" 
