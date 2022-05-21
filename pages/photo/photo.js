@@ -150,25 +150,35 @@ Page({
     // 下载
     wx.getSetting({
       success: function (res) {
-        res.authSetting["scope.writePhotosAlbum"]
-          ? (
-            null != gAvatar && null != gCard && (self.saveToAlbum(gAvatar), self.saveToAlbum(gCard)),
-            null != avatar && self.saveToAlbum(avatar)
-          )
-          : wx.authorize({
+        if (res.authSetting["scope.writePhotosAlbum"]) {
+          // 保存套图
+          if (gAvatar != null && gCard != null) {
+            self.saveToAlbum(gAvatar);
+            self.saveToAlbum(gCard);
+          }
+          // 保存头像
+          if (avatar != null)
+            self.saveToAlbum(avatar);
+        }
+        else
+          wx.authorize({
             scope: "scope.writePhotosAlbum",
             success: function () {
-              null != gAvatar && null != gCard && (
-                self.saveToAlbum(gAvatar), self.saveToAlbum(gCard)),
-                null != avatar && self.saveToAlbum(avatar);
+              self.saveImg(target);
             },
             fail: function () {
               wx.showModal({
-                title: "未授权",
-                content: "请授权",
-                showCancel: false,
+                title: "未获得授权",
+                content: "您授权允许保存到相册后才能完成下载哦",
                 cancelText: "取消",
                 confirmText: "确定",
+                success() {
+                  wx.openSetting({
+                    success: function (_res) {
+                      _res.authSetting["scope.writePhotosAlbum"] && self.saveImg(target);
+                    }
+                  });
+                }
               });
             }
           });
@@ -184,16 +194,10 @@ Page({
         wx.showToast({
           title: "复制完成",
           icon: "success",
-          image: "",
           duration: 1e3,
-          mask: !0,
-          success: function () { },
-          fail: function () { },
-          complete: function () { }
+          mask: !0
         });
-      },
-      fail: function () { },
-      complete: function () { }
+      }
     });
   },
 

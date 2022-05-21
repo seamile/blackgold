@@ -244,9 +244,10 @@ Page({
 
   //下载壁纸
   saveIllust: function () {
+    let self = this;
     wx.showLoading({ title: '正在保存...' })
     wx.downloadFile({
-      url: this.data.illust.imageUrls[1],
+      url: self.data.illust.imageUrls[1],
       success: function (res) {
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
@@ -264,17 +265,26 @@ Page({
           },
           fail: function (err) {
             console.log(err);
-            "saveImageToPhotosAlbum:fail auth deny" === err.errMsg && wx.openSetting({
-              success: function (_res) {
-                _res.authSetting["scope.writePhotosAlbum"]
-                  ? console.log("获取权限成功，给出再次点击图片保存到相册的提示。")
-                  : console.log("获取权限失败，给出不给权限就无法正常使用的提示");
-              }
-            });
+            if (err.errMsg === "saveImageToPhotosAlbum:fail auth deny") {
+              wx.showModal({
+                title: "未获得授权",
+                content: "您授权允许保存到相册后才能完成下载哦",
+                showCancel: false,
+                cancelText: "取消",
+                confirmText: "确定",
+                success() {
+                  wx.openSetting({
+                    success: function (_res) {
+                      _res.authSetting["scope.writePhotosAlbum"] && self.saveIllust()
+                    }
+                  });
+                }
+              });
+            }
           },
-          complete: function () { wx.hideLoading(); }
         })
-      }
+      },
+      complete: function () { wx.hideLoading(); }
     })
   },
 })

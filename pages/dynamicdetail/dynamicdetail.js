@@ -134,7 +134,26 @@ Page({
               confirmText: "知道了",
               showCancel: false
             });
-          }
+          },
+          fail: function (err) {
+            console.log(err);
+            if (err.errMsg === "saveVideoToPhotosAlbum:fail auth deny") {
+              wx.showModal({
+                title: "未获得授权",
+                content: "您授权允许保存到相册后才能完成下载哦",
+                showCancel: false,
+                cancelText: "取消",
+                confirmText: "确定",
+                success() {
+                  wx.openSetting({
+                    success: function (_res) {
+                      _res.authSetting["scope.writePhotosAlbum"] && self.saveVideo()
+                    }
+                  });
+                }
+              });
+            }
+          },
         });
       },
       complete: function () { wx.hideLoading(); }
