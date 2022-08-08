@@ -15,8 +15,10 @@ var downloadPoints = 0;
 Page({
   data: {
     post: {},
+    author: '未知',
+    aid: '未知',
     // post_like: 0,
-    post_favorite: 0,
+    favorite: 0,
     showOptionBar: true,
     pagead: 7,
     posterConfig: null,
@@ -55,10 +57,13 @@ Page({
       })
 
       // 设置 POST 数据
+      let items = res.data.excerpt.split(',');
       self.setData({
         post: res.data,
+        favorite: res.data.user.isfavorite || false,
         // post_like: res.data.user.islike,
-        post_favorite: res.data.user.isfavorite || false,
+        author: items[0],
+        aid: items[1]
       });
 
       // 解析 POST 内容
@@ -192,7 +197,7 @@ Page({
       post_id: self.data.post.id
     }).then(_res => {
       self.setData({
-        post_favorite: !self.data.post_favorite
+        favorite: !self.data.favorite
       });
     })
   },

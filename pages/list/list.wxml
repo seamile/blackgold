@@ -15,7 +15,7 @@
                  catchtap="handlerArticleClick">
           </image>
 
-          <block wx:if="{{(index+1)%9 == 0}}">
+          <block wx:if="{{(index+1)%12 == 0}}">
               <view class="ad-info-stream">
                 <ad-custom unit-id="adunit-5ac67c8aa58a6eca"></ad-custom>
               </view>

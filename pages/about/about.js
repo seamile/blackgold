@@ -14,10 +14,7 @@ Page({
 
   onShow() {
     var that = this;
-    util.getAD(that, function () {
-      that.setInterstitialAd(); //加载插屏广告
-    })
-
+    util.getAD(that, that.setInterstitialAd)
   },
   // 获取小程序插屏广告
   setInterstitialAd: function () {

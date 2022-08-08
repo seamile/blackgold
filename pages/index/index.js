@@ -43,11 +43,6 @@ Page({
     loadding: false,
     pullUpOn: true,
 
-
-    //弹窗广告
-    tcad: [],
-    tcad1: [],
-
     //列表模式
     listModebz: 3,
     pagead: 0
@@ -97,20 +92,20 @@ Page({
   },
 
   search: function () {
-    let that = this;
+    let self = this;
     wx.getStorage({
       key: Constant.JQ_SEARCH_KEY,
       success(res) {
-        let keys = [that.keyword];
+        let keys = [self.keyword];
         for (let i = 0; i < res.data.length && keys.length < Constant.JQ_SEARCH_MAX_COUNT; i++) {
-          if (that.keyword == res.data[i]) {
+          if (self.keyword == res.data[i]) {
             continue;
           }
 
           keys.push(res.data[i]);
         }
 
-        that.setData({
+        self.setData({
           historySearch: keys
         });
 
@@ -121,9 +116,9 @@ Page({
       },
 
       fail(e) {
-        let keys = [that.keyword];
+        let keys = [self.keyword];
 
-        that.setData({
+        self.setData({
           historySearch: keys
         });
 
@@ -146,8 +141,8 @@ Page({
 
 
   onLoad: async function (_options) {
-    let that = this;
-    util.getshare(that);
+    let self = this;
+    util.getshare(self);
 
     // 时间
     let now = new Date();
@@ -172,39 +167,23 @@ Page({
     }
 
     //加载topNav，也就是顶部分类导航栏
-    await that.init();
-    let today = wx.getStorageSync('today')
-    if (!today) {
-      wx.setStorageSync("today", new Date().toLocaleDateString());
-      that.setData({
-        tcad1: that.data.tcad
-      })
-    } else {
-      if (today != new Date().toLocaleDateString()) {
-        that.setData({
-          tcad1: that.data.tcad
-        })
-      } else {
-        that.setData({
-          tcad1: []
-        })
-      }
-    }
+    await self.init();
+
+    util.getAD(self, self.setInterstitialAd)
   },
 
   init: async function () {
-    let that = this;
+    let self = this;
 
     //获取配置
     get(JIANGQIE_SETTING_HOMEBZ).then(res => {
       console.log(res);
 
-      that.setData({
+      self.setData({
         logo: res.data.logo,
-        topNavbz: that.data.topNavbz.concat(res.data.top_navbz),
+        topNavbz: self.data.topNavbz.concat(res.data.top_navbz),
         iconNavbzbz: res.data.icon_navbzbz,
         iconNavbz: res.data.icon_navbz,
-        tcad: res.data.tcad,
         iconNac: res.data.icon_nac,
         activesbz: res.data.activesbz,
         hotbz: res.data.hotbz,
@@ -238,20 +217,21 @@ Page({
     }
   },
 
-  onShow() {
-    var that = this;
-    util.getAD(that, function () {
-      that.setInterstitialAd(); //加载插屏广告
-    })
-
+  // 是否可以显示插屏广告
+  canShowInterstitialAd: function () {
+    let lastShowIntAd = wx.getStorageSync('lastShowIntAd') || new Date().getTime();
+    let current = new Date().getTime();
+    let pastSeconds = (current - lastShowIntAd) / 1000;
+    return pastSeconds >= 300;  // 5分钟内不重复播放
   },
 
   // 获取小程序插屏广告
   setInterstitialAd: function () {
-    var that = this;
-    if (that.data.setAD.interstitialid && wx.createInterstitialAd) {
+    var self = this;
+    let canShow = self.canShowInterstitialAd();
+    if (canShow && self.data.setAD.interstitialid && wx.createInterstitialAd) {
       let interstitialAd = wx.createInterstitialAd({
-        adUnitId: that.data.setAD.interstitialid
+        adUnitId: self.data.setAD.interstitialid
       })
       // 监听插屏错误事件
       interstitialAd.onError((err) => { console.error(err) })
@@ -267,14 +247,14 @@ Page({
   },
 
   onShareAppMessage: function () {
-    var that = this;
+    var self = this;
     wx.showShareMenu({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
     })
     return {
-      title: that.data.shares.share_title,
-      imageUrl: that.data.shares.share_image,
+      title: self.data.shares.share_title,
+      imageUrl: self.data.shares.share_image,
     }
   },
 
@@ -310,11 +290,11 @@ Page({
 
 
   onShareTimeline: function () {
-    var that = this;
+    var self = this;
     return {
-      title: that.data.shares.share_title,
+      title: self.data.shares.share_title,
       path: 'pages/index/index',
-      imageUrl: that.data.shares.share_image,
+      imageUrl: self.data.shares.share_image,
     }
   },
 
@@ -380,47 +360,47 @@ Page({
 
   //加载数据
   loadPostLast: function (refresh) {
-    let that = this;
+    let self = this;
 
-    that.setData({
+    self.setData({
       loaddingLast: true
     });
 
     let offset = 0;
     if (!refresh) {
-      offset = that.data.postsLast.length;
+      offset = self.data.postsLast.length;
     }
 
     get(JIANGQIE_POSTS_LAST, {
       'offset': offset
     }).then(res => {
-      that.setData({
+      self.setData({
         loaddingLast: false,
-        postsLast: refresh ? res.data : that.data.postsLast.concat(res.data),
+        postsLast: refresh ? res.data : self.data.postsLast.concat(res.data),
         pullUpOnLast: res.data.length >= JQ_PER_PAGE_COUNT
       });
     })
   },
 
   loadPost: function (refresh) {
-    let that = this;
+    let self = this;
 
-    that.setData({
+    self.setData({
       loadding: true
     });
 
     let offset = 0;
     if (!refresh) {
-      offset = that.data.posts.length;
+      offset = self.data.posts.length;
     }
 
     get(JIANGQIE_POSTS_CATEGORY, {
       'offset': offset,
-      'cat_id': that.data.topNavbz[that.data.currentTabbz].id
+      'cat_id': self.data.topNavbz[self.data.currentTabbz].id
     }).then(res => {
-      that.setData({
+      self.setData({
         loadding: false,
-        posts: refresh ? res.data : that.data.posts.concat(res.data),
+        posts: refresh ? res.data : self.data.posts.concat(res.data),
         pullUpOn: res.data.length >= JQ_PER_PAGE_COUNT
       });
     })

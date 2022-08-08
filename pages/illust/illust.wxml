@@ -5,13 +5,17 @@
 
 <view class="container jiangqie-page-view" bindtap="switchOptionBarState">
 	<image 
-    class="illust" 
-    mode="{{ imode }}" 
+    class="illust"
+    mode="{{ imode }}"
     src="{{illust.imageUrls[0]}}" 
     bindload="onIllustLoaded">
   </image>
   <view class="disclaimer">
-    声明：图片来自互联网，如果侵犯了您的权益，请联系我们删除。
+    <view class="title">{{ post.title }}</view>
+    <view>画师：{{ author }}</view>
+    <view>P站ID：{{ aid }}</view>
+    <view class="line"></view>
+    <view>声明：图片来自互联网，如果侵犯了您的权益，请联系我们删除。</view>
   </view>
 
   <ad unit-id="adunit-6d50f37cbe7f552d" ad-type="video" ad-theme="white"></ad>
@@ -51,7 +55,7 @@
 
 		<!-- 收藏 -->
 		<view class="tui-operation-item" catchtap="handlerFavoriteClick">
-			<block wx:if="{{post_favorite==1}}">
+			<block wx:if="{{favorite==1}}">
 				<image src="../../images/fav1.svg" mode="widthFix"></image>
 				<text>已收藏</text>
 			</block>

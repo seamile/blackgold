@@ -1,6 +1,12 @@
 import { JQ_PER_PAGE_COUNT } from '../../utils/constants';
 import Util from '../../utils/util';
-import { JIANGQIE_POSTS_CATEGORY, JIANGQIE_POSTS_TAG, JIANGQIE_POSTS_SEARCH, JIANGQIE_POSTS_MY, JIANGQIE_POSTS_LAST } from '../../utils/api.js';
+import {
+  JIANGQIE_POSTS_CATEGORY,
+  JIANGQIE_POSTS_TAG,
+  JIANGQIE_POSTS_SEARCH,
+  JIANGQIE_POSTS_MY,
+  JIANGQIE_POSTS_LAST
+} from '../../utils/api.js';
 import { get } from '../../utils/rest';
 import util from '../../utils/util.js';
 let setinad;
@@ -19,9 +25,6 @@ Page({
   search: undefined,
   track: undefined,
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     let self = this;
     let title = '最新文章';
@@ -47,6 +50,8 @@ Page({
     }
     wx.setNavigationBarTitle({ title: title });
     util.getshare(self);
+
+    util.getAD(self, self.setInterstitialAd);
   },
 
   onPullDownRefresh: function () {
@@ -61,16 +66,25 @@ Page({
   },
 
   onShow() {
-    var self = this;
-    util.getAD(self, function () {
-      self.setInterstitialAd(); //加载插屏广告
-    })
     this.loadPost(false);
   },
-  // 获取小程序插屏广告
+
+  // 是否可以显示插屏广告
+  canShowInterstitialAd: function () {
+    let lastShowIntAd = wx.getStorageSync('lastShowIntAd') || new Date().getTime();
+    let current = new Date().getTime();
+    let pastSeconds = (current - lastShowIntAd) / 1000;
+    return pastSeconds >= 300;  // 5分钟内不重复播放
+  },
+
+  // 获取插屏广告
   setInterstitialAd: function () {
     var self = this;
-    if (self.data.setAD.interstitialid && wx.createInterstitialAd) {
+    let canShow = self.canShowInterstitialAd();
+    if (canShow && self.data.setAD.interstitialid && wx.createInterstitialAd) {
+      // 记录当前时间
+      wx.setStorageSync('lastShowIntAd', new Date().getTime());
+
       let interstitialAd = wx.createInterstitialAd({
         adUnitId: self.data.setAD.interstitialid
       })
@@ -79,9 +93,10 @@ Page({
       // 显示广告
       setTimeout(() => {
         interstitialAd.show().catch((err) => { console.error(err) })
-      }, 6000);
+      }, 3000);
     }
   },
+
   onHide() {
     clearInterval(setinad);
   },

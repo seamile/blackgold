@@ -1,12 +1,3 @@
-<view wx:if="{{tcad && tcad.length>0}}">
-  <view class="mask" hidden="{{showAd}}">
-    <view class="AdView-mask" animation="{{animationData}}">
-      <image class="mask-img" data-link="{{tcad[0].link}}" catchtap="handlerIconNavClick"  src="{{tcad[0].ico}}"></image>
-      <image class="an-niu" data-link="{{tcad[0].link}}" catchtap="handlerIconNavClick" src="{{tcad[0].icon}}"></image>
-      <image class="close-mask" bindtap="hiddenMsak" src="../../images/cancel.svg"></image>
-    </view>
-  </view>
-</view>
 <view background='#000000'>
   <navBar background='#000000' searchBar="{{true}}" bindsearch="handlerSearchClick">
     <view slot="left" class='lxy-nav-bar__logo'>
@@ -113,7 +104,7 @@
               <image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4"></image>
             </view>
 
-            <block wx:if="{{(index+1)%9 == 0}}">
+            <block wx:if="{{(index+1)%12 == 0}}">
               <view class="ad-info-stream">
                 <ad-custom unit-id="adunit-5ac67c8aa58a6eca"></ad-custom>
               </view>
@@ -133,7 +124,7 @@
           <block wx:for="{{posts}}" wx:key="id">
             <image src="{{item.thumbnail}}" mode="aspectFill" class="image data-v-0034d6f4" index="{{index}}"
               data-id="{{item.id}}" catchtap="handlerArticleClick"></image>
-            <block wx:if="{{(index+1)%9 ==0}}">
+            <block wx:if="{{(index+1)%12 ==0}}">
               <ad-custom unit-id="adunit-5ac67c8aa58a6eca"></ad-custom>
             </block>
           </block>
