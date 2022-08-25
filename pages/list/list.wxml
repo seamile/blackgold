@@ -30,10 +30,10 @@
 
     <!-- 没有数据时显示默认值 -->
     <block wx:elif="{{!loading}}">
-      <template is="jiangqie_nodata" />
+      <template is="album_nodata" />
       <ad unit-id="adunit-6d50f37cbe7f552d" ad-type="video" ad-theme="black"></ad>
     </block>
   </view>
 </view>
 
-<template is="jiangqie_poplogin" data="{{show:showPopLogin}}" />
+<template is="album_poplogin" data="{{show:showPopLogin}}" />

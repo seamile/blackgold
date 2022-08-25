@@ -1,4 +1,4 @@
-import { JQ_PER_PAGE_COUNT } from '../../utils/constants';
+import { ALB_PER_PAGE_COUNT } from '../../utils/constants';
 import {
   JIANGQIE_SETTING_HOMEBZ,
   JIANGQIE_POSTS_LAST,
@@ -92,10 +92,10 @@ Page({
   search: function () {
     let self = this;
     wx.getStorage({
-      key: Constant.JQ_SEARCH_KEY,
+      key: Constant.ALB_SEARCH_KEY,
       success(res) {
         let keys = [self.keyword];
-        for (let i = 0; i < res.data.length && keys.length < Constant.JQ_SEARCH_MAX_COUNT; i++) {
+        for (let i = 0; i < res.data.length && keys.length < Constant.ALB_SEARCH_MAX_COUNT; i++) {
           if (self.keyword == res.data[i]) {
             continue;
           }
@@ -109,7 +109,7 @@ Page({
 
         wx.setStorage({
           data: keys,
-          key: Constant.JQ_SEARCH_KEY,
+          key: Constant.ALB_SEARCH_KEY,
         })
       },
 
@@ -122,7 +122,7 @@ Page({
 
         wx.setStorage({
           data: keys,
-          key: Constant.JQ_SEARCH_KEY,
+          key: Constant.ALB_SEARCH_KEY,
         })
       }
     });
@@ -372,7 +372,7 @@ Page({
       self.setData({
         loaddingLast: false,
         postsLast: refresh ? res.data : self.data.postsLast.concat(res.data),
-        pullUpOnLast: res.data.length >= JQ_PER_PAGE_COUNT
+        pullUpOnLast: res.data.length >= ALB_PER_PAGE_COUNT
       });
     })
   },
@@ -396,7 +396,7 @@ Page({
       self.setData({
         loadding: false,
         posts: refresh ? res.data : self.data.posts.concat(res.data),
-        pullUpOn: res.data.length >= JQ_PER_PAGE_COUNT
+        pullUpOn: res.data.length >= ALB_PER_PAGE_COUNT
       });
     })
   },

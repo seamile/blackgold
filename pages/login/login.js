@@ -54,17 +54,16 @@ Page({
   handlerLoginClick: function (e) {
     wx.getUserProfile({
       desc: '使用微信的头像昵称初始化用户',
-      success: function (wxu) {
+      success: function (wxUser) {
         getWXUser().then(res => {
           return get(JIANGQIE_USER_LOGIN, {
             code: res.code,
-            nickName: wxu.userInfo.nickName,
-            avatarUrl: wxu.userInfo.avatarUrl,
+            nickName: wxUser.userInfo.nickName,
+            avatarUrl: wxUser.userInfo.avatarUrl,
           })
         }).then(res => {
           let user = res.data;
           setUser(user);
-
           Util.navigateBack();
         });
       },

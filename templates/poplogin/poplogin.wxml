@@ -1,4 +1,4 @@
-<template name="jiangqie_poplogin">
+<template name="album_poplogin">
 	<cover-view wx:if="{{show}}" class="jiangqie-poplogin-mask" >
 		<cover-view class="jiangqie-poplogin">
 			<cover-view class="jiangqie-pop-head">

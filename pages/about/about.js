@@ -1,10 +1,10 @@
-import { JQ_VERSION } from '../../utils/constants';
+import { ALB_VERSION } from '../../utils/constants';
 import util from '../../utils/util.js';
 let setinad;
 
 Page({
   data: {
-    version: JQ_VERSION,
+    version: ALB_VERSION,
     pagead: 3
   },
 

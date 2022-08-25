@@ -1,4 +1,4 @@
-import { JQ_PER_PAGE_COUNT } from '../../utils/constants';
+import { ALB_PER_PAGE_COUNT } from '../../utils/constants';
 import Util from '../../utils/util';
 import {
   JIANGQIE_POSTS_CATEGORY,
@@ -173,7 +173,7 @@ Page({
         loaded: true,
         loadding: false,
         posts: refresh ? res.data : self.data.posts.concat(res.data),
-        pullUpOn: res.data.length == JQ_PER_PAGE_COUNT
+        pullUpOn: res.data.length == ALB_PER_PAGE_COUNT
       });
     })
   },

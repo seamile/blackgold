@@ -1,4 +1,4 @@
-<template name="jiangqie_nodata">
+<template name="album_nodata">
 	<view class="none_tip">
 		<image src="../../images/none_tip.png" mode="widthFix" class="image"></image>
 		<view class="none_tip_text">
