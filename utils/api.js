@@ -50,7 +50,6 @@ export const JIANGQIE_USER_INDEX = makeURL('user', 'index')
 export const JIANGQIE_USER_LIKE = makeURL('user', 'like');
 // 用户 收藏文章
 export const JIANGQIE_USER_FAVORITE = makeURL('user', 'favorite');
-export const JIANGQIE_BG_INDEX = makeRes('images', 'id_bg.png');
 export const JIANGQIE_BG_MY = makeRes('images', 'my_bg.png');
 export const JIANGQIE_BG_CATEGORY = makeRes('images', 'cat_bg.png');
 export const JIANGQIE_CAT_COVER = makeRes('images', 'cat_cover.png');

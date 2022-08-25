@@ -8,75 +8,69 @@
  * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
  */
 
-const Util = require('../../utils/util').default;
-const Auth = require('../../utils/auth');
-const Api = require('../../utils/api.js');
-const Rest = require('../../utils/rest');
+import Util from '../../utils/util';
+import { getWXUser, setUser } from '../../utils/auth';
+import {
+  JIANGQIE_SETTING_CATEGORY, JIANGQIE_USER_LOGIN
+} from '../../utils/api.js';
+import { get } from '../../utils/rest';
 
 Page({
 
-    data: {
-        background: Api.JIANGQIE_BG_INDEX,
-        title: ''
-    },
+  data: {
+    title: ''
+  },
 
-    onLoad: function (options) {
-        this.setData({
-            title: getApp().appName
-        });
-    },
-
-    onShareAppMessage: function () {
-        return {
-            title: getApp().appName,
-            path: 'pages/index/index',
-        }
-    },
-
-    onShareTimeline: function () {
-        return {
-            title: getApp().appName,
-        }
-    },
-
-    handlerCancelClick: function (e) {
-        Util.navigateBack();
-    },
-/*底部文字*/
-onLoad: function (options) {
-    this.setData({
-        title: getApp().appName
-    })
-    Rest.get(Api.JIANGQIE_SETTING_CATEGORY).then(res => {
-        console.log(res)
-        this.setData({
-            // background: res.data.background,
-            title: res.data.title,
-            description: res.data.description
-        })
-    })
-},
-/*结束*/ 
-    handlerLoginClick: function (e) {
-        wx.getUserProfile({
-            desc: '使用微信的头像昵称初始化用户',
-            success: function (wxu) {
-                Auth.getWXUser().then(res => {
-                    return Rest.get(Api.JIANGQIE_USER_LOGIN, {
-                        code: res.code,
-                        nickName: wxu.userInfo.nickName,
-                        avatarUrl: wxu.userInfo.avatarUrl,
-                    })
-                }).then(res => {
-                    let user = res.data;
-                    Auth.setUser(user);
-
-                    Util.navigateBack();
-                });
-            },
-            fail: function (err) {
-                Util.toast('需要同意才能登录');
-            }
-        });
+  onShareAppMessage: function () {
+    return {
+      title: getApp().appName,
+      path: 'pages/index/index',
     }
+  },
+
+  onShareTimeline: function () {
+    return {
+      title: getApp().appName,
+    }
+  },
+
+  handlerCancelClick: function (_) {
+    Util.navigateBack();
+  },
+
+  onLoad: function (_) {
+    this.setData({
+      title: getApp().appName
+    })
+    get(JIANGQIE_SETTING_CATEGORY).then(res => {
+      console.log(res)
+      this.setData({
+        title: res.data.title,
+        description: res.data.description
+      })
+    })
+  },
+  /*结束*/
+  handlerLoginClick: function (e) {
+    wx.getUserProfile({
+      desc: '使用微信的头像昵称初始化用户',
+      success: function (wxu) {
+        getWXUser().then(res => {
+          return get(JIANGQIE_USER_LOGIN, {
+            code: res.code,
+            nickName: wxu.userInfo.nickName,
+            avatarUrl: wxu.userInfo.avatarUrl,
+          })
+        }).then(res => {
+          let user = res.data;
+          setUser(user);
+
+          Util.navigateBack();
+        });
+      },
+      fail: function (_) {
+        Util.toast('需要同意才能登录');
+      }
+    });
+  }
 })

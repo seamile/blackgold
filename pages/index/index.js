@@ -1,7 +1,6 @@
 import { JQ_PER_PAGE_COUNT } from '../../utils/constants';
 import {
   JIANGQIE_SETTING_HOMEBZ,
-  JIANGQIE_BG_INDEX,
   JIANGQIE_POSTS_LAST,
   JIANGQIE_POSTS_CATEGORY
 } from '../../utils/api.js';
@@ -12,7 +11,6 @@ let setinad;
 Page({
   data: {
     logo: '',
-    background: '',
 
     //顶部导航
     topNavbz: [{
@@ -188,8 +186,6 @@ Page({
         activesbz: res.data.activesbz,
         hotbz: res.data.hotbz,
         listModebz: res.data.list_modebz,
-
-        background: (res.data.slide && res.data.slide.length > 0) ? JIANGQIE_BG_INDEX : '',
       });
 
       if (res.data.title && res.data.title.length > 0) {
@@ -324,7 +320,6 @@ Page({
     }
 
     this.setData({
-      background: (cur == 0 && this.data.slide && this.data.slide.length > 0) ? JIANGQIE_BG_INDEX : '',
       currentTabbz: cur
     })
 
