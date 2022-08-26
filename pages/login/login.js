@@ -55,6 +55,7 @@ Page({
     wx.getUserProfile({
       desc: '使用微信的头像昵称初始化用户',
       success: function (wxUser) {
+        wx.showLoading({ title: '登录中, 请稍后' });
         getWXUser().then(res => {
           return get(JIANGQIE_USER_LOGIN, {
             code: res.code,
@@ -65,10 +66,15 @@ Page({
           let user = res.data;
           setUser(user);
           Util.navigateBack();
+          wx.hideLoading();
         });
       },
       fail: function (_) {
-        Util.toast('需要同意才能登录');
+        wx.showToast({
+          title: '允许后才能登录',
+          icon: 'error',
+          duration: 1500,
+        })
       }
     });
   }
