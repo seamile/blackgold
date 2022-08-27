@@ -3,7 +3,7 @@
 <import src="../../templates/nodata/nodata.wxml" />
 <import src="../../templates/poplogin/poplogin.wxml" />
 
-<view class="container jiangqie-page-view" bindtap="switchOptionBarState">
+<view class="jiangqie-page-view" bindtap="switchOptionBarState">
 	<image 
     class="illust"
     mode="{{ imode }}"

@@ -27,7 +27,7 @@ button {
 }
 
 .jiangqie-page-view {
-  padding: 0rpx;
+  padding: 0 0 270rpx 0;
 }
 
 .jiangqie-page-head {
