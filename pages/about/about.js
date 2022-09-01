@@ -1,10 +1,9 @@
-import { ALB_VERSION } from '../../utils/constants';
+import { MP_VERSION } from '../../utils/constants';
 import util from '../../utils/util.js';
-let setinad;
 
 Page({
   data: {
-    version: ALB_VERSION,
+    version: MP_VERSION,
     pagead: 3
   },
 
@@ -14,26 +13,36 @@ Page({
 
   onShow() {
     var that = this;
-    util.getAD(that, that.setInterstitialAd)
+    util.getAD(that, that.showInterstitialAd)
   },
+
+  // 是否可以显示插屏广告
+  canShowInterstitialAd: function () {
+    let lastShowIntAd = wx.getStorageSync('lastShowIntAd') || 0;
+    let current = new Date().getTime();
+    let pastSeconds = (current - lastShowIntAd) / 1000;
+    console.log(lastShowIntAd, pastSeconds);
+    return pastSeconds > 300;  // 距离上次显示插屏广告超过 5 分钟时，可以再次显示
+  },
+
   // 获取小程序插屏广告
-  setInterstitialAd: function () {
-    var that = this;
-    if (that.data.setAD.interstitialid && wx.createInterstitialAd) {
+  showInterstitialAd: function () {
+    var self = this;
+    let canShow = self.canShowInterstitialAd();
+    if (canShow && self.data.setAD.interstitialid && wx.createInterstitialAd) {
+      // 记录当前时间
+      wx.setStorageSync('lastShowIntAd', new Date().getTime());
+
       let interstitialAd = wx.createInterstitialAd({
-        adUnitId: that.data.setAD.interstitialid
+        adUnitId: self.data.setAD.interstitialid
       })
       // 监听插屏错误事件
       interstitialAd.onError((err) => { console.error(err) })
       // 显示广告
-      setTimeout(() => {
-        interstitialAd.show().catch((err) => { console.error(err) })
-      }, 6000);
+      interstitialAd.show().catch((err) => { console.error(err) })
     }
   },
-  onHide() {
-    clearInterval(setinad);
-  },
+
   onShareAppMessage: function () {
     var that = this;
     wx.showShareMenu({

@@ -1,8 +1,8 @@
 import Util from '../../utils/util';
 import {
-  JIANGQIE_POST_DETAIL,
-  JIANGQIE_USER_LIKE,
-  JIANGQIE_USER_FAVORITE
+  MP_POST_DETAIL,
+  MP_USER_LIKE,
+  MP_USER_FAVORITE
 } from '../../utils/api.js';
 import { get } from '../../utils/rest';
 import { getUser } from '../../utils/auth';
@@ -49,7 +49,7 @@ Page({
 
     let self = this;
 
-    get(JIANGQIE_POST_DETAIL, {
+    get(MP_POST_DETAIL, {
       post_id: self.post_id
     }).then(res => {
       wx.setNavigationBarTitle({
@@ -185,7 +185,7 @@ Page({
   // 点赞
   handlerLikeClick: function (_e) {
     let self = this;
-    get(JIANGQIE_USER_LIKE, {
+    get(MP_USER_LIKE, {
       post_id: self.data.post.id
     })
   },
@@ -193,7 +193,7 @@ Page({
   // 收藏
   handlerFavoriteClick: function (_e) {
     let self = this;
-    get(JIANGQIE_USER_FAVORITE, {
+    get(MP_USER_FAVORITE, {
       post_id: self.data.post.id
     }).then(_res => {
       self.setData({

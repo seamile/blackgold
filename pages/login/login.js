@@ -11,7 +11,7 @@
 import Util from '../../utils/util';
 import { getWXUser, setUser } from '../../utils/auth';
 import {
-  JIANGQIE_SETTING_CATEGORY, JIANGQIE_USER_LOGIN
+  MP_SETTING_CATEGORY, MP_USER_LOGIN
 } from '../../utils/api.js';
 import { get } from '../../utils/rest';
 
@@ -42,7 +42,7 @@ Page({
     this.setData({
       title: getApp().appName
     })
-    get(JIANGQIE_SETTING_CATEGORY).then(res => {
+    get(MP_SETTING_CATEGORY).then(res => {
       console.log(res)
       this.setData({
         title: res.data.title,
@@ -57,7 +57,7 @@ Page({
       success: function (wxUser) {
         wx.showLoading({ title: '登录中, 请稍后' });
         getWXUser().then(res => {
-          return get(JIANGQIE_USER_LOGIN, {
+          return get(MP_USER_LOGIN, {
             code: res.code,
             nickName: wxUser.userInfo.nickName,
             avatarUrl: wxUser.userInfo.avatarUrl,

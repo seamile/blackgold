@@ -27,7 +27,7 @@ Page({
   onLoad: function (_options) {
     let that = this;
     wx.getStorage({
-      key: Constant.ALB_SEARCH_KEY,
+      key: Constant.MP_SEARCH_KEY,
       success(res) {
         that.setData({
           historySearch: res.data
@@ -39,7 +39,7 @@ Page({
       placeholder: getApp().appName
     });
 
-    Rest.get(Api.JIANGQIE_POSTS_SEARCH_HOT).then(res => {
+    Rest.get(Api.MP_POSTS_SEARCH_HOT).then(res => {
       that.setData({
         hotSearch: res.data
       });
@@ -79,10 +79,10 @@ Page({
   search: function () {
     let that = this;
     wx.getStorage({
-      key: Constant.ALB_SEARCH_KEY,
+      key: Constant.MP_SEARCH_KEY,
       success(res) {
         let keys = [that.keyword];
-        for (let i = 0; i < res.data.length && keys.length < Constant.ALB_SEARCH_MAX_COUNT; i++) {
+        for (let i = 0; i < res.data.length && keys.length < Constant.MP_SEARCH_MAX_COUNT; i++) {
           if (that.keyword == res.data[i]) {
             continue;
           }
@@ -96,7 +96,7 @@ Page({
 
         wx.setStorage({
           data: keys,
-          key: Constant.ALB_SEARCH_KEY,
+          key: Constant.MP_SEARCH_KEY,
         })
       },
       fail(_e) {
@@ -108,7 +108,7 @@ Page({
 
         wx.setStorage({
           data: keys,
-          key: Constant.ALB_SEARCH_KEY,
+          key: Constant.MP_SEARCH_KEY,
         })
       }
     });
@@ -133,7 +133,7 @@ Page({
       success(res) {
         if (res.confirm) {
           wx.setStorage({
-            key: Constant.ALB_SEARCH_KEY,
+            key: Constant.MP_SEARCH_KEY,
             data: [],
             success() {
               that.setData({
@@ -178,7 +178,7 @@ Page({
 
           wx.setStorage({
             data: keys,
-            key: Constant.ALB_SEARCH_KEY,
+            key: Constant.MP_SEARCH_KEY,
           })
         }
       }

@@ -8,11 +8,11 @@
  * Copyright © 2020-2021 www.jiangqie.com All rights reserved.
  */
 
-import { ALB_USER_KEY } from './constants';
+import { MP_USER_KEY } from './constants';
 
 //获取TOKEN
 export function getToken() {
-  let user = wx.getStorageSync(ALB_USER_KEY);
+  let user = wx.getStorageSync(MP_USER_KEY);
   if (!user) {
     return false;
   }
@@ -22,7 +22,7 @@ export function getToken() {
 
 //注销
 export function logout() {
-  wx.setStorageSync(ALB_USER_KEY, false);
+  wx.setStorageSync(MP_USER_KEY, false);
 }
 
 export function checkSession() {
@@ -48,8 +48,8 @@ export function getWXUser() {
   });
 }
 export function setUser(user) {
-  wx.setStorageSync(ALB_USER_KEY, user);
+  wx.setStorageSync(MP_USER_KEY, user);
 }
 export function getUser() {
-  return wx.getStorageSync(ALB_USER_KEY);
+  return wx.getStorageSync(MP_USER_KEY);
 }

@@ -10,7 +10,7 @@ import { UBT } from "./utils/ubt";
 import { flLoginRequest } from "./utils/login";
 import { backfl } from "configApi";
 import { get } from './utils/rest';
-import { JIANGQIE_SETTING_AD } from './utils/api';
+import { MP_SETTING_AD } from './utils/api';
 
 App({
   appName: '次元画册',
@@ -31,7 +31,7 @@ App({
 
   onShow: function (t) {
     wx.setStorageSync("weapp_scene", t.scene);
-    get(JIANGQIE_SETTING_AD).then(res => {
+    get(MP_SETTING_AD).then(res => {
       if (!res.data.posisionad) {
         return
       } else {

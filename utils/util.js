@@ -1,4 +1,4 @@
-import { JIANGQIE_SETTING_AD, JIANGQIE_SETTING_SHARE } from 'api.js';
+import { MP_SETTING_AD, MP_SETTING_SHARE } from 'api.js';
 import { get } from 'rest.js';
 
 function navigateBack() {
@@ -12,7 +12,7 @@ function navigateBack() {
   });
 }
 function getAD(self, showad) {
-  get(JIANGQIE_SETTING_AD).then(res => {
+  get(MP_SETTING_AD).then(res => {
     if (!res.data.posisionad) {
       return
     } else {
@@ -26,7 +26,7 @@ function getAD(self, showad) {
 }
 
 function getshare(self) {
-  get(JIANGQIE_SETTING_SHARE).then(res => {
+  get(MP_SETTING_SHARE).then(res => {
     self.setData({
       shares: res.data
     })

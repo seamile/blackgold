@@ -1,12 +1,11 @@
-import { ALB_PER_PAGE_COUNT } from '../../utils/constants';
+import { MP_PER_PAGE_COUNT } from '../../utils/constants';
 import {
-  JIANGQIE_SETTING_HOMEBZ,
-  JIANGQIE_POSTS_LAST,
-  JIANGQIE_POSTS_CATEGORY
+  MP_SETTING_HOMEBZ,
+  MP_POSTS_LAST,
+  MP_POSTS_CATEGORY
 } from '../../utils/api.js';
 import { get } from '../../utils/rest';
 import util from '../../utils/util.js';
-let setinad;
 
 Page({
   data: {
@@ -18,7 +17,6 @@ Page({
       name: '最新'
     }],
     currentTabbz: 0, //预设当前项的值
-
 
     iconNavbz: [],
     //公告
@@ -92,10 +90,10 @@ Page({
   search: function () {
     let self = this;
     wx.getStorage({
-      key: Constant.ALB_SEARCH_KEY,
+      key: Constant.MP_SEARCH_KEY,
       success(res) {
         let keys = [self.keyword];
-        for (let i = 0; i < res.data.length && keys.length < Constant.ALB_SEARCH_MAX_COUNT; i++) {
+        for (let i = 0; i < res.data.length && keys.length < Constant.MP_SEARCH_MAX_COUNT; i++) {
           if (self.keyword == res.data[i]) {
             continue;
           }
@@ -109,7 +107,7 @@ Page({
 
         wx.setStorage({
           data: keys,
-          key: Constant.ALB_SEARCH_KEY,
+          key: Constant.MP_SEARCH_KEY,
         })
       },
 
@@ -122,7 +120,7 @@ Page({
 
         wx.setStorage({
           data: keys,
-          key: Constant.ALB_SEARCH_KEY,
+          key: Constant.MP_SEARCH_KEY,
         })
       }
     });
@@ -167,14 +165,14 @@ Page({
     //加载topNav，也就是顶部分类导航栏
     await self.init();
 
-    util.getAD(self, self.setInterstitialAd)
+    util.getAD(self, self.showInterstitialAd);
   },
 
   init: async function () {
     let self = this;
 
     //获取配置
-    get(JIANGQIE_SETTING_HOMEBZ).then(res => {
+    get(MP_SETTING_HOMEBZ).then(res => {
       console.log(res);
 
       self.setData({
@@ -215,31 +213,29 @@ Page({
 
   // 是否可以显示插屏广告
   canShowInterstitialAd: function () {
-    let lastShowIntAd = wx.getStorageSync('lastShowIntAd') || new Date().getTime();
+    let lastShowIntAd = wx.getStorageSync('lastShowIntAd') || 0;
     let current = new Date().getTime();
     let pastSeconds = (current - lastShowIntAd) / 1000;
-    return pastSeconds >= 300;  // 5分钟内不重复播放
+    console.log(lastShowIntAd, pastSeconds);
+    return pastSeconds > 300;  // 距离上次显示插屏广告超过 5 分钟时，可以再次显示
   },
 
   // 获取小程序插屏广告
-  setInterstitialAd: function () {
+  showInterstitialAd: function () {
     var self = this;
     let canShow = self.canShowInterstitialAd();
     if (canShow && self.data.setAD.interstitialid && wx.createInterstitialAd) {
+      // 记录当前时间
+      wx.setStorageSync('lastShowIntAd', new Date().getTime());
+
       let interstitialAd = wx.createInterstitialAd({
         adUnitId: self.data.setAD.interstitialid
       })
       // 监听插屏错误事件
       interstitialAd.onError((err) => { console.error(err) })
       // 显示广告
-      setTimeout(() => {
-        interstitialAd.show().catch((err) => { console.error(err) })
-      }, 6000);
+      interstitialAd.show().catch((err) => { console.error(err) })
     }
-  },
-
-  onHide() {
-    clearInterval(setinad);
   },
 
   onShareAppMessage: function () {
@@ -366,13 +362,13 @@ Page({
       offset = self.data.postsLast.length;
     }
 
-    get(JIANGQIE_POSTS_LAST, {
+    get(MP_POSTS_LAST, {
       'offset': offset
     }).then(res => {
       self.setData({
         loaddingLast: false,
         postsLast: refresh ? res.data : self.data.postsLast.concat(res.data),
-        pullUpOnLast: res.data.length >= ALB_PER_PAGE_COUNT
+        pullUpOnLast: res.data.length >= MP_PER_PAGE_COUNT
       });
     })
   },
@@ -389,14 +385,14 @@ Page({
       offset = self.data.posts.length;
     }
 
-    get(JIANGQIE_POSTS_CATEGORY, {
+    get(MP_POSTS_CATEGORY, {
       'offset': offset,
       'cat_id': self.data.topNavbz[self.data.currentTabbz].id
     }).then(res => {
       self.setData({
         loadding: false,
         posts: refresh ? res.data : self.data.posts.concat(res.data),
-        pullUpOn: res.data.length >= ALB_PER_PAGE_COUNT
+        pullUpOn: res.data.length >= MP_PER_PAGE_COUNT
       });
     })
   },

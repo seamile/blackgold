@@ -9,7 +9,7 @@
  */
 
 import { getUser } from '../../utils/auth';
-import { JIANGQIE_BG_MY, JIANGQIE_SETTING_UCENTER } from '../../utils/api.js';
+import { MP_BG_MY, MP_SETTING_UCENTER } from '../../utils/api.js';
 import { get } from '../../utils/rest';
 
 Page({
@@ -21,7 +21,7 @@ Page({
   },
 
   default: {
-    background: JIANGQIE_BG_MY,
+    background: MP_BG_MY,
     menu: [ //views,likes,favorites,comments,about,feedback,contact,clear,split,link,page
       {
         tp: 'favorites',
@@ -69,7 +69,7 @@ Page({
       user: user
     });
 
-    get(JIANGQIE_SETTING_UCENTER).then(res => {
+    get(MP_SETTING_UCENTER).then(res => {
       let menu = that.default.menu;
       if (res.data.menu.length > 0) {
         menu = res.data.menu;

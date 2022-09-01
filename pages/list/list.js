@@ -1,15 +1,14 @@
-import { ALB_PER_PAGE_COUNT } from '../../utils/constants';
+import { MP_PER_PAGE_COUNT } from '../../utils/constants';
 import Util from '../../utils/util';
 import {
-  JIANGQIE_POSTS_CATEGORY,
-  JIANGQIE_POSTS_TAG,
-  JIANGQIE_POSTS_SEARCH,
-  JIANGQIE_POSTS_MY,
-  JIANGQIE_POSTS_LAST
+  MP_POSTS_CATEGORY,
+  MP_POSTS_TAG,
+  MP_POSTS_SEARCH,
+  MP_POSTS_MY,
+  MP_POSTS_LAST
 } from '../../utils/api.js';
 import { get } from '../../utils/rest';
 import util from '../../utils/util.js';
-let setinad;
 
 Page({
   data: {
@@ -51,7 +50,7 @@ Page({
     wx.setNavigationBarTitle({ title: title });
     util.getshare(self);
 
-    util.getAD(self, self.setInterstitialAd);
+    util.getAD(self, self.showInterstitialAd);
   },
 
   onPullDownRefresh: function () {
@@ -71,14 +70,15 @@ Page({
 
   // 是否可以显示插屏广告
   canShowInterstitialAd: function () {
-    let lastShowIntAd = wx.getStorageSync('lastShowIntAd') || new Date().getTime();
+    let lastShowIntAd = wx.getStorageSync('lastShowIntAd') || 0;
     let current = new Date().getTime();
     let pastSeconds = (current - lastShowIntAd) / 1000;
-    return pastSeconds >= 300;  // 5分钟内不重复播放
+    console.log(lastShowIntAd, pastSeconds);
+    return pastSeconds > 300;  // 距离上次显示插屏广告超过 5 分钟时，可以再次显示
   },
 
   // 获取插屏广告
-  setInterstitialAd: function () {
+  showInterstitialAd: function () {
     var self = this;
     let canShow = self.canShowInterstitialAd();
     if (canShow && self.data.setAD.interstitialid && wx.createInterstitialAd) {
@@ -91,15 +91,10 @@ Page({
       // 监听插屏错误事件
       interstitialAd.onError((err) => { console.error(err) })
       // 显示广告
-      setTimeout(() => {
-        interstitialAd.show().catch((err) => { console.error(err) })
-      }, 3000);
+      interstitialAd.show().catch((err) => { console.error(err) })
     }
   },
 
-  onHide() {
-    clearInterval(setinad);
-  },
   onShareAppMessage: function () {
     var self = this;
     wx.showShareMenu({
@@ -153,19 +148,19 @@ Page({
     };
 
     if (self.cat_id !== undefined) {
-      url = JIANGQIE_POSTS_CATEGORY;
+      url = MP_POSTS_CATEGORY;
       params.cat_id = self.cat_id;
     } else if (self.tag_id !== undefined) {
-      url = JIANGQIE_POSTS_TAG;
+      url = MP_POSTS_TAG;
       params.tag_id = self.tag_id;
     } else if (self.search !== undefined) {
-      url = JIANGQIE_POSTS_SEARCH;
+      url = MP_POSTS_SEARCH;
       params.search = self.search;
     } else if (self.track !== undefined) {
-      url = JIANGQIE_POSTS_MY;
+      url = MP_POSTS_MY;
       params.track = self.track;
     } else {
-      url = JIANGQIE_POSTS_LAST;
+      url = MP_POSTS_LAST;
     }
 
     get(url, params).then(res => {
@@ -173,7 +168,7 @@ Page({
         loaded: true,
         loadding: false,
         posts: refresh ? res.data : self.data.posts.concat(res.data),
-        pullUpOn: res.data.length == ALB_PER_PAGE_COUNT
+        pullUpOn: res.data.length == MP_PER_PAGE_COUNT
       });
     })
   },

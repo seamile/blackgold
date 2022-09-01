@@ -1,9 +1,10 @@
 import { getSearchVideo as _getSearchVideo } from "../../utils/videoApi";
+import util from '../../utils/util.js';
+
 var APP = getApp();
 var a = null;
 var keyword = "";
 var page = 1;
-var interstitialAd = null;
 
 Page({
   data: {
@@ -34,13 +35,35 @@ Page({
     page = 1;
     self.getSearchVideo();
 
-    // 初始化插屏广告
-    interstitialAd = wx.createInterstitialAd({
-      adUnitId: APP.globalData.AD_INTERSTITIAL
-    });
-    interstitialAd.onLoad(function () { });
-    interstitialAd.onError(function (err) { console.log(err); });
-    interstitialAd.onClose(function () { });
+    // 插屏广告
+    util.getAD(self, self.showInterstitialAd);
+  },
+
+  // 是否可以显示插屏广告
+  canShowInterstitialAd: function () {
+    let lastShowIntAd = wx.getStorageSync('lastShowIntAd') || 0;
+    let current = new Date().getTime();
+    let pastSeconds = (current - lastShowIntAd) / 1000;
+    console.log(lastShowIntAd, pastSeconds);
+    return pastSeconds > 300;  // 距离上次显示插屏广告超过 5 分钟时，可以再次显示
+  },
+
+  // 获取插屏广告
+  showInterstitialAd: function () {
+    var self = this;
+    let canShow = self.canShowInterstitialAd();
+    if (canShow && self.data.setAD.interstitialid && wx.createInterstitialAd) {
+      // 记录当前时间
+      wx.setStorageSync('lastShowIntAd', new Date().getTime());
+
+      let interstitialAd = wx.createInterstitialAd({
+        adUnitId: self.data.setAD.interstitialid
+      })
+      // 监听插屏错误事件
+      interstitialAd.onError((err) => { console.error(err) })
+      // 显示广告
+      interstitialAd.show().catch((err) => { console.error(err) })
+    }
   },
 
   getSearchVideo: function () {
